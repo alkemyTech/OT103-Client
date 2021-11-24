@@ -22,7 +22,6 @@ OUTPUTS => response message from api or error.
 
 */
 
-//TODO terminar
 const modifyCategory = (categoryObject) => {
   return new Promise((resolve, reject) => {
     categoryPutApiRequest
@@ -37,7 +36,9 @@ const modifyCategory = (categoryObject) => {
               reject(res.data.message);
             }
           })
-          .catch((err) => reject(err));
+          .catch((err) => {
+            reject(err.message);
+          });
       })
       .catch((error) => reject(error.message));
   });
@@ -72,7 +73,7 @@ const uploadCategory = (categoryObject) => {
               reject(res.data.message);
             }
           })
-          .catch((err) => reject(err));
+          .catch((err) => reject(err.message));
       })
       .catch((error) => reject(error.message));
   });
