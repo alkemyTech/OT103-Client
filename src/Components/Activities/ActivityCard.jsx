@@ -3,6 +3,7 @@ import "./Activities.scss";
 const ActivityCard = ({ activity }) => {
   return (
     <li className="list__item">
+      {/* TODO Here needs to be the heading component */}
       <h3>{activity.name}</h3>
       {activity.image !== null ? (
         <img
