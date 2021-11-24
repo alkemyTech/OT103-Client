@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import classicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -8,6 +8,10 @@ import {
   modifyCategory,
   uploadCategory,
 } from "../../Services/privateApi/categoryApi";
+import getBase64FromUrl from "../../helpers/imageToBase64";
+
+//TODO refactor
+
 /*
 
 INPUTS:
@@ -42,6 +46,27 @@ const CategoriesForm = ({ category }) => {
   const imageInputRef = useRef();
   //   FOR SENDING THE IMAGE IN BASE64 and also previewing it on the frontend
   const [imagePreview, setImagePreview] = useState();
+
+  const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    if (category !== undefined)
+      getBase64FromUrl(category.image)
+        .then((res) => setImagePreview(res))
+        .catch((err) => console.log(err));
+  }, [category]);
+
+  //HIDE THE MESSAGE IN 4 SECONDS
+  // CLEANUP TO PREVENT ERROR DISMOUNTING COMPONENT
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setStatus("");
+    }, 4000);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [status]);
+
   return (
     <>
       <h1 className="title">
@@ -67,24 +92,30 @@ const CategoriesForm = ({ category }) => {
           image: "",
         }}
         validate={(values) => {
+          console.log(values);
           // ALSO VALIDATES IMAGE INPUT
           return validateCategoryForm(values, imageInputRef);
         }}
         onSubmit={(values) => {
-          console.log("SUBMIT!");
-          console.log(values);
-          console.log("END FUNCTION SUBMIT");
           category === undefined
             ? uploadCategory({ ...values, image: imagePreview })
-                .then((res) => console.log(res))
-                .catch((err) => console.log(err))
+                .then((res) => {
+                  setStatus(res);
+                })
+                .catch((err) => {
+                  setStatus(err);
+                })
             : modifyCategory({
                 ...values,
                 image: imagePreview,
                 id: category.id,
               })
-                .then((res) => console.log(res))
-                .catch((err) => console.log(err));
+                .then((res) => {
+                  setStatus(res);
+                })
+                .catch((err) => {
+                  setStatus(err);
+                });
         }}
       >
         {({
@@ -107,6 +138,7 @@ const CategoriesForm = ({ category }) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 className="form__input"
+                defaultValue={values.name}
               />
               {errors.name && touched.name && (
                 <div className="form__input-error">{errors.name}</div>
@@ -176,6 +208,7 @@ const CategoriesForm = ({ category }) => {
             <button className="form__button" type="submit">
               Submit
             </button>
+            {setStatus && <div>{status}</div>}
           </Form>
         )}
       </Formik>
