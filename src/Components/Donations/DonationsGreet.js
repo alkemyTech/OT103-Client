@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const DonationsGreet = ({
   title = "Se parte del cambio para las familias de La Cava",
 }) => {
@@ -11,8 +13,8 @@ export const DonationsGreet = ({
       }}
     >
       <h1> {title} </h1>
-        <a
-          href="..."
+        <Link
+         to={'/gracias'}
           style={{
             backgroundColor: "#009ee3",
             padding: "10px 20px",
@@ -22,7 +24,7 @@ export const DonationsGreet = ({
           }}
         >
           Mercado Pago
-        </a>
+        </Link>
     </div>
   );
 };
