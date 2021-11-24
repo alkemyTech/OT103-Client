@@ -31,7 +31,6 @@ function App() {
           <Route path="/toys-campaign" component={ToysCampaign} />
         </Switch>
       </BrowserRouter>
-      <SliderApp type="get"/>
     </>
   );
 }
