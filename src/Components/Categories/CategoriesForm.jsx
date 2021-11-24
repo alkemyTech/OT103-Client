@@ -4,7 +4,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import classicEditor from "@ckeditor/ckeditor5-build-classic";
 import { validateCategoryForm } from "../../schemas/categoryFormValidation";
 import "./CategoryForm.scss";
-
+import { modifyCategory } from "../../services/privateApi/categoryApi";
 /*
 
 INPUTS:
@@ -68,6 +68,7 @@ const CategoriesForm = ({ category }) => {
         onSubmit={(values) => {
           console.log("SUBMIT!");
           console.log(values);
+          console.log("END FUNCTION SUBMIT");
         }}
       >
         {({
