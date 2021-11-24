@@ -9,19 +9,19 @@ const settings = {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1
-  };
+};
 
-export const SliderApp = ({ URL = 'http://ongapi.alkemy.org/api/slides' }, { type }) => {
+export const SliderApp = ({ URL = 'http://ongapi.alkemy.org/api/slides', method }) => {
     const [data, setData] = useState([])
     useEffect(() => {
-        axios({method: type , url: URL})
+        axios({ method: method, url: URL })
             .then(res => setData(res.data.data))
             .catch(e => console.log(e))
-    }, [URL])
+    }, [URL, type])
     return (
         <Slider {...settings}>
             {data.map(obj => {
-                return <SlideComponent key={obj.id} data={obj}/>
+                return <SlideComponent key={obj.id} data={obj} />
             })
             }
         </Slider>
