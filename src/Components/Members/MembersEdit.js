@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../FormStyles.css";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
@@ -28,8 +28,6 @@ const SignupSchema = Yup.object().shape({
 });
 
 const MembersEdit = () => {
-  const [text, setText] = useState("");
-
   return (
     <>
       <Formik
@@ -41,8 +39,6 @@ const MembersEdit = () => {
           linkedinUrl: "",
         }}
         validationSchema={SignupSchema}
-        // validate={(values)=>{...}}
-
         onSubmit={(values) => {
           alert(JSON.stringify(values));
           // axios.put(API, values) <-------
