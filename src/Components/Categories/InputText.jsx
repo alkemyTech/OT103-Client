@@ -5,7 +5,6 @@ const InputText = ({
   required,
   handleChange,
   handleBlur,
-  defaultValue,
   values,
   errors,
   touched,
