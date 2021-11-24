@@ -12,13 +12,6 @@ import ToysCampaign from "./Campaigns/Toys/ToysCampaign";
 import MembersForm from "./Components/Members/MembersForm";
 import ProjectsForm from "./Components/Projects/ProjectsForm";
 
-const mock = {
-  id: 1169,
-  name: "testeo aver?",
-  description: "<h1>JEJEJJEJE H1</h1>",
-  image: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-};
-
 function App() {
   return (
     <>
@@ -26,10 +19,7 @@ function App() {
         <Switch>
           {/* <Route path="/" exact component={} />           Esta ruta debe ser para el Home */}
           <Route path="/create-activity" component={ActivitiesForm} />
-          <Route
-            path="/create-category"
-            render={() => <CategoriesForm category={mock} />}
-          />
+          <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-news" component={NewsForm} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
           <Route path="/create-testimonials" component={TestimonialForm} />
