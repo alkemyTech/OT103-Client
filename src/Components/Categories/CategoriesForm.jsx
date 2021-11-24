@@ -4,7 +4,10 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import classicEditor from "@ckeditor/ckeditor5-build-classic";
 import { validateCategoryForm } from "../../schemas/categoryFormValidation";
 import "./CategoryForm.scss";
-import { modifyCategory } from "../../services/privateApi/categoryApi";
+import {
+  modifyCategory,
+  uploadCategory,
+} from "../../Services/privateApi/categoryApi";
 /*
 
 INPUTS:
@@ -12,7 +15,7 @@ category => object => {
     id => number
     name: => string,
     description: => string,
-    image: => string,
+    image: => string (blob, base64),
 }
 
 FUNCTION: 
@@ -29,6 +32,7 @@ OUTPUTS => Form component and api call
 
 const CategoriesForm = ({ category }) => {
   //FOR IMAGE PREVIEW
+  //AND SENDING TO API
   //See FILE API from html5
   const fileReader = new FileReader();
   fileReader.onload = (e) => {
@@ -36,6 +40,7 @@ const CategoriesForm = ({ category }) => {
   };
 
   const imageInputRef = useRef();
+  //   FOR SENDING THE IMAGE IN BASE64 and also previewing it on the frontend
   const [imagePreview, setImagePreview] = useState();
   return (
     <>
@@ -69,6 +74,17 @@ const CategoriesForm = ({ category }) => {
           console.log("SUBMIT!");
           console.log(values);
           console.log("END FUNCTION SUBMIT");
+          category === undefined
+            ? uploadCategory({ ...values, image: imagePreview })
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err))
+            : modifyCategory({
+                ...values,
+                image: imagePreview,
+                id: category.id,
+              })
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err));
         }}
       >
         {({
@@ -82,7 +98,7 @@ const CategoriesForm = ({ category }) => {
           <Form className="form">
             <div>
               <label className="form__label" htmlFor="name">
-                Name:
+                Name: <small className="form__label-required">*</small>
               </label>
               <input
                 type="text"
@@ -98,8 +114,17 @@ const CategoriesForm = ({ category }) => {
             </div>
 
             <div>
-              <label className="form__label" htmlFor="image">
-                {values.image || "Choose an image..."}
+              <label
+                className="form__label"
+                htmlFor="image"
+                onBlur={handleBlur}
+              >
+                {values.image || (
+                  <span>
+                    Choose an image...
+                    <small className="form__label-required">*</small>
+                  </span>
+                )}
               </label>
               <input
                 type="file"
@@ -108,10 +133,8 @@ const CategoriesForm = ({ category }) => {
                 ref={imageInputRef}
                 onChange={(e) => {
                   handleChange(e);
-                  console.log(errors);
                   fileReader.readAsDataURL(e.target.files[0]);
                 }}
-                onBlur={handleBlur}
                 className="form__input"
                 accept="image/png,  image/jpeg"
               />
@@ -131,7 +154,7 @@ const CategoriesForm = ({ category }) => {
 
             <div>
               <label className="form__label" htmlFor="description">
-                Description:
+                Description: <small className="form__label-required">*</small>
               </label>
               <CKEditor
                 className="form__input"

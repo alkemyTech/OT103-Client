@@ -6,6 +6,10 @@ $border-color: rgba(76, 131, 216, 0.8);
   background-color: rgba(146, 183, 240, 0.4);
 }
 
+@mixin commonOutline {
+  outline: 1px solid $border-color;
+}
+
 .title {
   padding: 0 20px;
 }
@@ -43,17 +47,22 @@ $border-color: rgba(76, 131, 216, 0.8);
     &-error {
       color: $error-fg-color;
       color: red;
+      margin: 10px 0;
     }
   }
   &__label {
     margin-right: 10px;
     width: 10px;
+
+    &-required {
+      color: red;
+    }
   }
 
   &__label[for="image"] {
     padding: $padding-button;
-    margin-bottom: 20px;
-    outline: 1px solid $border-color;
+
+    @include commonOutline();
     cursor: pointer;
     &:hover {
       @include commonHoverEffect();
@@ -62,7 +71,7 @@ $border-color: rgba(76, 131, 216, 0.8);
 
   &__button {
     background-color: transparent;
-    outline: 1px solid $border-color;
+    @include commonOutline();
     border-radius: 2px;
     padding: $padding-button;
     border: none;
