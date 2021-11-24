@@ -1,0 +1,50 @@
+@mixin borders {
+  border: 3px solid wheat;
+  background-color: rgba(245, 222, 179, 0.63);
+  border-radius: 4px;
+}
+
+@mixin flexColumnCenter($gap) {
+  display: flex;
+  flex: {
+    direction: column;
+  }
+  gap: $gap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.list {
+  max-width: 767px;
+  width: 100%;
+  list-style-type: none;
+  padding: 10px 20px;
+
+  @include flexColumnCenter(10px);
+
+  @media screen and (max-width: 450px) {
+    padding: 0;
+  }
+
+  &__item {
+    @include borders();
+    padding: 20px;
+    width: 100%;
+    @media screen and (max-width: 450px) {
+      max-width: 100%;
+      padding: 0;
+      border: {
+        left: none;
+        right: none;
+      }
+    }
+  }
+  &__image {
+    width: 100%;
+    height: auto;
+    max-width: max-content;
+    margin: 0 auto;
+  }
+}
