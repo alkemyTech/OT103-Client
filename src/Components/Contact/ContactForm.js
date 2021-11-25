@@ -8,7 +8,7 @@ const initialValues = {
   message: "",
 };
 
-const onSubmit = (values) => {
+const handleSubmit = (values) => {
   alert(
     values.name +
       "\n" +
@@ -49,7 +49,7 @@ const validate = (values) => {
 function ContactForm() {
   const formik = useFormik({
     initialValues,
-    onSubmit,
+    onSubmit: handleSubmit,
     validate,
   });
 
