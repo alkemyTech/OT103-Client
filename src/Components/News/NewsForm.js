@@ -61,7 +61,6 @@ const NewsForm = () => {
         `http://ongapi.alkemy.org/api/news/${id}`,
         body
       );
-      console.log(response);
       if (response.data.success) {
         setMessage("Updated successfully.");
       } else {
@@ -91,9 +90,21 @@ const NewsForm = () => {
     setIsLoading(false);
   }, [id]);
 
+  const handleImageChange = (e, setFieldValue) => {
+    if (e.currentTarget.files && e.currentTarget.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        setFieldValue("image", e.target.result);
+      };
+
+      reader.readAsDataURL(e.currentTarget.files[0]);
+    }
+  };
+
   useEffect(() => {
     loadApiData();
-  }, [loadApiData]);
+  }, []);
 
   return isLoading ? (
     <div className="form-container">
@@ -138,10 +149,8 @@ const NewsForm = () => {
                 className="input-field"
                 id="title"
               />
-              {errors.title ? (
+              {errors.title && (
                 <div className="error-message">{errors.title}</div>
-              ) : (
-                <div>&nbsp;</div>
               )}
             </div>
 
@@ -156,10 +165,8 @@ const NewsForm = () => {
                 }}
                 placeholder="d"
               />
-              {errors.content ? (
+              {errors.content && (
                 <div className="error-message">{errors.content}</div>
-              ) : (
-                <div>&nbsp;</div>
               )}
             </div>
 
@@ -181,10 +188,8 @@ const NewsForm = () => {
                   ))
                 )}
               />
-              {errors.category ? (
+              {errors.category && (
                 <div className="error-message">{errors.category}</div>
-              ) : (
-                <div>&nbsp;</div>
               )}
             </div>
 
@@ -194,17 +199,7 @@ const NewsForm = () => {
                 <input
                   type="file"
                   accept="image/*"
-                  onChange={(e) => {
-                    if (e.currentTarget.files && e.currentTarget.files[0]) {
-                      const reader = new FileReader();
-
-                      reader.onload = function (e) {
-                        setFieldValue("image", e.target.result);
-                      };
-
-                      reader.readAsDataURL(e.currentTarget.files[0]);
-                    }
-                  }}
+                  onChange={(e) => handleImageChange(e, setFieldValue)}
                 />
 
                 <div className="uploaded-image-container">
@@ -219,10 +214,8 @@ const NewsForm = () => {
                   />
                 </div>
               </div>
-              {errors.image ? (
+              {errors.image && (
                 <div className="error-message">{errors.image}</div>
-              ) : (
-                <div>&nbsp;</div>
               )}
             </div>
 
