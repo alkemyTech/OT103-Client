@@ -28,18 +28,18 @@ const RegisterForm = () => {
                 let errores = {}
 
 
-                if (!values.name) {
+                if (!values.name.trim()) {
                     errores.name = 'Please enter a name'
                 }
 
-                if (!values.lastName) {
+                if (!values.lastName.trim()) {
                     errores.lastName = 'Please enter a last name'
                 }
-                if (!values.email) {
+                if (!values.email.trim()) {
                     errores.email = 'Please enter an email'
                 }
 
-                if (!values.password) {
+                if (!values.password.trim()) {
                     errores.password = 'Please enter a password'
 
                 } else if (values.password.length < 6) {
@@ -77,7 +77,7 @@ const RegisterForm = () => {
                     email: values.email,
                     password: values.password,
                 })
-                //localStorage.setItem('token', 'tokenValueExample')
+                
                 setFormEnviado(true)
                 setTimeout(() => {
                     setFormEnviado(false)
