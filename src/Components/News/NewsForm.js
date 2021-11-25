@@ -230,7 +230,13 @@ const NewsForm = () => {
             >
               Send
             </button>
-            <div>{message}</div>
+            <div
+              className={
+                message.includes("Failed") ? "error-message" : "success-message"
+              }
+            >
+              {message}
+            </div>
           </Form>
         );
       }}
