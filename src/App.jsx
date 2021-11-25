@@ -1,10 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD:src/App.jsx
-//import logo from './logo.svg';
-//import { Counter } from './features/counter/Counter';
-=======
 import logo from './logo.svg';
->>>>>>> d0717def0941e28b82f9f40b5302b54aaca14f21:src/App.js
 import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import ActivitiesForm from './Components/Activities/ActivitiesForm';
