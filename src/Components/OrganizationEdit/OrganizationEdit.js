@@ -4,6 +4,7 @@ import {Field, Form, Formik} from "formik";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import * as Yup from "yup";
+import '../FormStyles.css'
 
 const OrganizationEdit = () => {
 
@@ -16,7 +17,6 @@ const OrganizationEdit = () => {
     const [instagram_url, setInstagram_url] = useState("");
     const [twitter_url, setTwitter_url] = useState("");
 
-
     const EditForm = (values) => {
         // TODO: Implementar pegada a la API
     }
@@ -25,7 +25,6 @@ const OrganizationEdit = () => {
 
     useEffect(() => {
         axios.get(`${url} `)
-
             .then(response => {
                 setName(response.data.data.name)
                 setLogo(response.data.data.email)
@@ -35,7 +34,6 @@ const OrganizationEdit = () => {
                 setLinkedin_url(response.data.data.linkedin_url)
                 setInstagram_url(response.data.data.instagram_url)
                 setTwitter_url(response.data.data.twitter_url)
-
             })
             .catch(error => {
                 alert(error)
@@ -72,13 +70,12 @@ const OrganizationEdit = () => {
             >
                 {
                     (props) => {
-                        console.log(props)
                         return (
                             <Form>
-                                <div>
+                                <div className="form-container">
                                     <h3>Information</h3>
                                     <label>Name: </label>
-                                    <Field name={'name'} type={'text'}/>
+                                    <Field name={'name'} type={'text'} className='input-field'/>
                                     <small>{props.errors.name}</small>
                                     <label>Image: </label>
                                     <input
@@ -101,25 +98,24 @@ const OrganizationEdit = () => {
                                     />
                                     <small>{props.errors.short_description}</small>
                                     <label>Long Description: </label>
-                                    <Field name={'long_description'} as={'textarea'} type={'text'}/>
+                                    <Field name={'long_description'} as={'textarea'} type={'text'} className='input-field'/>
                                     <small>{props.errors.long_description}</small>
                                     <label>Facebook: </label>
-                                    <Field name={'facebook_url'} type={'text'}/>
+                                    <Field name={'facebook_url'} type={'text'} className='input-field'/>
                                     <small>{props.errors.facebook_url}</small>
                                     <label>Linkedin: </label>
-                                    <Field name={'linkedin_url'} type={'text'}/>
+                                    <Field name={'linkedin_url'} type={'text'} className='input-field'/>
                                     <small>{props.errors.linkedin_url}</small>
                                     <label>Instagram: </label>
-                                    <Field name={'instagram_url'} type={'text'}/>
+                                    <Field name={'instagram_url'} type={'text'} className='input-field'/>
                                     <small>{props.errors.instagram_url}</small>
                                     <label>Twitter: </label>
-                                    <Field name={'twitter_url'} type={'text'}/>
+                                    <Field name={'twitter_url'} type={'text'} className='input-field'/>
                                     <small>{props.errors.twitter_url}</small>
                                     <button type={'submit'}
-                                            disabled={!props.isValid}> Send
+                                            disabled={!props.isValid} className="submit-btn"> Send
                                     </button>
                                 </div>
-
                             </Form>
                         )
                     }
