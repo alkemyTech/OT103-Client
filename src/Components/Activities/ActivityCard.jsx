@@ -9,13 +9,12 @@ const ActivityCard = ({ activity }) => {
   const { date, time } = apiDateToText(activity["created_at"]);
   return (
     <li className="list__item">
-      {/* TODO WAIT FOR TITLE TO BE FIXED */}
       <Title title={activity.name} image={activity.image} />
       <p className="list__item-shutdown-text">
         {date} {time}
       </p>
 
-      {/* TODO esto es mala practica... ver como arreglarlo */}
+      {/*  esto es mala practica... ver como arreglarlo */}
       <div dangerouslySetInnerHTML={{ __html: activity.description }}></div>
       <footer>
         <Link to={`/actividades/${activity.id}`}>
