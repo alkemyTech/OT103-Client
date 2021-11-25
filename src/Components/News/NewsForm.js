@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useParams } from "react-router-dom";
+import { Formik, Form, Field } from "formik";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import axios from "axios";
 
 import "../../Components/FormStyles.css";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-
-// import "./newsForm.scss";
+import "./NewsForm.scss";
 
 const NewsForm = () => {
   const [categories, setCategories] = useState([]);
@@ -17,56 +16,61 @@ const NewsForm = () => {
 
   const { id } = useParams();
 
-  const handleSubmit = async (values, { setSubmitting }) => {
-    if (id) {
-      const body = {
-        name: values.title,
-        content: values.content,
-        category_id: values.category,
-        deleted_at: "2021-11-23T19:19:56.825Z",
-      };
-      if (existingNew.image !== values.image) {
-        body.image = values.image;
-      }
-
-      try {
-        const response = await axios.put(
-          `http://ongapi.alkemy.org/api/news/${id}`,
-          body
-        );
-        if (response.data.success) {
-          setMessage("Updated successfully.");
-        } else {
-          setMessage("Failed, try again.");
-        }
-      } catch (error) {
+  // post new article
+  const submitNew = async (values, { setSubmitting }) => {
+    const body = {
+      name: values.title,
+      content: values.content,
+      image: values.image,
+      category_id: values.category,
+      deleted_at: "2021-11-23T19:19:56.825Z",
+    };
+    try {
+      const response = await axios.post(
+        "http://ongapi.alkemy.org/api/news",
+        body
+      );
+      if (response.data.success) {
+        setMessage("Created successfully.");
+      } else {
         setMessage("Failed, try again.");
       }
-    } else {
-      const body = {
-        name: values.title,
-        content: values.content,
-        image: values.image,
-        category_id: values.category,
-        deleted_at: "2021-11-23T19:19:56.825Z",
-      };
-      try {
-        const response = await axios.post(
-          "http://ongapi.alkemy.org/api/news",
-          body
-        );
-        if (response.data.success) {
-          setMessage("Created successfully.");
-        } else {
-          setMessage("Failed, try again.");
-        }
-      } catch (error) {
-        setMessage("Failed, try again.");
-      }
+    } catch (error) {
+      setMessage("Failed, try again.");
     }
     setSubmitting(false);
   };
 
+  // edit existing article
+  const submitEdit = async (values, { setSubmitting }) => {
+    const body = {
+      name: values.title,
+      content: values.content,
+      category_id: values.category,
+      deleted_at: "2021-11-23T19:19:56.825Z",
+    };
+
+    if (existingNew.image !== values.image) {
+      body.image = values.image;
+    }
+
+    try {
+      const response = await axios.put(
+        `http://ongapi.alkemy.org/api/news/${id}`,
+        body
+      );
+      if (response.data.success) {
+        setMessage("Updated successfully.");
+      } else {
+        setMessage("Failed, try again.");
+      }
+    } catch (error) {
+      setMessage("Failed, try again.");
+    }
+    setSubmitting(false);
+  };
+
+  //   load categories and existing article data if editting
   const loadApiData = useCallback(async () => {
     try {
       const categories = await axios.get(
@@ -102,7 +106,7 @@ const NewsForm = () => {
         category: existingNew.category_id || "",
         image: existingNew.image || "",
       }}
-      onSubmit={handleSubmit}
+      onSubmit={id ? submitEdit : submitNew}
       validate={(values) => {
         const errors = {};
         if (!values.title) {
@@ -122,11 +126,9 @@ const NewsForm = () => {
     >
       {({ isSubmitting, values, setFieldValue, errors }) => {
         return (
-          <div className="form-container">
-            <Form className="news-form">
-              <label htmlFor="title" className="label">
-                Titulo
-              </label>
+          <Form className="form-container">
+            <div className="input-group">
+              <label htmlFor="title">Titulo</label>
               <Field
                 type="text"
                 name="title"
@@ -134,18 +136,14 @@ const NewsForm = () => {
                 id="title"
               />
               {errors.title ? (
-                <ErrorMessage
-                  name="title"
-                  component="div"
-                  className="error-message"
-                />
+                <div className="error-message">{errors.title}</div>
               ) : (
                 <div>&nbsp;</div>
               )}
+            </div>
 
-              <label htmlFor="title" className="label">
-                Contenido
-              </label>
+            <div className="input-group">
+              <label htmlFor="title">Contenido</label>
               <CKEditor
                 editor={ClassicEditor}
                 data={values.content}
@@ -156,22 +154,18 @@ const NewsForm = () => {
                 placeholder="d"
               />
               {errors.content ? (
-                <ErrorMessage
-                  name="content"
-                  component="div"
-                  className="error-message"
-                />
+                <div className="error-message">{errors.content}</div>
               ) : (
                 <div>&nbsp;</div>
               )}
+            </div>
 
-              <label htmlFor="title" className="label">
-                Categoría
-              </label>
+            <div className="input-group">
+              <label htmlFor="title">Categoría</label>
               <Field
                 name="category"
                 as="select"
-                className="input-field"
+                className="select-field"
                 children={[
                   <option value="" disabled key={0}>
                     Select category
@@ -185,18 +179,14 @@ const NewsForm = () => {
                 )}
               />
               {errors.category ? (
-                <ErrorMessage
-                  name="category"
-                  component="div"
-                  className="error-message"
-                />
+                <div className="error-message">{errors.category}</div>
               ) : (
                 <div>&nbsp;</div>
               )}
+            </div>
 
-              <label htmlFor="title" className="label">
-                Foto
-              </label>
+            <div className="input-group">
+              <label htmlFor="title">Foto</label>
               <div className="image-input">
                 <input
                   type="file"
@@ -214,18 +204,11 @@ const NewsForm = () => {
                   }}
                 />
 
-                <div className="uploaded-image">
+                <div className="uploaded-image-container">
                   <img
-                    style={{
-                      position: "absolute",
-                      left: "50%",
-                      top: "50%",
-                      transform: "translate(-50%,-50%)",
-                      maxHeight: "90%",
-                      maxWidth: "100%",
-                    }}
+                    className="uploaded-image"
                     src={values.image}
-                    alt="decorative"
+                    alt="article"
                     onError={(e) => {
                       e.target.src =
                         "https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
@@ -233,26 +216,22 @@ const NewsForm = () => {
                   />
                 </div>
               </div>
-
               {errors.image ? (
-                <ErrorMessage
-                  name="image"
-                  component="div"
-                  className="error-message"
-                />
+                <div className="error-message">{errors.image}</div>
               ) : (
                 <div>&nbsp;</div>
               )}
-              <button
-                className="submit-btn"
-                type="submit"
-                disabled={isSubmitting}
-              >
-                Send
-              </button>
-              <div>{message}</div>
-            </Form>
-          </div>
+            </div>
+
+            <button
+              className="submit-btn"
+              type="submit"
+              disabled={isSubmitting}
+            >
+              Send
+            </button>
+            <div>{message}</div>
+          </Form>
         );
       }}
     </Formik>
