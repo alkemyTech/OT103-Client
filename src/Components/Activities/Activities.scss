@@ -1,6 +1,6 @@
-@mixin borders {
-  border: 3px solid wheat;
-  background-color: rgba(245, 222, 179, 0.63);
+@mixin borders($color) {
+  border: 3px solid $color;
+  background-color: rgba($color, 0.4);
   border-radius: 4px;
 }
 
@@ -16,6 +16,10 @@
   box-sizing: border-box;
 }
 
+.activities {
+  margin: auto;
+}
+
 .list {
   max-width: 767px;
   width: 100%;
@@ -29,17 +33,26 @@
   }
 
   &__item {
-    @include borders();
+    @include borders(wheat);
     padding: 20px;
     width: 100%;
+    height: fit-content;
 
     &-shutdown-text {
       opacity: 0.4;
     }
 
+    & footer {
+      & a {
+        text-decoration: none;
+        padding: 10px;
+        @include borders(rgb(167, 167, 255));
+      }
+    }
+
     @media screen and (max-width: 450px) {
       max-width: 100%;
-      padding: 0;
+      padding: 20px 10px;
       border: {
         left: none;
         right: none;

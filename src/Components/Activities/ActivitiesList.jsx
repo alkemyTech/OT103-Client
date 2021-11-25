@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAllActivities } from "../../Services/public/activitiesApi";
 import ActivityCard from "./ActivityCard";
 import "./Activities.scss";
+import LoadingSpinner from "../Spinner/LoadingSpinner";
 
 const ActivitiesList = () => {
   const [activities, setActivities] = useState([]);
@@ -13,7 +14,7 @@ const ActivitiesList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="activities">
       {console.log(activities)}
       <h1>Listado Actividades</h1>
       <ul className="list">
@@ -22,7 +23,7 @@ const ActivitiesList = () => {
             return <ActivityCard key={activity.id} activity={activity} />;
           })
         ) : (
-          <p>No hay actividades</p>
+          <LoadingSpinner />
         )}
       </ul>
     </div>
