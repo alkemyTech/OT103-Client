@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../FormStyles.css';
-import { Formik } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 const RegisterForm = () => {
     
@@ -35,8 +35,12 @@ const RegisterForm = () => {
                 if (!values.lastName.trim()) {
                     errores.lastName = 'Please enter a last name'
                 }
+
                 if (!values.email.trim()) {
                     errores.email = 'Please enter an email'
+
+                } else if (!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(values.email)) {
+                    errores.email = 'Please enter a valid email'
                 }
 
                 if (!values.password.trim()) {
@@ -81,7 +85,7 @@ const RegisterForm = () => {
                 setFormEnviado(true)
                 setTimeout(() => {
                     setFormEnviado(false)
-                }, 5000);
+                }, 10000);
                 alert(
                             `
                             Name: ${values.name}
@@ -94,77 +98,75 @@ const RegisterForm = () => {
             }}
         >
 
-            {({values, errors, touched, handleSubmit, handleChange, handleBlur}) => (
-                <form className="form-container" onSubmit={handleSubmit}>
-                    <input 
+            {({errors}) => (
+                <Form className="form-container" >
+                    <Field 
                         className="input-field" 
                         type="text" 
                         name="name"
                         id='name'
-                        value={values.name} 
-                        onChange={handleChange} 
                         placeholder="Enter name"
-                        onBlur={handleBlur}
+                        
                     />
 
-                    {touched.name && errors.name && <div className='form-error'>{ errors.name }</div>}
+                    <ErrorMessage name='name' component={() => (
+                        <div className='form-error'>{ errors.name }</div>
+                    ) }/>
+
+                    
                         
                         
                     
 
-                    <input 
+                    <Field 
                         className="input-field" 
                         type="text" 
                         name="lastName"
                         id='lastName'
-                        value={values.lastName}
-                        onChange={handleChange} 
                         placeholder="Enter last name"
-                        onBlur={handleBlur}
+                        
                     />
-                        {touched.lastName && errors.lastName && <div className='form-error'>{errors.lastName}</div>}
+
+                        <ErrorMessage name='lastName' component={() => ( <div className='form-error'>{ errors.lastName }</div> )} />
+                    
+
+                       
                         
                         
 
-                    <input 
+                    <Field 
                         className="input-field" 
                         type="email" 
                         name="email"
                         id='email'
-                        value={values.email} 
-                        onChange={handleChange} 
                         placeholder="Enter email"
-                        onBlur={handleBlur}
+                        
                     />
-                        {touched.email && errors.email && <div className='form-error'>{errors.email}</div>}
+                        <ErrorMessage name='email' component={() => ( <div className='form-error'>{ errors.email }</div> )} />
 
                     
 
-                    <input 
+                    <Field 
                         className="input-field" 
                         type="password" 
                         name="password"
                         id='password'
-                        value={values.password} 
-                        onChange={handleChange} 
                         placeholder="Enter password"
-                        onBlur={handleBlur}
+                        
                     />
-                        {touched.password && errors.password && <div className='form-error'>{errors.password}</div>}
+                        <ErrorMessage name='password' component={() => ( <div className='form-error'>{ errors.password }</div> )} />
                         
                         
 
-                    <input 
+                    <Field 
                         className="input-field" 
                         type="password" 
                         name="confirmPassword"
                         id='confirmPassword'
-                        value={values.confirmPassword} 
-                        onChange={handleChange} 
                         placeholder="Confirm password"
-                        onBlur={handleBlur}
+                       
                     />
-                        {touched.confirmPassword && errors.confirmPassword && <div className='form-error'>{errors.confirmPassword}</div>}
+                        <ErrorMessage name='confirmPassword' component={() => ( <div className='form-error'>{ errors.confirmPassword }</div> )} />
                         
                         
                     <button
@@ -174,12 +176,12 @@ const RegisterForm = () => {
                     </button>
 
                     {
-                        formEnviado && <p className="form-success">Form submitted successfully</p>                
+                        formEnviado && <p className="form-success">Form submitted successfully</p>             
                             
                         
                     }
                     
-                </form>
+                </Form>
                 
             )}
 
