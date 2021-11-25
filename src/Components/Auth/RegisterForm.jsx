@@ -174,7 +174,7 @@ const RegisterForm = () => {
                     </button>
 
                     {
-                        formEnviado && <p className="form-success">Form submitted successfully</p>                      
+                        formEnviado && <p className="form-success">Form submitted successfully</p>                
                             
                         
                     }
