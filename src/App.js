@@ -34,12 +34,6 @@ function App() {
           <Route path="/backoffice/news" component={NewsForm} />
           <Route path="/donar" component={DonationsGreet} />
           <Route path="/gracias" component={ThanksGreet} />
-<<<<<<< HEAD
-          <Route path="/donar" component={DonationsGreet} />
-          <Route path="/gracias" component={ThanksGreet} />
-
-=======
->>>>>>> 4b5347c39457dc06f2352b28b535ce8e85d9ce7a
         </Switch>
       </BrowserRouter>
     </>
