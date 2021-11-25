@@ -11,10 +11,7 @@ import SchoolCampaign from "./Campaigns/School/SchoolCampaign";
 import ToysCampaign from "./Campaigns/Toys/ToysCampaign";
 import MembersForm from "./Components/Members/MembersForm";
 import ProjectsForm from "./Components/Projects/ProjectsForm";
-<<<<<<< HEAD
 import HomeForm from "./Components/HomeForm/HomeForm";
-=======
->>>>>>> 4b5347c39457dc06f2352b28b535ce8e85d9ce7a
 import { DonationsGreet } from "./Components/Donations/DonationsGreet";
 import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 
