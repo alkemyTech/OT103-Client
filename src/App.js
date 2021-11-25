@@ -32,6 +32,8 @@ function App() {
           <Route path="/create-project" component={ProjectsForm} />
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
+          <Route path="/backoffice/news/:id" component={NewsForm} />
+          <Route path="/backoffice/news" component={NewsForm} />
           <Route path="/donar" component={DonationsGreet} />
           <Route path="/gracias" component={ThanksGreet} />
         </Switch>
