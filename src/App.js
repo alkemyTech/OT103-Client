@@ -16,6 +16,7 @@ import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 import ContactForm from "./Components/Contact/ContactForm";
 import MembersEdit from "./Components//Members/MembersEdit";
 import ActivitiesList from "./Components/Activities/ActivitiesList";
+import ActivityInfo from "./Components/Activities/Detail/ActivityInfo";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           {/* <Route path="/" exact component={} />           Esta ruta debe ser para el Home */}
+          <Route exact path="/actividades/:id" component={ActivityInfo} />
           <Route exact path="/actividades" component={ActivitiesList} />
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-category" component={CategoriesForm} />
