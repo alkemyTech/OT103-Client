@@ -12,6 +12,8 @@ import ToysCampaign from "./Campaigns/Toys/ToysCampaign";
 import MembersForm from "./Components/Members/MembersForm";
 import ProjectsForm from "./Components/Projects/ProjectsForm";
 import HomeForm from "./Components/HomeForm/HomeForm";
+import { DonationsGreet } from "./Components/Donations/DonationsGreet";
+import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/create-project" component={ProjectsForm} />
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
+          <Route path="/donar" component={DonationsGreet} />
+          <Route path="/gracias" component={ThanksGreet} />
         </Switch>
       </BrowserRouter>
     </>
