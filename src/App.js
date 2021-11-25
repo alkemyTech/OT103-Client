@@ -11,7 +11,6 @@ import SchoolCampaign from './Campaigns/School/SchoolCampaign';
 import ToysCampaign from './Campaigns/Toys/ToysCampaign';
 import MembersForm from './Components/Members/MembersForm';
 import ProjectsForm from './Components/Projects/ProjectsForm';
-import { FormEditActivities } from './backoffice/FormEditActivities';
 import { DonationsGreet } from './Components/Donations/DonationsGreet';
 import { ThanksGreet } from './Components/Donations/ThanksGreet';
 
