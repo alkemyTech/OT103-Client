@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
+import { Formik, Form, Field, FieldArray } from "formik";
 
 import "../../Components/FormStyles.css";
+import "./HomeForm.scss";
 import axios from "axios";
 
 const HomeForm = () => {
@@ -34,6 +35,9 @@ const HomeForm = () => {
         }
 
         for (const image of values.images) {
+          if (!image.text) {
+            errors.images = "Añadir textos de fotos";
+          }
           if (!image.url) {
             errors.images = "Añadir 3 fotos";
           }
@@ -45,9 +49,7 @@ const HomeForm = () => {
         return (
           <Form className="form-container">
             <div className="input-group">
-              <label htmlFor="welcomeText" className="label">
-                Texto de Bienvenida
-              </label>
+              <label htmlFor="welcomeText">Texto de Bienvenida</label>
               <Field
                 type="text"
                 as="textarea"
@@ -56,81 +58,70 @@ const HomeForm = () => {
                 id="welcomeText"
               />
               {errors.welcomeText ? (
-                <ErrorMessage
-                  name="welcomeText"
-                  component="div"
-                  className="error-message"
-                />
+                <div className="error-message">{errors.welcomeText}</div>
               ) : (
                 <div>&nbsp;</div>
               )}
             </div>
 
-            <div className="input-group">
-              <div>Imagenes Para Slider</div>
-              <div className="images-container">
-                <FieldArray
-                  name="images"
-                  render={() => (
-                    <>
-                      {values.images.map((image, index) => (
-                        <div key={index} className="image-input">
-                          <input
-                            type="file"
-                            accept="image/*"
-                            onChange={(e) => {
-                              if (
-                                e.currentTarget.files &&
-                                e.currentTarget.files[0]
-                              ) {
-                                const reader = new FileReader();
+            <div>Imagenes Para Slider</div>
+            <div className="images-container">
+              <FieldArray
+                name="images"
+                render={() =>
+                  values.images.map((image, index) => (
+                    <div key={index} className="input-group">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => {
+                          if (
+                            e.currentTarget.files &&
+                            e.currentTarget.files[0]
+                          ) {
+                            const reader = new FileReader();
 
-                                reader.onload = function (e) {
-                                  setFieldValue(
-                                    `images.${index}.url`,
-                                    e.target.result
-                                  );
-                                };
+                            reader.onload = function (e) {
+                              setFieldValue(
+                                `images.${index}.url`,
+                                e.target.result
+                              );
+                            };
 
-                                reader.readAsDataURL(e.currentTarget.files[0]);
-                              }
-                            }}
-                          />
+                            reader.readAsDataURL(e.currentTarget.files[0]);
+                          }
+                        }}
+                      />
 
-                          <div className="uploaded-image">
-                            <img
-                              style={{
-                                position: "absolute",
-                                left: "50%",
-                                top: "50%",
-                                transform: "translate(-50%,-50%)",
-                                maxHeight: "90%",
-                                maxWidth: "100%",
-                              }}
-                              src={image.url}
-                              alt="decorative"
-                              onError={(e) => {
-                                e.target.src =
-                                  "https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
-                              }}
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </>
-                  )}
-                />
-              </div>
-              {errors.images ? (
-                <ErrorMessage
-                  name="images"
-                  component="div"
-                  className="error-message"
-                />
-              ) : (
-                <div>&nbsp;</div>
-              )}
+                      <div className="uploaded-image-container">
+                        <img
+                          className="uploaded-image"
+                          src={image.url}
+                          alt="decorative"
+                          onError={(e) => {
+                            e.target.src =
+                              "https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
+                          }}
+                        />
+                      </div>
+
+                      <label htmlFor={index}>Texto de imagen</label>
+                      <Field
+                        type="text"
+                        name={`images.${index}.text`}
+                        className="input-field"
+                        id={index}
+                      />
+                    </div>
+                  ))
+                }
+              />
             </div>
+            {errors.images ? (
+              <div className="error-message">{errors.images}</div>
+            ) : (
+              <div>&nbsp;</div>
+            )}
 
             <button
               className="submit-btn"
