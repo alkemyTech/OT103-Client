@@ -83,7 +83,6 @@ const CategoriesForm = ({ category }) => {
         initialValues={chooseInitialData}
         initialErrors={emptyCategoryData}
         validate={(values) => {
-          console.log(values);
           // ALSO VALIDATES IMAGE INPUT
           return validateCategoryForm(values, imageInputRef);
         }}
