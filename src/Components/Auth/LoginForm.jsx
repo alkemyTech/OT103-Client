@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../FormStyles.css';
-import { Formik } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 const LoginForm = () => {
     const [initialValues, setInitialValues] = useState({
@@ -13,6 +13,7 @@ const LoginForm = () => {
 
     return (
         <Formik
+            
             initialValues = {{                
                 email: '',
                 password: '',                          
@@ -24,6 +25,8 @@ const LoginForm = () => {
                 
                 if (!values.email.trim()) {
                     errores.email = 'Please enter an email'
+                } else if (!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(values.email)) {
+                    errores.email = 'Please enter a valid email'
                 }
                 
                 if (!values.password.trim()) {
@@ -56,7 +59,7 @@ const LoginForm = () => {
                     email: values.email,
                     password: values.password,
                 })
-                //localStorage.setItem('token', 'tokenValueExample')
+                
                 setFormEnviado(true)
                 setTimeout(() => {
                     setFormEnviado(false)
@@ -72,43 +75,42 @@ const LoginForm = () => {
         
         >
 
-            {({errors, values,touched, handleSubmit, handleChange, handleBlur}) => (
-                <form className="form-container" onSubmit={handleSubmit}>
-                    <input 
+            {({errors}) => (
+                <Form className="form-container">
+                    <Field 
                         className="input-field"
                         id='email'
                         type="email" 
                         name="email" 
-                        value={values.email} 
-                        onChange={handleChange}
                         placeholder="Enter email"
-                        onBlur={handleBlur}
+                        
                     />
 
-                    {
-                        touched.email && errors.email && <div className='form-error'>{errors.email}</div>
-                    }
+                    <ErrorMessage name='email' component={() => (
+                        <div className='form-error'>{errors.email}</div>
+                    )}/>
 
-                    <input 
+                    
+
+                    <Field 
                         className="input-field"
                         id='password'
                         type="password" 
                         name="password" 
-                        value={values.password} 
-                        onChange={handleChange} 
                         placeholder="Enter password"
-                        onBlur={handleBlur}
+                        
                     />
-                    {
-                        touched.password && errors.password && <div className='form-error'>{errors.password}</div>
-                    }
+
+                    <ErrorMessage name='password' component={() => (
+                        <div className='form-error'>{errors.password}</div>
+                    )}/>
                         
                         
                     <button className="submit-btn" type="submit">Log In</button>
                     {
                         formEnviado && <p className="form-success">Log in successfull</p>
                     }
-                </form>                
+                </Form>                
             )}
 
         </Formik>
