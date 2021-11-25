@@ -12,21 +12,6 @@ const RegisterForm = () => {
         password: '',
         confirmPassword:''
     })
-    
-    // const handleChange = (e) => {
-    //     if(e.target.name === 'name'){
-    //         setInitialValues({...initialValues, name: e.target.value})
-    //     } if(e.target.name === 'lastName'){
-    //         setInitialValues({...initialValues, lastName: e.target.value})
-    //     }
-    // }
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log('form enviado')
-    //     console.log(initialValues);
-    //     localStorage.setItem('token', 'tokenValueExample')
-    // }
 
     return (
         <Formik
@@ -46,10 +31,6 @@ const RegisterForm = () => {
                 if (!values.name) {
                     errores.name = 'Please enter a name'
                 }
-                
-                // else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.name)) {
-                //     errores.name = 'El nombre solo puede contener letras y espacios'
-                // }
 
                 if (!values.lastName) {
                     errores.lastName = 'Please enter a last name'
@@ -90,26 +71,26 @@ const RegisterForm = () => {
             }}
 
             onSubmit={(values, {resetForm}) => {
-                setFormEnviado(true)
-                localStorage.setItem('token', 'tokenValueExample')
-                resetForm()
-                setTimeout(() => {
-                    setFormEnviado(false)
-                }, 3000);
                 setInitialValues({
                     name: values.name,
                     lastName: values.lastName,
                     email: values.email,
                     password: values.password,
                 })
+                //localStorage.setItem('token', 'tokenValueExample')
+                setFormEnviado(true)
+                setTimeout(() => {
+                    setFormEnviado(false)
+                }, 5000);
                 alert(
-                    `
-                    Name: ${initialValues.name}
-                    Last name: ${initialValues.lastName}
-                    Email: ${initialValues.email}
-                    Password: ${initialValues.password}                    
-                    `
-                )
+                            `
+                            Name: ${values.name}
+                            Last name: ${values.lastName}
+                            Email: ${values.email}
+                            Password: ${values.password}                    
+                            `
+                        )
+                resetForm()
             }}
         >
 
@@ -126,7 +107,7 @@ const RegisterForm = () => {
                         onBlur={handleBlur}
                     />
 
-                    {touched.name && errors.name && <div className='error'>{ errors.name }</div>}
+                    {touched.name && errors.name && <div className='form-error'>{ errors.name }</div>}
                         
                         
                     
@@ -141,7 +122,7 @@ const RegisterForm = () => {
                         placeholder="Enter last name"
                         onBlur={handleBlur}
                     />
-                        {touched.lastName && errors.lastName && <div className='error'>{errors.lastName}</div>}
+                        {touched.lastName && errors.lastName && <div className='form-error'>{errors.lastName}</div>}
                         
                         
 
@@ -155,7 +136,7 @@ const RegisterForm = () => {
                         placeholder="Enter email"
                         onBlur={handleBlur}
                     />
-                        {touched.email && errors.email && <div className='error'>{errors.email}</div>}
+                        {touched.email && errors.email && <div className='form-error'>{errors.email}</div>}
 
                     
 
@@ -169,7 +150,7 @@ const RegisterForm = () => {
                         placeholder="Enter password"
                         onBlur={handleBlur}
                     />
-                        {touched.password && errors.password && <div className='error'>{errors.password}</div>}
+                        {touched.password && errors.password && <div className='form-error'>{errors.password}</div>}
                         
                         
 
@@ -183,7 +164,7 @@ const RegisterForm = () => {
                         placeholder="Confirm password"
                         onBlur={handleBlur}
                     />
-                        {touched.confirmPassword && errors.confirmPassword && <div className='error'>{errors.confirmPassword}</div>}
+                        {touched.confirmPassword && errors.confirmPassword && <div className='form-error'>{errors.confirmPassword}</div>}
                         
                         
                     <button
@@ -193,8 +174,11 @@ const RegisterForm = () => {
                     </button>
 
                     {
-                       formEnviado && <p className="form-success">Form enviado con éxito</p>
+                        formEnviado && <p className="form-success">Form submitted successfully</p>                      
+                            
+                        
                     }
+                    
                 </form>
                 
             )}
