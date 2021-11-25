@@ -13,6 +13,7 @@ import MembersForm from './Components/Members/MembersForm';
 import ProjectsForm from './Components/Projects/ProjectsForm';
 import { DonationsGreet } from './Components/Donations/DonationsGreet';
 import { ThanksGreet } from './Components/Donations/ThanksGreet';
+import { FormEditActivities } from './backoffice/FormEditActivities';
 
 function App() {
   return (
@@ -34,9 +35,9 @@ function App() {
           <Route path="/gracias" component={ThanksGreet} />
           <Route path="/donar" component={DonationsGreet} />
           <Route path="/gracias" component={ThanksGreet} />
-
         </Switch>
       </BrowserRouter>
+      <FormEditActivities />
     </>
   );
 }

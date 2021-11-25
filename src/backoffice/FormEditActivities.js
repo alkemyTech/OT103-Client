@@ -1,76 +1,82 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import parse from 'html-react-parser';
+import axios from 'axios';
 
-export const FormEditActivities = () => {
+const initialValues = {
+    name: '',
+    description: ''
+}
 
-    const handleValues = ( values )=>{
+export const FormEditActivities = ({ activities = initialValues }) => {
+
+    const [ckeData, setCkeData] = useState('')
+    const handleValues = (values) => {
         let error = {}
-        if(!values.name){
+        if (!values.name) {
             error.name = 'Please complete the space';
-        }else if(values.name.length < 2){
-            error.name = 'name too short';
-        }else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(values.name)){
-            error.name = "The name can't contains spaces and simbols";
-        }
-        if(!values.description){
-            error.description = 'Please complete the space';
-        }else if(values.description.length < 1){
-            error.description = 'description too short';
-        }else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.description)){
-            error.description = "The description can't contains simbols and numbers";
+        } else if (values.name.length < 2) {
+            error.name = 'Title too short';
         }
         return error;
-        //Estos son la configuración para validar el form de Formik.
     }
-        return (
+
+    const handleCKEChange = (e, editor) => {
+        const data = editor.getData();
+        if (parse(data).props) {
+            setCkeData(parse(data).props.children)
+        } else {
+            setCkeData('')
+        }
+    }
+    return (
         <Formik
             initialValues={{
-                name: '',
-                description: '',
+                name: activities.name,
             }}
-            onSubmit={(values)=>{
-                console.log(values)
+            onSubmit={(values) => {
+                values.description = ckeData
+                if(activities === initialValues){
+                    axios.post('http://ongapi.alkemy.org/api/news', values)
+                        .then(res => alert(res))
+                        .catch(e => alert(e))
+                }else{
+                    axios.path(`http://ongapi.alkemy.org/api/activities/${activities.id}`, values)
+                    .then(res => alert(res))
+                    .catch(e => alert(e))
+                }
+
             }}
             validate={handleValues}
         >
-            {({ values, handleChange, handleBlur, handleSubmit, errors, touched })=>(
-                <form className="vh-100 w-100 d-flex flex-column justify-content-center align-items-center animate__animated animate__fadeInUp" onSubmit={ handleSubmit }>
+            {({ values, handleChange, handleBlur, handleSubmit, errors, touched }) => (
+                <form className="vh-100 w-100 d-flex flex-column justify-content-center align-items-center animate__animated animate__fadeInUp" onSubmit={handleSubmit}>
                     <div className="container w-50 bg-w-grey violet-border rounded-3 from__container">
                         <div className="mb-3 row">
                             <label htmlFor="staticname" className="col-12 col-form-label text-violet">name*</label>
                             <div className="col-12">
-                                <input 
-                                 autoComplete="off"
-                                 className="form-control bg-dark text-light mb-3"
-                                 id="staticname"
-                                 name="name"
-                                 value={ values.name }
-                                 type="text" 
-                                 placeholder="challenge@alkemy.org"
-                                 onBlur={ handleBlur }
-                                 onChange={ handleChange }
+                                <input
+                                    autoComplete="off"
+                                    className="form-control bg-dark text-light mb-3"
+                                    id="staticname"
+                                    name="name"
+                                    value={values.name}
+                                    type="text"
+                                    placeholder="Pon un nombre!"
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
                                 />
-                                {touched.name && errors.name && <h1 className="fs-6 text-danger">{errors.name}</h1>}
+                                {touched.name && errors.name && <h5 className="fs-6 text-danger">{errors.name}</h5>}
                             </div>
                         </div>
                         <div className="mb-3 row">
-                            <label 
-                            htmlFor="inputdescription" 
-                            className="col-12 col-form-label text-violet">description*</label>
-                            <div className="col-12">
-                                <input 
-                                 autoComplete="off"
-                                 className="form-control bg-dark text-light mb-3" 
-                                 name="description"
-                                 id="inputdescription"
-                                 value={ values.description }
-                                 type="text" 
-                                 placeholder="react"
-                                 onBlur={ handleBlur }
-                                 onChange={ handleChange }
-                                />
-                                {touched.description && errors.description && <h1 className="fs-6 text-danger">{errors.description}</h1>}
-                            </div>
+                            <CKEditor
+                                editor={ClassicEditor}
+                                data={activities.description}
+                                onChange={(e, editor) => { handleCKEChange(e, editor) }}
+                            />
                         </div>
                         <div className="row button__container p-5" >
                             <button className="btn col-12 m-auto w-50 text-violet" type="submit">
