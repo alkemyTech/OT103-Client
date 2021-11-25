@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import '../FormStyles.css';
 import axios from "axios";
 import {useParams} from "react-router-dom";
+import '../FormStyles.css'
 
 const UserForm = () => {
 
@@ -43,8 +44,6 @@ const UserForm = () => {
                     setRole_id(response.data.role_id)
                 })
         }
-
-
     }
 
     useEffect(() => {
@@ -79,24 +78,25 @@ const UserForm = () => {
                     (props) => {
                         return (
                             <Form>
-                                <div>
+                                <div className="form-container">
                                     <h3>Information</h3>
                                     <label>Name: </label>
-                                    <Field name={'name'} type={'text'}/>
+                                    <Field name={'name'} type={'text'} className="input-field"/>
                                     <small>{props.errors.name}</small>
                                     <label>Email: </label>
-                                    <Field name={'email'} type={'email'}/>
+                                    <Field name={'email'} type={'email'} className="input-field"/>
                                     <small>{props.errors.email}</small>
                                     <label>Password: </label>
-                                    <Field name={'pass'} type={'password'}/>
+                                    <Field name={'pass'} type={'password'} className="input-field"/>
                                     <small>{props.errors.pass}</small>
                                     <label>Role: </label>
-                                    <Field name={'role_id'} as="select">
+                                    <Field name={'role_id'} as="select" className="select-field">
                                         <option value="">-- Select role --</option>
                                         <option value="0">User</option>
                                         <option value="1">Administrator</option>
                                     </Field>
                                     <small>{props.errors.role_id}</small>
+                                    <label>Image: </label>
                                     <input
                                         type="file"
                                         name="profile_image"
@@ -106,7 +106,7 @@ const UserForm = () => {
                                         }}
                                     />
                                     <button type={'submit'}
-                                            disabled={!props.isValid}> Send
+                                            disabled={!props.isValid} className="submit-btn"> Send
                                     </button>
                                 </div>
                             </Form>
@@ -118,6 +118,7 @@ const UserForm = () => {
                 {name && <h3><strong>Name:</strong> {name} </h3>}
                 {email && <h3><strong>Email:</strong> {email}</h3>}
                 {role_id && <h3><strong>Role:</strong> {role_id}</h3>}
+
             </div>
         </div>
     );

@@ -33,7 +33,6 @@ function App() {
           <Route path="/toys-campaign" component={ToysCampaign} />
           <Route path="/donar" component={DonationsGreet} />
           <Route path="/gracias" component={ThanksGreet} />
-
         </Switch>
       </BrowserRouter>
     </>
