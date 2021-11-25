@@ -3,13 +3,25 @@ import { Formik, Form, Field, FieldArray } from "formik";
 
 import "../../Components/FormStyles.css";
 import "./HomeForm.scss";
-import axios from "axios";
 
 const HomeForm = () => {
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    console.log(values);
+    setMessage("Pagina de inicio actualizada");
+    setSubmitting(false);
+  };
+
+  const handleImageChange = (e, setFieldValue, index) => {
+    if (e.currentTarget.files && e.currentTarget.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        setFieldValue(`images.${index}.url`, e.target.result);
+      };
+
+      reader.readAsDataURL(e.currentTarget.files[0]);
+    }
   };
 
   return (
@@ -19,9 +31,9 @@ const HomeForm = () => {
       initialValues={{
         welcomeText: "",
         images: [
-          { url: "", text: "" },
-          { url: "", text: "" },
-          { url: "", text: "" },
+          { url: "", text: "", key: "1" },
+          { url: "", text: "", key: "2" },
+          { url: "", text: "", key: "3" },
         ],
       }}
       onSubmit={handleSubmit}
@@ -36,7 +48,7 @@ const HomeForm = () => {
 
         for (const image of values.images) {
           if (!image.text) {
-            errors.images = "Añadir textos de fotos";
+            errors.images = "Añadir texto en cada foto";
           }
           if (!image.url) {
             errors.images = "Añadir 3 fotos";
@@ -57,10 +69,8 @@ const HomeForm = () => {
                 className="input-field"
                 id="welcomeText"
               />
-              {errors.welcomeText ? (
+              {errors.welcomeText && (
                 <div className="error-message">{errors.welcomeText}</div>
-              ) : (
-                <div>&nbsp;</div>
               )}
             </div>
 
@@ -70,27 +80,13 @@ const HomeForm = () => {
                 name="images"
                 render={() =>
                   values.images.map((image, index) => (
-                    <div key={index} className="input-group">
+                    <div key={image.key} className="input-group">
                       <input
                         type="file"
                         accept="image/*"
-                        onChange={(e) => {
-                          if (
-                            e.currentTarget.files &&
-                            e.currentTarget.files[0]
-                          ) {
-                            const reader = new FileReader();
-
-                            reader.onload = function (e) {
-                              setFieldValue(
-                                `images.${index}.url`,
-                                e.target.result
-                              );
-                            };
-
-                            reader.readAsDataURL(e.currentTarget.files[0]);
-                          }
-                        }}
+                        onChange={(e) =>
+                          handleImageChange(e, setFieldValue, index)
+                        }
                       />
 
                       <div className="uploaded-image-container">
@@ -117,10 +113,8 @@ const HomeForm = () => {
                 }
               />
             </div>
-            {errors.images ? (
+            {errors.images && (
               <div className="error-message">{errors.images}</div>
-            ) : (
-              <div>&nbsp;</div>
             )}
 
             <button
@@ -130,7 +124,7 @@ const HomeForm = () => {
             >
               Send
             </button>
-            <div>{message}</div>
+            <div className="success-message">{message}</div>
           </Form>
         );
       }}
