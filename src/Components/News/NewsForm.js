@@ -18,6 +18,7 @@ const NewsForm = () => {
 
   // post new article
   const submitNew = async (values, { setSubmitting }) => {
+    setMessage("");
     const body = {
       name: values.title,
       content: values.content,
@@ -43,6 +44,7 @@ const NewsForm = () => {
 
   // edit existing article
   const submitEdit = async (values, { setSubmitting }) => {
+    setMessage("");
     const body = {
       name: values.title,
       content: values.content,
@@ -59,6 +61,7 @@ const NewsForm = () => {
         `http://ongapi.alkemy.org/api/news/${id}`,
         body
       );
+      console.log(response);
       if (response.data.success) {
         setMessage("Updated successfully.");
       } else {
