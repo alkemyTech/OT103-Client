@@ -15,7 +15,6 @@ RETURNS: {
 
 const apiDateToText = (apiDate) => {
   const dateAndTime = apiDate.split("T");
-  console.log(dateAndTime);
   const date = dateAndTime[0];
   const time = dateAndTime[1].split(".")[0];
   return {

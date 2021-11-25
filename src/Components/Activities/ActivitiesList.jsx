@@ -15,7 +15,6 @@ const ActivitiesList = () => {
 
   return (
     <div className="activities">
-      {console.log(activities)}
       <h1>Listado Actividades</h1>
       <ul className="list">
         {activities.length > 0 ? (
