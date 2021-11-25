@@ -1,18 +1,19 @@
 import React from "react";
 import "./Activities.scss";
+import { Title } from "../Title/Title";
+import apiDateToText from "../../helpers/apiDateToText";
+
 const ActivityCard = ({ activity }) => {
+  const { date, time } = apiDateToText(activity["created_at"]);
   return (
     <li className="list__item">
-      {/* TODO Here needs to be the heading component */}
-      <h3>{activity.name}</h3>
-      {activity.image !== null ? (
-        <img
-          className="list__image"
-          src={activity.image}
-          alt={`${activity.name}`}
-        />
-      ) : null}
-      {/* TODO esto no se debe hacer... ver como arreglarlo */}
+      {/* TODO WAIT FOR TITLE TO BE FIXED */}
+      <Title title={activity.name} image={activity.image} />
+      <p className="list__item-shutdown-text">
+        {date} {time}
+      </p>
+
+      {/* TODO esto es mala practica... ver como arreglarlo */}
       <div dangerouslySetInnerHTML={{ __html: activity.description }}></div>
     </li>
   );

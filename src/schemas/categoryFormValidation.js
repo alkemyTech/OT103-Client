@@ -1,4 +1,4 @@
-const validateCategoryForm = ({ name, description }, imageInputRef) => {
+const validateCategoryForm = ({ name, description, image }, imageInputRef) => {
   let errors = {};
 
   if (!name) {
@@ -17,17 +17,19 @@ const validateCategoryForm = ({ name, description }, imageInputRef) => {
 
   //   IMAGE INPUT VALIDATIONS
   const fieldFiles = imageInputRef.current.files;
-  if (fieldFiles.length === 0) {
-    errors.image = "Image is required.";
-  } else {
-    if (fieldFiles.length > 1) {
-      errors.image = "Only one image is allowed.";
-    }
-    if (
-      fieldFiles[0].type !== "image/png" &&
-      fieldFiles[0].type !== "image/jpeg"
-    ) {
-      errors.image = "Only jpg and png format are allowed.";
+  if (!image) {
+    if (fieldFiles.length === 0) {
+      errors.image = "Image is required.";
+    } else {
+      if (fieldFiles.length > 1) {
+        errors.image = "Only one image is allowed.";
+      }
+      if (
+        fieldFiles[0].type !== "image/png" &&
+        fieldFiles[0].type !== "image/jpeg"
+      ) {
+        errors.image = "Only jpg and png format are allowed.";
+      }
     }
   }
 
