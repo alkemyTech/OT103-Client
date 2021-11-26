@@ -36,8 +36,7 @@ const UserForm = () => {
                 })
 
         } else {
-
-            axios.put(`${url}/${id} `, {
+            axios.put(`${url}/${id}`, {
                 name: values.name,
                 email: values.email,
                 role_id: values.role_id,
@@ -46,22 +45,21 @@ const UserForm = () => {
 
             })
                 .then(function (response) {
-                    setName(response.data.name)
-                    setEmail(response.data.email)
-                    setRole_id(response.data.role_id)
-                    setProfile_Image(response.data.profile_image.name)
-                    setPassword(response.data.password)
+                    alert(response.data.message)
+                })
+                .catch(error=>{
+                    alert(error)
                 })
         }
     }
 
     useEffect(() => {
-        axios.get(`${url} `)
+        axios.get(`${url}/${id}`)
             .then(response => {
-                setName(response.data.data[id].name)
-                setEmail(response.data.data[id].email)
-                setRole_id(response.data.data[id].role_id)
-                setPassword(response.data.data[id].password)
+                setName(response.data.data.name)
+                setEmail(response.data.data.email)
+                setRole_id(response.data.data.role_id)
+                setPassword(response.data.data.password)
                 setCreate(false)
             })
             .catch(error => {
@@ -77,15 +75,23 @@ const UserForm = () => {
         profile_image: Yup.string().required("Photo is required.")
     })
 
-    const handleChange = (e,propsFormik) => {
-        propsFormik.setFieldValue("profile_image", e.target.files[0]);
+    const handleChange = (e, propsFormik) => {
+        if (e.currentTarget.files && e.currentTarget.files[0]){
+            const  reader = new FileReader();
+            reader.onload = function (e){
+                propsFormik.setFieldValue("profile_image", e.target.result);
+            }
+           reader.readAsDataURL(e.currentTarget.files[0]);
+        }
     }
 
     return (
         <div>
-            <Formik initialValues={{name, email, role_id, password, profile_image}} onSubmit={(values => {
-                submitForm(values)
-            })} validationSchema={ErrorSchema}
+            <Formik initialValues={{name, email, role_id, password, profile_image}}
+                    onSubmit={(values => {
+                        submitForm(values)
+                    })}
+                    validationSchema={ErrorSchema}
                     enableReinitialize={true}
             >
                 {
@@ -98,7 +104,7 @@ const UserForm = () => {
                                     <Field name={'name'} type={'text'} className="input-field"/>
                                     <small>{props.errors.name}</small>
                                     <label>Email: </label>
-                                    <Field name={'email'} type={'email'} className="input-field" />
+                                    <Field name={'email'} type={'email'} className="input-field"/>
                                     <small>{props.errors.email}</small>
                                     <label>Password: </label>
                                     <Field name={'password'} type={'password'} className="input-field"/>
@@ -116,7 +122,7 @@ const UserForm = () => {
                                         name="profile_image"
                                         accept="image/png,image/jpeg"
                                         onChange={(event) => {
-                                           handleChange(event, props)
+                                            handleChange(event, props)
                                         }}
                                     />
                                     <small>{props.errors.profile_image}</small>
@@ -129,12 +135,6 @@ const UserForm = () => {
                     }
                 }
             </Formik>
-            <div>
-                {name && <h3><strong>Name:</strong> {name} </h3>}
-                {email && <h3><strong>Email:</strong> {email}</h3>}
-                {role_id && <h3><strong>Role:</strong> {role_id}</h3>}
-
-            </div>
         </div>
     );
 }
