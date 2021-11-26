@@ -17,6 +17,8 @@ import { DonationsGreet } from "./Components/Donations/DonationsGreet";
 import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 import ContactForm from "./Components/Contact/ContactForm";
 import MembersEdit from "./Components//Members/MembersEdit";
+import RegisterForm from './Components/Auth/RegisterForm';
+import LoginForm from './Components/Auth/LoginForm';
 
 function App() {
   return (
@@ -42,7 +44,10 @@ function App() {
           <Route path="/nosotros" component={AboutMain} />
           <Route path="/gracias" component={ThanksGreet} />
           <Route path="/contact-form" component={ContactForm} />
+          <Route path="/register-form" component={RegisterForm} />
+          <Route path="/login-form" component={LoginForm} />
         </Switch>
+        
       </BrowserRouter>
     </>
   );
