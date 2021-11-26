@@ -12,6 +12,7 @@ import ToysCampaign from "./Campaigns/Toys/ToysCampaign";
 import MembersForm from "./Components/Members/MembersForm";
 import MembersEdit from "./Components//Members/MembersEdit";
 import ProjectsForm from "./Components/Projects/ProjectsForm";
+import { AboutMain } from "./Components/About/AboutMain";
 import { DonationsGreet } from "./Components/Donations/DonationsGreet";
 import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 
@@ -35,6 +36,7 @@ function App() {
           <Route path="/backoffice/news/:id" component={NewsForm} />
           <Route path="/backoffice/news" component={NewsForm} />
           <Route path="/donar" component={DonationsGreet} />
+          <Route path="/nosotros" component={AboutMain} />
           <Route path="/gracias" component={ThanksGreet} />
         </Switch>
       </BrowserRouter>
