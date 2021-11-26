@@ -36,7 +36,7 @@ const UserForm = () => {
                 })
 
         } else {
-            axios.put(`${url}/${id}`, {
+            axios.patch(`${url}/${id}`, {
                 name: values.name,
                 email: values.email,
                 role_id: values.role_id,
