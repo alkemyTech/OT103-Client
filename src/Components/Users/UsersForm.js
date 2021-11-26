@@ -67,6 +67,10 @@ const UserForm = () => {
         profile_image: Yup.string().required("Photo is required.")
     })
 
+    const handleChange = (e,propsFormik) => {
+        propsFormik.setFieldValue("profile_image", e.target.files[0]);
+    }
+
     return (
         <div>
             <Formik initialValues={{name, email, role_id}} onSubmit={(values => {
@@ -102,7 +106,7 @@ const UserForm = () => {
                                         name="profile_image"
                                         accept="image/png,image/jpeg"
                                         onChange={(event) => {
-                                            props.setFieldValue("profile_image", event.target.files[0]);
+                                           handleChange(event, props)
                                         }}
                                     />
                                     <button type={'submit'}
