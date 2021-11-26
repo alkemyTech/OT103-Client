@@ -7,7 +7,7 @@ import useCategoriesForm from '../hooks/useCategoriesForm';
 import InputCkEditor from '../Components/Categories/InputCkEditor';
 import InputText from '../Components/Categories/InputText';
 import { validateCategoryForm } from '../schemas/categoryFormValidation';
-import './formedit.scss'
+import './formedit.scss';
 
 const initialValues = {
     name: '',
@@ -31,16 +31,14 @@ export const FormEditActivities = ({ activities = initialValues }) => {
             }}
             onSubmit={(values) => {
                 if (!activities.id) {
-                    console.log(values)
                     axios.post('http://ongapi.alkemy.org/api/activities', values)
-                        .then(res => alert(res))
-                        .catch(e => alert(e))
+                        .then(res => console.log(res.data))
+                        .catch(e => console.log(e))
                 } else {
                     axios.path(`http://ongapi.alkemy.org/api/activities/${activities.id}`, values)
-                        .then(res => alert(res))
-                        .catch(e => alert(e))
+                        .then(res => console.log(res.data))
+                        .catch(e => console.log(e))
                 }
-
             }}
         >
             {({ values, handleChange, handleBlur, handleSubmit, errors, touched, setFieldValue, setTouched }) => (
