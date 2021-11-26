@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -12,7 +12,6 @@ const initialValues = {
 
 export const FormEditActivities = ({ activities = initialValues }) => {
 
-    const [ckeData, setCkeData] = useState('')
     const handleValues = (values) => {
         let error = {}
         if (!values.name) {
@@ -20,43 +19,40 @@ export const FormEditActivities = ({ activities = initialValues }) => {
         } else if (values.name.length < 2) {
             error.name = 'Title too short';
         }
+        if (!values.description) {
+            error.description = 'Please complete the space';
+        } else if (values.description.length < 2) {
+            error.name = 'Title too short';
+        }
         return error;
     }
 
-    const handleCKEChange = (e, editor) => {
-        const data = editor.getData();
-        if (parse(data).props) {
-            setCkeData(parse(data).props.children)
-        } else {
-            setCkeData('')
-        }
-    }
     return (
         <Formik
             initialValues={{
                 name: activities.name,
+                description: activities.description,
             }}
             onSubmit={(values) => {
-                values.description = ckeData
-                if(activities === initialValues){
-                    axios.post('http://ongapi.alkemy.org/api/news', values)
+                if (!activities.id) {
+                    axios.post('http://ongapi.alkemy.org/api/activities', values)
                         .then(res => alert(res))
                         .catch(e => alert(e))
-                }else{
+                } else {
                     axios.path(`http://ongapi.alkemy.org/api/activities/${activities.id}`, values)
-                    .then(res => alert(res))
-                    .catch(e => alert(e))
+                        .then(res => alert(res))
+                        .catch(e => alert(e))
                 }
 
             }}
             validate={handleValues}
         >
-            {({ values, handleChange, handleBlur, handleSubmit, errors, touched }) => (
-                <form className="vh-100 w-100 d-flex flex-column justify-content-center align-items-center animate__animated animate__fadeInUp" onSubmit={handleSubmit}>
-                    <div className="container w-50 bg-w-grey violet-border rounded-3 from__container">
-                        <div className="mb-3 row">
-                            <label htmlFor="staticname" className="col-12 col-form-label text-violet">name*</label>
-                            <div className="col-12">
+            {({ values, handleChange, handleBlur, handleSubmit, errors, touched, setFieldValue }) => (
+                <form onSubmit={handleSubmit}>
+                    <div >
+                        <div>
+                            <label>name*</label>
+                            <div>
                                 <input
                                     autoComplete="off"
                                     className="form-control bg-dark text-light mb-3"
@@ -68,17 +64,32 @@ export const FormEditActivities = ({ activities = initialValues }) => {
                                     onBlur={handleBlur}
                                     onChange={handleChange}
                                 />
-                                {touched.name && errors.name && <h5 className="fs-6 text-danger">{errors.name}</h5>}
+                                {touched.name && errors.name && <h5>{errors.name}</h5>}
                             </div>
                         </div>
-                        <div className="mb-3 row">
+                        <div>
                             <CKEditor
                                 editor={ClassicEditor}
                                 data={activities.description}
-                                onChange={(e, editor) => { handleCKEChange(e, editor) }}
+                                onChange={(e, editor) => {
+                                    const data = editor.getData();
+                                    if (parse(data).props && parse(data).props.children[1].props) {
+                                        console.log(parse(data).props.children)
+                                        setFieldValue('description', parse(data).props.children);
+                                    } else {
+                                        setFieldValue('description', '');
+                                    }
+                                }}
+                                config={{
+                                    cloudServices: {
+                                        tokenUrl: "https://85122.cke-cs.com/token/dev/63f1e5122f7b89374a44f0ba134c7a670437bab84212188ac1b17d829d92",
+                                        uploadUrl: "https://85122.cke-cs.com/easyimage/upload/",
+                                    },
+                                }}
                             />
+                            {touched.description && errors.description && <h5>{errors.description}</h5>}
                         </div>
-                        <div className="row button__container p-5" >
+                        <div>
                             <button className="btn col-12 m-auto w-50 text-violet" type="submit">
                                 Login
                             </button>
