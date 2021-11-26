@@ -38,6 +38,7 @@ function App() {
           <Route path="/donar" component={DonationsGreet} />
           <Route path="/gracias" component={ThanksGreet} />
           <Route path="/contact-form" component={ContactForm} />
+          <Route path="/backoffice/slides" component={SlidesForm} />
         </Switch>
       </BrowserRouter>
     </>
