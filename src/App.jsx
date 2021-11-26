@@ -42,8 +42,8 @@ function App() {
           <Route path="/donar" component={DonationsGreet} />
           <Route path="/gracias" component={ThanksGreet} />
           <Route path="/contact-form" component={ContactForm} />
-          <Route path="/login-form" component={LoginForm} />
           <Route path="/register-form" component={RegisterForm} />
+          <Route path="/login-form" component={LoginForm} />
         </Switch>
         
       </BrowserRouter>
