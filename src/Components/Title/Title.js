@@ -2,7 +2,6 @@ import defaultImage from '../../assets/images/404.png'
 
 
 export const Title = ({ title, image }) => {
-  console.log(image);
   return (
     <div>
      <img src={ (!image ? defaultImage : image.default)  || image } alt="" />
