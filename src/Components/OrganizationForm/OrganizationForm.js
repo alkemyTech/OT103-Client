@@ -82,6 +82,7 @@ const OrganizationForm = () => {
             >
                 {
                     (props) => {
+                        console.log(props)
                         return (
                             <Form>
                                 <div className="form-container">
@@ -98,6 +99,7 @@ const OrganizationForm = () => {
                                             props.setFieldValue("logo", event.target.files[0]);
                                         }}
                                     />
+                                    <small>{props.errors.logo}</small>
                                     <label>shortDescription: </label>
                                     <CKEditor
                                         name={"short_description"}
