@@ -64,6 +64,16 @@ const OrganizationForm = () => {
         twitter_url: Yup.string().matches(validUrl, "Enter a valid URL").required("URL is required.")
     })
 
+    const handleChange = (e, propsFormik) => {
+        if (e.currentTarget.files && e.currentTarget.files[0]){
+            const  reader = new FileReader();
+            reader.onload = function (e){
+                propsFormik.setFieldValue("profile_image", e.target.result);
+            }
+            reader.readAsDataURL(e.currentTarget.files[0]);
+        }
+    }
+
     return (
         <div>
             <Formik initialValues={{
@@ -82,7 +92,6 @@ const OrganizationForm = () => {
             >
                 {
                     (props) => {
-                        console.log(props)
                         return (
                             <Form>
                                 <div className="form-container">
@@ -96,7 +105,7 @@ const OrganizationForm = () => {
                                         name="logo"
                                         accept="image/png,image/jpeg"
                                         onChange={(event) => {
-                                            props.setFieldValue("logo", event.target.files[0]);
+                                            handleChange(event,props)
                                         }}
                                     />
                                     <small>{props.errors.logo}</small>
@@ -136,7 +145,6 @@ const OrganizationForm = () => {
                     }
                 }
             </Formik>
-            <h1>{short_description}</h1>
         </div>
     );
 }
