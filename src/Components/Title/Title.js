@@ -4,7 +4,7 @@ export const Title = ({ title, image }) => {
   return (
     <div>
       <img src={(!image ? defaultImage : image)} alt="" />
-      <h1 style={{ textAlign: "center" }}>{title}</h1>
+      <h1 className="main-title">{title}</h1>
     </div>
   );
 };
