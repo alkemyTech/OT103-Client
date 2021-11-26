@@ -6,7 +6,7 @@ import axios from "axios";
 import * as Yup from "yup";
 import '../FormStyles.css'
 
-const OrganizationEdit = () => {
+const OrganizationForm = () => {
 
     const [name, setName] = useState("");
     const [logo, setLogo] = useState("");
@@ -18,7 +18,7 @@ const OrganizationEdit = () => {
     const [twitter_url, setTwitter_url] = useState("");
 
     const EditForm = (values) => {
-        // TODO: Implementar pegada a la API
+        // TODO: Implementar llamada a la API
     }
 
     const url = "http://ongapi.alkemy.org/api/organization"
@@ -26,21 +26,33 @@ const OrganizationEdit = () => {
     useEffect(() => {
         axios.get(`${url} `)
             .then(response => {
-                setName(response.data.data.name)
-                setLogo(response.data.data.email)
-                setShort_description(response.data.data.short_description)
-                setLong_description(response.data.data.long_description)
-                setFacebook_url(response.data.data.facebook_url)
-                setLinkedin_url(response.data.data.linkedin_url)
-                setInstagram_url(response.data.data.instagram_url)
-                setTwitter_url(response.data.data.twitter_url)
+                const {data} = response
+                const {data: data2} = data
+                const {
+                    name,
+                    email,
+                    short_description,
+                    long_description,
+                    facebook_url,
+                    linkedin_url,
+                    instagram_url,
+                    twitter_url
+                } = data2;
+                setName(name)
+                setLogo(email)
+                setShort_description(short_description)
+                setLong_description(long_description)
+                setFacebook_url(facebook_url)
+                setLinkedin_url(linkedin_url)
+                setInstagram_url(instagram_url)
+                setTwitter_url(twitter_url)
             })
             .catch(error => {
                 alert(error)
             })
     }, []);
 
-    const validUrl =  /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9-_]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
+    const validUrl = /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9-_]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
     const ErrorSchema = Yup.object().shape({
         name: Yup.string().required("Name is required.").min(4, "Name is too short"),
         logo: Yup.string().required("Logo is required."),
@@ -48,8 +60,8 @@ const OrganizationEdit = () => {
         long_description: Yup.string().required("Long Description is required."),
         facebook_url: Yup.string().matches(validUrl, "Enter a valid URL").required("URL is required."),
         linkedin_url: Yup.string().matches(validUrl, "Enter a valid URL").required("URL is required."),
-        instagram_url:Yup.string().matches(validUrl, "Enter a valid URL").required("URL is required."),
-        twitter_url:Yup.string().matches(validUrl, "Enter a valid URL").required("URL is required.")
+        instagram_url: Yup.string().matches(validUrl, "Enter a valid URL").required("URL is required."),
+        twitter_url: Yup.string().matches(validUrl, "Enter a valid URL").required("URL is required.")
     })
 
     return (
@@ -98,7 +110,8 @@ const OrganizationEdit = () => {
                                     />
                                     <small>{props.errors.short_description}</small>
                                     <label>Long Description: </label>
-                                    <Field name={'long_description'} as={'textarea'} type={'text'} className='input-field'/>
+                                    <Field name={'long_description'} as={'textarea'} type={'text'}
+                                           className='input-field'/>
                                     <small>{props.errors.long_description}</small>
                                     <label>Facebook: </label>
                                     <Field name={'facebook_url'} type={'text'} className='input-field'/>
@@ -126,4 +139,4 @@ const OrganizationEdit = () => {
     );
 }
 
-export default OrganizationEdit;
+export default OrganizationForm;

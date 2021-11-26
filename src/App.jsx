@@ -18,7 +18,7 @@ import ContactForm from "./Components/Contact/ContactForm";
 import MembersEdit from "./Components//Members/MembersEdit";
 import RegisterForm from './Components/Auth/RegisterForm';
 import LoginForm from './Components/Auth/LoginForm';
-import OrganizationEdit from "./Components/OrganizationEdit/OrganizationEdit";
+import OrganizationForm from "./Components/OrganizationForm/OrganizationForm";
 
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-news" component={NewsForm} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
-          <Route path="/backoffice/organization/edit" component={OrganizationEdit} />
+          <Route path="/backoffice/organization/edit" component={OrganizationForm} />
           <Route path="/backoffice/home" component={HomeForm} />
           <Route path="/create-testimonials" component={TestimonialForm} />
           <Route path="/create-user" component={UserForm} />
