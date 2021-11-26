@@ -11,6 +11,8 @@ const UserForm = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [role_id, setRole_id] = useState("");
+    const [password, setPassword] = useState("");
+    const [profile_image, setProfile_Image] = useState("");
     const [create, setCreate] = useState(true);
 
     const {id} = useParams()
@@ -19,29 +21,36 @@ const UserForm = () => {
     const submitForm = (values) => {
         if (create) {
             axios.post(`${url}`, {
-                name: values.title,
+                name: values.name,
                 email: values.email,
                 role_id: values.role_id,
                 profile_image: values.profile_image.name,
+                password: values.password
             })
                 .then(function (response) {
                     setName(response.data.name)
                     setEmail(response.data.email)
                     setRole_id(response.data.role_id)
+                    setProfile_Image(response.data.profile_image)
+                    setPassword(response.data.password)
                 })
 
         } else {
+
             axios.put(`${url}/${id} `, {
-                name: values.title,
+                name: values.name,
                 email: values.email,
                 role_id: values.role_id,
                 profile_image: values.profile_image.name,
+                password: values.password
 
             })
                 .then(function (response) {
                     setName(response.data.name)
                     setEmail(response.data.email)
                     setRole_id(response.data.role_id)
+                    setProfile_Image(response.data.profile_image.name)
+                    setPassword(response.data.password)
                 })
         }
     }
@@ -49,10 +58,11 @@ const UserForm = () => {
     useEffect(() => {
         axios.get(`${url} `)
             .then(response => {
-                setCreate(false)
                 setName(response.data.data[id].name)
                 setEmail(response.data.data[id].email)
                 setRole_id(response.data.data[id].role_id)
+                setPassword(response.data.data[id].password)
+                setCreate(false)
             })
             .catch(error => {
                 alert(error)
@@ -62,7 +72,7 @@ const UserForm = () => {
     const ErrorSchema = Yup.object().shape({
         name: Yup.string().required("Name is required.").min(4, "Name is too short"),
         email: Yup.string().required("Email is required.").email('Invalid email'),
-        pass: Yup.string().required("Password is required.").min(8, "Password is too short"),
+        password: Yup.string().required("Password is required.").min(8, "Password is too short"),
         role_id: Yup.string().required("Role is required."),
         profile_image: Yup.string().required("Photo is required.")
     })
@@ -73,7 +83,7 @@ const UserForm = () => {
 
     return (
         <div>
-            <Formik initialValues={{name, email, role_id}} onSubmit={(values => {
+            <Formik initialValues={{name, email, role_id, password, profile_image}} onSubmit={(values => {
                 submitForm(values)
             })} validationSchema={ErrorSchema}
                     enableReinitialize={true}
@@ -88,11 +98,11 @@ const UserForm = () => {
                                     <Field name={'name'} type={'text'} className="input-field"/>
                                     <small>{props.errors.name}</small>
                                     <label>Email: </label>
-                                    <Field name={'email'} type={'email'} className="input-field"/>
+                                    <Field name={'email'} type={'email'} className="input-field" />
                                     <small>{props.errors.email}</small>
                                     <label>Password: </label>
-                                    <Field name={'pass'} type={'password'} className="input-field"/>
-                                    <small>{props.errors.pass}</small>
+                                    <Field name={'password'} type={'password'} className="input-field"/>
+                                    <small>{props.errors.password}</small>
                                     <label>Role: </label>
                                     <Field name={'role_id'} as="select" className="select-field">
                                         <option value="">-- Select role --</option>
@@ -109,6 +119,7 @@ const UserForm = () => {
                                            handleChange(event, props)
                                         }}
                                     />
+                                    <small>{props.errors.profile_image}</small>
                                     <button type={'submit'}
                                             disabled={!props.isValid} className="submit-btn"> Send
                                     </button>
