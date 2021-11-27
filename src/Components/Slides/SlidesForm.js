@@ -8,7 +8,6 @@ import "../FormStyles.css";
 import "./slidesForm.scss";
 
 const SlidesForm = ({ data }) => {
-
   function formSubmit() {
     if (!data) {
       slidesPost(formik);
@@ -16,7 +15,6 @@ const SlidesForm = ({ data }) => {
       slidesPatch(formik);
     }
   }
-
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -40,7 +38,7 @@ const SlidesForm = ({ data }) => {
         className="input-field"
         type="text"
         name="name"
-        onChange={formik.handleChange }
+        onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         defaultValue={data?.name || formik.values.name}
         placeholder="Slide Title"

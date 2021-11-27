@@ -13,8 +13,8 @@ import MembersForm from "./Components/Members/MembersForm";
 import ProjectsForm from "./Components/Projects/ProjectsForm";
 import ActivitiesList from "./Components/Activities/ActivitiesList";
 import HomeForm from "./Components/HomeForm/HomeForm";
-import { DonationsGreet } from "./Components/Donations/DonationsGreet";
-import { ThanksGreet } from "./Components/Donations/ThanksGreet";
+import DonationsGreet from "./Components/Donations/DonationsGreet";
+import ThanksGreet from "./Components/Donations/ThanksGreet";
 import ContactForm from "./Components/Contact/ContactForm";
 import MembersEdit from "./Components//Members/MembersEdit";
 

@@ -18,7 +18,7 @@ export const validate = (values) => {
 
   if (!values.image) {
     errors.image = "La imagen es obligatoria.";
-  } else if (extension !== ("png" || "jpg")) {
+  } else if (extension !== "png" && extension !== "jpg") {
     errors.image = `La extension ${extension} no esta permitida.`;
   }
   return errors;

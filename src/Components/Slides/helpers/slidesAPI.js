@@ -11,7 +11,7 @@ export function slidesPost(formik) {
       order: formik.values.order,
       image: formik.values.image,
     })
-    .then(({ status }) => alert(JSON.stringify(`Status: ${status}`)))
+    .then(({ status }) => alert(JSON.stringify(`Status: ${status}, POST`)))
     .catch((err) => console.log(err));
 }
 
@@ -23,6 +23,6 @@ export function slidesPatch(formik) {
       order: formik.values.order,
       image: formik.values.image,
     })
-    .then(({ status }) => alert(status))
+    .then(({ status }) => alert(JSON.stringify(`Status: ${status}, PUT`)))
     .catch((err) => console.log(err));
 }
