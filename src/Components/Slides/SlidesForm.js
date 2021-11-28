@@ -1,20 +1,37 @@
-import React from "react";
-import { useFormik } from "formik";
+import { useEffect, useState } from "react";
 
-import { validate } from "../../helpers/slideValidations";
+import axios from "axios";
+import { useFormik } from "formik";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
+import { validate } from "./helpers/slideValidations";
 import { slidesPost, slidesPatch } from "./helpers/slidesAPI";
 
 import "../FormStyles.css";
 import "./slidesForm.scss";
 
 const SlidesForm = ({ data }) => {
-  function formSubmit() {
-    if (!data) {
-      slidesPost(formik);
-    } else {
-      slidesPatch(formik);
-    }
-  }
+  const url = "http://ongapi.alkemy.org/api";
+
+  const [slides, setslides] = useState([]);
+  const [imagePreview, setImagePreview] = useState("");
+
+  const image = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImagePreview(reader.result);
+    };
+  };
+
+  useEffect(() => {
+    axios.get(`${url}/slides`).then(({ data }) => {
+      setslides(data.data);
+    });
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -23,63 +40,84 @@ const SlidesForm = ({ data }) => {
       image: "",
     },
     validate,
-    onSubmit: () => {
-      if (!formik.isValid) {
-        return;
+    onSubmit: (values) => {
+      if (slides.findIndex((x) => x.id === Number(values.order)) > 0) {
+        formik.setFieldError("order", "El order debe ser unico.");
+      } else {
+        if (!data) {
+          slidesPost(formik);
+          formik.resetForm();
+        } else {
+          slidesPatch(formik);
+        }
       }
-
-      formSubmit();
     },
   });
 
   return (
     <form className="form-container" onSubmit={formik.handleSubmit}>
+      <label htmlFor="name">Nombre:</label>
       <input
+        id="name"
         className="input-field"
         type="text"
         name="name"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        defaultValue={data?.name || formik.values.name}
+        value={formik.values.name || data?.name || ""}
         placeholder="Slide Title"
+        autoComplete="off"
       />
 
       {formik.touched.name && formik.errors.name ? (
         <div className="error-msg">{formik.errors.name}</div>
       ) : null}
-      <input
-        className="input-field"
-        type="text"
-        name="description"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        defaultValue={data?.description || formik.values.description}
-        placeholder="Write the description"
+      <label htmlFor="description">Descripcion:</label>
+      <CKEditor
+        className="form__input"
+        id="description"
+        editor={ClassicEditor}
+        data={data?.description || formik.values.description || ""}
+        onChange={(e, editor) => {
+          formik.setFieldValue("description", editor.getData());
+        }}
       />
       {formik.touched.description && formik.errors.description ? (
         <div className="error-msg">{formik.errors.description}</div>
       ) : null}
+      <label htmlFor="order">Orden:</label>
       <input
         className="input-field"
         type="text"
         name="order"
+        id="order"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        defaultValue={data?.order || formik.values.order}
+        value={formik.values.order || data?.order || ""}
         placeholder="0"
+        autoComplete="off"
       />
       {formik.touched.order && formik.errors.order ? (
         <div className="error-msg">{formik.errors.order}</div>
       ) : null}
+      <label htmlFor="image">Imagen:</label>
       <input
         className="input-field"
         type="file"
+        id="image"
         name="image"
-        onChange={formik.handleChange}
+        onChange={(e) => {
+          formik.handleChange(e);
+          image(e);
+        }}
         onBlur={formik.handleBlur}
-        defaultValue={data?.image || formik.values.image}
+        value={formik.values.image || data?.image || ""}
         placeholder="Write the description"
+        autoComplete="off"
       />
+      {imagePreview ? (
+        <img src={imagePreview} className="image-preview" alt="..." />
+      ) : null}
       {formik.touched.image && formik.errors.image ? (
         <div className="error-msg">{formik.errors.image}</div>
       ) : null}

@@ -21,7 +21,6 @@ function App() {
       <BrowserRouter>
         <Switch>
           {/* <Route path="/" exact component={} />           Esta ruta debe ser para el Home */}
-          {/* <Route exact path="/actividades" component={ActivitiesList} /> */}
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-news" component={NewsForm} />
@@ -34,8 +33,7 @@ function App() {
           <Route path="/toys-campaign" component={ToysCampaign} />
           <Route path="/donar" component={DonationsGreet} />
           <Route path="/gracias" component={ThanksGreet} />
-          <Route path="/donar" component={DonationsGreet} />
-          <Route path="/gracias" component={ThanksGreet} />
+          <Route path="/backoffice/slides" component={SlidesForm} />
         </Switch>
       </BrowserRouter>
       <FormEditActivities />
