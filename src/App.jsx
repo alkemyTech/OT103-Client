@@ -16,10 +16,16 @@ import { DonationsGreet } from "./Components/Donations/DonationsGreet";
 import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 import ContactForm from "./Components/Contact/ContactForm";
 import MembersEdit from "./Components//Members/MembersEdit";
+<<<<<<< HEAD
 import RegisterForm from './Components/Auth/RegisterForm';
 import LoginForm from './Components/Auth/LoginForm';
 import OrganizationForm from "./Components/OrganizationForm/OrganizationForm";
 
+=======
+import RegisterForm from "./Components/Auth/RegisterForm";
+import LoginForm from "./Components/Auth/LoginForm";
+import ActivitiesList from "./Components/Activities/ActivitiesList";
+>>>>>>> main
 
 function App() {
   return (
@@ -27,6 +33,8 @@ function App() {
       <BrowserRouter>
         <Switch>
           {/* <Route path="/" exact component={} />           Esta ruta debe ser para el Home */}
+          <Route exact path="/actividades" component={ActivitiesList} />
+
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-news" component={NewsForm} />
