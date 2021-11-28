@@ -18,6 +18,8 @@ import ContactForm from "./Components/Contact/ContactForm";
 import MembersEdit from "./Components//Members/MembersEdit";
 import RegisterForm from './Components/Auth/RegisterForm';
 import LoginForm from './Components/Auth/LoginForm';
+import OrganizationData from "./Components/Organization/OrganizationData";
+
 
 function App() {
   return (
@@ -44,6 +46,8 @@ function App() {
           <Route exact path="/contact-form" component={ContactForm} />
           <Route exact path="/register-form" component={RegisterForm} />
           <Route exact path="/login-form" component={LoginForm} />
+          <Route exact path="/backoffice/organization" component={OrganizationData} />
+         
         </Switch>
         
       </BrowserRouter>
