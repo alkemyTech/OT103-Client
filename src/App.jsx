@@ -18,10 +18,7 @@ import ContactForm from "./Components/Contact/ContactForm";
 import MembersEdit from "./Components//Members/MembersEdit";
 import RegisterForm from "./Components/Auth/RegisterForm";
 import LoginForm from "./Components/Auth/LoginForm";
-<<<<<<< HEAD
-=======
 import ActivitiesList from "./Components/Activities/ActivitiesList";
->>>>>>> dffdf15c319f1879c50d761bdb8652af4c3f7624
 
 function App() {
   return (
