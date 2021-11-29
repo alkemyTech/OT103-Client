@@ -19,35 +19,19 @@ const UserForm = () => {
     const url = `http://ongapi.alkemy.org/api/users`
 
     const submitForm = (values) => {
+
         if (create) {
-            axios.post(`${url}`, {
-                name: values.name,
-                email: values.email,
-                role_id: values.role_id,
-                profile_image: values.profile_image.name,
-                password: values.password
-            })
-                .then(function (response) {
-                    setName(response.data.name)
-                    setEmail(response.data.email)
-                    setRole_id(response.data.role_id)
-                    setProfile_Image(response.data.profile_image)
-                    setPassword(response.data.password)
-                })
-
-        } else {
-            axios.put(`${url}/${id}`, {
-                name: values.name,
-                email: values.email,
-                role_id: values.role_id,
-                profile_image: values.profile_image.name,
-                password: values.password
-
-            })
+            axios.post(`${url}`, values)
                 .then(function (response) {
                     alert(response.data.message)
                 })
-                .catch(error=>{
+
+        } else {
+            axios.put(`${url}/${id}`, values)
+                .then(function (response) {
+                    alert(response.data.message)
+                })
+                .catch(error => {
                     alert(error)
                 })
         }
@@ -56,11 +40,16 @@ const UserForm = () => {
     useEffect(() => {
         axios.get(`${url}/${id}`)
             .then(response => {
-                setName(response.data.data.name)
-                setEmail(response.data.data.email)
-                setRole_id(response.data.data.role_id)
-                setPassword(response.data.data.password)
+                const {data} = response
+                const {data: data2} = data
+                const {name, email, role_id, password, profile_image} = data2
+                setName(name)
+                setEmail(email)
+                setRole_id(role_id)
+                setPassword(password)
+                setProfile_Image(profile_image)
                 setCreate(false)
+
             })
             .catch(error => {
                 alert(error)
@@ -76,12 +65,12 @@ const UserForm = () => {
     })
 
     const handleChange = (e, propsFormik) => {
-        if (e.currentTarget.files && e.currentTarget.files[0]){
-            const  reader = new FileReader();
-            reader.onload = function (e){
+        if (e.currentTarget.files && e.currentTarget.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
                 propsFormik.setFieldValue("profile_image", e.target.result);
             }
-           reader.readAsDataURL(e.currentTarget.files[0]);
+            reader.readAsDataURL(e.currentTarget.files[0]);
         }
     }
 
