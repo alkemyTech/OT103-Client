@@ -9,9 +9,15 @@ const OrganizationData = (props) => {
     const url = 'http://ongapi.alkemy.org/api/organization'
 
     const getData = async () => {
-        const data = await fetch(url)
-        const res = await data.json()
-        setData(res.data)
+
+        try {
+            const data = await fetch(url)
+            const res = await data.json()
+            setData(res.data)
+            
+        } catch (error) {
+            console.log(error)
+        }        
     }
 
     useEffect(() => {
