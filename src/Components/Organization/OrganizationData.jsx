@@ -38,9 +38,9 @@ const OrganizationData = (props) => {
     return (
         <div className="container">
             <div className="card">
-                {/* <figure>
-                    <img src="/" alt="" />
-                </figure> */}
+                <figure>
+                    <img src={data.logo} alt="logo" />
+                </figure>
                 <div className="content">
                     <h1 className="content-title">{data.name}</h1>
                     <p className="content-description">{data.short_description}</p>
