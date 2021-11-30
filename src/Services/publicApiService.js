@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseUrl = "http://ongapi.alkemy.org/api";
 
-const Post = async (endPoint, body) => {
+export const Post = async (endPoint, body) => {
   const url = `${baseUrl}/${endPoint}`;
 
   try {
@@ -14,4 +14,14 @@ const Post = async (endPoint, body) => {
   }
 };
 
-export { Post };
+
+
+export const Get = async(category, id) => {
+    const url = id ? `${baseUrl}/${category}/${id}` : `${baseUrl}/${category}`;
+    try {
+        const response = await axios.get(url);
+        return response.data
+    } catch (error) {
+        return { success: false, error }
+    };
+};
