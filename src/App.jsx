@@ -13,8 +13,6 @@ import MembersForm from "./Components/Members/MembersForm";
 import ProjectsForm from "./Components/Projects/ProjectsForm";
 import { AboutMain } from "./Components/About/AboutMain";
 import HomeForm from "./Components/HomeForm/HomeForm";
-import DonationsGreet from "./Components/Donations/DonationsGreet";
-import ThanksGreet from "./Components/Donations/ThanksGreet";
 import ContactForm from "./Components/Contact/ContactForm";
 import MembersEdit from "./Components//Members/MembersEdit";
 import RegisterForm from "./Components/Auth/RegisterForm";
@@ -23,6 +21,8 @@ import OrganizationForm from "./Components/OrganizationForm/OrganizationForm";
 import ActivitiesList from "./Components/Activities/ActivitiesList";
 import ActivityInfo from "./Components/Activities/Detail/ActivityInfo";
 import { UsersList } from "./Components/Users/UsersList";
+import { DonationsGreet } from "./Components/Donations/DonationsGreet";
+import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 
 function App() {
   return (
