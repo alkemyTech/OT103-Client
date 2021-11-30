@@ -1,0 +1,47 @@
+.screen{
+    &__main{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 1vh;
+    }
+    &__items{
+        background-color: rgb(240, 240, 240);
+        border-radius: 10px;
+        display: flex;
+        margin-bottom: 2vh;
+        justify-content: space-between;
+        width: 70%;
+    }
+    &__image{
+        max-width: 30%;
+    }
+    &__title{
+        text-align: center;
+    }
+    &__text{
+        width: 70%;
+    }
+    &__div-button{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 2vh;
+        padding-right: 2vh;
+    }
+    &__create-button{
+        align-self: flex-start;
+        color: rgb(0, 197, 181);
+        text-decoration: none;
+        margin: auto;
+        width: 10vw;
+    }
+    &__head-container{
+        width: 50%;
+        display: flex;
+    }
+    &__head-title{
+        width: 70%;
+    }
+}

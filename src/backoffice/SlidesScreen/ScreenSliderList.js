@@ -1,24 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { Get } from '../../Services/publicApiService';
 import { ItemList } from './ItemList';
+import { mock } from './mock';
+import './screenslide.scss';
 
 export const ScreenSliderList = () => {
 
-    const mock = [1, 2, 3, 4, 5];
 
-    const getData = async () => {
-        try {
-            const data = await Get('slides')
-            console.log(data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    getData()
+
     return (
-        <div>
-            <ItemList />
+        <div className="screen__main">
+            <div className="screen__head-container">
+                <h1 className="screen__head-title">Listado de Slides</h1>
+                <Link
+                    to="/backoffice/Slides/create"
+                    className="screen__create-button"
+                >
+                    Create
+                </Link>
+            </div>
+            {
+                mock.map((data, i) => {
+                    return (<ItemList key={i} data={data} />)
+                })
+            }
         </div>
     );
 }
