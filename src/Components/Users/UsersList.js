@@ -1,25 +1,7 @@
 import { Link } from "react-router-dom";
 import "./UsersStyles.scss";
 import { UsersTable } from "./UsersTable";
-
-const users = [
-  {
-    name: "Nicolas",
-    email: "nicolas@gmail.com",
-  },
-  {
-    name: "Pedro",
-    email: "pedro@gmail.com",
-  },
-  {
-    name: "Sofia",
-    email: "sofia@gmail.com",
-  },
-  {
-    name: "Julieta",
-    email: "julieta@gmail.com",
-  },
-];
+import { data } from "./usersMock.json";
 
 export const UsersList = () => {
   return (
@@ -30,7 +12,7 @@ export const UsersList = () => {
         </Link>
       </div>
 
-      <UsersTable users={users} />
+      <UsersTable users={data} />
     </div>
   );
 };
