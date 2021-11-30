@@ -19,6 +19,7 @@ import MembersEdit from "./Components//Members/MembersEdit";
 import RegisterForm from "./Components/Auth/RegisterForm";
 import LoginForm from "./Components/Auth/LoginForm";
 import ActivitiesList from "./Components/Activities/ActivitiesList";
+import UsersList from "./Components/Users/UsersList";
 
 function App() {
   return (
@@ -42,9 +43,10 @@ function App() {
           <Route path="/toys-campaign" component={ToysCampaign} />
           <Route path="/backoffice/news/:id" component={NewsForm} />
           <Route path="/backoffice/news" component={NewsForm} />
+          <Route path="/backoffice/users" component={UsersList} />
           <Route path="/donar" component={DonationsGreet} />
-          <Route path="/gracias" component={ThanksGreet} />
           <Route path="/backoffice/slides" component={SlidesForm} />
+          <Route path="/gracias" component={ThanksGreet} />
           <Route path="/contact-form" component={ContactForm} />
           <Route path="/register-form" component={RegisterForm} />
           <Route path="/login-form" component={LoginForm} />
