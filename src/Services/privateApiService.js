@@ -1,16 +1,37 @@
 import axios from "axios";
 
-const config = {
-  headers: {
-    Group: 01, //Aqui va el ID del equipo!!
-  },
+const baseUrl = "http://ongapi.alkemy.org/api";
+
+const tempToken = "token";
+
+export const Put = async (endPoint, id, body) => {
+  const url = id ? `${baseUrl}/${endPoint}/${id}` : `${baseUrl}/${endPoint}`;
+
+  try {
+    const response = await axios.put(url, body, {
+      headers: {
+        Authorization: `Bearer ${tempToken}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    return { success: false, error };
+  }
 };
 
-const Get = () => {
-  axios
-    .get("https://jsonplaceholder.typicode.com/users", config)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
-};
+export const Get = async (endPoint, id) => {
+  const url = id ? `${baseUrl}/${endPoint}/${id}` : `${baseUrl}/${endPoint}`;
 
-export default Get;
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${tempToken}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    return { success: false, error };
+  }
+};
