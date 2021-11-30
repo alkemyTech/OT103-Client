@@ -22,7 +22,7 @@ import LoginForm from "./Components/Auth/LoginForm";
 import OrganizationForm from "./Components/OrganizationForm/OrganizationForm";
 import ActivitiesList from "./Components/Activities/ActivitiesList";
 import ActivityInfo from "./Components/Activities/Detail/ActivityInfo";
-import ManageActivities from "./ManageActivities/ManageActivities";
+import ManageActivities from "./Components/ManageActivities/ManageActivities";
 
 function App() {
   return (
