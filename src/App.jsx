@@ -22,6 +22,7 @@ import LoginForm from "./Components/Auth/LoginForm";
 import OrganizationForm from "./Components/OrganizationForm/OrganizationForm";
 import ActivitiesList from "./Components/Activities/ActivitiesList";
 import ActivityInfo from "./Components/Activities/Detail/ActivityInfo";
+import ManageActivities from "./ManageActivities/ManageActivities";
 
 function App() {
   return (
@@ -60,6 +61,11 @@ function App() {
           <Route exact path="/toys-campaign" component={ToysCampaign} />
           <Route exact path="/backoffice/news/:id" component={NewsForm} />
           <Route exact path="/backoffice/news" component={NewsForm} />
+          <Route
+            exact
+            path="/backoffice/activities"
+            component={ManageActivities}
+          />
           <Route exact path="/donar" component={DonationsGreet} />
           <Route exact path="/gracias" component={ThanksGreet} />
           <Route exact path="/about" component={AboutMain} />
