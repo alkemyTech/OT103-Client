@@ -15,13 +15,14 @@ import { DonationsGreet } from "./Components/Donations/DonationsGreet";
 import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 import ContactForm from "./Components/Contact/ContactForm";
 import MembersEdit from "./Components//Members/MembersEdit";
+import Home from './Home/Home'
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-          {/* <Route path="/" exact component={} />           Esta ruta debe ser para el Home */}
+          <Route path="/" exact component={Home} />           
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-news" component={NewsForm} />
