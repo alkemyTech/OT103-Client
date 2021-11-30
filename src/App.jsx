@@ -22,6 +22,7 @@ import LoginForm from "./Components/Auth/LoginForm";
 import OrganizationForm from "./Components/OrganizationForm/OrganizationForm";
 import ActivitiesList from "./Components/Activities/ActivitiesList";
 import ActivityInfo from "./Components/Activities/Detail/ActivityInfo";
+import { ScreenSliderList } from "./backoffice/SlidesScreen/ScreenSliderList";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/create-activity" component={ActivitiesForm} />
           <Route exact path="/create-category" component={CategoriesForm} />
           <Route exact path="/create-news" component={NewsForm} />
+          <Route exact path="/backoffice/Slides" component={ScreenSliderList} />
           <Route exact path="/backoffice/create-slide" component={SlidesForm} />
           <Route
             exact
