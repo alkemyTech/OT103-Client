@@ -20,7 +20,8 @@ import RegisterForm from './Components/Auth/RegisterForm';
 import LoginForm from './Components/Auth/LoginForm';
 import OrganizationForm from "./Components/OrganizationForm/OrganizationForm";
 import ActivitiesList from "./Components/Activities/ActivitiesList";
-import OrganizationData from "./Components/Organization/OrganizationData";
+import OrganizationData from "./backoffice/Organization/OrganizationData";
+
 
 
 function App() {
