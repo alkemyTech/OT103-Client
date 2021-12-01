@@ -10,18 +10,19 @@
         background-color: rgb(240, 240, 240);
         border-radius: 10px;
         display: flex;
-        margin-bottom: 2vh;
+        flex-direction: column;
         justify-content: space-between;
+        margin-bottom: 2vh;
         width: 50%;
     }
     &__image{
-        max-width: 50%;
+        max-width: 100%;
     }
     &__title{
         text-align: center;
     }
     &__text{
-        width: 70%;
+        width: 100%;
     }
     &__div-button{
         display: flex;

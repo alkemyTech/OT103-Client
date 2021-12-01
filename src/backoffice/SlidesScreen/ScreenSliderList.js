@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { ItemList } from './ItemList';
 import { mock } from './mock';
+import { ItemList } from './ItemList';
 import './screenslide.scss';
 
 export const ScreenSliderList = () => {
-
-
-
     return (
         <div className="screen__main">
             <div className="screen__head-container">

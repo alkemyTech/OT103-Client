@@ -1,19 +1,20 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const URL = 'http://ongapi.alkemy.org/api/slides';
 
 export const ItemList = ({ data }) => {
+    const [msg, setMsg] = useState('');
 
-    const handleDelete = () => {
-        // try {
-        //     const deleteData = axios.delete(`${URL}/${data.id}`);
-        //     return deleteData.data;
-        // } catch (error) {
-        //     console.log(error)
-        // }
-        console.log(data.id);
+    const handleDelete = async() => {
+        try {
+            const deleteData = await axios.delete(`${URL}/${data.id}`);
+            setMsg(deleteData.data.message);
+            return deleteData.data;
+        } catch (error) {
+            console.log(error)
+        }
     };
 
     return (
@@ -41,6 +42,7 @@ export const ItemList = ({ data }) => {
                 src={data.image}
                 alt={data.image}
             />
+            <h5>{msg}</h5>
         </div>
     );
 };
