@@ -13,8 +13,6 @@ import MembersForm from "./Components/Members/MembersForm";
 import ProjectsForm from "./Components/Projects/ProjectsForm";
 import { AboutMain } from "./Components/About/AboutMain";
 import HomeForm from "./Components/HomeForm/HomeForm";
-import { DonationsGreet } from "./Components/Donations/DonationsGreet";
-import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 import ContactForm from "./Components/Contact/ContactForm";
 import MembersEdit from "./Components//Members/MembersEdit";
 import RegisterForm from "./Components/Auth/RegisterForm";
@@ -23,6 +21,9 @@ import OrganizationForm from "./Components/OrganizationForm/OrganizationForm";
 import ActivitiesList from "./Components/Activities/ActivitiesList";
 import ActivityInfo from "./Components/Activities/Detail/ActivityInfo";
 import ManageActivities from "./Components/ManageActivities/ManageActivities";
+import { UsersList } from "./Components/Users/UsersList";
+import { DonationsGreet } from "./Components/Donations/DonationsGreet";
+import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
             path="/backoffice/activities"
             component={ManageActivities}
           />
+          <Route exact path="/backoffice/users" component={UsersList} />
           <Route exact path="/donar" component={DonationsGreet} />
           <Route exact path="/gracias" component={ThanksGreet} />
           <Route exact path="/about" component={AboutMain} />
