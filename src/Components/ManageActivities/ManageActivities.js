@@ -1,9 +1,12 @@
 import react, { useState } from "react";
 import { Link } from "react-router-dom";
+
 import { FormEditActivities } from "../../backoffice/FormEditActivities";
 import apiDateToText from "../../helpers/apiDateToText";
+
 import "./ManageActivities.scss";
 
+// mock data
 const activitiesMock = [
   {
     id: 1,
@@ -50,11 +53,12 @@ const ManageActivities = () => {
   };
 
   const handleCancelEdit = () => {
+    setMessage("");
     setEditingActivity(NaN);
   };
 
   return (
-    <div className="manage-activities-container ">
+    <div className="manage-activities-container">
       <Link to="/backoffice/activities/create" className="new-activity-link">
         Create New Activity
       </Link>
@@ -76,13 +80,13 @@ const ManageActivities = () => {
                     <td className="activity-table-data">{activity.name}</td>
                     <td className="activity-table-data">
                       <img
+                        className="activity-image"
                         src={activity.image || ""}
                         alt="descripcion"
                         onError={(e) => {
                           e.target.src =
                             "https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
                         }}
-                        style={{ maxWidth: "100px" }}
                       />
                     </td>
                     <td className="activity-table-data">
