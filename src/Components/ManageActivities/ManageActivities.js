@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import { useState, Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import { FormEditActivities } from "../../backoffice/FormEditActivities";
@@ -6,33 +6,7 @@ import apiDateToText from "../../helpers/apiDateToText";
 
 import "./ManageActivities.scss";
 
-// mock data
-const activitiesMock = [
-  {
-    id: 1,
-    name: "Nombre 1",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Un1.svg/1200px-Un1.svg.png",
-    created_at: "2021-11-30T16:47:15.220Z",
-    description: "Descripcion de prueba 1",
-  },
-  {
-    id: 2,
-    name: "Nombre 2",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Deux.svg/1200px-Deux.svg.png",
-    created_at: "2021-11-30T16:47:15.220Z",
-    description: "Descripcion de prueba 2",
-  },
-  {
-    id: 3,
-    name: "Nombre 3",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Trois.svg/1200px-Trois.svg.png",
-    created_at: "2021-11-30T16:47:15.220Z",
-    description: "Descripcion de prueba 3",
-  },
-];
+const activitiesMock = require("../../lib/mock/activities.json");
 
 const ManageActivities = () => {
   const [activities, setActivities] = useState(activitiesMock);
@@ -62,7 +36,7 @@ const ManageActivities = () => {
       <Link to="/backoffice/activities/create" className="new-activity-link">
         Create New Activity
       </Link>
-      {activities.length > 0 ? (
+      {activities.length ? (
         <>
           <table className="table-container">
             <thead>
@@ -75,7 +49,7 @@ const ManageActivities = () => {
             </thead>
             <tbody>
               {activities.map((activity) => (
-                <react.Fragment key={activity.id}>
+                <Fragment key={activity.id}>
                   <tr>
                     <td className="activity-table-data">{activity.name}</td>
                     <td className="activity-table-data">
@@ -111,7 +85,7 @@ const ManageActivities = () => {
                       </td>
                     )}
                   </tr>
-                </react.Fragment>
+                </Fragment>
               ))}
             </tbody>
           </table>
