@@ -1,24 +1,24 @@
 export const UsersTable = ({ users }) => {
   return (
-    <div className="users__table__container">
-      <table className="users__table">
+    <div className="table__container">
+      <table className="table">
         <thead>
-          <tr className="users__table__rows">
-            <th className="users__table__info">Name</th>
-            <th className="users__table__info">Email</th>
+          <tr className="table__rows">
+            <th className="table__head">Name</th>
+            <th className="table__head">Email</th>
             <th>Actions</th>
           </tr>
         </thead>
         {users?.map((user, id) => (
           <tbody key={id}>
-            <tr className="users__table__rows">
+            <tr className="table__rows">
               <td>{user.name || ""}</td>
               <td>{user.email || ""}</td>
-              <td className="users__table__actions">
-                <button className="users__table__actions__buttons">
+              <td className="table__actions">
+                <button className="table__buttons">
                   Borrar
                 </button>
-                <button className="users__table__actions__buttons">
+                <button className="table__buttons">
                   Editar
                 </button>
               </td>
