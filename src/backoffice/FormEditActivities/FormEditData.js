@@ -35,7 +35,7 @@ export const FormEditData = ({ data = initialValues, linkApi = "http://ongapi.al
                         .then(res => alert(res.data))
                         .catch(e => console.log(e))
                 } else {
-                    axios.path(`${linkApi}/${data.id}`, values)
+                    axios.put(`${linkApi}/${data.id}`, values)
                         .then(res => alert(res.data))
                         .catch(e => console.log(e))
                 }
