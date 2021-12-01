@@ -23,8 +23,6 @@ import OrganizationForm from "./Components/OrganizationForm/OrganizationForm";
 import ActivitiesList from "./Components/Activities/ActivitiesList";
 import ActivityInfo from "./Components/Activities/Detail/ActivityInfo";
 import { UsersList } from "./Components/Users/UsersList";
-import { DonationsGreet } from "./Components/Donations/DonationsGreet";
-import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 import HomeDashboard from "./Components/HomeDashboard/HomeDashboard";
 
 

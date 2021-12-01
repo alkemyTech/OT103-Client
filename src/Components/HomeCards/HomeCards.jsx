@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import "./HomeCards.css"
 
 const HomeCards = ({title, image}) => {
 
     return (
-        <div className="card m-2 text-center" style={ {width: "18rem "} }>
+        <div className="card m-2 text-center size">
             <h5 className="card-title">{ title }</h5>
             <div>
                 <img src={ image } className="card-img-top" alt="image"/>
