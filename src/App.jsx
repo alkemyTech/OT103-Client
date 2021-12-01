@@ -24,6 +24,7 @@ import ManageActivities from "./Components/ManageActivities/ManageActivities";
 import { UsersList } from "./Components/Users/UsersList";
 import { DonationsGreet } from "./Components/Donations/DonationsGreet";
 import { ThanksGreet } from "./Components/Donations/ThanksGreet";
+import { ScreenSliderList } from "./backoffice/SlidesScreen/ScreenSliderList";
 
 function App() {
   return (
