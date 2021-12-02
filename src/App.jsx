@@ -13,8 +13,6 @@ import MembersForm from "./Components/Members/MembersForm";
 import ProjectsForm from "./Components/Projects/ProjectsForm";
 import { AboutMain } from "./Components/About/AboutMain";
 import HomeForm from "./Components/HomeForm/HomeForm";
-import { DonationsGreet } from "./Components/Donations/DonationsGreet";
-import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 import ContactForm from "./Components/Contact/ContactForm";
 import MembersEdit from "./Components//Members/MembersEdit";
 import RegisterForm from "./Components/Auth/RegisterForm";
@@ -22,14 +20,18 @@ import LoginForm from "./Components/Auth/LoginForm";
 import OrganizationForm from "./Components/OrganizationForm/OrganizationForm";
 import ActivitiesList from "./Components/Activities/ActivitiesList";
 import ActivityInfo from "./Components/Activities/Detail/ActivityInfo";
+import ManageActivities from "./Components/ManageActivities/ManageActivities";
+import { UsersList } from "./Components/Users/UsersList";
+import { DonationsGreet } from "./Components/Donations/DonationsGreet";
+import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 import NewsList from "./Components/News/NewsList";
+import Home from "./Home/Home";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-          {/* <Route path="/" exact component={} />           Esta ruta debe ser para el Home */}
           <Route exact path="/actividades" component={ActivitiesList} />
           <Route exact path="/actividades/:id" component={ActivityInfo} />
 
@@ -59,8 +61,15 @@ function App() {
           <Route exact path="/create-project" component={ProjectsForm} />
           <Route exact path="/school-campaign" component={SchoolCampaign} />
           <Route exact path="/toys-campaign" component={ToysCampaign} />
+          <Route exact path="/backoffice/news/create" component={NewsForm} />
           <Route exact path="/backoffice/news/:id" component={NewsForm} />
           <Route exact path="/backoffice/news" component={NewsList} />
+          <Route
+            exact
+            path="/backoffice/activities"
+            component={ManageActivities}
+          />
+          <Route exact path="/backoffice/users" component={UsersList} />
           <Route exact path="/donar" component={DonationsGreet} />
           <Route exact path="/gracias" component={ThanksGreet} />
           <Route exact path="/about" component={AboutMain} />
@@ -68,6 +77,7 @@ function App() {
           <Route exact path="/contact-form" component={ContactForm} />
           <Route exact path="/register-form" component={RegisterForm} />
           <Route exact path="/login-form" component={LoginForm} />
+          <Route path="/" component={Home} />
         </Switch>
       </BrowserRouter>
     </>
