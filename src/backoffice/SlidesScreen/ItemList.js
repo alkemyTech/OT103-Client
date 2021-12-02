@@ -18,7 +18,7 @@ export const ItemList = ({ data }) => {
     };
 
     return (
-        <div className="screen__items">
+        <td className="screen__items">
             <div className="screen__text">
                 <h3 className="screen__title">{data.name}</h3>
                 <div className="screen__div-button">
@@ -43,6 +43,6 @@ export const ItemList = ({ data }) => {
                 alt={data.image}
             />
             <h5>{msg}</h5>
-        </div>
+        </td>
     );
 };

@@ -8,22 +8,22 @@ import './screenslide.scss';
 export const ScreenSliderList = () => {
     return (
         <table className="screen__main">
-            <div className="screen__head-container">
-                <h1 className="screen__head-title">Listado de Slides</h1>
+            <tr className="screen__head-container">
+                <th className="screen__head-title">Listado de Slides</th>
                 <Link
                     to="/backoffice/Slides/create"
                     className="screen__create-button"
                 >
                     Create
                 </Link>
-            </div>
-            <tbody>
+            </tr>
+            <tr>
                 {
                     mock.map((data, i) => {
                         return (<ItemList key={i} data={data} />)
                     })
                 }
-            </tbody>
+            </tr>
         </table>
     );
 }
