@@ -7,9 +7,9 @@ import axios from "axios";
 
 import "../../Components/FormStyles.css";
 import "./NewsForm.scss";
+import { Post } from "../../Services/privateApiService";
 
 const NewsForm = () => {
-  // TODO terminar de hacer el http service
   const [categories, setCategories] = useState([]);
   const [existingNew, setExistingNew] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -28,10 +28,7 @@ const NewsForm = () => {
       deleted_at: "2021-11-23T19:19:56.825Z",
     };
     try {
-      const response = await axios.post(
-        "http://ongapi.alkemy.org/api/news",
-        body
-      );
+      const response = await Post("news", body);
       if (response.data.success) {
         setMessage("Created successfully.");
       } else {

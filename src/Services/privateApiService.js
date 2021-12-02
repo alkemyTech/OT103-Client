@@ -77,7 +77,7 @@ export const Post = async (endPoint, body) => {
         Authorization: `Bearer ${tempToken}`,
       },
     })
-    .then(({ data }) => data)
+    .then((res) => res)
     .catch((err) => {
       return { success: false, err };
     });

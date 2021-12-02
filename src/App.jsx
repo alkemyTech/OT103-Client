@@ -24,7 +24,9 @@ import ManageActivities from "./Components/ManageActivities/ManageActivities";
 import { UsersList } from "./Components/Users/UsersList";
 import { DonationsGreet } from "./Components/Donations/DonationsGreet";
 import { ThanksGreet } from "./Components/Donations/ThanksGreet";
+import NewsList from "./Components/News/NewsList";
 import Home from "./Home/Home";
+
 function App() {
   return (
     <>
@@ -59,8 +61,9 @@ function App() {
           <Route exact path="/create-project" component={ProjectsForm} />
           <Route exact path="/school-campaign" component={SchoolCampaign} />
           <Route exact path="/toys-campaign" component={ToysCampaign} />
+          <Route exact path="/backoffice/news/create" component={NewsForm} />
           <Route exact path="/backoffice/news/:id" component={NewsForm} />
-          <Route exact path="/backoffice/news" component={NewsForm} />
+          <Route exact path="/backoffice/news" component={NewsList} />
           <Route
             exact
             path="/backoffice/activities"
