@@ -24,13 +24,12 @@ import ManageActivities from "./Components/ManageActivities/ManageActivities";
 import { UsersList } from "./Components/Users/UsersList";
 import { DonationsGreet } from "./Components/Donations/DonationsGreet";
 import { ThanksGreet } from "./Components/Donations/ThanksGreet";
-import Home from './Home/Home';
+import Home from "./Home/Home";
 function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-
           <Route exact path="/actividades" component={ActivitiesList} />
           <Route exact path="/actividades/:id" component={ActivityInfo} />
 
