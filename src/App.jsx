@@ -24,12 +24,7 @@ import ManageActivities from "./Components/ManageActivities/ManageActivities";
 import { UsersList } from "./Components/Users/UsersList";
 import { DonationsGreet } from "./Components/Donations/DonationsGreet";
 import { ThanksGreet } from "./Components/Donations/ThanksGreet";
-<<<<<<< HEAD
-import { ScreenSliderList } from "./backoffice/SlidesScreen/ScreenSliderList";
-
-=======
 import Home from './Home/Home';
->>>>>>> a26139006274f588f145642190872255eba78179
 function App() {
   return (
     <>
