@@ -9,7 +9,6 @@ import "../../Components/FormStyles.css";
 import "./NewsForm.scss";
 
 const NewsForm = () => {
-  // TODO terminar de hacer el http service
   const [categories, setCategories] = useState([]);
   const [existingNew, setExistingNew] = useState({});
   const [isLoading, setIsLoading] = useState(true);
