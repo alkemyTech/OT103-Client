@@ -30,7 +30,7 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={Home} />
+
           <Route exact path="/actividades" component={ActivitiesList} />
           <Route exact path="/actividades/:id" component={ActivityInfo} />
 
@@ -75,6 +75,7 @@ function App() {
           <Route exact path="/contact-form" component={ContactForm} />
           <Route exact path="/register-form" component={RegisterForm} />
           <Route exact path="/login-form" component={LoginForm} />
+          <Route path="/" component={Home} />
         </Switch>
       </BrowserRouter>
     </>
