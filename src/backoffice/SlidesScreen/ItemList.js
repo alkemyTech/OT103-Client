@@ -20,19 +20,19 @@ export const ItemList = ({ data }) => {
     return (
         <div className="screen__items">
             <div className="screen__text">
-                <h3 className="screen__title">Title: {data.name}</h3>
+                <h3 className="screen__title">{data.name}</h3>
                 <div className="screen__div-button">
                     {
                      data.order ?
                          (<h5>Order: {data.order}</h5>)
                          : (<h5>No order</h5>)
                     }
-                    <div>
+                    <div className="screen__buttons">
                         <Link to={`/backoffice/Slides/create/${data.id}`}>
                             <i className="fas fa-edit"></i>
                         </Link>
                         <button onClick={handleDelete}>
-                            <i className="fas fa-trash-alt"></i>
+                            <i className="fas fa-trash-alt" onClick={handleDelete}></i>
                         </button>
                     </div>
                 </div>
