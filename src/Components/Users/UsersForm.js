@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { Get } from '../../Services/publicApiService';
 import '../FormStyles.css';
 import '../FormStyles.css'
+import { Put } from '../../Services/privateApiService';
 
 const UserForm = () => {
     const { push } = useHistory();
@@ -18,25 +19,24 @@ const UserForm = () => {
     const [profile_image, setProfile_Image] = useState("");
     const [create, setCreate] = useState(true);
 
-    const {id} = useParams();
-    const url = `http://ongapi.alkemy.org/api/users`;
+    const { id } = useParams();
 
     const submitForm = (values) => {
 
         if (create) {
-            axios.post(`${url}`, values)
-                .then(function (response) {
-                    alert(response.data.message)
-                })
-
+            try {
+                const response = await Post('users', values)
+                return alert(response.data.message)
+            } catch (error) {
+                console.log(error)
+            }
         } else {
-            axios.put(`${url}/${id}`, values)
-                .then(function (response) {
-                    alert(response.data.message)
-                })
-                .catch(error => {
-                    alert(error)
-                })
+            try {
+                const response = await Put('users', id, values)
+                return alert(response.data.message)
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 
@@ -58,9 +58,9 @@ const UserForm = () => {
     }
 
     useEffect(() => {
-        if(id){
+        if (id) {
             getData();
-        }else{
+        } else {
             alert('user inexistente');
             push('/create-user');
         }
