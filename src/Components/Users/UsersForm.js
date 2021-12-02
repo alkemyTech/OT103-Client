@@ -18,7 +18,7 @@ const UserForm = () => {
     const [profile_image, setProfile_Image] = useState("");
     const [create, setCreate] = useState(true);
 
-    const {id} = useParams();
+    const { id } = useParams();
     const url = `http://ongapi.alkemy.org/api/users`;
 
     const submitForm = (values) => {
@@ -41,29 +41,29 @@ const UserForm = () => {
     }
 
     const getData = async () => {
-        try {
-            await Get('users', id)
-                .then(res => {
-                    const { data: { name, email, role_id, password, profile_image } } = res
-                    setName(name);
-                    setEmail(email);
-                    setRole_id(role_id);
-                    setPassword(password);
-                    setProfile_Image(profile_image);
-                    setCreate(false);
-                })
-        } catch (error) {
-            alert(error)
+        if (id) {
+            try {
+                await Get('users', id)
+                    .then(res => {
+                        const { data: { name, email, role_id, password, profile_image } } = res
+                        setName(name);
+                        setEmail(email);
+                        setRole_id(role_id);
+                        setPassword(password);
+                        setProfile_Image(profile_image);
+                        setCreate(false);
+                    })
+            } catch (error) {
+                alert(error)
+            }
+        } else {
+            alert('usuario inexistente');
+            push('/create-user');
         }
     }
 
     useEffect(() => {
-        if(id){
-            getData();
-        }else{
-            alert('user inexistente');
-            push('/create-user');
-        }
+        getData();
     }, []);
 
     const ErrorSchema = Yup.object().shape({
