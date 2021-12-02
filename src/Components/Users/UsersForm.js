@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
-import axios from "axios";
 import * as Yup from "yup";
 
-import { Get } from '../../Services/publicApiService';
+import { Get, Post } from '../../Services/publicApiService';
 import '../FormStyles.css';
 import '../FormStyles.css'
 import { Put } from '../../Services/privateApiService';
@@ -21,7 +20,7 @@ const UserForm = () => {
 
     const { id } = useParams();
 
-    const submitForm = (values) => {
+    const submitForm = async (values) => {
 
         if (create) {
             try {
