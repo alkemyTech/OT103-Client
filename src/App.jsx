@@ -24,7 +24,7 @@ import ManageActivities from "./Components/ManageActivities/ManageActivities";
 import { UsersList } from "./Components/Users/UsersList";
 import { DonationsGreet } from "./Components/Donations/DonationsGreet";
 import { ThanksGreet } from "./Components/Donations/ThanksGreet";
-
+import CardModel from './Components/ModelCard/ModelCard';
 function App() {
   return (
     <>
@@ -75,6 +75,7 @@ function App() {
           <Route exact path="/contact-form" component={ContactForm} />
           <Route exact path="/register-form" component={RegisterForm} />
           <Route exact path="/login-form" component={LoginForm} />
+          <Route exact path="/model-card" component={CardModel} />
         </Switch>
       </BrowserRouter>
     </>
