@@ -4,7 +4,7 @@ const baseUrl = "http://ongapi.alkemy.org/api";
 
 const tempToken = "token";
 
-const getToken = () => {
+export const getToken = () => {
   const isToken = localStorage.getItem("token");
 
   if (isToken) {
