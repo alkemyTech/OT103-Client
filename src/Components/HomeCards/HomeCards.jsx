@@ -4,7 +4,7 @@ import "../../utils.scss"
 const HomeCards = ({title, image}) => {
 
     return (
-        <div className="card m-2 text-center size w-18r">
+        <div className="card m-2 text-center w-18r">
             <h5 className="card-title">{ title }</h5>
             <div>
                 <img src={ image } className="card-img-top" alt="image"/>

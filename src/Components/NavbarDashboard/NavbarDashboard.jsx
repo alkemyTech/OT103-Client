@@ -5,7 +5,7 @@ const NavbarDashboard = () => {
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
                         aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"/>
                 </button>
                 <a className="navbar-brand" href="#">Navbar</a>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo03">

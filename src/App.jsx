@@ -36,7 +36,7 @@ function App() {
 
           <Route exact path="/actividades" component={ActivitiesList} />
           <Route exact path="/actividades/:id" component={ActivityInfo} />
-          <Route path="/home" exact component={HomeDashboard}/>
+          <Route path="/backoffice" exact component={HomeDashboard}/>
           <Route exact path="/create-activity" component={ActivitiesForm} />
           <Route exact path="/create-category" component={CategoriesForm} />
           <Route exact path="/create-news" component={NewsForm} />
