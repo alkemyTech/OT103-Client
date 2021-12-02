@@ -25,6 +25,7 @@ import { UsersList } from "./Components/Users/UsersList";
 import { DonationsGreet } from "./Components/Donations/DonationsGreet";
 import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 import OrganizationData from "./backoffice/Organization/OrganizationData";
+import Members from "./Components/About/Members";
 
 function App() {
   return (
@@ -77,6 +78,7 @@ function App() {
           <Route exact path="/register-form" component={RegisterForm} />
           <Route exact path="/login-form" component={LoginForm} />
           <Route exact path="/backoffice/organization" component={OrganizationData} />
+          <Route exact path="/about/members" component={Members} />
         </Switch>
       </BrowserRouter>
     </>
