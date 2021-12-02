@@ -13,8 +13,6 @@ import MembersForm from "./Components/Members/MembersForm";
 import ProjectsForm from "./Components/Projects/ProjectsForm";
 import { AboutMain } from "./Components/About/AboutMain";
 import HomeForm from "./Components/HomeForm/HomeForm";
-import { DonationsGreet } from "./Components/Donations/DonationsGreet";
-import { ThanksGreet } from "./Components/Donations/ThanksGreet";
 import ContactForm from "./Components/Contact/ContactForm";
 import MembersEdit from "./Components//Members/MembersEdit";
 import RegisterForm from "./Components/Auth/RegisterForm";
@@ -24,6 +22,9 @@ import ActivitiesList from "./Components/Activities/ActivitiesList";
 import ActivityInfo from "./Components/Activities/Detail/ActivityInfo";
 import ManageActivities from "./Components/ManageActivities/ManageActivities";
 import { UsersList } from "./Components/Users/UsersList";
+import { DonationsGreet } from "./Components/Donations/DonationsGreet";
+import { ThanksGreet } from "./Components/Donations/ThanksGreet";
+import Home from './Home/Home';
 import HomeDashboard from "./Components/HomeDashboard/HomeDashboard";
 
 
@@ -32,7 +33,7 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-          {/* <Route path="/" exact component={} />           Esta ruta debe ser para el Home */}
+
           <Route exact path="/actividades" component={ActivitiesList} />
           <Route exact path="/actividades/:id" component={ActivityInfo} />
           <Route path="/home" exact component={HomeDashboard}/>
@@ -77,6 +78,7 @@ function App() {
           <Route exact path="/contact-form" component={ContactForm} />
           <Route exact path="/register-form" component={RegisterForm} />
           <Route exact path="/login-form" component={LoginForm} />
+          <Route path="/" component={Home} />
         </Switch>
       </BrowserRouter>
     </>
