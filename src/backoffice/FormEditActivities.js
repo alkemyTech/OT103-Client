@@ -30,7 +30,7 @@ export const FormEditActivities = ({ data = initialValues, endPoint = "activitie
             }
         } else {
             try {
-                const response = Put(endPoint, data.id, values);
+                const response = await Put(endPoint, data.id, values);
                 return response;
             } catch (error) {
                 console.log(error)
