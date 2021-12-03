@@ -84,7 +84,6 @@ function App() {
           <Route exact path="/login-form" component={LoginForm} />
           <Route exact path="/" component={Home} />
           <Route exact path="/backoffice/organization" component={OrganizationData} />
-          <Route exact path="/backoffice/organization" component={OrganizationData} />
           <Route exact path="/about/members" component={Members} />
         </Switch>
       </BrowserRouter>

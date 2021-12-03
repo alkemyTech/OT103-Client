@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
+import {Get} from '../../Services/privateApiService'
 import "./styles/members.scss";
 
 const Members = () => {
@@ -8,10 +9,9 @@ const Members = () => {
 
     const getList = async () => {
         
-        const url = 'http://ongapi.alkemy.org/api/members'
-        const data = await fetch(url)
-        const res = await data.json()
-        setList(res.data)
+        
+        const response = await Get('members')
+        setList(response.data)
     }
     
     useEffect(() => {
@@ -30,7 +30,7 @@ const Members = () => {
                             <img src={item.image} alt="imagen" />
                         </figure>
                             <div className="content">
-                                <h2 className="content-title">{item.name}</h2>
+                                <h4 className="content-title">{item.name}</h4>
                             <h3 className="content-description">{item.description}</h3>
                             <div className='links'>
 
