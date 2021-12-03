@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import apiDateToText from "../../helpers/apiDateToText";
 import { Delete } from "../../Services/privateApiService";
-const NewsItemList = ({ id, name, image, created_at, setNews }) => {
+
+const NewsItem = ({ id, name, image, created_at, setNews }) => {
   const { date, time } = apiDateToText(created_at);
 
   const handleDelete = () => {
@@ -26,4 +27,4 @@ const NewsItemList = ({ id, name, image, created_at, setNews }) => {
   );
 };
 
-export default NewsItemList;
+export default NewsItem;
