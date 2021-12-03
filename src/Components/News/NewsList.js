@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../CardListStyles.css";
-import NewsItemList from "./NewsItemList";
+import NewsItem from "./NewsItem";
 import { Link } from "react-router-dom";
 import { Get } from "../../Services/privateApiService";
 
@@ -20,9 +20,7 @@ const NewsList = () => {
       <ul className="list-container">
         {news.length > 0 ? (
           news.map((element) => {
-            return (
-              <NewsItemList {...element} key={element.id} setNews={setNews} />
-            );
+            return <NewsItem {...element} key={element.id} setNews={setNews} />;
           })
         ) : (
           <p>No hay novedades</p>
