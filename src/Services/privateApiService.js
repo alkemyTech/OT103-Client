@@ -68,6 +68,21 @@ export const Delete = async (endPoint, id) => {
   }
 };
 
+export const Post = async (endPoint, body) => {
+  const url = `${baseUrl}/${endPoint}`;
+
+  return axios
+    .post(url, body, {
+      headers: {
+        Authorization: `Bearer ${tempToken}`,
+      },
+    })
+    .then((res) => res)
+    .catch((err) => {
+      return { success: false, err };
+    });
+};
+
 export const Patch = async (endPoint, id, body) => {
   const url = id ? `${baseUrl}/${endPoint}/${id}` : `${baseUrl}/${endPoint}`
 
