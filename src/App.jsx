@@ -24,7 +24,12 @@ import ManageActivities from "./Components/ManageActivities/ManageActivities";
 import { UsersList } from "./Components/Users/UsersList";
 import { DonationsGreet } from "./Components/Donations/DonationsGreet";
 import { ThanksGreet } from "./Components/Donations/ThanksGreet";
+import { ScreenSliderList } from "./backoffice/SlidesScreen/ScreenSliderList";
 import Home from "./Home/Home";
+import HomeDashboard from "./Components/HomeDashboard/HomeDashboard";
+import OrganizationData from "./backoffice/Organization/OrganizationData";
+import Members from "./Components/About/Members";
+
 function App() {
   return (
     <>
@@ -32,10 +37,11 @@ function App() {
         <Switch>
           <Route exact path="/actividades" component={ActivitiesList} />
           <Route exact path="/actividades/:id" component={ActivityInfo} />
-
+          <Route path="/backoffice" exact component={HomeDashboard} />
           <Route exact path="/create-activity" component={ActivitiesForm} />
           <Route exact path="/create-category" component={CategoriesForm} />
           <Route exact path="/create-news" component={NewsForm} />
+          <Route exact path="/backoffice/Slides" component={ScreenSliderList} />
           <Route exact path="/backoffice/create-slide" component={SlidesForm} />
           <Route
             exact
@@ -74,7 +80,13 @@ function App() {
           <Route exact path="/contact-form" component={ContactForm} />
           <Route exact path="/register-form" component={RegisterForm} />
           <Route exact path="/login-form" component={LoginForm} />
-          <Route path="/" component={Home} />
+          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/backoffice/organization"
+            component={OrganizationData}
+          />
+          <Route exact path="/about/members" component={Members} />
         </Switch>
       </BrowserRouter>
     </>
