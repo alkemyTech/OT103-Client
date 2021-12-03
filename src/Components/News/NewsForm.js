@@ -5,9 +5,6 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import axios from "axios";
 
-import "../../Components/FormStyles.css";
-import "./NewsForm.scss";
-
 const NewsForm = () => {
   const [categories, setCategories] = useState([]);
   const [existingNew, setExistingNew] = useState({});
@@ -32,12 +29,12 @@ const NewsForm = () => {
         body
       );
       if (response.data.success) {
-        setMessage("Created successfully.");
+        setMessage("Creado exitosamente");
       } else {
-        setMessage("Failed, try again.");
+        setMessage("Algo salió mal, intente nuevamente");
       }
     } catch (error) {
-      setMessage("Failed, try again.");
+      setMessage("Algo salió mal, intente nuevamente");
     }
     setSubmitting(false);
   };
@@ -62,12 +59,12 @@ const NewsForm = () => {
         body
       );
       if (response.data.success) {
-        setMessage("Updated successfully.");
+        setMessage("Actualizado exitosamente");
       } else {
-        setMessage("Failed, try again.");
+        setMessage("Algo salió mal, intente nuevamente");
       }
     } catch (error) {
-      setMessage("Failed, try again.");
+      setMessage("Algo salió mal, intente nuevamente");
     }
     setSubmitting(false);
   };
@@ -140,93 +137,75 @@ const NewsForm = () => {
     >
       {({ isSubmitting, values, setFieldValue, errors }) => {
         return (
-          <Form className="form-container">
-            <div className="input-group">
-              <label htmlFor="title">Titulo</label>
-              <Field
-                type="text"
-                name="title"
-                className="input-field"
-                id="title"
-              />
-              {errors.title && (
-                <div className="error-message">{errors.title}</div>
-              )}
-            </div>
+          <Form className="form__container">
+            <Field
+              type="text"
+              name="title"
+              className="form__input"
+              id="title"
+              placeholder="Título"
+            />
+            <div className="form__message-validation">{errors.title}</div>
 
-            <div className="input-group">
-              <label htmlFor="title">Contenido</label>
-              <CKEditor
-                editor={ClassicEditor}
-                data={values.content}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
-                  setFieldValue("content", data);
-                }}
-                config={{
-                  cloudServices: {
-                    tokenUrl:
-                      "https://85122.cke-cs.com/token/dev/63f1e5122f7b89374a44f0ba134c7a670437bab84212188ac1b17d829d92",
-                    uploadUrl: "https://85122.cke-cs.com/easyimage/upload/",
-                  },
-                }}
-              />
-              {errors.content && (
-                <div className="error-message">{errors.content}</div>
-              )}
-            </div>
+            <CKEditor
+              editor={ClassicEditor}
+              data={values.content}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setFieldValue("content", data);
+              }}
+              config={{
+                placeholder: "Contenido",
+                cloudServices: {
+                  tokenUrl:
+                    "https://85122.cke-cs.com/token/dev/63f1e5122f7b89374a44f0ba134c7a670437bab84212188ac1b17d829d92",
+                  uploadUrl: "https://85122.cke-cs.com/easyimage/upload/",
+                },
+              }}
+            />
+            <div className="form__message-validation">{errors.content}</div>
 
-            <div className="input-group">
-              <label htmlFor="title">Categoría</label>
-              <Field
-                name="category"
-                as="select"
-                className="select-field"
-                children={[
-                  <option value="" disabled key={0}>
-                    Select category
-                  </option>,
-                ].concat(
-                  categories.map((category) => (
-                    <option value={category.id} key={category.id}>
-                      {category.name}
-                    </option>
-                  ))
-                )}
-              />
-              {errors.category && (
-                <div className="error-message">{errors.category}</div>
+            <Field
+              name="category"
+              as="select"
+              className="form__select"
+              children={[
+                <option value="" disabled key={0}>
+                  Select category
+                </option>,
+              ].concat(
+                categories.map((category) => (
+                  <option value={category.id} key={category.id}>
+                    {category.name}
+                  </option>
+                ))
               )}
-            </div>
+            />
+            <div className="form__message-validation">{errors.category}</div>
 
-            <div className="input-group">
-              <label htmlFor="title">Foto</label>
-              <div className="image-input">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => handleImageChange(e, setFieldValue)}
+            <label>
+              <input
+                className="form__image-input"
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleImageChange(e, setFieldValue)}
+              />
+
+              <div className="form__image-container">
+                <img
+                  src={values.image}
+                  alt="article"
+                  onError={(e) => {
+                    e.target.src =
+                      "https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
+                  }}
                 />
-
-                <div className="uploaded-image-container">
-                  <img
-                    className="uploaded-image"
-                    src={values.image}
-                    alt="article"
-                    onError={(e) => {
-                      e.target.src =
-                        "https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
-                    }}
-                  />
-                </div>
               </div>
-              {errors.image && (
-                <div className="error-message">{errors.image}</div>
-              )}
-            </div>
+            </label>
+            <div className="form__message-validation">{errors.image}</div>
 
             <button
-              className="submit-btn"
+              className="form__btn-primary"
               type="submit"
               disabled={isSubmitting}
             >
@@ -234,7 +213,9 @@ const NewsForm = () => {
             </button>
             <div
               className={
-                message.includes("Failed") ? "error-message" : "success-message"
+                message.includes("mal")
+                  ? "form__message-fail"
+                  : "form__message-success"
               }
             >
               {message}
