@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router';
+import {Get} from '../../Services/privateApiService'
 import "./organizationData.scss";
+
 
 const OrganizationData = (props) => {
 
     const [data, setData] = useState({})
-
-    const url = 'http://ongapi.alkemy.org/api/organization'
+    const [loading, setLoading] = useState(null)
 
     const getData = async () => {
 
         try {
-            const data = await fetch(url)
-            const res = await data.json()
-            setData(res.data)
+            const response = await Get('organization', '4')
+            setData(response.data)
+            setLoading(true)
             
         } catch (error) {
             console.log(error)
         }        
     }
+    
 
     useEffect(() => {
         
@@ -35,7 +37,7 @@ const OrganizationData = (props) => {
 
 
 
-    return (
+    return loading ? (
         <div className="container">
             <div className="card">
                 <figure>
@@ -54,6 +56,10 @@ const OrganizationData = (props) => {
             </div>
             
         </div>
+    ) : (
+            <div className='spinner'>
+                <h6>cargando...</h6>
+            </div>
     )
 }
 

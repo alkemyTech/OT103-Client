@@ -8,8 +8,7 @@
 .container{
     display: flex;
     justify-content: center;
-    height: 100vh;    
-    background-color: rgb(219, 211, 211);
+    height: 100vh;
     align-items: center;
     cursor: default;
 }
@@ -27,10 +26,6 @@
 .card:hover{
     box-shadow: 5px 5px 20px rgba(0,0,0,0.4);
 }
-
-// .card img{
-    
-// }
 
 .content {
     padding: 15px;
@@ -60,5 +55,21 @@
     background: #0a5c6b;
     color: #fff;
     cursor: pointer;
+}
+
+.spinner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.spinner h6{
+    font-size: 30px;
+}
+
+figure img{
+    width: 100%;
+    object-fit: cover;
 }
 
