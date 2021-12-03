@@ -62,3 +62,14 @@
     cursor: pointer;
 }
 
+.spinner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.spinner h6{
+    font-size: 30px;
+}
+
