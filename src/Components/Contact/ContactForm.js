@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-
+import '../../styles/components/formStyles.scss'
 const initialValues = {
   name: "",
   email: "",
@@ -56,8 +56,8 @@ function ContactForm() {
   return (
     <div>
       <h1> Formulario de contacto </h1>
-      <form onSubmit={formik.handleSubmit}>
-        <div className="form-control">
+      <form onSubmit={formik.handleSubmit} >
+        <div className="form-control ">
           <label htmlFor="name">Nombre</label>
           <br />
           <input
