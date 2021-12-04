@@ -18,16 +18,16 @@ export const ItemList = ({ data }) => {
     };
 
     return (
-        <td className="screen__items">
-            <div className="screen__text">
-                <h3 className="screen__title">{data.name}</h3>
-                <div className="screen__div-button">
+        <td className="table__items">
+            <div className="table__text">
+                <h3 className="table__title">{data.name}</h3>
+                <div className="table__div-button">
                     {
                      data.order ?
                          (<h5>Order: {data.order}</h5>)
                          : (<h5>No order</h5>)
                     }
-                    <div className="screen__buttons">
+                    <div className="table__buttons">
                         <Link to={`/backoffice/Slides/create/${data.id}`}>
                             <i className="fas fa-edit"></i>
                         </Link>
@@ -38,7 +38,7 @@ export const ItemList = ({ data }) => {
                 </div>
             </div>
             <img
-                className="screen__image"
+                className="table__image"
                 src={data.image}
                 alt={data.image}
             />
