@@ -117,7 +117,15 @@ const HomeForm = () => {
             >
               Enviar
             </button>
-            <div className="success-message">{message}</div>
+            <div
+              className={
+                message.includes("mal")
+                  ? "form__message-fail"
+                  : "form__message-success"
+              }
+            >
+              {message}
+            </div>
           </Form>
         );
       }}
