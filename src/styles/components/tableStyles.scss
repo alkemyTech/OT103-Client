@@ -19,7 +19,7 @@
         width: 90%;
     }
     &__image{
-        max-width: 40%;
+        max-width: 25%;
     }
     &__title{
         text-align: center;
@@ -48,8 +48,37 @@
     &__head-title{
         width: 70%;
     }
-    &__buttons{
+    &__buttons-box{
+        display: flex;
+        margin-bottom: 2vh;
+        justify-content: space-evenly;
         width: 40%;
+    }
+    &__button-table{
+        align-items: center;
+        border-radius: 5px;
+        border: none;
+        color: rgb(240, 240, 240);
+        display: flex;
+        height: 4vh;
+        justify-content: center;
+        transition: all .3s;
+        width: 5vw;
+    }
+}
+.edit-button{
+    background-color: rgb(70, 70, 236);
+    &:hover{
+        color: rgb(70, 70, 236);
+        background-color: rgb(240, 240, 240);
+    }
+}
+
+.delete-button{
+    background-color: rgb(216, 30, 30);
+    &:hover{
+        color: rgb(216, 30, 30);
+        background-color: rgb(240, 240, 240);
     }
 }
 
@@ -57,6 +86,7 @@
     .table{
         &__items{
             flex-direction: column;
+            width: 60%;
         }
         &__image{
             max-width: 100%;
@@ -65,10 +95,14 @@
 }
 
 @media (max-width: 750px){
-    .table__head-container{
-        width: 90%;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-bottom: 1vh;
-    }
-}
+    .table{
+        &__items{
+            width: 80%;
+        }
+        &__head-container{
+            width: 90%;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 1vh;
+        }
+}}

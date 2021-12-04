@@ -6,7 +6,7 @@ import { Delete } from '../../Services/privateApiService';
 export const ItemList = ({ data }) => {
     const [msg, setMsg] = useState('');
 
-    const handleDelete = async() => {
+    const handleDelete = async () => {
         try {
             const deleteData = await Delete('slides', data.id);
             setMsg(deleteData.data.message);
@@ -23,26 +23,29 @@ export const ItemList = ({ data }) => {
                 <h3 className="table__title">{data.name}</h3>
                 <div className="table__div-button">
                     {
-                     data.order ?
-                         (<h5>Order: {data.order}</h5>)
-                         : (<h5>No order</h5>)
+                        data.order ?
+                            (<h5>Order: {data.order}</h5>)
+                            : (<h5>No order</h5>)
                     }
-                    <div className="table__buttons">
-                        <Link to={`/backoffice/Slides/create/${data.id}`}>
+                    <div className="table__buttons-box">
+                        <Link
+                            className="table__button-table edit-button"
+                            to={`/backoffice/Slides/create/${data.id}`}
+                        >
                             <i className="fas fa-edit"></i>
                         </Link>
-                        <button onClick={handleDelete}>
-                            <i className="fas fa-trash-alt" onClick={handleDelete}></i>
+                        <button onClick={handleDelete} className="table__button-table delete-button">
+                            <i className="fas fa-trash-alt" onClick={handleDelete} />
                         </button>
                     </div>
                 </div>
             </div>
+            <h5 className="text-danger">{msg}</h5>
             <img
                 className="table__image"
                 src={data.image}
                 alt={data.image}
             />
-            <h5>{msg}</h5>
         </td>
     );
 };

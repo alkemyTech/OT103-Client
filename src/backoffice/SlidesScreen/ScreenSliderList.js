@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { mock } from './mock';
 import { ItemList } from './ItemList';
-import './screenslide.scss';
+import { mock } from './mock';
 
 export const ScreenSliderList = () => {
     return (
