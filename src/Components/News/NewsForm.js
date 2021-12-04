@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import axios from "axios";
+
+import { Get, Post, Put } from "../../Services/privateApiService";
 
 const NewsForm = () => {
   const [categories, setCategories] = useState([]);
@@ -24,11 +25,8 @@ const NewsForm = () => {
       deleted_at: "2021-11-23T19:19:56.825Z",
     };
     try {
-      const response = await axios.post(
-        "http://ongapi.alkemy.org/api/news",
-        body
-      );
-      if (response.data.success) {
+      const response = await Post("news", body);
+      if (response.success) {
         setMessage("Creado exitosamente");
       } else {
         setMessage("Algo salió mal, intente nuevamente");
@@ -54,11 +52,9 @@ const NewsForm = () => {
     }
 
     try {
-      const response = await axios.put(
-        `http://ongapi.alkemy.org/api/news/${id}`,
-        body
-      );
-      if (response.data.success) {
+      const response = await Put("news", id, body);
+      console.log(response);
+      if (response.success) {
         setMessage("Actualizado exitosamente");
       } else {
         setMessage("Algo salió mal, intente nuevamente");
@@ -72,16 +68,13 @@ const NewsForm = () => {
   //   load categories and existing article data if editting
   const loadApiData = useCallback(async () => {
     try {
-      const categories = await axios.get(
-        "http://ongapi.alkemy.org/api/categories"
-      );
-      setCategories(categories.data.data);
+      const categories = await Get("categories");
+      setCategories(categories.data);
       if (id) {
-        const newData = await axios.get(
-          `http://ongapi.alkemy.org/api/news/${id}`
-        );
-
-        setExistingNew(newData.data.data);
+        const newData = await Get("news", id);
+        if (newData.success) {
+          setExistingNew(newData.data);
+        }
       }
     } catch (error) {}
     setIsLoading(false);
@@ -104,9 +97,11 @@ const NewsForm = () => {
   }, []);
 
   return isLoading ? (
-    <div className="form-container">
+    <div className="form__container">
       <div>Loading...</div>
     </div>
+  ) : id && !existingNew.id ? (
+    <div className="form__container">Noticia no encontrada</div>
   ) : (
     <Formik
       validateOnChange={false}
@@ -171,7 +166,7 @@ const NewsForm = () => {
               className="form__select"
               children={[
                 <option value="" disabled key={0}>
-                  Select category
+                  Seleccionar categoría
                 </option>,
               ].concat(
                 categories.map((category) => (
