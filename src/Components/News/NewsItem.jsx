@@ -15,14 +15,20 @@ const NewsItem = ({ id, name, image, created_at, setNews }) => {
   };
 
   return (
-    <li className="card">
-      <img src={image} alt={name} className="small-img" />
-      <h3>{name}</h3>
-      <p>
-        {date} {time}
-      </p>
-      <Link to={`news/${id}`}>Editar</Link>
-      <button onClick={handleDelete}>Remover</button>
+    <li className="list__item">
+      <img className="list__item-image" src={image} alt={name} />
+      <div className="list__item-group">
+        <h3 className="list__item-title">{name}</h3>
+        <p className="list__item-datetime">
+          {date} {time}
+        </p>
+        <Link to={`news/${id}`} className="list__item-edit-link">
+          Editar
+        </Link>
+        <button onClick={handleDelete} className="list__item-remove-btn">
+          Remover
+        </button>
+      </div>
     </li>
   );
 };
