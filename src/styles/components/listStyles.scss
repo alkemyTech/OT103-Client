@@ -1,11 +1,19 @@
 @import "../variables.scss";
 
-.news-list {
+@mixin list-container {
   display: flex;
   align-items: center;
   width: 100%;
   flex-direction: column;
   padding: 20px;
+}
+
+.news-list {
+  @include list-container();
+}
+
+.activities-list {
+  @include list-container();
 }
 
 .header {
@@ -37,10 +45,15 @@
   display: flex;
   flex-direction: column;
   grid-gap: 10px;
-  gap: 10px;
+  gap: 20px;
 
   &__item {
     border: 1px solid black;
+
+    & h1 {
+      margin-top: 20px;
+      margin-left: 20px;
+    }
 
     &-title {
       margin: 0px;
@@ -54,8 +67,24 @@
     }
     &-image {
       max-width: 100%;
-      margin-left: auto;
     }
+    & img {
+      max-width: 100%;
+      margin-bottom: 8px;
+    }
+    &-description {
+      max-height: 150px;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    &-footer {
+      padding: 20px 10px;
+    }
+
     &-remove-btn {
       border: 2px solid $error-color;
       color: $error-color;
