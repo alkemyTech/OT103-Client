@@ -99,7 +99,6 @@ const SlidesForm = ({data}) => {
             ) : null }
             <label htmlFor="image">Imagen:</label>
             <input
-                className=""
                 type="file"
                 id="image"
                 name="image"
@@ -114,7 +113,7 @@ const SlidesForm = ({data}) => {
             />
             <div className="form__image-container">
             { imagePreview ? (
-                <img src={ imagePreview } className="" alt="..."/>
+                <img src={ imagePreview } alt="..."/>
             ) : null }
             { formik.touched.image && formik.errors.image ? (
                 <div className="error-msg">{ formik.errors.image }</div>
