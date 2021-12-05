@@ -5,9 +5,18 @@
     display:flex;
     &__carousel{
         width: 55vw;
+        @media (max-width: $breakpoint-tablet) {
+            width: 70vw;
+        }
     }
     &__welcomeMsj{
         width: 25vw;  
+        @media (max-width: $breakpoint-tablet) {
+            width: 70vw;
+        }
+        @media (max-width: $breakpoint-mobile) {
+            width: auto;
+        }
     }
     &__title{
         font-family: 'Bebas Neue', cursive;
@@ -17,6 +26,9 @@
     &__text{
         font-size:16px;
         margin:20px 30px 0px 0px;
+        @media (max-width: $breakpoint-tablet) {
+            font-size: 13px;
+        }
     }
     &__hr{
         color:$accent-color;
@@ -24,34 +36,11 @@
         padding: 10px 0px;
         margin:-20px 0px 0px 20px;
         opacity:1;
-    }
-}
-
-
-@media (max-width: $breakpoint-tablet) {
-    .container{
-    flex-direction:column;
-        &__carousel{
-            width: 70vw;
-        }
-        &__welcomeMsj{
-            width: 70vw;  
-        }
-        &__hr{
+        @media (max-width: $breakpoint-tablet) {
             width: 110px;
         }
-        &__text{
-            font-size: 13px;
-        }
-    }
-    
-}
-@media (max-width: $breakpoint-mobile) {
-    .container{
-        &__welcomeMsj{
-            width: auto;  
-        }
     }
 }
+
 
 
