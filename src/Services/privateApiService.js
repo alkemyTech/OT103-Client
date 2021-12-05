@@ -97,8 +97,4 @@ export const Patch = async (endPoint, id, body) => {
   } catch (error) {
     return { success: false, error };
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> dac86dcef038708c7efedf5dafb77447462c65f4
