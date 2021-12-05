@@ -67,3 +67,34 @@ export const Delete = async (endPoint, id) => {
     return { success: false, error };
   }
 };
+
+export const Post = async (endPoint, body) => {
+  const url = `${baseUrl}/${endPoint}`;
+
+  return axios
+    .post(url, body, {
+      headers: {
+        Authorization: `Bearer ${tempToken}`,
+      },
+    })
+    .then((res) => res)
+    .catch((err) => {
+      return { success: false, err };
+    });
+};
+
+export const Patch = async (endPoint, id, body) => {
+  const url = id ? `${baseUrl}/${endPoint}/${id}` : `${baseUrl}/${endPoint}`
+
+  try {
+    const response = await axios.patch(url, body, {
+      headers: {
+        Authorization: `Bearer ${tempToken}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    return { success: false, error };
+  }
+}
