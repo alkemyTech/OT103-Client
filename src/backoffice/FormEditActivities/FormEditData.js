@@ -1,14 +1,13 @@
 import React from 'react';
 import { Formik } from 'formik';
+import axios from 'axios';
 
 import InputImageFile from '../Components/Categories/InputImageFile';
 import useCategoriesForm from '../hooks/useCategoriesForm';
 import InputCkEditor from '../Components/Categories/InputCkEditor';
 import InputText from '../Components/Categories/InputText';
 import { validateCategoryForm } from '../schemas/categoryFormValidation';
-import { Post } from '../Services/publicApiService';
-import { Put } from '../Services/privateApiService';
-import './FormEditActivities/formedit.scss';
+import './formedit.scss';
 
 const initialValues = {
     name: '',
@@ -16,7 +15,7 @@ const initialValues = {
     image: ''
 }
 
-export const FormEditActivities = ({ data = initialValues, endPoint = "activities" }) => {
+export const FormEditData = ({ data = initialValues, linkApi = "http://ongapi.alkemy.org/api/activities" }) => {
     const { imageInputRef, imagePreview, fileReader } =
         useCategoriesForm(data);
 
@@ -30,7 +29,7 @@ export const FormEditActivities = ({ data = initialValues, endPoint = "activitie
             }
         } else {
             try {
-                const response = await Put(endPoint, data.id, values);
+                const response = Put(endPoint, data.id, values);
                 return response;
             } catch (error) {
                 console.log(error)
