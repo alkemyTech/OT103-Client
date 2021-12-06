@@ -6,11 +6,11 @@ const HomeCards = ({title, image}) => {
 
     return (
         <div className="card__home-dashboard my-1r txt-center w-18r">
-            <h5 className="card-title">{ title }</h5>
+            <h5>{ title }</h5>
             <div>
-                <img src={ image } className="card-img-top" alt="image"/>
+                <img src={ image }  alt="image"/>
             </div>
-            <div className="card-body">
+            <div >
                 <Link to={ "/" } className="card__btn" role="button">Ir</Link>
             </div>
 
