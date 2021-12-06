@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const URL = process.env.REACT_APP_API
-  ? process.env.REACT_APP_API
-  : process.env.local.REACT_APP_API_EXAMPLE;
+const URL = process.env.REACT_APP_API_SLIDES
 
 export const slidesGet = async (url) => {
   if (url) {
@@ -14,7 +12,7 @@ export const slidesGet = async (url) => {
     }
   } else {
     try {
-      const data = await axios.get(`${URL}/slides`);
+      const data = await axios.get(`${URL}`);
       return data;
     } catch (error) {
       console.log(error);
@@ -24,7 +22,7 @@ export const slidesGet = async (url) => {
 
 export const slidesPost = async (data) => {
   try {
-    const dataFetch = await axios.post(`${URL}/slides`, {
+    const dataFetch = await axios.post(`${URL}`, {
       name: data.values.name,
       description: data.values.description,
       order: data.values.order,
@@ -38,7 +36,7 @@ export const slidesPost = async (data) => {
 
 export const slidesPatch = async (data, id) => {
   try {
-    const dataFetch = await axios.put(`${URL}/slides/${id}`, {
+    const dataFetch = await axios.put(`${URL}/${id}`, {
       name: data.values.name,
       description: data.values.description,
       order: data.values.order,
