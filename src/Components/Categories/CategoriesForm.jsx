@@ -1,7 +1,6 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import { validateCategoryForm } from "../../schemas/categoryFormValidation";
-import "./CategoryForm.scss";
 import {
   modifyCategory,
   uploadCategory,

@@ -1,0 +1,12 @@
+@import "../../styles//variables.scss";
+
+.homeForm-images-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.homeForm-text {
+  color: $secondary-color;
+  margin-bottom: 10px;
+}
