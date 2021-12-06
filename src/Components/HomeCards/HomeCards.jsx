@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "../../utils.scss"
 import "./HomeCards.scss"
+import LazyLoadingImage from "../LazyLoadingImage/LazyLoadingImage";
 
 const HomeCards = ({title, image}) => {
 
@@ -8,12 +9,11 @@ const HomeCards = ({title, image}) => {
         <div className="card__home-dashboard my-1r txt-center w-18r">
             <h5>{ title }</h5>
             <div>
-                <img src={ image }  alt="image"/>
+                <LazyLoadingImage url={image}/>
             </div>
             <div >
                 <Link to={ "/" } className="card__btn" role="button">Ir</Link>
             </div>
-
         </div>
     )
 }
