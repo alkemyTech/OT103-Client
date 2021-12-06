@@ -85,7 +85,7 @@ const MembersEdit = () => {
                 {errors.description}
               </div>
             ) : null}
-            <label htmlFor="image">
+            <label htmlFor="image" className="img-label">
               <Field
                 className="input-field"
                 id="image"
