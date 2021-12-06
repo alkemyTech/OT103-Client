@@ -38,53 +38,55 @@
   flex-direction: column;
   grid-gap: 10px;
   gap: 10px;
-
   &__item {
     border: 1px solid black;
+  }
+}
+.item {
+  border: 1px solid black;
 
-    &-title {
-      margin: 0px;
-    }
-    &-datetime {
-      opacity: 0.4;
-    }
+  &__title {
+    margin: 0px;
+  }
+  &__datetime {
+    opacity: 0.4;
+  }
 
-    &-group {
-      padding: 20px;
-    }
-    &-image {
-      max-width: 100%;
-      margin-left: auto;
-    }
-    &-remove-btn {
-      border: 2px solid $error-color;
-      color: $error-color;
-      background-color: transparent;
-      padding: 10px;
+  &__group {
+    padding: 20px;
+  }
+  &__image {
+    max-width: 100%;
+    margin-left: auto;
+  }
+  &__remove-btn {
+    border: 2px solid $error-color;
+    color: $error-color;
+    background-color: transparent;
+    padding: 10px;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      color: $bg-primary-color;
+      background-color: $error-color;
       transition: background-color 0.2s ease-in-out;
-
-      &:hover {
-        color: $bg-primary-color;
-        background-color: $error-color;
-        transition: background-color 0.2s ease-in-out;
-      }
     }
+  }
 
-    &-edit-link {
-      text-decoration: none;
-      margin-right: 10px;
-      border-radius: 0px;
-      border: 2px solid #0d6efd;
-      color: #0d6efd;
-      background-color: transparent;
-      padding: 10px;
+  &__edit-link {
+    text-decoration: none;
+    margin-right: 10px;
+    border-radius: 0px;
+    border: 2px solid #0d6efd;
+    color: #0d6efd;
+    background-color: transparent;
+    padding: 10px;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      color: $bg-primary-color;
+      background-color: #0d6efd;
       transition: background-color 0.2s ease-in-out;
-
-      &:hover {
-        color: $bg-primary-color;
-        background-color: #0d6efd;
-        transition: background-color 0.2s ease-in-out;
-      }
     }
   }
 }

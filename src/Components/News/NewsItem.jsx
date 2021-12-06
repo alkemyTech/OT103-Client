@@ -16,16 +16,16 @@ const NewsItem = ({ id, name, image, created_at, setNews }) => {
 
   return (
     <li className="list__item">
-      <img className="list__item-image" src={image} alt={name} />
-      <div className="list__item-group">
-        <h3 className="list__item-title">{name}</h3>
-        <p className="list__item-datetime">
+      <img className="item__image" src={image} alt={name} />
+      <div className="item__group">
+        <h3 className="item__title">{name}</h3>
+        <p className="item__datetime">
           {date} {time}
         </p>
-        <Link to={`news/${id}`} className="list__item-edit-link">
+        <Link to={`news/${id}`} className="item__edit-link">
           Editar
         </Link>
-        <button onClick={handleDelete} className="list__item-remove-btn">
+        <button onClick={handleDelete} className="item__remove-btn">
           Remover
         </button>
       </div>
