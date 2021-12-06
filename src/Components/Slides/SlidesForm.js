@@ -5,13 +5,11 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import { validate } from "./helpers/slideValidations";
-import { Get } from "../../Services/privateApiService";
-import { slidesPatch, slidesPost } from "../../Services/serviceSlide/servicesSlide";
+import { slidesGet, slidesPatch, slidesPost } from "../../Services/serviceSlide/servicesSlide";
 import "./slidesForm.scss";
 import "../../styles/components/formStyles.scss"
 
 const id = 632;
-
 
 const SlidesForm = ({data}) => {
 
@@ -28,7 +26,7 @@ const SlidesForm = ({data}) => {
     };
 
     useEffect(() => {
-        Get("slides").then(r => setslides(r))
+        slidesGet().then(r => setslides(r))
     }, []);
 
     const formik = useFormik({
@@ -40,6 +38,7 @@ const SlidesForm = ({data}) => {
         },
         validate,
         onSubmit: (values) => {
+            console.log(slides)
             if (slides.findIndex((x) => x.id === Number(values.order)) > 0) {
                 formik.setFieldError("order", "El order debe ser unico.");
             } else {
