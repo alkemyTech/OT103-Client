@@ -6,9 +6,9 @@ const HomeCards = ({title, image}) => {
 
     return (
         <div className="card__home-dashboard my-1r txt-center w-18r">
-            <h5>{ title }</h5>
+            <h5 className="my-1r">{ title }</h5>
             <div>
-                <img src={ image }  alt="image"/>
+                <img src={ image }  alt="image" className="width-50"/>
             </div>
             <div >
                 <Link to={ "/" } className="card__btn" role="button">Ir</Link>
