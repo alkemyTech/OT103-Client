@@ -11,8 +11,7 @@ const HomeCards = ({title, image}) => {
                 <img src={ image } className="card-img-top" alt="image"/>
             </div>
             <div className="card-body">
-                <Link to={ "/" } className="btn-card" role="button"><span
-                    className="text">Ir</span><span>Ir</span></Link>
+                <Link to={ "/" } className="card__btn" role="button">Ir</Link>
             </div>
 
         </div>
