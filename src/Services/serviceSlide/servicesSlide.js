@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = process.env.REACT_APP_API ? process.env.REACT_APP_API : process.env.example.REACT_APP_API_EXAMPLE;
+const URL = process.env.REACT_APP_API ? process.env.REACT_APP_API : process.env.local.REACT_APP_API_EXAMPLE;
 
 export const slidesGet = async (url) => {
   if (url) {
