@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-
 import { Get } from "../Services/publicApiService";
 import { SlideComponent } from "./SlideComponent";
 
