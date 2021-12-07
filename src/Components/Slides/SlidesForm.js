@@ -39,7 +39,6 @@ const SlidesForm = ({ data }) => {
     },
     validate,
     onSubmit: (values) => {
-      console.log(slides);
       if (slides.findIndex((x) => x.id === Number(values.order)) > 0) {
         formik.setFieldError("order", "El order debe ser unico.");
       } else {
