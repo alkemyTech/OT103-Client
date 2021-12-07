@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 //import { getAllActivities } from "../../Services/public/activitiesApi";
 import ActivityCard from "./ActivityCard";
-import "./Activities.scss";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 import { Get } from "../../Services/privateApiService";
 
@@ -10,19 +9,17 @@ const ActivitiesList = () => {
 
   const getData = async () => {
     try {
-      const response = await Get('activities')
-      setActivities(response.data)
-      
+      const response = await Get("activities");
+      setActivities(response.data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    
-  } 
+  };
 
   useEffect(() => {
-      getData()
-      // .then((res) => setActivities(res))
-      // .catch((err) => console.log(err));
+    getData();
+    // .then((res) => setActivities(res))
+    // .catch((err) => console.log(err));
   }, []);
 
   return (
