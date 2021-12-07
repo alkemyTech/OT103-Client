@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
+import { Get } from "../Services/publicApiService";
 import { slidesGet } from "../Services/serviceSlide/servicesSlide";
 import { SlideComponent } from "./SlideComponent";
 
@@ -12,16 +13,11 @@ const settings = {
   slidesToScroll: 1,
 };
 
-const initialURL = process.env.REACT_APP_API;
-
-export const SliderCarouselComponent = ({
-  URL = `${initialURL}/slides`,
-  arrayData,
-}) => {
+export const SliderCarouselComponent = ({ URL = "slides", arrayData }) => {
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
-      const dataGet = await slidesGet(URL);
+      const dataGet = await Get(URL);
       const {
         data: { data },
       } = dataGet;
