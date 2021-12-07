@@ -1,11 +1,12 @@
-import { combineReducers, createStore } from "redux";
-
+import { configureStore } from "@reduxjs/toolkit";
+import thunk from "redux-thunk";
 // Put reducers here
-const reducers = combineReducers({});
+const reducers = {};
 
-const store = createStore(
-  reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = configureStore({
+  reducer: reducers,
+  middleware: [thunk],
+  devTools: true,
+});
 
 export default store;
