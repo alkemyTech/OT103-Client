@@ -7,10 +7,10 @@ export const AboutMain = ({
 }) => {
   return (
     <>
-      <div className="title">
+      <div className="about_title_container">
         <Title title={"Nosotros"} image={logo} />
       </div>
-      <div className="text-container">
+      <div className="about_text_container">
         <h3 className="container__title">Sobre Nosotros:</h3>
 
         <div className="container__text">{about}</div>

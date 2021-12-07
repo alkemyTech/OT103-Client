@@ -1,4 +1,4 @@
-.text-container {
+.about_text_container {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -6,11 +6,11 @@
   margin: 2rem;
 }
 
-.title {
+.about_title_container {
   margin: 0.4rem;
   text-align: center;
 }
 
-img {
+.about_title_container img {
   width: 17%;
 }
