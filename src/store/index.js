@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
+import { membersReducer } from "./reducers/membersReducers";
 // Put reducers here
-const reducers = {};
+const reducers = {
+  members: membersReducer,
+};
 
 const store = configureStore({
   reducer: reducers,
