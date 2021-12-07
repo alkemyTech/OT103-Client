@@ -40,10 +40,29 @@ function App() {
           <Route exact path="/actividades/:id" component={ActivityInfo} />
           <Route path="/backoffice" exact component={HomeDashboard} />
           <Route exact path="/create-activity" component={ActivitiesForm} />
+          <Route
+            exact
+            path="/create-category/mock"
+            render={() => (
+              <CategoriesForm
+                category={{
+                  id: 1172,
+                  name: "testeo mock",
+                  description: "<h1>testeo mockkkk</h1>",
+                  image:
+                    "https://static.vecteezy.com/packs/media/components/global/search-explore-nav/img/vectors/term-bg-1-666de2d941529c25aa511dc18d727160.jpg",
+                }}
+              />
+            )}
+          />
           <Route exact path="/create-category" component={CategoriesForm} />
           <Route exact path="/create-news" component={NewsForm} />
           <Route exact path="/backoffice/Slides" component={ScreenSliderList} />
-          <Route exact path="/backoffice/Slides/create" component={SlidesForm} />
+          <Route
+            exact
+            path="/backoffice/Slides/create"
+            component={SlidesForm}
+          />
           <Route
             exact
             path="/backoffice/organization/edit"
@@ -81,7 +100,7 @@ function App() {
           <Route exact path="/backoffice/slides" component={SlidesForm} />
           <Route exact path="/contact-form" component={ContactForm} />
           <Route exact path="/register-form" component={RegisterForm} />
-          <Route exact path="/login-form" component={LoginForm} /> 
+          <Route exact path="/login-form" component={LoginForm} />
           <Route
             exact
             path="/backoffice/organization"
