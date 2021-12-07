@@ -1,8 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { Get } from "../Services/publicApiService";
-import { slidesGet } from "../Services/serviceSlide/servicesSlide";
 import { SlideComponent } from "./SlideComponent";
 
 const settings = {

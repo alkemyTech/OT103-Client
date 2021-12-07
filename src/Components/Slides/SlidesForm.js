@@ -30,33 +30,6 @@ const SlidesForm = ({ data }) => {
     Get().then((r) => setslides(r));
   }, []);
 
-<<<<<<< HEAD
-    const formik = useFormik({
-        initialValues: {
-            name: "",
-            description: "",
-            order: "",
-            image: "",
-        },
-        validate,
-        onSubmit: (values) => {
-            if (slides.findIndex((x) => x.id === Number(values.order)) > 0) {
-                formik.setFieldError("order", "El order debe ser unico.");
-            } else {
-                if (!data) {
-                    slidesPost(formik)
-                        .then(({ status }) => alert(JSON.stringify(`Status: ${status}, POST`)))
-                        .catch((err) => console.log(err));
-                    formik.resetForm();
-                } else {
-                    slidesPatch(formik, id)
-                        .then(({ status }) => alert(JSON.stringify(`Status: ${status}, PUT`)))
-                        .catch((err) => console.log(err));
-                }
-            }
-        },
-    });
-=======
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -87,7 +60,6 @@ const SlidesForm = ({ data }) => {
       }
     },
   });
->>>>>>> OT103-90
 
   return (
     <form className="form__container" onSubmit={formik.handleSubmit}>
