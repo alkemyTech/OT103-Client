@@ -5,14 +5,14 @@ const URL = process.env.REACT_APP_API_SLIDES
 export const slidesGet = async (url) => {
   if (url) {
     try {
-      const data = await axios.get(url);
+      const { data } = await axios.get(url);
       return data;
     } catch (error) {
       console.log(error);
     }
   } else {
     try {
-      const data = await axios.get(`${URL}`);
+      const { data } = await axios.get(`${URL}`);
       return data;
     } catch (error) {
       console.log(error);
