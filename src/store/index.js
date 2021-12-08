@@ -1,7 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
+
+import activitiesReducer from "./slices/activitiesSlice";
 // Put reducers here
-const reducers = {};
+const reducers = {
+  activitiesData: activitiesReducer,
+};
 
 const store = configureStore({
   reducer: reducers,
