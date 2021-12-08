@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-//import { getAllActivities } from "../../Services/public/activitiesApi";
 import ActivityCard from "./ActivityCard";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 import { Get } from "../../Services/privateApiService";
+import "../../styles/components/listStyles.scss";
 
 const ActivitiesList = () => {
   const [activities, setActivities] = useState([]);
@@ -18,12 +18,10 @@ const ActivitiesList = () => {
 
   useEffect(() => {
     getData();
-    // .then((res) => setActivities(res))
-    // .catch((err) => console.log(err));
   }, []);
 
   return (
-    <div className="activities">
+    <div className="activities-list">
       <h1>Listado Actividades</h1>
       <ul className="list">
         {activities.length > 0 ? (
