@@ -1,32 +1,132 @@
-import React, { useState } from 'react';
-import '../FormStyles.css';
+import { useHistory, useParams } from "react-router-dom";
+import { Get, Post } from "../../Services/publicApiService";
+import { Put } from "../../Services/privateApiService";
+import * as Yup from "yup";
+import { Field, Form, Formik } from "formik";
+import { useEffect, useState } from "react";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const TestimonialForm = () => {
-    const [initialValues, setInitialValues] = useState({
-       name: '',
-       description: '' 
-    });
 
-    const handleChange = (e) => {
-        if(e.target.name === 'name'){
-            setInitialValues({...initialValues, name: e.target.value})
-        } if(e.target.name === 'description'){
-            setInitialValues({...initialValues, description: e.target.value})
+    const {push} = useHistory();
+
+
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [image, setImage] = useState("");
+    const [create, setCreate] = useState(true);
+
+    const {id} = useParams();
+
+    const submitForm = async (values) => {
+
+        if (create) {
+            try {
+                const response = await Post(process.env.REACT_APP_API_TESTIMONIALS, values)
+                return alert(response.message)
+            } catch (error) {
+                console.log(error)
+            }
+        } else {
+            try {
+                const response = await Put(process.env.REACT_APP_API_TESTIMONIALS, id, values)
+                return alert(response.message)
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(initialValues);
+    const getData = async () => {
+        if (id) {
+            try {
+                await Get(process.env.REACT_APP_API_TESTIMONIALS, id)
+                    .then(res => {
+                        const {data: {name, description, image}} = res
+                        setName(name);
+                        setDescription(description)
+                        setImage(image);
+                        setCreate(false);
+                    })
+            } catch (error) {
+                alert(error)
+            }
+        } else {
+            alert('Testimonio inexistente');
+            push(`/${process.env.REACT_APP_API_TESTIMONIALS}/create`);
+        }
+    }
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+    const ErrorSchema = Yup.object().shape({
+        name: Yup.string().required("Name is required.").min(4, "Name is too short"),
+        description:  Yup.string().required("Description is required."),
+        image: Yup.string().required("Photo is required.")
+    })
+
+    const handleChange = (e, propsFormik) => {
+        if (e.currentTarget.files && e.currentTarget.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                propsFormik.setFieldValue("image", e.target.result);
+            }
+            reader.readAsDataURL(e.currentTarget.files[0]);
+        }
     }
 
     return (
-        <form className="form-container" onSubmit={handleSubmit}>
-            <input className="input-field" type="text" name="name" value={initialValues.name} onChange={handleChange} placeholder="Testimonial Title"></input>
-            <input className="input-field" type="text" name="description" value={initialValues.description} onChange={handleChange} placeholder="Testimonial description"></input>
-            <button className="submit-btn" type="submit">Send</button>
-        </form>
+        <div>
+            <Formik initialValues={ {name, description, image} }
+                    onSubmit={ (values => {
+                        submitForm(values)
+                    }) }
+                    validationSchema={ ErrorSchema }
+                    enableReinitialize={ true }
+            >
+                {
+                    (props) => {
+                        return (
+                            <Form className="form__user">
+                                <div className="form__container">
+                                    <h3 className="txt-center">Testimonial Form</h3>
+                                    <label>Name: </label>
+                                    <Field name={ 'name' } type={ 'text' } className="form__input"/>
+                                    <small className="form__message-validation">{ props.errors.name }</small>
+                                    <label>Description: </label>
+                                    <CKEditor
+                                        name={ "description" }
+                                        editor={ ClassicEditor }
+                                        data={ description }
+                                        onChange={ (event, editor) => {
+                                            const data = editor.getData();
+                                            setDescription(data)
+                                        } }
+                                    />
+                                    <small  className="form__message-validation">{props.errors.description}</small>
+                                    <label>Image: </label>
+                                    <input
+                                        type="file"
+                                        name="image"
+                                        accept="image/png,image/jpeg"
+                                        onChange={ (event) => {
+                                            handleChange(event, props)
+                                        } }
+                                    />
+                                    <small className="form__message-validation">{ props.errors.image }</small>
+                                    <button type={ 'submit' }
+                                            disabled={ !props.isValid } className="form__btn-primary mx-auto"> Send
+                                    </button>
+                                </div>
+                            </Form>
+                        )
+                    }
+                }
+            </Formik>
+        </div>
     );
 }
- 
 export default TestimonialForm;
