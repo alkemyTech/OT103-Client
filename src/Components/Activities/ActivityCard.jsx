@@ -21,7 +21,7 @@ const ActivityCard = ({ activity }) => {
         ></div>
       </div>
       <footer className="item__footer">
-        <Link to={`/actividades/${id}`} className="list__item-edit-link ">
+        <Link to={`/actividades/${id}`} className="item__edit-link ">
           Mas info...
         </Link>
       </footer>
