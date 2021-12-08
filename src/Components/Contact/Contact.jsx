@@ -16,7 +16,7 @@ const Contact = () => {
   }, []);
 
   return (
-    <div className="c-container">
+    <div className="contact__container">
       <Title title="Contacto" />
       <div>
         <div>
