@@ -3,6 +3,18 @@ import { Post } from "../../Services/publicApiService";
 import { Get } from "../../Services/privateApiService";
 
 // ASYNC THUNK FUNCTIONS
+/**
+ * Async thunk action that validates user authenticity
+ * @author Julian Kominovic
+ * @function
+ * @name validateAuth
+ * @async
+ * @param {Object} userData - User email and password passed as an object
+ * @param {string} userData.email - User email
+ * @param {string} userData.password - User password
+ * @returns {import("@reduxjs/toolkit").AsyncThunk} Async thunk action to dispatch
+ *
+ */
 const validateAuth = createAsyncThunk("auth/validateAuth", async (userData) => {
   const response = await Post("login", userData).catch((err) =>
     console.log(err)
@@ -10,11 +22,33 @@ const validateAuth = createAsyncThunk("auth/validateAuth", async (userData) => {
   return response;
 });
 
+/**
+ * Async thunk action that get user info if it is a token saved in LocalStorage
+ * @author Julian Kominovic
+ * @function
+ * @name getUserInfo
+ * @async
+ * @returns {import("@reduxjs/toolkit").AsyncThunk} Async thunk action to dispatch
+ *
+ */
 const getUserInfo = createAsyncThunk("auth/getUserInfo", async () => {
   const response = await Get("auth/me").catch((err) => console.log(err));
   return response;
 });
 
+/**
+ * Async thunk action that registers a new user
+ * @author Julian Kominovic
+ * @function
+ * @name registerUser
+ * @async
+ * @param {Object} userData - User email, name and password passed as an object
+ * @param {string} userData.email - User email
+ * @param {String} userData.name - User name
+ * @param {string} userData.password - User password
+ * @returns {import("@reduxjs/toolkit").AsyncThunk} Async thunk action to dispatch
+ *
+ */
 const registerUser = createAsyncThunk(
   "auth/register",
   async (registrationData) => {
