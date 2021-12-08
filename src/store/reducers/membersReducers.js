@@ -13,7 +13,7 @@ export const membersReducer = (state = initialState, { type, payload }) => {
     case types.MEMBERS_LIST:
       return{
         ...state,
-        members: [payload],
+        members: payload,
       };
     case types.MEMBERS_ERROR:
       return{
