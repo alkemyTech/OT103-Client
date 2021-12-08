@@ -23,14 +23,14 @@ const TestimonialForm = () => {
 
         if (create) {
             try {
-                const response = await Post('testimonials', values)
+                const response = await Post(process.env.REACT_APP_API_TESTIMONIALS, values)
                 return alert(response.message)
             } catch (error) {
                 console.log(error)
             }
         } else {
             try {
-                const response = await Put('testimonials', id, values)
+                const response = await Put(process.env.REACT_APP_API_TESTIMONIALS, id, values)
                 return alert(response.message)
             } catch (error) {
                 console.log(error)
@@ -41,7 +41,7 @@ const TestimonialForm = () => {
     const getData = async () => {
         if (id) {
             try {
-                await Get("testimonials", id)
+                await Get(process.env.REACT_APP_API_TESTIMONIALS, id)
                     .then(res => {
                         const {data: {name, description, image}} = res
                         setName(name);
@@ -54,7 +54,7 @@ const TestimonialForm = () => {
             }
         } else {
             alert('Testimonio inexistente');
-            push('/testimonials/create');
+            push(`/${process.env.REACT_APP_API_TESTIMONIALS}/create`);
         }
     }
 
