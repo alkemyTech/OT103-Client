@@ -4,7 +4,7 @@ import LoadingSpinner from "../../Spinner/LoadingSpinner";
 import apiDateToText from "../../../helpers/apiDateToText";
 import { Title } from "../../Title/Title";
 import { Get } from "../../../Services/privateApiService";
-import "../../../styles/components/detailsStyles.scss";
+
 /*
 RECEIVES => empty
 
