@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router';
 import {Get} from '../../Services/privateApiService'
-import "./organizationData.scss";
+import "./organizationData.scss"
+//import '../../styles/components/cardStyles.scss'
 
 
 const OrganizationData = (props) => {
