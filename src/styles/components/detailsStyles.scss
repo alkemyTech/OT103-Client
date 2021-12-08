@@ -10,11 +10,11 @@
   }
 
   border: 1px solid black;
-  & img {
+  & div img {
     max-width: 100%;
     margin-bottom: 16px;
   }
-  & h1 {
+  & div h1 {
     margin-bottom: 8px;
   }
   &__datetime {
