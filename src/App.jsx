@@ -30,6 +30,7 @@ import Home from "./Home/Home";
 import HomeDashboard from "./Components/HomeDashboard/HomeDashboard";
 import OrganizationData from "./backoffice/Organization/OrganizationData";
 import Members from "./Components/About/Members";
+import  AlertConfirmation  from "./Services/alerts/AlertConfirmation";
 
 function App() {
   return (

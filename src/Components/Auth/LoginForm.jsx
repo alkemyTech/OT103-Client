@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import '../../styles/components/formStyles.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+//import { alertInformation } from '../../Services/alerts/AlertConfirmation';
+
 
 const LoginForm = () => {
     const [initialValues, setInitialValues] = useState({
         email: '',
         password: ''
     });
+    
+
+   
+
+    
 
     const [formEnviado, setFormEnviado] = useState(false)
 
@@ -106,7 +113,22 @@ const LoginForm = () => {
                     )}/>
                         
                         
-                    <button className="form__btn-primary" type="submit">Log In</button>
+                    <button
+                        className="form__btn-primary"
+                        type="submit"
+                        
+                    >
+                        Log In
+                    </button>
+                    {/* <button
+                        className="form__btn-primary"
+                        type="submit"
+                        onClick={()=>alertInformation()}
+                        
+                    >
+                        Probar alerta
+                    </button> */}
+                    
                     {
                         formEnviado && <p className="form__message-success">Log in successfull</p>
                     }
