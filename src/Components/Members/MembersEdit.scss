@@ -1,54 +1,3 @@
-<<<<<<< HEAD
-@import "../../styles//variables.scss";
-
-.form {
-  &__members-container {
-    width: 70%;
-    background-color: $bg-primary-color;
-    border: 1px solid $primary-color;
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  &__embers-input {
-    margin: 0.7rem;
-  }
-
-  &__input[type="file"] {
-    border: 0;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute !important;
-    white-space: nowrap;
-    width: 1px;
-  }
-
-  &__members-label {
-    margin: 2rem auto;
-    width: 30%;
-    cursor: pointer;
-    color: $bg-primary-color;
-    display: inline-block;
-    background: #313839;
-    font-size: 16px;
-    padding: 8px 20px;
-    transition: 0.15s;
-    border: none;
-    text-align: center;
-    &:hover {
-      background: #748185;
-      transition: 0.15s;
-    }
-  }
-}
-=======
 // @import "../../styles//variables.scss";
 // .form {
 //   &__container {
@@ -92,4 +41,3 @@
 //   background: #748185;
 //   transition: 0.15s;
 // }
->>>>>>> 1a689d12bf8b99d4e8e35037a4f5f5cede28cb5f
