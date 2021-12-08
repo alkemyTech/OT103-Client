@@ -8,7 +8,7 @@ const NewsList = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    Get("news")
+    Get(process.env.REACT_APP_API_NEWS)
       .then((res) => setNews(res.data))
       .catch((err) => console.log(err));
   }, []);

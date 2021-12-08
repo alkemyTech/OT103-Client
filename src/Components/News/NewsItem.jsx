@@ -7,7 +7,7 @@ const NewsItem = ({ id, name, image, created_at, setNews }) => {
   const { date, time } = apiDateToText(created_at);
 
   const handleDelete = () => {
-    Delete("news", id)
+    Delete(process.env.REACT_APP_API_NEWS, id)
       .then((res) => {
         setNews((prev) => prev.filter((news) => news.id !== id));
       })
