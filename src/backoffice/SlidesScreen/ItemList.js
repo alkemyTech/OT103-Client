@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { alertError } from '../../Services/alerts/Alerts';
 import { Delete } from '../../Services/privateApiService';
 
 
@@ -11,6 +12,7 @@ export const ItemList = ({ data }) => {
             return deleteData.data;
         } catch (error) {
             console.log(error);
+            alertError('Esta publicación no existe')
         }
     };
 
