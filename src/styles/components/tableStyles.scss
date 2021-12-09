@@ -7,8 +7,7 @@
         padding-top: 1vh;
     }
     &__items{
-        background-color: rgb(240, 240, 240);
-        border-radius: 3px;
+        background-color: #eeee;
         border: 1px solid rgba(0, 0, 0, 0.63);
         display: flex;
         // flex-direction: column;
@@ -16,12 +15,17 @@
         margin-bottom: 2vh;
         margin-left: auto;
         margin-right: auto;
+        transition: all .3s;
         width: 90%;
+        &:hover{
+            box-shadow: 5px 5px 20px rgba(19, 19, 19, 0.5);
+        }
     }
     &__image{
         max-width: 25%;
     }
     &__title{
+        height: 20%;
         text-align: center;
     }
     &__text{
@@ -30,6 +34,7 @@
     &__div-button{
         display: flex;
         align-items: center;
+        height: 80%;
         justify-content: space-between;
         padding-left: 2vh;
         padding-right: 2vh;
@@ -37,13 +42,14 @@
     &__create-button{
         align-self: flex-start;
         color: rgb(0, 197, 181);
-        text-decoration: none;
         margin: auto;
+        text-decoration: none;
         width: 10vw;
     }
     &__head-container{
-        width: 50%;
+        margin-bottom: 2%;
         display: flex;
+        width: 50%;
     }
     &__head-title{
         width: 70%;
@@ -52,33 +58,21 @@
         display: flex;
         margin-bottom: 2vh;
         justify-content: space-evenly;
-        width: 40%;
-    }
-    &__button-table{
-        align-items: center;
-        border-radius: 5px;
-        border: none;
-        color: rgb(240, 240, 240);
-        display: flex;
-        height: 4vh;
-        justify-content: center;
-        transition: all .3s;
-        width: 5vw;
+        width: 50%;
     }
 }
 .edit-button{
-    background-color: rgb(70, 70, 236);
+    text-decoration: none;
     &:hover{
-        color: rgb(70, 70, 236);
-        background-color: rgb(240, 240, 240);
+        color: rgb(240, 240, 240);
+        background-color: rgb(56, 93, 255);
     }
 }
 
 .delete-button{
-    background-color: rgb(216, 30, 30);
     &:hover{
-        color: rgb(216, 30, 30);
-        background-color: rgb(240, 240, 240);
+        color: rgb(240, 240, 240);
+        background-color: rgb(216, 30, 30);
     }
 }
 
