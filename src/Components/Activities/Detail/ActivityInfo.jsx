@@ -5,6 +5,7 @@ import LoadingSpinner from "../../Spinner/LoadingSpinner";
 import apiDateToText from "../../../helpers/apiDateToText";
 import { Title } from "../../Title/Title";
 import { Get } from "../../../Services/privateApiService";
+import { alertError } from "../../../Services/alerts/Alerts";
 
 /*
 RECEIVES => empty
@@ -31,7 +32,7 @@ const ActivityInfo = () => {
         const response = await Get("activities", id);
         setCurrentActivity(response.data);
       } catch (error) {
-        console.log(error);
+        alertError(error);
       }
     };
     // .then((res) => setCurrentActivity(res.data))
