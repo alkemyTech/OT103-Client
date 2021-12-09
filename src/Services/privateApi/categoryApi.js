@@ -66,7 +66,6 @@ const uploadCategory = (categoryObject) => {
       .then(() => {
         Post('categories', categoryObject)
           .then((res) => {
-            console.log(res);
             if (res.status === 200) {
               resolve(res.data.message);
             } else {
