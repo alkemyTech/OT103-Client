@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../styles/components/formStyles.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-//import { alertInformation } from '../../Services/alerts/Alerts';
+//import { alertConfirmation } from '../../Services/alerts/Alerts';
 
 
 const LoginForm = () => {
@@ -123,7 +123,7 @@ const LoginForm = () => {
                     {/* <button
                         className="form__btn-primary"
                         type="submit"
-                        onClick={()=>alertInformation()}
+                        onClick={()=>alertConfirmation('','peticion realiada cone zto')}
                         
                     >
                         Probar alerta
