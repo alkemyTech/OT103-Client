@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router';
 import {Get} from '../../Services/privateApiService'
 import "./organizationData.scss"
+import { alertError } from '../../Services/alerts/Alerts';
 //import '../../styles/components/cardStyles.scss'
 
 
@@ -13,7 +14,7 @@ const OrganizationData = (props) => {
     const getData = async () => {
 
         try {
-            const response = await Get('organization', '4')
+            const response = await Get(process.env.REACT_APP_API_ORGANIZATION_LIST, '4')
             setData(response.data)
             setLoading(true)
             

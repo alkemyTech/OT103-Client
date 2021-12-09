@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../styles/components/formStyles.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-//import { alertInformation } from '../../Services/alerts/AlertConfirmation';
+//import { alertInformation } from '../../Services/alerts/Alerts';
 
 
 const LoginForm = () => {
