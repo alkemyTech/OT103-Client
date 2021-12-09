@@ -132,11 +132,10 @@ const MembersEdit = () => {
                 }}
               />
             </div>
-            {errors.description && touched.description ? (
-              <div className="form__message-validation">
-                {errors.description}
-              </div>
+            {errors.name && touched.name ? (
+              <div className="form__message-validation">{errors.name}</div>
             ) : null}
+
             <input
               type="file"
               name="image"
