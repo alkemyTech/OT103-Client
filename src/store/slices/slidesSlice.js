@@ -23,7 +23,7 @@ const slice = createSlice({
     reducers: {},
     extraReducers(builder) {
         builder
-            .addCase(fetchSlides.pending, (state, action) => {
+            .addCase(fetchSlides.pending, (state) => {
                 state.loading = true;
             })
             .addCase(fetchSlides.fulfilled, (state, action) => {
@@ -34,6 +34,7 @@ const slice = createSlice({
                 state.loading = false;
                 state.error = action.payload;
             });
+
     },
 });
 export default slice.reducer;
