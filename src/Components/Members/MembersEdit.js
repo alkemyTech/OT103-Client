@@ -45,7 +45,7 @@ const MembersEdit = () => {
 
   const getMember = async () => {
     try {
-      await Get(process.env.REACT_APP_API_MEMBERS, id).then((res) => {
+      await Get("members", id).then((res) => {
         const {
           data: { name, description, image, facebookUrl, linkedinUrl },
         } = res;
@@ -62,7 +62,7 @@ const MembersEdit = () => {
 
   const editForm = async (values) => {
     try {
-      const response = await Put(process.env.REACT_APP_API_MEMBERS, id, values);
+      const response = await Put("members", id, values);
       return console.log(response);
     } catch (err) {
       return alert(err);
