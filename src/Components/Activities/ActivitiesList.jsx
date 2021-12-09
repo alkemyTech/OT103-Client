@@ -6,7 +6,7 @@ import LoadingSpinner from "../Spinner/LoadingSpinner";
 import { fetchActivities } from "../../store/slices/activitiesSlice";
 
 const ActivitiesList = () => {
-  const { activitiesReducer } = useSelector((state) => state);
+  const { activities } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 
@@ -18,8 +18,8 @@ const ActivitiesList = () => {
     <div className="activities">
       <h1>Listado Actividades</h1>
       <ul className="list">
-        {activitiesReducer.data.length > 0 ? (
-          activitiesReducer.data.map((activity) => {
+        {activities.data.length > 0 ? (
+          activities.data.map((activity) => {
             return <ActivityCard key={activity.id} activity={activity} />;
           })
         ) : (
