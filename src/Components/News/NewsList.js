@@ -2,15 +2,23 @@ import React, { useState, useEffect } from "react";
 import NewsItem from "./NewsItem";
 import { Link } from "react-router-dom";
 import { Get } from "../../Services/privateApiService";
+
 import "../../styles/components/listStyles.scss";
+import { alertError } from "../../Services/alerts/Alerts";
 
 const NewsList = () => {
   const [news, setNews] = useState([]);
 
+  const fetchNews = async () => {
+    const response = await Get("news");
+    if (response.success) {
+      setNews(response.data);
+    } else {
+      alertError("Algo salio mal, intente nuevamente.");
+    }
+  };
   useEffect(() => {
-    Get("news")
-      .then((res) => setNews(res.data))
-      .catch((err) => console.log(err));
+    fetchNews();
   }, []);
 
   return (
