@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Get } from "../../Services/privateApiService";
 import "../../styles/components/listStyles.scss";
 import LoaderComponent from "../Loader/Loader";
+import { alertError } from "../../Services/alerts/Alerts";
 
 const NewsList = () => {
   const [news, setNews] = useState([]);
@@ -15,7 +16,7 @@ const NewsList = () => {
         setLoading(false);
         setNews(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alertError(err));
   }, []);
 
   return (
@@ -27,11 +28,11 @@ const NewsList = () => {
         </Link>
       </header>
       <ul className="list">
-        {loading ? (
+        {loading && (
           <div className="m-auto">
             <LoaderComponent />
           </div>
-        ) : null}
+        )}
         {news.length > 0 ? (
           news.map((element) => {
             return <NewsItem {...element} key={element.id} setNews={setNews} />;
