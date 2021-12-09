@@ -1,10 +1,10 @@
 import Swal from "sweetalert2";
 //import '../../styles/variables.scss'
 
-export const alertConfirmation = () => {
+export const alertConfirmation = (textConfirmation) => {
   
   Swal.fire({
-    title: '¿Estás seguro?',    
+    title: `¿Estás seguro que deseas ${textConfirmation}?`,    
     type: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
@@ -12,11 +12,11 @@ export const alertConfirmation = () => {
     cancelButtonText: 'Cancelar',
     confirmButtonText: 'Confirmar'
   }).then((result) => {
-    console.log(result)
+    
     if (result.value === true) {
       Swal.fire(
         'Confirmado!',
-        '',
+        ``,
         'success',
         
       )
@@ -24,20 +24,19 @@ export const alertConfirmation = () => {
   })
 }
 
-export const alertError = () => {
+export const alertError = (textError) => {
   
   Swal.fire({
     type: 'error',
     title: 'Oops...',
-    text: 'Algo anduvo mal!',
+    text: textError,
   })
 }
-export const alertInformation = () => {
-  
+export const alertInformation = (textInformation) => {
   Swal.fire({
     type: 'info',
     title: 'Información',
-    text: 'Información sobre determinada sección',
+    text: textInformation,
   })
 }
   

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../styles/components/formStyles.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-//import { alertInformation } from '../../Services/alerts/AlertConfirmation';
+import { alertConfirmation } from '../../Services/alerts/Alert.js';
 
 
 const LoginForm = () => {
@@ -120,14 +120,14 @@ const LoginForm = () => {
                     >
                         Log In
                     </button>
-                    {/* <button
+                    <button
                         className="form__btn-primary"
                         type="submit"
-                        onClick={()=>alertInformation()}
+                        onClick={()=>alertConfirmation('seguir estos pasos')}
                         
                     >
                         Probar alerta
-                    </button> */}
+                    </button>
                     
                     {
                         formEnviado && <p className="form__message-success">Log in successfull</p>
