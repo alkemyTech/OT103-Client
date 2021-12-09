@@ -16,7 +16,7 @@ const OrganizationData = (props) => {
     const getData = async () => {
 
         try {
-            const response = await Get(process.env.REACT_APP_API_ORGANIZATION_LIST, '4')
+            const response = await Get(process.env.REACT_APP_API_ORGANIZATION)
             setData(response.data)
             setLoading(true)
             
