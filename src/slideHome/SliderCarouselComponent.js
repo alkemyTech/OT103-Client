@@ -13,12 +13,11 @@ const settings = {
 
 export const SliderCarouselComponent = ({ URL = "slides", arrayData }) => {
   const [data, setData] = useState([]);
+
   const getData = async () => {
     try {
-      const dataGet = await Get(URL);
-      const {
-        data: { data },
-      } = dataGet;
+      const fetchedData = await Get(URL);
+      const { data } = fetchedData;
       return setData(data);
     } catch (error) {
       console.log(error);
@@ -34,9 +33,7 @@ export const SliderCarouselComponent = ({ URL = "slides", arrayData }) => {
           ? arrayData.map((obj) => {
               return <SlideComponent key={obj.id} data={obj} />;
             })
-          : data.map((obj) => {
-              return <SlideComponent key={obj.id} data={obj} />;
-            })}
+          : null}
       </Slider>
     </>
   );
