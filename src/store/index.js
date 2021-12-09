@@ -5,12 +5,14 @@ import thunk from "redux-thunk";
 import { membersReducer } from "./reducers/membersReducers";
 import aboutReducer from "./slices/aboutSlice";
 import slidesReducer from "./slices/slidesSlice";
+import activitiesReducer from "./slices/activitiesSlice";
 
 // Put reducers here
 const reducers = { 
   aboutData: aboutReducer,
   members: membersReducer,
-  slidesData: slidesReducer
+  slidesData: slidesReducer,
+  activities: activitiesReducer,
 };
 
 const store = configureStore({
