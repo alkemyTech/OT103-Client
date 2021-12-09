@@ -9,10 +9,20 @@ Las Alertas se encuentran Services/alerts/Alerts.js
 
 ### Modo de implementación
 Importar la alerta que necesitamos entre llaves: { alertError }.
+![image](/assets/images/arrow-function-alert.PNG)
+
 Posee parámetros por lo que podemos manejar el error e introducirle mas información o dejarlo vacío .
-Si se utilizan dentro de un botón tiene que ser una arrow function: ()=>alertError()
-                        
-                    
+
+Si se utilizan dentro de un botón tiene que ser una arrow function:
+![image](/assets/images/importar-alerta.PNG)
+
+Ejemplo de uso en un catch:
+![image](/assets/images/modo-uso-alerta.PNG)
+
+
+
+
+
 
 
 
