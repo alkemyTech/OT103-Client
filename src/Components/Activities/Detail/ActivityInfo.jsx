@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router";
-import LoadingSpinner from "../../Spinner/LoadingSpinner";
 import apiDateToText from "../../../helpers/apiDateToText";
 import { Title } from "../../Title/Title";
 import "../../../styles/components/detailsStyles.scss";
 import { alertError } from "../../../Services/alerts/Alerts";
 import { useDispatch } from "react-redux";
 import { fetchActivities } from "../../../store/slices/activitiesSlice";
+import { SkeletonLoader } from "../../Loader/SkeletonLoader";
 
 /*
 RECEIVES => empty
@@ -45,7 +45,7 @@ const ActivityInfo = () => {
 
   return (
     <>
-      {currentActivity !== {} ? (
+      {currentActivity && name ? (
         <section className="detail">
           <Title image={image} title={name} />
           <hgroup className="detail__datetime">
@@ -58,7 +58,9 @@ const ActivityInfo = () => {
           <div dangerouslySetInnerHTML={{ __html: description }}></div>
         </section>
       ) : (
-        <LoadingSpinner />
+        <div className="m-40px">
+          <SkeletonLoader />
+        </div>
       )}
     </>
   );
