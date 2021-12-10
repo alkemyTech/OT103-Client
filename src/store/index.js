@@ -6,6 +6,7 @@ import { membersReducer } from "./reducers/membersReducers";
 import aboutReducer from "./slices/aboutSlice";
 import slidesReducer from "./slices/slidesSlice";
 import activitiesReducer from "./slices/activitiesSlice";
+import usersReducer from "./slices/usersSlice";
 // Put reducers here
 const reducers = {
   aboutData: aboutReducer,
@@ -13,6 +14,7 @@ const reducers = {
   authReducer: authSlice,
   slidesData: slidesReducer,
   activities: activitiesReducer,
+  usersData: usersReducer,
 };
 
 const store = configureStore({
