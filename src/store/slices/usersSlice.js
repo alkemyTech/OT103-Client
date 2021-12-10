@@ -7,10 +7,10 @@ const initialState = {
   data: [],
 };
 
-export const fetchActivities = createAsyncThunk(
-  "activities/fetchActivities",
-  async ( id , { rejectWithValue }) => {
-    const response = await ( Get("activities", id) || Get("activities") );
+export const fetchUsers = createAsyncThunk(
+  "users/fetchUsers",
+  async (_, { rejectWithValue }) => {
+    const response = await Get("users");
     if (response.success) {
       return response.data;
     }
@@ -19,19 +19,19 @@ export const fetchActivities = createAsyncThunk(
 );
 
 const slice = createSlice({
-  name: "activities",
+  name: "users",
   initialState: initialState,
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchActivities.pending, (state, action) => {
+      .addCase(fetchUsers.pending, (state, action) => {
         state.loading = true;
       })
-      .addCase(fetchActivities.fulfilled, (state, action) => {
+      .addCase(fetchUsers.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
       })
-      .addCase(fetchActivities.rejected, (state, action) => {
+      .addCase(fetchUsers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
