@@ -6,6 +6,7 @@ import { Field, Form, Formik } from "formik";
 import { useEffect, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { alertError } from "../../Services/alerts/Alerts";
 
 const TestimonialForm = () => {
 
@@ -26,14 +27,14 @@ const TestimonialForm = () => {
                 const response = await Post(process.env.REACT_APP_API_TESTIMONIALS, values)
                 return alert(response.message)
             } catch (error) {
-                console.log(error)
+                alertError(error)
             }
         } else {
             try {
                 const response = await Put(process.env.REACT_APP_API_TESTIMONIALS, id, values)
                 return alert(response.message)
             } catch (error) {
-                console.log(error)
+                alertError(error)
             }
         }
     }
@@ -50,10 +51,10 @@ const TestimonialForm = () => {
                         setCreate(false);
                     })
             } catch (error) {
-                alert(error)
+                alertError(error)
             }
         } else {
-            alert('Testimonio inexistente');
+            alertError('Testimonio inexistente. Cree uno, porfavor!');
             push(`/${process.env.REACT_APP_API_TESTIMONIALS}/create`);
         }
     }
