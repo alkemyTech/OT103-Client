@@ -9,7 +9,11 @@ export const ItemList = ({ data }) => {
     const handleDelete = async () => {
         try {
             const deleteData = await Delete('slides', data.id);
-            return deleteData.data;
+            if(!deleteData.success){
+                alertError(deleteData.error)
+            }else{
+                return deleteData.data;
+            }
         } catch (error) {
             console.log(error);
             alertError('Esta publicación no existe')
@@ -17,7 +21,7 @@ export const ItemList = ({ data }) => {
     };
 
     return (
-        <td className="table__items">
+        <div className="table__items">
             <div className="table__text">
                 <h3 className="table__title">{data.name}</h3>
                 <div className="table__div-button">
@@ -43,6 +47,6 @@ export const ItemList = ({ data }) => {
                 src={data.image}
                 alt={data.image}
             />
-        </td>
+        </div>
     );
 };
