@@ -12,12 +12,13 @@ const ActivitiesList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchActivities())
-    .catch(err => alertError("No hay actividades disponibles"));
+    dispatch(fetchActivities()).catch((err) =>
+      alertError("No hay actividades disponibles")
+    );
   }, []);
 
   return (
-    <div className="activities-list">
+    <div className="activities__list">
       <h1>Listado Actividades</h1>
       <ul className="list">
         {activities.data.length > 0 ? (
