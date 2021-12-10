@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router";
-//import { getActivityById } from "../../../Services/public/activitiesApi";
 import LoadingSpinner from "../../Spinner/LoadingSpinner";
 import apiDateToText from "../../../helpers/apiDateToText";
 import { Title } from "../../Title/Title";
-import { Get } from "../../../Services/privateApiService";
+import "../../../styles/components/detailsStyles.scss";
+import { alertError } from "../../../Services/alerts/Alerts";
+import { useDispatch } from "react-redux";
+import { fetchActivities } from "../../../store/slices/activitiesSlice";
 
 /*
 RECEIVES => empty
@@ -25,18 +27,12 @@ const ActivityInfo = () => {
   const { id } = useParams();
   const [currentActivity, setCurrentActivity] = useState({});
 
+  const dispatch = useDispatch((state) => state);
+
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await Get("activities", id);
-        setCurrentActivity(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    // .then((res) => setCurrentActivity(res.data))
-    // .catch((err) => console.log(err));
-    getData();
+    dispatch(fetchActivities(id))
+      .then(({ payload }) => setCurrentActivity(payload))
+      .catch((error) => alertError("No se pudo cargar la actividad"));
   }, [id]);
 
   const { name, description, created_at, image } = currentActivity;
@@ -50,11 +46,12 @@ const ActivityInfo = () => {
   return (
     <>
       {currentActivity !== {} ? (
-        <section>
+        <section className="detail">
           <Title image={image} title={name} />
-          <hgroup>
-            <p className="list__item-shutdown-text">{getDateTime().date}</p>
-            <p className="list__item-shutdown-text">{getDateTime().time}</p>
+          <hgroup className="detail__datetime">
+            <p className="detail__datetime-text">
+              {getDateTime().date} {getDateTime().time}
+            </p>
           </hgroup>
 
           {/* OTRA VEZ LA MALA PRACTICA PERO NO ENCUENTRO ALTERNATIVA */}

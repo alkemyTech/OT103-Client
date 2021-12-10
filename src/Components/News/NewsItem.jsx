@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import apiDateToText from "../../helpers/apiDateToText";
+import { alertError } from "../../Services/alerts/Alerts";
 import { Delete } from "../../Services/privateApiService";
+import LoaderComponent from "../Loader/Loader";
 
 const NewsItem = ({ id, name, image, created_at, setNews }) => {
   const { date, time } = apiDateToText(created_at);
+  const [deleting, setDeleting] = useState(false);
 
   const handleDelete = () => {
+    setDeleting(true);
     Delete("news", id)
       .then((res) => {
         setNews((prev) => prev.filter((news) => news.id !== id));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alertError(err));
   };
 
   return (
@@ -22,12 +26,19 @@ const NewsItem = ({ id, name, image, created_at, setNews }) => {
         <p className="item__datetime">
           {date} {time}
         </p>
-        <Link to={`news/${id}`} className="item__edit-link">
-          Editar
-        </Link>
-        <button onClick={handleDelete} className="item__remove-btn">
-          Remover
-        </button>
+        <div className="flex align-center">
+          <Link to={`news/${id}`} className="item__edit-link">
+            Editar
+          </Link>
+
+          {!deleting ? (
+            <button onClick={handleDelete} className="item__remove-btn">
+              Remover
+            </button>
+          ) : (
+            <LoaderComponent />
+          )}
+        </div>
       </div>
     </li>
   );
