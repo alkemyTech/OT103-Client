@@ -13,7 +13,7 @@ const ActivitiesList = () => {
 
   useEffect(() => {
     dispatch(fetchActivities())
-    .catch(err => alertError(err));
+    .catch(err => alertError("No hay actividades disponibles"));
   }, []);
 
   return (
