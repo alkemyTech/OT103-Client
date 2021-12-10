@@ -1,6 +1,9 @@
 .w-18r {
   width: 18rem;
 }
+.width-50 {
+  width: 50%;
+}
 .txt-center {
   text-align: center;
 }
@@ -16,4 +19,16 @@
 .my-10px {
   margin-top: 16px;
   margin-bottom: 16px;
+}
+.m-auto {
+  margin: auto;
+}
+.d-rtl {
+  direction: rtl;
+}
+.flex {
+  display: flex;
+}
+.align-center {
+  align-items: center;
 }

@@ -65,7 +65,7 @@ function App() {
           <Route exact path="/create-member" component={MembersForm} />
           <Route
             exact
-            path="/backoffice/members/edit"
+            path="/backoffice/members/edit/:id"
             component={MembersEdit}
           />
           <Route exact path="/create-project" component={ProjectsForm} />
@@ -83,6 +83,12 @@ function App() {
           <Route exact path="/donar" component={DonationsGreet} />
           <Route exact path="/gracias" component={ThanksGreet} />
           <Route exact path="/contacto" component={Contact} />
+          <Route
+            exact
+            path="/testimonials/create"
+            component={TestimonialForm}
+          />
+          <Route exact path="/testimonials/:id" component={TestimonialForm} />
           <Route exact path="/about" component={AboutMain} />
           <Route exact path="/backoffice/slides" component={SlidesForm} />
           <Route exact path="/contact-form" component={ContactForm} />
