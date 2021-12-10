@@ -3,8 +3,10 @@ import { useParams } from "react-router";
 import LoadingSpinner from "../../Spinner/LoadingSpinner";
 import apiDateToText from "../../../helpers/apiDateToText";
 import { Title } from "../../Title/Title";
-import { Get } from "../../../Services/privateApiService";
-import "../../../styles/components/detailsStyles.scss";
+import { alertError } from "../../../Services/alerts/Alerts";
+import { useDispatch } from "react-redux";
+import { fetchActivities } from "../../../store/slices/activitiesSlice";
+
 /*
 RECEIVES => empty
 
@@ -24,16 +26,12 @@ const ActivityInfo = () => {
   const { id } = useParams();
   const [currentActivity, setCurrentActivity] = useState({});
 
+  const dispatch = useDispatch((state) => state);
+
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await Get("activities", id);
-        setCurrentActivity(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getData();
+    dispatch(fetchActivities(id))
+      .then(({ payload }) => setCurrentActivity(payload))
+      .catch((error) => alertError("No se pudo cargar la actividad"));
   }, [id]);
 
   const { name, description, created_at, image } = currentActivity;

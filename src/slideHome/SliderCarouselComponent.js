@@ -13,6 +13,7 @@ const settings = {
 
 export const SliderCarouselComponent = ({ URL = "slides", arrayData }) => {
   const [data, setData] = useState([]);
+
   const getData = async () => {
     try {
       const fetchedData = await Get(URL);
