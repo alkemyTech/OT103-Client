@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router';
 import {Get} from '../../Services/privateApiService'
-import "./organizationData.scss";
+import "./organizationData.scss"
+//import { alertError } from '../../Services/alerts/Alerts';
+//import '../../styles/components/cardStyles.scss'
 
 
 const OrganizationData = (props) => {
+    
 
     const [data, setData] = useState({})
     const [loading, setLoading] = useState(null)
@@ -12,7 +15,7 @@ const OrganizationData = (props) => {
     const getData = async () => {
 
         try {
-            const response = await Get('organization', '4')
+            const response = await Get(process.env.REACT_APP_API_ORGANIZATION)
             setData(response.data)
             setLoading(true)
             
@@ -53,7 +56,9 @@ const OrganizationData = (props) => {
                         Formulario de edición
                     </button>
                 </div>
-            </div>
+            </div> 
+            
+            
             
         </div>
     ) : (

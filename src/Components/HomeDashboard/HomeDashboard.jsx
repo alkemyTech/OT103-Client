@@ -1,5 +1,5 @@
 import HomeCards from "../HomeCards/HomeCards";
-import "./HomeDashboard.css"
+import "./HomeDashboard.scss"
 import NavbarDashboard from "../NavbarDashboard/NavbarDashboard";
 import { useState } from "react";
 
@@ -15,7 +15,7 @@ const HomeDashboard = () => {
             <h1 className="text-center">Bienvenido/a {usuario}</h1>
             <div className="dashboard-grid my-5">
                 {cardsInfo.map((card,index) =>{
-                    return <HomeCards title={card.title} image={card.image} key={index}/>
+                    return <HomeCards title={card.title} image={card.image} key={index} description={card.description}/>
                 })}
             </div>
         </>
