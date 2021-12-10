@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router";
-//import { getActivityById } from "../../../Services/public/activitiesApi";
 import LoadingSpinner from "../../Spinner/LoadingSpinner";
 import apiDateToText from "../../../helpers/apiDateToText";
 import { Title } from "../../Title/Title";
+import "../../../styles/components/detailsStyles.scss";
 import { alertError } from "../../../Services/alerts/Alerts";
 import { useDispatch } from "react-redux";
 import { fetchActivities } from "../../../store/slices/activitiesSlice";
@@ -46,11 +46,12 @@ const ActivityInfo = () => {
   return (
     <>
       {currentActivity !== {} ? (
-        <section>
+        <section className="detail">
           <Title image={image} title={name} />
-          <hgroup>
-            <p className="list__item-shutdown-text">{getDateTime().date}</p>
-            <p className="list__item-shutdown-text">{getDateTime().time}</p>
+          <hgroup className="detail__datetime">
+            <p className="detail__datetime-text">
+              {getDateTime().date} {getDateTime().time}
+            </p>
           </hgroup>
 
           {/* OTRA VEZ LA MALA PRACTICA PERO NO ENCUENTRO ALTERNATIVA */}
