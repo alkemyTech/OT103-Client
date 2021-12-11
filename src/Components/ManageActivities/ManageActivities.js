@@ -31,7 +31,7 @@ const ManageActivities = () => {
   };
 
   const fetchApiData = async () => {
-    const response = await Get("activities");
+    const response = await Get(process.env.REACT_APP_API_ACTIVITIES);
     if (response.success) {
       setActivities(response.data);
     }
