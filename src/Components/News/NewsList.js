@@ -20,7 +20,7 @@ const NewsList = () => {
 
   useEffect(() => {
     if (newsData.error) {
-      alertError("Algo salio mal, intente nuevamente");
+      alertError("Algo salió mal, intente nuevamente");
     }
   }, [newsData.error]);
 
