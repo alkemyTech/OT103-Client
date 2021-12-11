@@ -14,7 +14,7 @@ const reducers = {
   authReducer: authSlice,
   slidesData: slidesReducer,
   activities: activitiesReducer,
-  usersData: usersReducer,
+  usersReducer: usersReducer,
 };
 
 const store = configureStore({

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 export const UsersList = () => {
-  const { usersData } = useSelector((state) => state);
+  const { usersReducer } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,8 +21,8 @@ export const UsersList = () => {
           Regresar
         </Link>
       </div>
-      {usersData.data.map((usersData) => {
-        return <UsersTable users={usersData} />;
+      {usersReducer.data.map((usersReducer) => {
+        return <UsersTable users={usersReducer} />;
       })}
     </div>
   );
