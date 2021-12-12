@@ -7,6 +7,7 @@ import { alertError } from "../../../Services/alerts/Alerts";
 import { useDispatch } from "react-redux";
 import { fetchActivities } from "../../../store/slices/activitiesSlice";
 import { SkeletonLoader } from "../../Loader/SkeletonLoader";
+import ActivitySkeleton from "../Skeletons/ActivitySkeleton";
 
 /*
 RECEIVES => empty
@@ -58,9 +59,7 @@ const ActivityInfo = () => {
           <div dangerouslySetInnerHTML={{ __html: description }}></div>
         </section>
       ) : (
-        <div className="m-40px">
-          <SkeletonLoader />
-        </div>
+        <ActivitySkeleton variant="info" />
       )}
     </>
   );
