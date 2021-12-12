@@ -2,8 +2,9 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 
 /**
+ * Custom Activity skeleton
  * @function
- * @param {"list" | "info"} variant
+ * @param {"list" | "info"} variant can be "list" or "info" variants
  * @returns {JSX.Element}
  */
 
