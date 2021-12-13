@@ -1,22 +1,23 @@
 @import "../../../styles/variables.scss";
 
 .about {
-  &___imported_title {
+  &__imported-title {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
     margin: 2rem;
     & img {
-      width: 17%;
+      width: 100%;
     }
   }
-  &___wrapper {
+  &__wrapper {
     margin: 0.4rem;
     text-align: center;
   }
 
-  &___title {
+  &__title {
     font-family: "Bebas Neue", cursive;
     margin: 0px;
     padding: 0;
