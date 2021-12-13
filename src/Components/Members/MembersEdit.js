@@ -1,8 +1,10 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Get } from "../../Services/publicApiService";
+import { Put } from "../../Services/privateApiService";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-
+import { Progress } from "../Progress/Progress";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
@@ -33,20 +35,68 @@ const SignupSchema = Yup.object().shape({
 });
 
 const MembersEdit = () => {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [facebookUrl, setFacebookUrl] = useState("");
+  const [linkedinUrl, setLinkedinUrl] = useState("");
+
+  const { id } = useParams();
+
+  const getMember = async () => {
+    try {
+      await Get(process.env.REACT_APP_API_MEMBERS, id).then((res) => {
+        const {
+          data: { name, description, image, facebookUrl, linkedinUrl },
+        } = res;
+        setName(name);
+        setDescription(description);
+        setImage(image);
+        setFacebookUrl(facebookUrl);
+        setLinkedinUrl(linkedinUrl);
+      });
+    } catch (err) {
+      alert(err);
+    }
+  };
+
+  const editForm = async (values) => {
+    try {
+      const response = await Put(process.env.REACT_APP_API_MEMBERS, id, values);
+      return console.log(response);
+    } catch (err) {
+      return alert(err);
+    }
+  };
+
+  useEffect(() => {
+    getMember();
+  }, []);
+
+  const handleChange = (e, setFieldValue) => {
+    if (e.currentTarget.files && e.currentTarget.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        setFieldValue("image", e.target.result);
+      };
+      reader.readAsDataURL(e.currentTarget.files[0]);
+    }
+  };
+
   return (
     <>
       <Formik
         initialValues={{
-          name: "",
-          description: "",
-          image: "",
-          facebookUrl: "",
-          linkedinUrl: "",
+          name,
+          description,
+          image,
+          facebookUrl,
+          linkedinUrl,
         }}
         validationSchema={SignupSchema}
+        enableReinitialize={true}
         onSubmit={(values) => {
-          alert(JSON.stringify(values));
-          // axios.put(API, values) <-------
+          editForm(values);
         }}
       >
         {({ errors, touched, setFieldValue, values }) => (
@@ -65,11 +115,12 @@ const MembersEdit = () => {
             <div className="ck-editor">
               <CKEditor
                 id="description"
+                name="description"
                 editor={ClassicEditor}
-                data={values.description}
+                data={description}
                 onChange={(event, editor) => {
                   const data = editor.getData();
-                  setFieldValue("description", data);
+                  setDescription(data);
                 }}
                 config={{
                   placeholder: "Nueva descripción",
@@ -86,17 +137,15 @@ const MembersEdit = () => {
                 {errors.description}
               </div>
             ) : null}
-            <label htmlFor="image" className="form__members-label">
-              <Field
-                className="form__input form__members-input"
-                id="image"
-                type="file"
-                accept="image/png,image/jpeg"
-                name="image"
-                placeholder="Upload your new image"
-              />{" "}
-              Selecciona una imagen
-            </label>
+            <input
+              type="file"
+              name="image"
+              id="image"
+              accept="image/png,image/jpeg"
+              onChange={(event) => {
+                handleChange(event, setFieldValue);
+              }}
+            />
             {errors.image && touched.image ? (
               <div className="form__message-validation"> {errors.image}</div>
             ) : null}
@@ -131,6 +180,7 @@ const MembersEdit = () => {
           </Form>
         )}
       </Formik>
+      )
     </>
   );
 };

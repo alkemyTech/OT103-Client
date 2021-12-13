@@ -1,7 +1,9 @@
 import React from "react";
 import { useFormik } from "formik";
-import '../../styles/components/formStyles.scss'
-import './contactForm.scss'
+import "../../styles/components/formStyles.scss";
+import { Post } from "../../Services/publicApiService";
+import { alertError } from "../../Services/alerts/Alerts";
+
 const initialValues = {
   name: "",
   email: "",
@@ -9,16 +11,10 @@ const initialValues = {
   message: "",
 };
 
-const handleSubmit = (values) => {
-  alert(
-    values.name +
-      "\n" +
-      values.phone +
-      "\n" +
-      values.email +
-      "\n" +
-      values.message
-  );
+const handleSubmit = async (values) => {
+  const response = await Post(process.env.REACT_APP_CONTACTS_ENDPOINT);
+
+  if (!response.success) alertError(response.message);
 };
 
 // VALIDACIONES
@@ -57,9 +53,9 @@ function ContactForm() {
   return (
     <div className="form__container">
       <h1> Formulario de contacto </h1>
-      <form onSubmit={formik.handleSubmit} >
+      <form onSubmit={formik.handleSubmit}>
         <div className="form-control form__control">
-          <label htmlFor="name" >Nombre</label>
+          <label htmlFor="name">Nombre</label>
           <br />
           <input
             type="text"
@@ -71,7 +67,9 @@ function ContactForm() {
             value={formik.values.name}
           />
           {formik.touched.name && formik.errors.name ? (
-            <div className="error form__message-validation">{formik.errors.name}</div>
+            <div className="error form__message-validation">
+              {formik.errors.name}
+            </div>
           ) : null}
         </div>
         <div className="form-control form__control">
@@ -87,7 +85,9 @@ function ContactForm() {
             value={formik.values.email}
           />
           {formik.touched.email && formik.errors.email ? (
-            <div className="error form__message-validation">{formik.errors.email}</div>
+            <div className="error form__message-validation">
+              {formik.errors.email}
+            </div>
           ) : null}
         </div>
         <div className="form-control form__control">
@@ -103,7 +103,9 @@ function ContactForm() {
             value={formik.values.phone}
           />
           {formik.touched.phone && formik.errors.phone ? (
-            <div className="error form__message-validation">{formik.errors.phone}</div>
+            <div className="error form__message-validation">
+              {formik.errors.phone}
+            </div>
           ) : null}
         </div>
         <div className="form-control form__control">
@@ -119,10 +121,14 @@ function ContactForm() {
             value={formik.values.message}
           />
           {formik.touched.message && formik.errors.message ? (
-            <div className="error form__message-validation">{formik.errors.message}</div>
+            <div className="error form__message-validation">
+              {formik.errors.message}
+            </div>
           ) : null}
         </div>
-        <button type="submit" className="form__btn-primary">Submit</button>
+        <button type="submit" className="form__btn-primary">
+          Submit
+        </button>
       </form>
     </div>
   );
