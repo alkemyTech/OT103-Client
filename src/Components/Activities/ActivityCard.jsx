@@ -4,7 +4,7 @@ import apiDateToText from "../../helpers/apiDateToText";
 import { Link } from "react-router-dom";
 import ActivitySkeleton from "./Skeletons/ActivitySkeleton";
 const ActivityCard = ({ activity }) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
