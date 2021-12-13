@@ -3,14 +3,20 @@ import NewsItem from "./NewsItem";
 import { Link } from "react-router-dom";
 import { Get } from "../../Services/privateApiService";
 import "../../styles/components/listStyles.scss";
+import LoaderComponent from "../Loader/Loader";
+import { alertError } from "../../Services/alerts/Alerts";
+import { fetchNews } from "../../store/slices/newsSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const NewsList = () => {
   const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const { newsData } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    Get("news")
-      .then((res) => setNews(res.data))
-      .catch((err) => console.log(err));
+    dispatch(fetchNews());
   }, []);
 
   return (
@@ -22,8 +28,13 @@ const NewsList = () => {
         </Link>
       </header>
       <ul className="list">
-        {news.length > 0 ? (
-          news.map((element) => {
+        {loading && (
+          <div className="m-auto">
+            <LoaderComponent />
+          </div>
+        )}
+        {newsData.data.length > 0 ? (
+          newsData.data.map((element) => {
             return <NewsItem {...element} key={element.id} setNews={setNews} />;
           })
         ) : (
