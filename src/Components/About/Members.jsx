@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Get } from "../../Services/privateApiService";
 import { fetchMembers } from "../../store/slices/aboutSlice";
 import LoaderComponent from "../Loader/Loader";
 import "./styles/members.scss";
@@ -10,6 +11,11 @@ const Members = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const getData = async () => {
+      const data = await Get('members')
+      console.log(data)
+    }
+    getData()
     dispatch(fetchMembers());
   }, []);
 
