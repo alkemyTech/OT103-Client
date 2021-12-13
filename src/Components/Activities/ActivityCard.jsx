@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Title } from "../Title/Title";
 import apiDateToText from "../../helpers/apiDateToText";
 import { Link } from "react-router-dom";
 import ActivitySkeleton from "./Skeletons/ActivitySkeleton";
 const ActivityCard = ({ activity }) => {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <>
-      {activity ? (
+      {loading ? (
+        <ActivitySkeleton variant="list" />
+      ) : (
         <li className="list__item">
           <Title title={activity.name} image={activity.image} />
           <div className="item__group">
@@ -29,12 +39,6 @@ const ActivityCard = ({ activity }) => {
             </Link>
           </footer>
         </li>
-      ) : (
-        <>
-          <ActivitySkeleton variant="list" />
-          <ActivitySkeleton variant="list" />
-          <ActivitySkeleton variant="list" />
-        </>
       )}
     </>
   );
