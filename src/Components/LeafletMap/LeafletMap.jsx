@@ -28,11 +28,11 @@ const LeafletMap = () => {
       <Marker position={somosMasCoordinates} icon={somosMasIcon}>
         <Popup>
           <h3>Corporación Somos Más</h3>
-          <div class="popup__item">
+          <div className="popup__item">
             <FaMapPin />
             Cra. 22 ## 80-73, Bogotá, Colombia
           </div>
-          <div class="popup__item">
+          <div className="popup__item">
             <BiWorld />
             <a
               href="https://www.somosmas.org/"
