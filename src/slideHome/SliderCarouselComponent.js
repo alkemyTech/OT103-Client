@@ -4,7 +4,7 @@ import LoaderComponent from "../Components/Loader/Loader";
 import { alertError } from "../Services/alerts/Alerts";
 import { Get } from "../Services/publicApiService";
 import { SlideComponent } from "./SlideComponent";
-import { alertError } from '../Services/alerts/Alerts'
+
 
 
 
@@ -16,7 +16,7 @@ const settings = {
   slidesToScroll: 1,
 };
 
-export const SliderCarouselComponent = ({ URL = "slisdes", arrayData }) => {
+export const SliderCarouselComponent = ({ URL = "slides", arrayData }) => {
   const [data, setData] = useState([]);
 
   const [loading, setLoading] = useState(false)
@@ -30,14 +30,10 @@ export const SliderCarouselComponent = ({ URL = "slisdes", arrayData }) => {
       setLoading(true)
       return setData(data);
     } catch (error) {
-<<<<<<< HEAD
       setLoading(null)
       alertError('Ha ocurrido un problema')
       
       
-=======
-      alertError(error);
->>>>>>> c1d742bebe687d7f3177b82f92b9831a42ddecbe
     }
   };
   useEffect(() => {
