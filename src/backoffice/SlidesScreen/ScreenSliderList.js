@@ -15,14 +15,13 @@ export const ScreenSliderList = () => {
 
   return (
     <table className="table__main">
-      <tr className="table__head-container mb-3">
+      <tr className="table__head-container">
         <th className="table__head-title">Listado de Slides</th>
         <Link to="/backoffice/Slides/create" className="table__create-button">
           Create
         </Link>
       </tr>
-      <SkeletonLoader />
-      <tr className="mt-3">
+      <tr>
         {slidesData.data.map((data, i) => {
           return <ItemList key={i} data={data} />;
         })}
