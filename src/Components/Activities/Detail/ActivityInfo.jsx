@@ -31,9 +31,11 @@ const ActivityInfo = () => {
   const dispatch = useDispatch((state) => state);
 
   useEffect(() => {
-    dispatch(fetchActivities(id))
-      .then(({ payload }) => setCurrentActivity(payload))
-      .catch((error) => alertError("No se pudo cargar la actividad"));
+    setTimeout(() => {
+      dispatch(fetchActivities(id))
+        .then(({ payload }) => setCurrentActivity(payload))
+        .catch((error) => alertError("No se pudo cargar la actividad"));
+    }, 1000);
   }, [id]);
 
   const { name, description, created_at, image } = currentActivity;

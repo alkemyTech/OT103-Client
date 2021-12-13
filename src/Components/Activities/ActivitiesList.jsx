@@ -11,9 +11,11 @@ const ActivitiesList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchActivities()).catch((err) =>
-      alertError("No hay actividades disponibles")
-    );
+    setTimeout(() => {
+      dispatch(fetchActivities()).catch((err) =>
+        alertError("No hay actividades disponibles")
+      );
+    }, 1000);
   }, []);
 
   return (
