@@ -13,8 +13,8 @@ export const AboutMain = ({
       </div>
       <div className="about__wrapper">
         <h3 className="about__title">Sobre Nosotros:</h3>
-
         <div className="about__text">{about}</div>
+        <SocialMediaComponent />
       </div>
     </>
   );

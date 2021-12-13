@@ -10,9 +10,9 @@ export const UsersList = () => {
   const { usersReducer } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchUsers());
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
 
   return (
     <div>
