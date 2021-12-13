@@ -12,10 +12,17 @@ const NewsItem = ({ id, name, image, created_at, setNews }) => {
   const handleDelete = () => {
     setDeleting(true);
     Delete("news", id)
+<<<<<<< HEAD
     .then((res) => {
       setNews((prev) => prev.filter((news) => news.id !== id));
     })
     .catch((err) => alertError(err));
+=======
+      .then((res) => {
+        setNews((prev) => prev.filter((news) => news.id !== id));
+      })
+      .catch((err) => alertError(err));
+>>>>>>> df9eef0380424be7cd1473fd723a64834dbce2cf
   };
 
   return (
