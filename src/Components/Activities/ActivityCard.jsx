@@ -2,7 +2,7 @@ import React from "react";
 import { Title } from "../Title/Title";
 import apiDateToText from "../../helpers/apiDateToText";
 import { Link } from "react-router-dom";
-import ActivityCardSkeleton from "./Skeletons/ActivitySkeleton";
+import ActivitySkeleton from "./Skeletons/ActivitySkeleton";
 const ActivityCard = ({ activity }) => {
   return (
     <>
@@ -31,9 +31,9 @@ const ActivityCard = ({ activity }) => {
         </li>
       ) : (
         <>
-          <ActivityCardSkeleton variant="list" />
-          <ActivityCardSkeleton variant="list" />
-          <ActivityCardSkeleton variant="list" />
+          <ActivitySkeleton variant="list" />
+          <ActivitySkeleton variant="list" />
+          <ActivitySkeleton variant="list" />
         </>
       )}
     </>
