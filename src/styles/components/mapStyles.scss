@@ -1,5 +1,11 @@
 @import "../mixins.scss";
 
+.leaflet__map {
+  height: 450px;
+  max-width: 500px;
+  width: 86vw;
+}
+
 .leaflet-popup-content-wrapper {
   border-radius: 0;
 }

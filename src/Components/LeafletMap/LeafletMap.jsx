@@ -7,18 +7,17 @@ import { BiWorld } from "react-icons/bi";
 import { FaMapPin } from "react-icons/fa";
 
 const LeafletMap = () => {
+  const somosMasCoordinates = [4.668941320745149, -74.06208361585688];
   const somosMasIcon = L.icon({
     iconUrl: logoSomosMas,
-
     iconSize: [100, 100], // size of the icon
     iconAnchor: [40, 20], // point of the icon which will correspond to marker's location
     popupAnchor: [0, 0], // point from which the popup should open relative to the iconAnchor
   });
   return (
     <MapContainer
-      // 4.668941320745149, -74.06208361585688
-      style={{ height: "450px", maxWidth: "500px", width: "86vw" }}
-      center={[4.668941320745149, -74.06208361585688]}
+      className="leaflet__map"
+      center={somosMasCoordinates}
       zoom={18}
       scrollWheelZoom={false}
     >
@@ -26,10 +25,7 @@ const LeafletMap = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker
-        position={[4.668941320745149, -74.06208361585688]}
-        icon={somosMasIcon}
-      >
+      <Marker position={somosMasCoordinates} icon={somosMasIcon}>
         <Popup>
           <h3>Corporación Somos Más</h3>
           <div class="popup__item">
