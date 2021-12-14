@@ -13,7 +13,7 @@ const Members = () => {
   useEffect(() => {
     const getData = async () => {
       const data = await Get('members')
-      console.log(data)
+      
     }
     getData()
     dispatch(fetchMembers());
@@ -29,12 +29,12 @@ const Members = () => {
             <figure>
               <img src={item.image} alt="imagen" />
             </figure>
-            <div className="content">
-              <h4 className="content-title">{item.name}</h4>
-              <h3 className="content-description">{item.description}</h3>
+            <div className="card__container">
+              <h4 className="card__title">{item.name}</h4>
+              <h3 className="card__description">{item.description}</h3>
               <div className="links">
                 <a
-                  className="content-description link"
+                  className="card__description"
                   href={item.facebookUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -43,7 +43,7 @@ const Members = () => {
                 </a>
 
                 <a
-                  className="content-description link"
+                  className="card__description"
                   href={item.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
