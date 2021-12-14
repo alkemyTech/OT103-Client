@@ -1,5 +1,5 @@
 @media (max-width: 500px){
-    .HS-campaign__content-{
+    .highschool__content-{
         &box{
             min-height: 60vh;
         }
@@ -16,10 +16,10 @@
 }
 
 @media (max-width: 820px){
-    .HS-campaign__content-description{
+    .highschool__content-description{
             font-size: medium;
     }
-    .HS-campaign__header-{
+    .highschool__header-{
 
         justify-content: center;
 
@@ -28,7 +28,7 @@
         }
 
     }
-    .HS-campaign__footer-{
+    .highschool__footer-{
 
         justify-content: center;
 
@@ -47,7 +47,7 @@
 
 
 @media (max-width: 1280px){
-    .HS-campaign__content-{
+    .highschool__content-{
         background-color: rgba(0, 0, 0, 0);
         &countdown{
             justify-content: center;
@@ -59,7 +59,7 @@
 }
 
 @media (max-width: 1440px){
-    .HS-campaign__content-{
+    .highschool__content-{
         &img{
             max-width: 150px;
         }
