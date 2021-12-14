@@ -1,0 +1,28 @@
+.backoffice__nav{
+    display: flex;
+    height: 15vh;
+    padding: 1%;
+    &-logo{
+        max-height: 150px;
+    }
+    &-link{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 50%;
+    }
+    &-item{
+        color: black;
+        text-decoration: none;
+        &:hover{
+            color: rgb(83, 83, 83);
+            background-color: none;
+            box-shadow: 10px 10px 0px 0px $accent-color;
+            -webkit-box-shadow: 10px 10px 0px 0px $accent-color;
+            -moz-box-shadow: 10px 10px 0px 0px $accent-color;
+        }
+    }
+}
+strong{
+    background-color: none;
+}
