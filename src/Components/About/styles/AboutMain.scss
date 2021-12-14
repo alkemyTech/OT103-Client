@@ -5,7 +5,7 @@
     margin: 92px;
     margin-top: 10px;
   }
-  &__imported-title {
+  &__title-imported{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -31,10 +31,6 @@
   &__text {
     font-size: 16px;
     margin: 20px 30px 0px 0px;
-<<<<<<< HEAD
-
-=======
->>>>>>> df9eef0380424be7cd1473fd723a64834dbce2cf
     @media (max-width: $breakpoint-tablet) {
       font-size: 13px;
     }
