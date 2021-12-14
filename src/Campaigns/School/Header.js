@@ -3,7 +3,7 @@ import logo from "../../assets/images/logo.png";
 
 const Header = () => {
   return (
-    <header className="HS-campaign__header-container">
+    <header className="HS-campaign__header-">
       <img
         className="HS-campaign__header-img"
         src="https://cdn-sp.radionacional.com.ar/wp-content/uploads/2017/04/ONG.png"

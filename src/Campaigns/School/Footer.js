@@ -3,7 +3,7 @@ import logo from "../../assets/images/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="HS-campaign__footer-container">
+    <footer className="HS-campaign__footer-">
       <div className="HS-campaign__footer-logo-container">
         <img src={logo} className="HS-campaign__footer-img" alt="logo" />
         <h1 className="fs-3">Somos Más</h1>
