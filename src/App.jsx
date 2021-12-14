@@ -31,11 +31,13 @@ import HomeDashboard from "./Components/HomeDashboard/HomeDashboard";
 import OrganizationData from "./backoffice/Organization/OrganizationData";
 import Members from "./Components/About/Members";
 import Contact from "./Components/Contact/Contact";
+import Header from './Components/Header/Header'
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <Header />
         <Switch>
           <Route exact path="/actividades" component={ActivitiesList} />
           <Route exact path="/actividades/:id" component={ActivityInfo} />

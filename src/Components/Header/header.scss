@@ -1,0 +1,137 @@
+.menu{
+    background-color: #212529;
+    height: 75px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+    box-shadow: 5px 0 10px rgba(0,0,0,.6);
+}
+
+ul{
+    margin-bottom: 0;
+}
+
+.logo{
+    color: #000;
+    font-size: 35px;
+    padding: 0 80px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu {
+    &__items{
+        display: flex;
+        list-style: none;
+        margin-right: 30px;
+        text-decoration: none;
+    }
+    &__items li{
+        border-radius: 3px;
+        margin: 0 5px;
+    }
+    
+}
+
+.decoration{
+    text-decoration: none;
+    padding: 7px 13px;
+    font-size: 18px;
+    display: block;
+    text-transform: uppercase;
+    color: #000;
+}
+// .decoration:hover {
+//     background-color: rgba(0, 0, 0, .3);
+//     transition: .4s;
+//     color: red;
+// }
+
+.loguito{
+    color: #fff;
+    margin-right: 30px;
+    margin-right: 30px;
+    font-size: 25px;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+
+ul.show{
+    top: 65px;
+}
+
+@media screen and (max-width:952px){
+    .logo{
+        font-size: 30px;
+        padding-left: 35px;
+    }
+    .decoration{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width:858px){
+    .menu{
+        height: 65px;
+    }
+    .loguito{
+        display: inline-flex;
+    }
+    .menu {
+        &__items {
+            position: fixed;
+            width: 100vw;
+            height: calc(100% - 65px);
+            background: #414141;
+            top: -100vh;
+            text-align: center;
+            transition: all .4s;
+            z-index: 9000;
+        }
+
+        &__items li {
+            margin: 30px 0 0 0;
+            line-height: 30px;
+        }
+        &__items li:hover {
+            background: none;
+        }
+
+    }
+
+    .decoration{
+        font-size: 20px;
+        color: #fff;
+        font-weight: bold;
+    }
+    .decoration:hover{
+        color: red;
+    }
+
+    .logo{
+       font-size: 25px;
+       padding-left: 35px; 
+    }    
+}
+
+@media screen and (max-width:858px) and (orientation:landscape) {
+    .menu {
+
+        &__items li {
+            margin: 5px 0 0 0;
+            ;
+        }
+
+        &__items {
+            overflow: scroll;
+            height: calc(100% - 65px);
+        }
+
+    }
+}
+
+
+
