@@ -6,7 +6,6 @@ import ActivitySkeleton from "./Skeletons/ActivitySkeleton";
 const ActivityCard = ({ activity }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 1000);
