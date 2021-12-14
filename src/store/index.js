@@ -10,19 +10,19 @@ import usersReducer from "./slices/usersSlice";
 import newsReducer from "./slices/newsSlice";
 // Put reducers here
 const reducers = {
-  aboutData: aboutReducer,
-  members: membersReducer,
-  authReducer: authSlice,
-  slidesData: slidesReducer,
-  activities: activitiesReducer,
-  usersReducer: usersReducer,
-  newsData: newsReducer,
+	aboutData: aboutReducer,
+	members: membersReducer,
+	authReducer: authSlice,
+	slidesData: slidesReducer,
+	activities: activitiesReducer,
+	usersReducer: usersReducer,
+	newsData: newsReducer,
 };
 
 const store = configureStore({
-  reducer: reducers,
-  middleware: [thunk],
-  devTools: true,
+	reducer: reducers,
+	middleware: [thunk],
+	devTools: true,
 });
 
 export default store;
