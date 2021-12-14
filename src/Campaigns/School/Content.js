@@ -6,31 +6,31 @@ const Content = ({ event = 20000 * 4324 }) => {
     if (completed) {
       return (
         <h3>
-          <strong className="highschool__content-countdown-text fs-2">
+          <strong className="campaign__countdown-text fs-2">
             Finalizado!
           </strong>
         </h3>
       );
     } else {
       return (
-        <strong className="highschool__content-countdown-text fs-4">
+        <strong className="campaign__countdown-text fs-4">
           Te quedan {days}d:{hours}h:{minutes}m para participar!
         </strong>
       );
     }
   };
   return (
-    <div className="highschool__content-">
-      <div className="highschool__content-box mt-5">
+    <div className="campaign__container">
+      <div className="campaign__box mt-5">
         <h1>13-12-2021 / 13:15hrs Calle 123, Localidad, Provincia</h1>
         <hr />
-        <div className="highschool__content-countdown">
+        <div className="campaign__countdown">
           <img
-            className="highschool__content-img countdown-img-left"
+            className="campaign__img countdown-img-left"
             src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
             alt="img-campaign"
           />
-          <div className="highschool__content-countdown-container">
+          <div className="campaign__countdown-container">
             <Countdown
               date={Date.now() + event}
               renderer={renderer}
@@ -39,30 +39,30 @@ const Content = ({ event = 20000 * 4324 }) => {
           </div>
 
           <img
-            className="highschool__content-img countdown-img-right "
+            className="campaign__img countdown-img-right "
             src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
             alt="img-campaign"
           />
         </div>
-        <p className="highschool__content-description">
+        <p className="campaign__description">
               Zúmbale mambo pa que mis gatas prendan los motores Zúmbale mambo
               pa que mis gatas prendan los motores Zúmbale mambo pa que mis
               gatas prendan los motores Que se preparen que lo que viene es pa
               que le den (¡duro!)
             </p>
-        <div className="highschool__content-img-container">
+        <div className="campaign__img-container">
           <img
-            className="highschool__content-img countdown-img-left"
+            className="campaign__img countdown-img-left"
             src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
             alt="img-campaign"
           />
           <img
-            className="highschool__content-img"
+            className="campaign__img"
             src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
             alt="img-campaign"
           />
           <img
-            className="highschool__content-img countdown-img-right"
+            className="campaign__img countdown-img-right"
             src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
             alt="img-campaign"
           />

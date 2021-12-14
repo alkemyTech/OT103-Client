@@ -1,17 +1,18 @@
-.highschool__{
-    &content-{
-        width: 100%;
-        display: flex;
-        background-color: rgba(255, 235, 205, 0.384);
+.campaign__{
+    &contentainer{
         align-items: center;
+        background-color: rgba(255, 235, 205, 0.384);
+        display: flex;
         justify-content: center;
+        width: 100%;
+        }
         &box{
-            display: flex;
             align-items: center;
+            display: flex;
             flex-direction: column;
             justify-content: center;
             min-height: 70vh;
-            width: 90%;
+            width: 100%;
         }
         &countdown-text{
             align-self: center;
@@ -23,9 +24,9 @@
             width: 85%;
         }
         &countdown-container{
-            width: 70%;
             display: flex;
             flex-direction: column;
+            width: 70%;
         }
         &description{
             font-size: 35px;
@@ -41,74 +42,4 @@
         &img{
             max-width: 250px;
         }
-    }
-    &header-{
-        padding-left: 5%;
-        padding-right: 5%;
-        display: flex;
-        min-height: 20vh;
-        align-items: center;
-        justify-content: space-between;
-        background-color: rgba(219, 126, 183, 0.349);
-        &img{
-            max-width: 150px;
-        }
-    }
-    &slider-container{
-        margin: auto;
-        width: 96%;
-    }
-    &footer-{
-        align-items: center;
-        background-color: rgba(219, 126, 183, 0.349);
-        display: flex;
-        min-height: 20vh;
-        justify-content: space-between;
-        padding-left: 5%;
-        padding-right: 5%;
-        &img{
-            max-width: 150px;
-        }
-        &logo-container{
-            align-items: center;
-            display: flex;
-            height: 70%;
-            flex-direction: row;
-            justify-content: space-between;
-            width: 30%;
-        }
-        &socialmedia{
-            display: flex;
-            height: 60%;
-            flex-direction: column;
-            width: 30%;
-        }
-        &sm-item{
-            text-decoration: none;
-            cursor: pointer;
-            color: black;
-            justify-content: space-evenly;
-            display: flex;
-        }
-    }
-}
-
-.countdown-img-left{
-    transform: rotate(13deg);
-}
-
-.countdown-img-right{
-    transform: rotate(-13deg);
-}
-
-.fa-instagram{
-    color: #84439e;
-}
-
-.fa-linkedin-in{
-    color:#0e76a8;
-}
-
-.fa-twitter{
-    color: #00acee;
 }
