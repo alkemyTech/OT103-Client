@@ -1,5 +1,5 @@
 .campaign__{
-    &contentainer{
+    &container{
         align-items: center;
         background-color: rgba(255, 235, 205, 0.384);
         display: flex;
@@ -43,3 +43,12 @@
             max-width: 250px;
         }
 }
+
+.countdown-img-left{
+    transform: rotate(13deg);
+}
+
+.countdown-img-right{
+    transform: rotate(-13deg);
+}
+
