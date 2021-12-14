@@ -4,7 +4,6 @@ import LoaderComponent from "../Components/Loader/Loader";
 import { alertError } from "../Services/alerts/Alerts";
 import { Get } from "../Services/publicApiService";
 import { SlideComponent } from "./SlideComponent";
-import { alertError } from '../Services/alerts/Alerts'
 
 
 
