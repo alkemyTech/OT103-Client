@@ -16,6 +16,9 @@
 }
 
 @media (max-width: 820px){
+    .HS-campaign__content-description{
+            font-size: medium;
+    }
     .HS-campaign__header-{
 
         justify-content: center;
@@ -62,6 +65,9 @@
         }
         &countdown-container{
             width: 80%;
+        }
+        &description{
+            font-size: large;
         }
     }
 }

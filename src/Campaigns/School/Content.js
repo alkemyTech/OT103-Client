@@ -36,12 +36,6 @@ const Content = ({ event = 20000 * 4324 }) => {
               renderer={renderer}
               daysInHours={false}
             />
-            <p className="HS-campaign__content-description fs-4">
-              Zúmbale mambo pa que mis gatas prendan los motores Zúmbale mambo
-              pa que mis gatas prendan los motores Zúmbale mambo pa que mis
-              gatas prendan los motores Que se preparen que lo que viene es pa
-              que le den (¡duro!)
-            </p>
           </div>
 
           <img
@@ -50,6 +44,12 @@ const Content = ({ event = 20000 * 4324 }) => {
             alt="img-campaign"
           />
         </div>
+        <p className="HS-campaign__content-description">
+              Zúmbale mambo pa que mis gatas prendan los motores Zúmbale mambo
+              pa que mis gatas prendan los motores Zúmbale mambo pa que mis
+              gatas prendan los motores Que se preparen que lo que viene es pa
+              que le den (¡duro!)
+            </p>
         <div className="HS-campaign__content-img-container">
           <img
             className="HS-campaign__content-img countdown-img-left"
