@@ -94,7 +94,7 @@ const NewsForm = () => {
 
   useEffect(() => {
     loadApiData();
-  }, [loadApiData]);
+  }, []);
 
   return isLoading ? (
     <div className="form__container">
