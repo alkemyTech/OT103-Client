@@ -1,0 +1,64 @@
+@media (max-width: 500px){
+    .HS-campaign__content-{
+        &img{
+            display: none;
+        }
+        &countdown{
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 820px){
+    .HS-campaign__content-countdown-main{
+        width: 100%;
+    }
+    .HS-campaign__header-{
+        &container{
+            justify-content: center;
+        }
+        &img{
+            display: none;
+        }
+
+    }
+    .HS-campaign__footer-{
+        &container{
+            justify-content: center;
+        }
+        &img{
+            max-width: 150px;
+        }
+        &logo-container{
+            display: none;
+        }
+        &socialmedia{
+            height: 60%;
+        }
+
+    }
+}
+
+
+@media (max-width: 1280px){
+    .HS-campaign__content-{
+        &container{
+            background-color: rgba(0, 0, 0, 0);
+        }
+        &countdown-container{
+            justify-content: center;
+        }
+        &img{
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 1440px){
+    &img{
+        max-width: 150px;
+    }
+    &countdown-main{
+        width: 30%;
+    }
+}
