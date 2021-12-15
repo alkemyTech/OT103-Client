@@ -4,17 +4,67 @@ import './header.scss'
 
 
 const Header = () => {
-    // const [showLogo, setShowLogo] = useState(false)
 
-    // window.addEventListener('DOMContentLoaded', () => {
-        
-    // })
+    const [data, setData] = useState([
+        {
+        text: 'Inicio',
+        link: '/',
+            
+        },
+        {
+            text: 'Nosotros',
+            link: '/about',
+                
+        },
+        {
+            text: 'Contacto',
+            link: '/contacto',
+                
+        },
+        {
+            text: 'Campañas',
+            link: '/login-form',
+                
+        }
+    ])
 
-    // const show = () => {
-    //     setShowLogo(!showLogo)
-    // }
+    
 
     return (
+
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div className="container-fluid">
+                    <Link className="navbar-brand" to='/'>Akemy</Link>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav ms-auto">
+
+                       
+
+                        {
+                            data.map((item, index) => (
+                                
+                                <li className="nav-item" key={index}>
+                                    <NavLink className="nav-link" to={item.link} exact>{ item.text}</NavLink>
+                                </li>                                
+                            ))
+                        }
+                        {/* <li className="nav-item">
+                        <NavLink className="nav-link" to='/about' exact>Nosotros</NavLink>
+                        </li>
+                        <li className="nav-item">
+                        <NavLink className="nav-link" to='/contacto' exact>Contacto</NavLink>
+                        </li>
+                        <li className="nav-item">
+                        <NavLink className="nav-link" to='/login-form' exact>Campañas</NavLink>
+                        </li>
+                         */}
+                    </ul>
+                    </div>
+                </div>
+        </nav>
 
 
         // <nav className='menu'>
@@ -67,32 +117,6 @@ const Header = () => {
         //     ></i>
         //     </nav>
 
-
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div className="container-fluid">
-                    <Link className="navbar-brand" to='/'>Akemy</Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
-                        <NavLink className="nav-link" aria-current="page" to='/' exact>Inicio</NavLink>
-                        </li>
-                        <li className="nav-item">
-                        <NavLink className="nav-link" to='/about' exact>Nosotros</NavLink>
-                        </li>
-                        <li className="nav-item">
-                        <NavLink className="nav-link" to='/contacto' exact>Contacto</NavLink>
-                        </li>
-                        <li className="nav-item">
-                        <NavLink className="nav-link" to='/contacto' exact>Campañas</NavLink>
-                        </li>
-                        
-                    </ul>
-                    </div>
-                </div>
-            </nav>
 
         
     )
