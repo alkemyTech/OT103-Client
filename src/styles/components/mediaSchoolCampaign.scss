@@ -1,49 +1,28 @@
-@media (max-width: 500px){
+@media (min-width: $breakpoint-tablet){
     .campaign__{
-        &box{
-            min-height: 60vh;
-        }
-        &img{
-            display: none;
-        }
         &countdown-text{
-            display: none;
+            display: block;
         }
         &description{
-            margin-top: 10%;
-        }
-    }
-}
-
-@media (max-width: 820px){
-    .campaign__description{
-            font-size: medium;
-    }
-}
-
-
-@media (max-width: 1280px){
-    .campaign__{
-        background-color: rgba(0, 0, 0, 0);
-        &countdown{
-            justify-content: center;
-        }
-        &img{
-            display: none;
-        }
-    }
-}
-
-@media (max-width: 1440px){
-    .campaign__{
-        &img{
-            max-width: 150px;
-        }
-        &countdown-container{
             width: 80%;
         }
+        &img{
+            display: block;
+            max-width: 150px;
+        }
+    }
+}
+
+@media (min-width: 1280px){
+    .campaign__{
+        &container{
+            background-color: rgba(255, 235, 205, 0.384);
+        }
         &description{
-            font-size: large;
+            font-size: x-large;
+        }
+        &img{
+            max-width: 250px;
         }
     }
 }

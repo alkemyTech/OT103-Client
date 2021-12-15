@@ -14,7 +14,7 @@ const Content = ({ event = 20000 * 4324 }) => {
     } else {
       return (
         <strong className="campaign__countdown-text fs-4">
-          Te quedan {days}d:{hours}h:{minutes}m para participar!
+          Te quedan {days}d:{hours}h:{minutes}m: {seconds}s para participar!
         </strong>
       );
     }
@@ -22,7 +22,7 @@ const Content = ({ event = 20000 * 4324 }) => {
   return (
     <div className="campaign__container">
       <div className="campaign__box mt-5">
-        <h1>13-12-2021 / 13:15hrs Calle 123, Localidad, Provincia</h1>
+        <h1 className="m-auto">13-12-2021 / 13:15hrs Calle 123, Localidad, Provincia</h1>
         <hr />
         <div className="campaign__countdown">
           <img
@@ -30,7 +30,7 @@ const Content = ({ event = 20000 * 4324 }) => {
             src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
             alt="img-campaign"
           />
-          <div className="campaign__countdown-container">
+          <div className="campaign__countdown-container m-auto">
             <Countdown
               date={Date.now() + event}
               renderer={renderer}
