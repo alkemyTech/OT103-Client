@@ -1,42 +1,39 @@
 import React from "react";
 import {
   LinkedinCompanyProfile,
-  LinkedinFollowCompany,
-  TwitterButton,
-  TwitterTweet,
-} from "react-social-plugins";
+  TwitterTweet
+} from 'react-social-plugins';
 
-export const SocialMediaComponent = () => {
+const mockTweets = ['1450535690199085058', '1440383594615042052', '1389666789865541632'];
+
+export const SocialMediaComponent = ({ tweets = mockTweets }) => {
   return (
     <div>
-      <h1>Redes</h1>
-      <div className="about__widget-twitter">
-        <TwitterTweet
-          align="left"
-          coversation="none"
-          tweetId="36643247"
-          theme="light"
-          width={325}
-        />
-        <TwitterButton
-          target="@somosmas"
-          text="Somos cada vez más!"
-          type="Share"
-        />
-      </div>
+      <hr />
+      <h1>Últimos tweets</h1>
       <div className="about__widget-linkedin">
         <LinkedinCompanyProfile
-          lang="en_US"
-          companyId={123123123}
+          lang="es_AR"
+          companyId={80912134}
           format="inline" // Or "hover"
           text="Somos Más" // text to show in "hover" format
         />
-        <LinkedinFollowCompany
-          companyId={12312312}
-          counter="top" // Or "right"
-          lang="en_US"
-        />
+
       </div>
+      <div className="about__widget-twitter">
+        {tweets.map((tweet, id) => {
+          return (
+            <TwitterTweet
+              key={id}
+              align="center"
+              coversation="none"
+              tweetId={tweet}
+              theme="light"
+              width={500}
+            />)
+        })}
+      </div>
+
     </div>
   );
 };
