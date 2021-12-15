@@ -1,6 +1,8 @@
 import React from "react";
+import { AnimatedSwitch } from "react-router-transition";
+import { mapStyles } from "./helpers/routerTransitions";
 import "./App.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import ActivitiesForm from "./Components/Activities/ActivitiesForm";
 import CategoriesForm from "./Components/Categories/CategoriesForm";
 import NewsForm from "./Components/News/NewsForm";
@@ -31,14 +33,19 @@ import HomeDashboard from "./Components/HomeDashboard/HomeDashboard";
 import OrganizationData from "./backoffice/Organization/OrganizationData";
 import Members from "./Components/About/Members";
 import Contact from "./Components/Contact/Contact";
-import Header from './Components/Header/Header'
+// import Header from './Components/Header/Header'
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <Switch>
+        <AnimatedSwitch
+          atEnter={{ opacity: 0 }}
+          atLeave={{ opacity: 0 }}
+          atActive={{ opacity: 1 }}
+          className="switch-wrapper"
+          mapStyles={mapStyles}
+        >
           <Route exact path="/actividades" component={ActivitiesList} />
           <Route exact path="/actividades/:id" component={ActivityInfo} />
           <Route path="/backoffice" exact component={HomeDashboard} />
@@ -102,8 +109,9 @@ function App() {
             component={OrganizationData}
           />
           <Route exact path="/about/members" component={Members} />
+          
           <Route exact path="/" component={Home} />
-        </Switch>
+        </AnimatedSwitch>
       </BrowserRouter>
     </>
   );
