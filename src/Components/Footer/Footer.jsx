@@ -63,46 +63,45 @@ const Footer = () => {
 
     return (
         <div className="footer">
-            <div/>
             <div className="footer__grid">
-                <div className="footer__flex">
+                <div className="flex-column-center logo-nombre">
                     <Link to={ "/" } >
                         <div className="footer__grid__hide">{ name }</div>
                         <img src={ logo } alt="logo_footer"/>
                     </Link>
                 </div>
-                <div className="footer__flex footer__grid__hide">
-                    <Link to={ '/actividades' }>Actividades </Link>
-                    <Link to={ '/school-campaign' }> Campaña Colegio</Link>
-                    <Link to={ '/toys-campaign' }> Campaña Juguetes</Link>
-                    <Link to={ '/contacto' }> Contacto</Link>
-                    <Link to={ '/about' }> Nosotros</Link>
+                <div className="footer__flex links-campanas">
+                    <Link to={ '/' } className="footer__grid__hide show-tablet txt-center">Ingrese aquí para visitar nuestro sitio web </Link>
                 </div>
-                <div className="footer__flex__icons">
+                <div className="footer__icons iconos-rrss">
                     <div>
                         <a href={ `https://${ facebook_url }` } target="_blank">
-                            <span className="footer__grid__hide">Facebook</span>
-                            <img src={ facebookIcon } alt="facebookIcon" className="footer__icon"/>
+                            <span className="footer__grid__hide show-pc">Facebook</span>
+                            <img src={ facebookIcon } alt="facebookIcon" className="footer__w-icon"/>
                         </a>
                     </div>
                     <div>
                         <a href={ `https://${ linkedin_url }` } target="_blank">
-                            <span className="footer__grid__hide">LinkedIn</span>
-                            <img src={ linkedinIcon } alt="linkedinIcon" className="footer__icon"/>
+                            <span className="footer__grid__hide show-pc">LinkedIn</span>
+                            <img src={ linkedinIcon } alt="linkedinIcon" className="footer__w-icon"/>
                         </a>
                     </div>
                     <div>
                         <a href={ `https://${ instagram_url }` } target="_blank">
-                            <span className="footer__grid__hide">Instagram</span>
-                            <img src={ instagramIcon } alt="instagramIcon" className="footer__icon"/>
+                            <span className="footer__grid__hide show-pc">Instagram</span>
+                            <img src={ instagramIcon } alt="instagramIcon" className="footer__w-icon"/>
                         </a>
                     </div>
                     <div>
                         <a href={ `https://${ twitter_url }` } target="_blank">
-                            <span className="footer__grid__hide">Twitter</span>
-                            <img src={ twitterIcon } alt="twitterIcon" className="footer__icon"/>
+                            <span className="footer__grid__hide show-pc">Twitter</span>
+                            <img src={ twitterIcon } alt="twitterIcon" className="footer__w-icon"/>
                         </a>
                     </div>
+                </div>
+                <div className="campanas d-flex flex-row align-items-center justify-content-around">
+                    <Link to={ '/school-campaign' } className="footer__grid__hide show-tv"> Campaña Colegio</Link>
+                    <Link to={ '/toys-campaign' } className="footer__grid__hide show-tv"> Campaña Juguetes</Link>
                 </div>
             </div>
         </div>
