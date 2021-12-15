@@ -32,6 +32,16 @@ const UserForm = () => {
 
   const { id } = useParams();
 
+  const handleTerms = (accept) => {
+    if (accept) {
+      setTerms(true);
+      alertInformation("Has aceptado los términos y condiciones");
+    } else {
+      setTerms(false);
+      alertError("Debes aceptar los términos y condiciones para continuar");
+    }
+  };
+
   const submitForm = async (values) => {
     if (create) {
       try {
@@ -185,11 +195,8 @@ const UserForm = () => {
                             <button
                               className="form__btn-primary"
                               onClick={() => {
-                                setTerms(true);
                                 close();
-                                alertInformation(
-                                  "Has aceptado los términos y condiciones"
-                                );
+                                handleTerms(true)
                               }}
                             >
                               Aceptar
@@ -197,11 +204,8 @@ const UserForm = () => {
                             <button
                               className="form__btn-secondary"
                               onClick={() => {
-                                setTerms(false);
                                 close();
-                                alertError(
-                                  "Debes aceptar los términos y condiciones para continuar"
-                                );
+                                handleTerms()
                               }}
                             >
                               Cancelar
@@ -214,7 +218,7 @@ const UserForm = () => {
                 </div>
                 <button
                   type={"submit"}
-                  disabled={props.isValid ? !terms : !props.isValid}
+                  disabled={!props.isValid && !terms}
                   className="form__btn-primary mx-auto"
                 >
                   {" "}
