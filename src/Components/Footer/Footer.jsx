@@ -66,32 +66,42 @@ const Footer = () => {
             <div/>
             <div className="footer__grid">
                 <div className="footer__flex">
-                    <div className="footer__grid__hide">{ name }</div>
-                    <img src={ logo } alt="logo_footer"/>
+                    <Link to={ "/" } >
+                        <div className="footer__grid__hide">{ name }</div>
+                        <img src={ logo } alt="logo_footer"/>
+                    </Link>
                 </div>
-                <div className="footer__flex footer__grid__hide" >
-                    <Link to={'/actividades'}>Actividades </Link>
-                    <Link to={'/school-campaign'}> Campaña Colegio</Link>
-                    <Link to={'/toys-campaign'}> Campaña Juguetes</Link>
-                    <Link to={'/contacto'}> Contacto</Link>
-                    <Link to={'/about'}> Nosotros</Link>
+                <div className="footer__flex footer__grid__hide">
+                    <Link to={ '/actividades' }>Actividades </Link>
+                    <Link to={ '/school-campaign' }> Campaña Colegio</Link>
+                    <Link to={ '/toys-campaign' }> Campaña Juguetes</Link>
+                    <Link to={ '/contacto' }> Contacto</Link>
+                    <Link to={ '/about' }> Nosotros</Link>
                 </div>
                 <div className="footer__flex__icons">
                     <div>
-                        <a href={ `https://${ facebook_url }` } target="_blank" className="footer__grid__hide">> Facebook</a>
-                        <img src={ facebookIcon } alt="facebookIcon" className="footer__icon"/>
+                        <a href={ `https://${ facebook_url }` } target="_blank">
+                            <span className="footer__grid__hide">Facebook</span>
+                            <img src={ facebookIcon } alt="facebookIcon" className="footer__icon"/>
+                        </a>
                     </div>
                     <div>
-                        <a href={ `https://${ linkedin_url }` } target="_blank" className="footer__grid__hide">>LinkedIn</a>
-                        <img src={ linkedinIcon } alt="linkedinIcon" className="footer__icon"/>
+                        <a href={ `https://${ linkedin_url }` } target="_blank">
+                            <span className="footer__grid__hide">LinkedIn</span>
+                            <img src={ linkedinIcon } alt="linkedinIcon" className="footer__icon"/>
+                        </a>
                     </div>
                     <div>
-                        <a href={ `https://${ instagram_url }` } target="_blank" className="footer__grid__hide">>Instagram </a>
-                        <img src={ instagramIcon } alt="instagramIcon" className="footer__icon"/>
+                        <a href={ `https://${ instagram_url }` } target="_blank">
+                            <span className="footer__grid__hide">Instagram</span>
+                            <img src={ instagramIcon } alt="instagramIcon" className="footer__icon"/>
+                        </a>
                     </div>
                     <div>
-                        <a href={ `https://${ twitter_url }` } target="_blank" className="footer__grid__hide">>Twitter </a>
-                        <img src={ twitterIcon } alt="twitterIcon" className="footer__icon"/>
+                        <a href={ `https://${ twitter_url }` } target="_blank">
+                            <span className="footer__grid__hide">Twitter</span>
+                            <img src={ twitterIcon } alt="twitterIcon" className="footer__icon"/>
+                        </a>
                     </div>
                 </div>
             </div>

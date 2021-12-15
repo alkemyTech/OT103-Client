@@ -33,7 +33,7 @@
   &__grid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    @media screen and (max-width: 400px){
+    @media screen and (max-width: 576px){
       grid-template-columns: 1fr;
       &__hide{
         display: none;
