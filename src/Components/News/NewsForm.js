@@ -6,147 +6,153 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import { Get, Post, Put } from "../../Services/privateApiService";
 import { alertError } from "../../Services/alerts/Alerts";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategories } from "../../store/slices/categoriesSlice";
 
 const NewsForm = () => {
-	const [categories, setCategories] = useState([]);
-	const [existingNew, setExistingNew] = useState({});
-	const [isLoading, setIsLoading] = useState(true);
-	const [message, setMessage] = useState("");
+  // const [categories, setCategories] = useState([]);
+  const [existingNew, setExistingNew] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [message, setMessage] = useState("");
 
-	const { id } = useParams();
+  const dispatch = useDispatch()
+  const categoriesData = useSelector(state => state.categoriesData)
 
-	// post new article
-	const submitNew = async (values, { setSubmitting }) => {
-		setMessage("");
-		const body = {
-			name: values.title,
-			content: values.content,
-			image: values.image,
-			category_id: values.category,
-			deleted_at: "2021-11-23T19:19:56.825Z",
-		};
-		const response = await Post(process.env.REACT_APP_API_NEWS, body);
-		if (response.success) {
-			setMessage("Creado exitosamente");
-		} else {
-			alertError("Algo salió mal, intente nuevamente");
-		}
+  const { id } = useParams();
 
-		setSubmitting(false);
-	};
+  // post new article
+  const submitNew = async (values, { setSubmitting }) => {
+    setMessage("");
+    const body = {
+      name: values.title,
+      content: values.content,
+      image: values.image,
+      category_id: values.category,
+      deleted_at: "2021-11-23T19:19:56.825Z",
+    };
+    const response = await Post(process.env.REACT_APP_API_NEWS, body);
+    if (response.success) {
+      setMessage("Creado exitosamente");
+    } else {
+      alertError("Algo salió mal, intente nuevamente");
+    }
 
-	// edit existing article
-	const submitEdit = async (values, { setSubmitting }) => {
-		setMessage("");
-		const body = {
-			name: values.title,
-			content: values.content,
-			category_id: values.category,
-			deleted_at: "2021-11-23T19:19:56.825Z",
-		};
+    setSubmitting(false);
+  };
 
-		if (existingNew.image !== values.image) {
-			body.image = values.image;
-		}
+  // edit existing article
+  const submitEdit = async (values, { setSubmitting }) => {
+    setMessage("");
+    const body = {
+      name: values.title,
+      content: values.content,
+      category_id: values.category,
+      deleted_at: "2021-11-23T19:19:56.825Z",
+    };
 
-		const response = await Put(process.env.REACT_APP_API_NEWS, id, body);
-		if (response.success) {
-			setMessage("Actualizado exitosamente");
-		} else {
-			alertError("Algo salió mal, intente nuevamente");
-		}
+    if (existingNew.image !== values.image) {
+      body.image = values.image;
+    }
 
-		setSubmitting(false);
-	};
+    const response = await Put(process.env.REACT_APP_API_NEWS, id, body);
+    if (response.success) {
+      setMessage("Actualizado exitosamente");
+    } else {
+      alertError("Algo salió mal, intente nuevamente");
+    }
 
-	//   load categories and existing article data if editting
-	const loadApiData = useCallback(async () => {
-		try {
-			const categories = await Get("categories");
-			setCategories(categories.data);
-			if (id) {
-				const newData = await Get(process.env.REACT_APP_API_NEWS, id);
-				if (newData.success) {
-					setExistingNew(newData.data);
-				}
-			}
-		} catch (error) {}
-		setIsLoading(false);
-	}, [id]);
+    setSubmitting(false);
+  };
 
-	const handleImageChange = (e, setFieldValue) => {
-		if (e.currentTarget.files && e.currentTarget.files[0]) {
-			const reader = new FileReader();
+  //   load categories and existing article data if editting
+  const loadApiData = useCallback(async () => {
+    try {
+      dispatch(fetchCategories())
+      // const categories = await Get("categories");
+      // setCategories(categories.data);
+      if (id) {
+        const newData = await Get(process.env.REACT_APP_API_NEWS, id);
+        if (newData.success) {
+          setExistingNew(newData.data);
+        }
+      }
+    } catch (error) {}
+    setIsLoading(false);
+  }, [id]);
 
-			reader.onload = function (e) {
-				setFieldValue("image", e.target.result);
-			};
+  const handleImageChange = (e, setFieldValue) => {
+    if (e.currentTarget.files && e.currentTarget.files[0]) {
+      const reader = new FileReader();
 
-			reader.readAsDataURL(e.currentTarget.files[0]);
-		}
-	};
+      reader.onload = function (e) {
+        setFieldValue("image", e.target.result);
+      };
 
-	useEffect(() => {
-		loadApiData();
-	}, []);
+      reader.readAsDataURL(e.currentTarget.files[0]);
+    }
+  };
 
-	return isLoading ? (
-		<div className="form__container">
-			<div>Loading...</div>
-		</div>
-	) : id && !existingNew.id ? (
-		<div className="form__container">Noticia no encontrada</div>
-	) : (
-		<Formik
-			validateOnChange={false}
-			validateOnBlur={false}
-			initialValues={{
-				title: existingNew.name || "",
-				content: existingNew.content || "",
-				category: existingNew.category_id || "",
-				image: existingNew.image || "",
-			}}
-			onSubmit={id ? submitEdit : submitNew}
-			validate={(values) => {
-				const errors = {};
-				if (!values.title) {
-					errors.title = "Ingresar un título";
-				}
-				if (!values.content) {
-					errors.content = "Ingresar contenido";
-				}
-				if (!values.category) {
-					errors.category = "Seleccionar categoría";
-				}
-				if (!values.image) {
-					errors.image = "Añadir una foto";
-				}
-				return errors;
-			}}
-		>
-			{({ isSubmitting, values, setFieldValue, errors }) => {
-				return (
-					<Form className="form__container">
-						<Field
-							type="text"
-							name="title"
-							className="form__input"
-							id="title"
-							placeholder="Título"
-						/>
-						<div className="form__message-validation">{errors.title}</div>
+  useEffect(() => {
+    loadApiData();
+  }, []);
 
-						<CKEditor
-							editor={ClassicEditor}
-							data={values.content}
-							onChange={(event, editor) => {
-								const data = editor.getData();
-								setFieldValue("content", data);
-							}}
-							config={{
-								placeholder: "Contenido",
-								cloudServices: {
-									tokenUrl:
+  return isLoading ? (
+    <div className="form__container">
+      <div>Loading...</div>
+    </div>
+  ) : id && !existingNew.id ? (
+    <div className="form__container">Noticia no encontrada</div>
+  ) : (
+    <Formik
+      validateOnChange={false}
+      validateOnBlur={false}
+      initialValues={{
+        title: existingNew.name || "",
+        content: existingNew.content || "",
+        category: existingNew.category_id || "",
+        image: existingNew.image || "",
+      }}
+      onSubmit={id ? submitEdit : submitNew}
+      validate={(values) => {
+        const errors = {};
+        if (!values.title) {
+          errors.title = "Ingresar un título";
+        }
+        if (!values.content) {
+          errors.content = "Ingresar contenido";
+        }
+        if (!values.category) {
+          errors.category = "Seleccionar categoría";
+        }
+        if (!values.image) {
+          errors.image = "Añadir una foto";
+        }
+        return errors;
+      }}
+    >
+      {({ isSubmitting, values, setFieldValue, errors }) => {
+        return (
+          <Form className="form__container">
+            <Field
+              type="text"
+              name="title"
+              className="form__input"
+              id="title"
+              placeholder="Título"
+            />
+            <div className="form__message-validation">{errors.title}</div>
+
+            <CKEditor
+              editor={ClassicEditor}
+              data={values.content}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setFieldValue("content", data);
+              }}
+              config={{
+                placeholder: "Contenido",
+                cloudServices: {
+                  tokenUrl:
                     "https://85122.cke-cs.com/token/dev/63f1e5122f7b89374a44f0ba134c7a670437bab84212188ac1b17d829d92",
 									uploadUrl: "https://85122.cke-cs.com/easyimage/upload/",
 								},
@@ -161,6 +167,7 @@ const NewsForm = () => {
 							children={[
 								<option value="" disabled key={0}>
                   Seleccionar categoría
+<<<<<<< HEAD
 								</option>,
 							].concat(
 								categories.map((category) => (
@@ -186,6 +193,33 @@ const NewsForm = () => {
 									alt="article"
 									onError={(e) => {
 										e.target.src =
+=======
+                </option>,
+              ].concat(
+                categoriesData.data.map((category) => (
+                  <option value={category.id} key={category.id}>
+                    {category.name}
+                  </option>
+                ))
+              )}
+            />
+            <div className="form__message-validation">{errors.category}</div>
+
+            <label>
+              <input
+                className="form__image-input"
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleImageChange(e, setFieldValue)}
+              />
+
+              <div className="form__image-container">
+                <img
+                  src={values.image}
+                  alt="article"
+                  onError={(e) => {
+                    e.target.src =
+>>>>>>> 6f0a98d32a5cf08ce4e2744e5f154ede95c1c3b0
                       "https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
 									}}
 								/>

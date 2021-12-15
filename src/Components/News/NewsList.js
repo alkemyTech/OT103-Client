@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 const NewsList = () => {
 	const [news, setNews] = useState([]);
-
 	const { newsData } = useSelector((state) => state);
 	const dispatch = useDispatch();
 
@@ -29,7 +28,7 @@ const NewsList = () => {
 			<header className="header">
 				<h1 className="header__title">Listado de Novedades</h1>
 				<Link to={"news/create"} className="header__create-btn">
-          Crear
+					Crear
 				</Link>
 			</header>
 			<ul className="list">
