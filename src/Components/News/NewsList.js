@@ -10,8 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 const NewsList = () => {
   const [news, setNews] = useState([]);
-  const [loading, setLoading] = useState(true);
-
   const { newsData } = useSelector((state) => state);
   const dispatch = useDispatch();
 

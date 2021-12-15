@@ -32,7 +32,8 @@ const UserForm = () => {
 
   const { id } = useParams();
 
-  const handleTerms = (accept) => {
+  const handleTerms = (accept, close) => {
+    close();
     if (accept) {
       setTerms(true);
       alertInformation("Has aceptado los términos y condiciones");
@@ -115,6 +116,7 @@ const UserForm = () => {
         initialValues={{ name, email, role_id, password, profile_image }}
         onSubmit={(values) => {
           submitForm(values);
+          console.log(values);
         }}
         validationSchema={ErrorSchema}
         enableReinitialize={true}
@@ -194,19 +196,13 @@ const UserForm = () => {
                           <div className="flex justify-around my-10px">
                             <button
                               className="form__btn-primary"
-                              onClick={() => {
-                                close();
-                                handleTerms(true)
-                              }}
+                              onClick={() => handleTerms(true, close)}
                             >
                               Aceptar
                             </button>
                             <button
                               className="form__btn-secondary"
-                              onClick={() => {
-                                close();
-                                handleTerms()
-                              }}
+                              onClick={() => handleTerms(false, close)}
                             >
                               Cancelar
                             </button>
@@ -217,7 +213,7 @@ const UserForm = () => {
                   </Popup>
                 </div>
                 <button
-                  type={"submit"}
+                  type="submit"
                   disabled={!props.isValid && !terms}
                   className="form__btn-primary mx-auto"
                 >
