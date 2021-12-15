@@ -33,12 +33,17 @@ import HomeDashboard from "./Components/HomeDashboard/HomeDashboard";
 import OrganizationData from "./backoffice/Organization/OrganizationData";
 import Members from "./Components/About/Members";
 import Contact from "./Components/Contact/Contact";
-// import Header from './Components/Header/Header'
+import Header from './Components/Header/Header'
+import LoginProvider from "./Components/context/LoginProvider";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <LoginProvider>
+
+        
+        <Header />
         <AnimatedSwitch
           atEnter={{ opacity: 0 }}
           atLeave={{ opacity: 0 }}
@@ -112,6 +117,7 @@ function App() {
           
           <Route exact path="/" component={Home} />
         </AnimatedSwitch>
+        </LoginProvider>
       </BrowserRouter>
     </>
   );
