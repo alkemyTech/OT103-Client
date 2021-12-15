@@ -1,29 +1,38 @@
-.backoffice__nav{
-    display: flex;
-    height: 15vh;
-    padding: 1%;
-    &-logo{
-        max-height: 100px;
-    }
-    &-link{
+.backoffice__{
+    &aside{
         display: flex;
-        align-items: center;
-        justify-content: space-evenly;
+        height: 100vh;
         width: 55%;
-    }
-    &-item{
-        color: black;
-        font-size: small;
-        text-decoration: none;
-        &:hover{
-            color: rgb(83, 83, 83);
-            background-color: none;
-            box-shadow: 10px 10px 0px 0px $accent-color;
-            -webkit-box-shadow: 10px 10px 0px 0px $accent-color;
-            -moz-box-shadow: 10px 10px 0px 0px $accent-color;
+        padding: 1%;
+        position: fixed;
+        z-index: 20;
+        transition: all .9s;
+        &-logo{
+            max-height: 100px;
         }
     }
-}
-strong{
-    background-color: none;
+    &nav{
+        align-items: center;
+        background-color: $bg-secondary-color;
+        border: 1px solid rgba(0, 0, 0, 0.336);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        width: 100%;
+    }
+    &item{
+        align-items: center;
+        color: black;
+        display: flex;
+        height: 100%;
+        font-size: small;
+        justify-content: center;
+        text-decoration: none;
+        width: 100%;
+        &:hover{
+            color: $accent-color;
+            background-color: $bg-primary-color;
+        }
+    }
 }
