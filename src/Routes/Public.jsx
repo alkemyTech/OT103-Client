@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { AnimatedSwitch } from "react-router-transition";
 import { mapStyles } from "../helpers/routerTransitions";
-import "../App.css";
 import ActivitiesForm from "../Components/Activities/ActivitiesForm";
 import CategoriesForm from "../Components/Categories/CategoriesForm";
 import NewsForm from "../Components/News/NewsForm";
