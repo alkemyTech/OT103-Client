@@ -1,6 +1,8 @@
 import React from "react";
+import { AnimatedSwitch } from "react-router-transition";
+import { mapStyles } from "./helpers/routerTransitions";
 import "./App.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import ActivitiesForm from "./Components/Activities/ActivitiesForm";
 import CategoriesForm from "./Components/Categories/CategoriesForm";
 import NewsForm from "./Components/News/NewsForm";
@@ -36,7 +38,13 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Switch>
+        <AnimatedSwitch
+          atEnter={{ opacity: 0 }}
+          atLeave={{ opacity: 0 }}
+          atActive={{ opacity: 1 }}
+          className="switch-wrapper"
+          mapStyles={mapStyles}
+        >
           <Route exact path="/actividades" component={ActivitiesList} />
           <Route exact path="/actividades/:id" component={ActivityInfo} />
           <Route path="/backoffice" exact component={HomeDashboard} />
@@ -65,7 +73,7 @@ function App() {
           <Route exact path="/create-member" component={MembersForm} />
           <Route
             exact
-            path="/backoffice/members/edit/:id"
+            path="/backoffice/members/edit"
             component={MembersEdit}
           />
           <Route exact path="/create-project" component={ProjectsForm} />
@@ -83,12 +91,8 @@ function App() {
           <Route exact path="/donar" component={DonationsGreet} />
           <Route exact path="/gracias" component={ThanksGreet} />
           <Route exact path="/contacto" component={Contact} />
-          <Route
-            exact
-            path="/testimonials/create"
-            component={TestimonialForm}
-          />
-          <Route exact path="/testimonials/:id" component={TestimonialForm} />
+          <Route exact path="/testimonials/create" component={ TestimonialForm }/>
+          <Route exact path="/testimonials/:id" component={ TestimonialForm }/>
           <Route exact path="/about" component={AboutMain} />
           <Route exact path="/backoffice/slides" component={SlidesForm} />
           <Route exact path="/contact-form" component={ContactForm} />
@@ -100,8 +104,9 @@ function App() {
             component={OrganizationData}
           />
           <Route exact path="/about/members" component={Members} />
+          
           <Route exact path="/" component={Home} />
-        </Switch>
+        </AnimatedSwitch>
       </BrowserRouter>
     </>
   );
