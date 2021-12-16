@@ -5,54 +5,41 @@ import { alertError } from "../Services/alerts/Alerts";
 import { Get } from "../Services/publicApiService";
 import { SlideComponent } from "./SlideComponent";
 
-
-
-
 const settings = {
-  dots: true,
   infinite: true,
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
 };
 
-export const SliderCarouselComponent = ({ URL = "slides", arrayData }) => {
+export const SliderCarouselComponent = ({ URL = "slides", arrayData, height = 30, dots = false }) => {
   const [data, setData] = useState([]);
 
-  const [loading, setLoading] = useState(false)
-
-
+  const [loading, setLoading] = useState(false);
 
   const getData = async () => {
     try {
       const fetchedData = await Get(URL);
       const { data } = fetchedData;
-      setLoading(true)
+      setLoading(true);
       return setData(data);
     } catch (error) {
-      setLoading(null)
-      alertError('Ha ocurrido un problema')
-      
-      
+      setLoading(false);
+      alertError("Ha ocurrido un problema");
     }
   };
   useEffect(() => {
-    getData();
-  }, [URL]);
+    arrayData ? setData(arrayData) : getData()
+  })
 
-
-  return loading !== false ? (
+  return (
     <>
-      
-      <Slider {...settings}>
-        {arrayData
-          ? arrayData.map((obj) => {
-              return <SlideComponent key={obj.id} data={obj} />;
-            })
-          : data.map((obj) => {
-              return <SlideComponent key={obj.id} data={obj} />;
-            })}
+      <Slider {...settings} dots={dots}>
+        {loading ?
+          (data.map(obj => { return <SlideComponent key={obj.id} data={obj} height={height} /> }))
+          : (<LoaderComponent />)
+        }
       </Slider>
     </>
-  ) : <LoaderComponent />
+  );
 };
