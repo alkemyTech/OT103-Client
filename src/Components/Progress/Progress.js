@@ -9,7 +9,7 @@ export const Progress = () => {
     setTimeout(() => {
       ref.current.complete();
     }, 2000);
-  },[]);
+  });
 
   return (
     <div>

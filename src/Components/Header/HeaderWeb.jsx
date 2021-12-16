@@ -73,7 +73,7 @@ const HeaderWeb = (props) => {
         <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container-fluid">
                 <Link className="navbar-brand" to='/'>
-                    <img src={logo} alt="logo" width={ 100}/>
+                    <img src={logo} alt="logo" width={130}/>
                     </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -84,17 +84,13 @@ const HeaderWeb = (props) => {
                            data.map((item, index) => (
                                 
                                 <li className="nav-item" key={index}>
-                                   <NavLink className="nav-link me-3" to={item.link} exact>{  item.text }</NavLink>
+                                   <NavLink className="nav-link me-3" to={item.link} exact>
+                                       {item.text}
+                                   </NavLink>
                                 </li>
                                 
                            )) 
-                        }
-                    
-                
-                        
-                                
-                                    
-                            
+                        }                 
                         
                     </ul>
                     </div>
