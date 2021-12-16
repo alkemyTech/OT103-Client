@@ -33,6 +33,7 @@ import HomeDashboard from "./Components/HomeDashboard/HomeDashboard";
 import OrganizationData from "./backoffice/Organization/OrganizationData";
 import Members from "./Components/About/Members";
 import Contact from "./Components/Contact/Contact";
+import PageNotFound from "./Components/PageNotFound/PageNotFound";
 
 function App() {
 	return (
@@ -110,6 +111,7 @@ function App() {
 					<Route exact path="/about/members" component={Members} />
 
 					<Route exact path="/" component={Home} />
+					<Route component={PageNotFound} />
 				</AnimatedSwitch>
 			</BrowserRouter>
 		</>

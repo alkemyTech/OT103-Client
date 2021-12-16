@@ -1,0 +1,16 @@
+.notFound {
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 85vh;
+		flex-direction: column;
+		font-size: 2em;
+	}
+	&__first-title {
+		font-size: 1.5em;
+	}
+	&__second-title {
+		font-size: 1.5em;
+	}
+}
