@@ -1,9 +1,6 @@
 @import "../../styles/variables.scss";
 
 
-
-
-
 // .menu {
 //     background-color: #212529;
 //     height: 75px;
@@ -23,21 +20,19 @@
 .nav-link{
     padding: 7px 13px !important;
     border-radius: 3px !important;
-    height: 40px;
 }
 .nav-link:hover {
     background: $accent-color !important;
-    
+    transition: .2s;
     color: #fff !important;
     
 }
 
 .nav-link.active{
     background: $accent-color !important;
-    
+    transition: .2s;
     color: #fff !important;
 }
-
 
 
 
