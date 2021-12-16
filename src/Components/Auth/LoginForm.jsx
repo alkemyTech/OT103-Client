@@ -2,10 +2,13 @@ import React, { useContext, useState } from 'react';
 import '../../styles/components/formStyles.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { LoginContext } from '../context/LoginProvider';
+import { useHistory } from 'react-router'
 //import { alertConfirmation } from '../../Services/alerts/Alerts';
 
 
 const LoginForm = () => {
+    const history = useHistory()
+
     const [initialValues, setInitialValues] = useState({
         email: '',
         password: ''
@@ -78,6 +81,7 @@ const LoginForm = () => {
                     `
                 )
                 resetForm()
+                history.push('/')
             }}
         
         >

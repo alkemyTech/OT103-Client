@@ -33,8 +33,9 @@ import HomeDashboard from "./Components/HomeDashboard/HomeDashboard";
 import OrganizationData from "./backoffice/Organization/OrganizationData";
 import Members from "./Components/About/Members";
 import Contact from "./Components/Contact/Contact";
-import Header from './Components/Header/Header'
+// import Header from './Components/Header/Header'
 import LoginProvider from "./Components/context/LoginProvider";
+import HeaderWeb from "./Components/Header/HeaderWeb";
 
 function App() {
   return (
@@ -43,7 +44,7 @@ function App() {
         <LoginProvider>
 
         
-        <Header />
+        <HeaderWeb />
         <AnimatedSwitch
           atEnter={{ opacity: 0 }}
           atLeave={{ opacity: 0 }}
@@ -79,7 +80,7 @@ function App() {
           <Route exact path="/create-member" component={MembersForm} />
           <Route
             exact
-            path="/backoffice/members/edit/:id"
+            path="/backoffice/members/edit"
             component={MembersEdit}
           />
           <Route exact path="/create-project" component={ProjectsForm} />
@@ -97,12 +98,8 @@ function App() {
           <Route exact path="/donar" component={DonationsGreet} />
           <Route exact path="/gracias" component={ThanksGreet} />
           <Route exact path="/contacto" component={Contact} />
-          <Route
-            exact
-            path="/testimonials/create"
-            component={TestimonialForm}
-          />
-          <Route exact path="/testimonials/:id" component={TestimonialForm} />
+          <Route exact path="/testimonials/create" component={ TestimonialForm }/>
+          <Route exact path="/testimonials/:id" component={ TestimonialForm }/>
           <Route exact path="/about" component={AboutMain} />
           <Route exact path="/backoffice/slides" component={SlidesForm} />
           <Route exact path="/contact-form" component={ContactForm} />
