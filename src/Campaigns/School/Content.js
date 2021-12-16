@@ -1,6 +1,6 @@
 import React from 'react';
+import Countdown from 'react-countdown';
 
-<<<<<<< HEAD
 const Content = ({ event = 20000 * 4324 }) => {
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
@@ -68,12 +68,6 @@ const Content = ({ event = 20000 * 4324 }) => {
           />
         </div>
       </div>
-=======
-const Content = () => {
-  return (
-    <div>
-      
->>>>>>> c8c1abaaf0a0f594c492c0f6fa7640cfb782ffc7
     </div>
   );
 }

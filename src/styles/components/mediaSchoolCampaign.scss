@@ -1,41 +1,21 @@
-<<<<<<< HEAD
-@media (min-width: $breakpoint-tablet){
+@media (min-width: $breakpoint-mobile){
+    
+}
+
+@media (min-width: $breakpoint-tablet){    
     .campaign__{
         &countdown-text{
             display: block;
         }
         &description{
-            width: 80%;
-=======
-@media (max-width: $breakpoint-mobile){
-    .HS-campaign__content-{
-        &img{
-            display: none;
+            width: 80%;        
         }
-        &countdown{
-            display: none;
-        }
+
     }
 }
 
-@media (max-width: $breakpoint-tablet){
-    .HS-campaign__content-countdown-main{
-        width: 100%;
-    }
-    .HS-campaign__header-{
-        &container{
-            justify-content: center;
-        }
-        &img{
-            display: none;
-        }
-
-    }
-    .HS-campaign__footer-{
-        &container{
-            justify-content: center;
->>>>>>> c8c1abaaf0a0f594c492c0f6fa7640cfb782ffc7
-        }
+@media (min-width: 1024px){
+    .campaign__{
         &img{
             display: block;
             max-width: 150px;
@@ -53,6 +33,14 @@
         }
         &img{
             max-width: 250px;
+        }
+    }
+}
+
+@media (min-width: 1920px){
+    .campaign__{
+        &description{
+            font-size: xx-large;
         }
     }
 }
