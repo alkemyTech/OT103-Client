@@ -8,20 +8,20 @@ export const SideBar = ({ left = -100 }) => {
         <Link className="backoffice__item" to="/">
           Inicio
         </Link>
-        <Link className="backoffice__item" to="#">
-          Nosotros
-        </Link>
-        <Link className="backoffice__item" to="#">
+        <Link className="backoffice__item" to="/backoffice/activities">
           Actividades
         </Link>
-        <Link className="backoffice__item" to="#">
+        <Link className="backoffice__item" to="/backoffice/slides">
+          Slides
+        </Link>
+        <Link className="backoffice__item" to="/backoffice/news">
           Novedades
         </Link>
-        <Link className="backoffice__item" to="#">
-          Testimonios
+        <Link className="backoffice__item" to="/backoffice/users">
+          Usuarios
         </Link>
-        <Link className="backoffice__item" to="#">
-          Contacto
+        <Link className="backoffice__item" to="/backoffice/organization">
+          Organización
         </Link>
       </nav>
     </aside>
