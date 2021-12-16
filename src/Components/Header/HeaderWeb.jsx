@@ -83,7 +83,7 @@ const HeaderWeb = (props) => {
                         {
                            data.map((item, index) => (
                                 
-                                <li className="nav-item" key={index}>
+                                <li className="nav-item mb-2 mb-lg-0" key={index}>
                                    <NavLink className="nav-link me-3" to={item.link} exact>
                                        {item.text}
                                    </NavLink>
