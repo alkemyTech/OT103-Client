@@ -13,6 +13,7 @@ import NewsList from "../Components/News/NewsList";
 import { ScreenSliderList } from "../backoffice/SlidesScreen/ScreenSliderList";
 import HomeDashboard from "../Components/HomeDashboard/HomeDashboard";
 import OrganizationData from "../backoffice/Organization/OrganizationData";
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 function Backoffice() {
     return (
@@ -25,6 +26,8 @@ function Backoffice() {
                     className="switch-wrapper"
                     mapStyles={mapStyles}
                 >
+                    {/* <Route path="/backoffice" exact component={HomeDashboard} /> */}
+                    <PrivateRoute path="/backoffice" exact component={HomeDashboard} />
                     <Route exact path="/backoffice/Slides/create" component={SlidesForm} />
                     <Route exact path="/backoffice/home" component={HomeForm} />
                     <Route exact path="/backoffice/members/edit" component={MembersEdit} />
@@ -33,7 +36,6 @@ function Backoffice() {
                     <Route exact path="/backoffice/users" component={UsersList} />
                     <Route exact path="/backoffice/news" component={NewsList} />
                     <Route exact path="/backoffice/Slides" component={ScreenSliderList} />
-                    <Route path="/backoffice" exact component={HomeDashboard} />
                     <Route exact path="/backoffice/organization" component={OrganizationData} />
                 </AnimatedSwitch>
             </BrowserRouter>
