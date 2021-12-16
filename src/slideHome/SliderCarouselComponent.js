@@ -12,7 +12,7 @@ const settings = {
   slidesToScroll: 1,
 };
 
-export const SliderCarouselComponent = ({ URL = "slides", arrayData, height = 30, dots = true }) => {
+export const SliderCarouselComponent = ({ URL = "slides", arrayData, height = 30, dots = false }) => {
   const [data, setData] = useState([]);
 
   const [loading, setLoading] = useState(false);
@@ -24,27 +24,22 @@ export const SliderCarouselComponent = ({ URL = "slides", arrayData, height = 30
       setLoading(true);
       return setData(data);
     } catch (error) {
-      setLoading(null);
+      setLoading(false);
       alertError("Ha ocurrido un problema");
     }
   };
   useEffect(() => {
-    getData();
-  }, [URL]);
+    arrayData ? setData(arrayData) : getData()
+  })
 
-  return loading !== false ? (
+  return (
     <>
       <Slider {...settings} dots={dots}>
-        {arrayData
-          ? arrayData.map((obj) => {
-              return <SlideComponent key={obj.id} data={obj} height={height} />;
-            })
-          : data.map((obj) => {
-              return <SlideComponent key={obj.id} data={obj} height={height} />;
-            })}
+        {loading ?
+          (data.map(obj => { return <SlideComponent key={obj.id} data={obj} height={height} /> }))
+          : (<LoaderComponent />)
+        }
       </Slider>
     </>
-  ) : (
-    <LoaderComponent />
   );
 };
