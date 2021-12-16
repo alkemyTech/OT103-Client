@@ -1,65 +1,62 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from "react-router-dom";
-import {Get} from '../../Services/privateApiService'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Get } from "../../Services/privateApiService";
+import { fetchMembers } from "../../store/slices/aboutSlice";
+import LoaderComponent from "../Loader/Loader";
 import "./styles/members.scss";
 
 const Members = () => {
-    
-    const [list, setList] = useState([])
+  const { aboutData } = useSelector((state) => state);
 
-    const getList = async () => {
-        
-        
-        const response = await Get('members')
-        setList(response.data)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await Get('members')
+      
     }
-    
-    useEffect(() => {
-        getList()
-    }, [])
+    getData()
+    dispatch(fetchMembers());
+  }, []);
 
+  return (
+    <div className="container">
+      {aboutData.loading ? (        
+        <LoaderComponent />
+      ) : (
+        aboutData.data.map((item) => (
+          <div className="card" key={item.id}>
+            <figure>
+              <img src={item.image} alt="imagen" />
+            </figure>
+            <div className="card__container">
+              <h4 className="card__title">{item.name}</h4>
+              <h3 className="card__description">{item.description}</h3>
+              <div className="links">
+                <a
+                  className="card__description"
+                  href={item.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Facebook
+                </a>
 
+                <a
+                  className="card__description"
+                  href={item.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Linkedin
+                </a>
+              </div>
+            </div>
+          </div>
+        ))
+      )}
+    </div>
+  );
+};
 
-
-    return (
-        <div className="container">
-            {
-                list.map(item => (
-                    <div className="card" key={ item.id}>
-                        <figure>
-                            <img src={item.image} alt="imagen" />
-                        </figure>
-                            <div className="content">
-                                <h4 className="content-title">{item.name}</h4>
-                            <h3 className="content-description">{item.description}</h3>
-                            <div className='links'>
-
-                                <a
-                                    className="content-description link"
-                                    href={item.facebookUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Facebook</a>
-                            
-                                <a
-                                    className="content-description link"
-                                    href={item.linkedinUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Linkedin
-                                </a>
-                            </div>
-                                
-                            </div>
-                    </div>
-                ))
-            }
-            
-            
-        </div>
-    )
-}
-
-export default Members
+export default Members;

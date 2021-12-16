@@ -1,25 +1,44 @@
 import React, { useState, useEffect } from "react";
-import "../CardListStyles.css";
 import NewsItem from "./NewsItem";
 import { Link } from "react-router-dom";
-import { Get } from "../../Services/privateApiService";
+
+import "../../styles/components/listStyles.scss";
+import LoaderComponent from "../Loader/Loader";
+import { alertError } from "../../Services/alerts/Alerts";
+import { fetchNews } from "../../store/slices/newsSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const NewsList = () => {
   const [news, setNews] = useState([]);
+  const { newsData } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    Get("news")
-      .then((res) => setNews(res.data))
-      .catch((err) => console.log(err));
+    dispatch(fetchNews());
   }, []);
 
+  useEffect(() => {
+    if (newsData.error) {
+      alertError("Algo salió mal, intente nuevamente");
+    }
+  }, [newsData.error]);
+
   return (
-    <div>
-      <h1>Listado de Novedades</h1>
-      <Link to={`news/create`}>Crear</Link>
-      <ul className="list-container">
-        {news.length > 0 ? (
-          news.map((element) => {
+    <div className="news-list">
+      <header className="header">
+        <h1 className="header__title">Listado de Novedades</h1>
+        <Link to={`news/create`} className="header__create-btn">
+          Crear
+        </Link>
+      </header>
+      <ul className="list">
+        {newsData.loading && (
+          <div className="m-auto">
+            <LoaderComponent />
+          </div>
+        )}
+        {newsData.data.length > 0 ? (
+          newsData.data.map((element) => {
             return <NewsItem {...element} key={element.id} setNews={setNews} />;
           })
         ) : (

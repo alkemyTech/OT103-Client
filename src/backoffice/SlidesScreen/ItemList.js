@@ -1,48 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { alertError } from '../../Services/alerts/Alerts';
 import { Delete } from '../../Services/privateApiService';
 
 
 export const ItemList = ({ data }) => {
-    const [msg, setMsg] = useState('');
 
-    const handleDelete = async() => {
+    const handleDelete = async () => {
         try {
             const deleteData = await Delete('slides', data.id);
-            setMsg(deleteData.data.message);
-            return deleteData.data;
+            if(!deleteData.success){
+                alertError(deleteData.error)
+            }else{
+                return deleteData.data;
+            }
         } catch (error) {
             console.log(error);
-            setMsg('Esta publicación no existe')
+            alertError('Esta publicación no existe')
         }
     };
 
     return (
-        <td className="screen__items">
-            <div className="screen__text">
-                <h3 className="screen__title">{data.name}</h3>
-                <div className="screen__div-button">
+        <div className="table__items">
+            <div className="table__text">
+                <h3 className="table__title">{data.name}</h3>
+                <div className="table__div-button">
                     {
-                     data.order ?
-                         (<h5>Order: {data.order}</h5>)
-                         : (<h5>No order</h5>)
+                        data.order ?
+                            (<h5>Order: {data.order}</h5>)
+                            : (<h5>No order</h5>)
                     }
-                    <div className="screen__buttons">
-                        <Link to={`/backoffice/Slides/create/${data.id}`}>
-                            <i className="fas fa-edit"></i>
-                        </Link>
-                        <button onClick={handleDelete}>
-                            <i className="fas fa-trash-alt" onClick={handleDelete}></i>
+                    <div className="table__buttons-box">
+                        <Link
+                            // className="table__button-table edit-button"
+                            className='form__btn-primary edit-button'
+                            to={`/backoffice/Slides/create/${data.id}`}
+                        >Editar</Link>
+                        <button onClick={handleDelete} className="form__btn-primary delete-button">
+                            <p onClick={handleDelete}>Borrar</p>
                         </button>
                     </div>
                 </div>
             </div>
             <img
-                className="screen__image"
+                className="table__image"
                 src={data.image}
                 alt={data.image}
             />
-            <h5>{msg}</h5>
-        </td>
+        </div>
     );
 };
