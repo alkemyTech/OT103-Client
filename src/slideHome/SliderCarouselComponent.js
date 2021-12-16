@@ -22,13 +22,13 @@ export const SliderCarouselComponent = ({ URL = "slides", arrayData, height = 30
       setLoading(false)
     } else {
       getData();
+      setLoading(false);
     }
   };
   const getData = async () => {
     try {
       const fetchedData = await Get(URL);
       const { data } = fetchedData;
-      setLoading(false);
       return setData(data);
     } catch (error) {
       setLoading(false);
