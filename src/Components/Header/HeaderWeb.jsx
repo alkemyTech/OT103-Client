@@ -25,7 +25,7 @@ const HeaderWeb = (props) => {
         {
             text: 'Inicio',
             link: '/',
-            className: false
+            
             
         },
         {
@@ -37,31 +37,31 @@ const HeaderWeb = (props) => {
         {
             text: 'Contacto',
             link: '/contacto',
-            className: false
+            
                 
         },
         {
             text: 'Juguetes',
             link: '/toys-campaign',
-            className: false
+           
                 
         },
         {
             text: 'Escuela',
             link: '/school-campaign',
-            className: false
+           
                 
         },
         {
             text: 'Login',
             link: '/login-form',
-            className: true
+            
                 
         },
         {
             text: 'Registrarse',
             link: '/register-form',
-            className: true
+           
                 
         }
     ])
