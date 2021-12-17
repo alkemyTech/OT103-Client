@@ -98,56 +98,7 @@ const HeaderWeb = (props) => {
         </nav>
 
 
-        // <nav className='menu'>
-        //         <Link to='/' className='logo'>Alkemy</Link>
-        //     <ul className={
-        //         showLogo ? "menu__items show" : "menu__items"
-        //         }>
-        //             <li>
-        //             <NavLink
-        //                 to='/'
-        //                 exact
-        //                 className='btn btn-dark decoration'
-        //             >
-        //                 Inicio
-        //             </NavLink>
-        //             </li>
-        //             <li>
-        //             <NavLink
-        //                 to='/about'
-        //                 exact
-        //                 className='btn btn-dark decoration'
-        //             >
-        //                 Nosotros
-        //             </NavLink>
-        //             </li>
-        //             <li>
-        //             <NavLink
-        //                 to='/contacto'
-        //                 exact
-        //                 className='btn btn-dark decoration'
-        //             >
-        //                 Contacto
-        //             </NavLink>
-        //             </li>
-                    
-        //             <li>
-        //             <NavLink
-        //                 to='/backoffice/organization'
-        //                 exact
-        //                 className='btn btn-dark decoration'
-        //             >
-        //                 Campañas
-        //             </NavLink>
-        //         </li>                 
-                    
-        //         </ul>
-        //     <i
-        //         className="bi bi-list loguito"
-        //         onClick={()=>show()}
-        //     ></i>
-        //     </nav>
-
+       
 
         
     )
