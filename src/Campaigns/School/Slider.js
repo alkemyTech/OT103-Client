@@ -19,10 +19,6 @@ const Slider = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <div>
-
-=======
     <div className="slide">
       <Slides {...settings}>
         <div className="slide__container">
@@ -44,7 +40,6 @@ const Slider = () => {
           </q>
         </div>
       </Slides>
->>>>>>> fd4f4866d7828aa7266b79b52955ca950fcd0a8a
     </div>
   );
 };
