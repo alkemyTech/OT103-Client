@@ -21,11 +21,11 @@
       height: 50vh;
     }
 
-    @media (min-width: $breakpoint-desktop) {
+    @media (min-width: $breakpoint-tv) {
       width: 50vw;
       height: 40vh;
     }
-    @media (min-width: $breakpoint-tv) {
+    @media (min-width: $breakpoint-lg-tv) {
       width: 40vw;
       height: 70vh;
     }
