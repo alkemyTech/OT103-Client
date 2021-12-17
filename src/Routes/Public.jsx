@@ -22,7 +22,7 @@ import { ThanksGreet } from "../Components/Donations/ThanksGreet";
 import Members from "../Components/About/Members";
 import Home from "../Home/Home";
 import Contact from "../Components/Contact/Contact";
-import PageNotFound from "../Components/PageNotFound/PageNotFound";
+import PageNotFound from "../Components/PageNotFound/PageNotFound.jsx";
 
 function Public() {
 	return (
