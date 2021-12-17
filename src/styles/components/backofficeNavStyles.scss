@@ -1,15 +1,13 @@
-.backoffice{
-    &__aside{
-        display: flex;
-        height: 100vh;
-        width: 55%;
-        padding: 1%;
-        position: fixed;
-        z-index: 20;
-        transition: all .6s;
-        &-logo{
-            max-height: 100px;
-        }
+.aside{
+    display: flex;
+    height: 100vh;
+    width: 80%;
+    padding: 1%;
+    position: fixed;
+    z-index: 20;
+    transition: all .6s;
+    &-logo{
+        max-height: 100px;
     }
     &__nav{
         align-items: center;
@@ -21,6 +19,13 @@
         height: 100%;
         width: 100%;
     }
+    @media(min-width: $breakpoint-tablet){
+        font-size: medium;
+        width: 55%;
+    }
+}
+
+.nav{
     &__item{
         align-items: center;
         color: black;
@@ -29,10 +34,17 @@
         font-size: small;
         justify-content: center;
         text-decoration: none;
+        transition: all .2s;
         width: 100%;
         &:hover{
-            color: $accent-color;
-            background-color: $bg-primary-color;
+            color: $bg-primary-color;
+            background-color: $accent-color;
+        }
+        @media(min-width: $breakpoint-tv){
+            font-size: large;
+        }
+        @media(min-width: $breakpoint-lg-tv){
+            font-size: xx-large;
         }
     }
 }

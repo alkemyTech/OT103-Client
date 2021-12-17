@@ -13,24 +13,24 @@ export const SideBar = ({ isOpen = false }) => {
   }, [isOpen])
 
   return (
-    <aside className={`backoffice__aside ${statusNav}`} >
-      <nav className="backoffice__nav">
-        <Link className="backoffice__item" to="/">
+    <aside className={`aside ${statusNav}`} >
+      <nav className="aside__nav">
+        <Link className="nav__item" to="/">
           Inicio
         </Link>
-        <Link className="backoffice__item" to="/backoffice/activities">
+        <Link className="nav__item" to="/backoffice/activities">
           Actividades
         </Link>
-        <Link className="backoffice__item" to="/backoffice/slides">
+        <Link className="nav__item" to="/backoffice/slides">
           Slides
         </Link>
-        <Link className="backoffice__item" to="/backoffice/news">
+        <Link className="nav__item" to="/backoffice/news">
           Novedades
         </Link>
-        <Link className="backoffice__item" to="/backoffice/users">
+        <Link className="nav__item" to="/backoffice/users">
           Usuarios
         </Link>
-        <Link className="backoffice__item" to="/backoffice/organization">
+        <Link className="nav__item" to="/backoffice/organization">
           Organización
         </Link>
       </nav>
