@@ -6,7 +6,7 @@
         justify-content: center;
         width: 100%;
 
-        @media (min-width: $breakpoint-laptop-xl){
+        @media (min-width: $breakpoint-lg-laptop){
             background-color: rgba(255, 235, 205, 0.384);
         }
     }
@@ -45,7 +45,7 @@
         @media (min-width: $breakpoint-tv){
             font-size: xx-large;
         }
-        @media (min-width: $breakpoint-laptop-xl){
+        @media (min-width: $breakpoint-lg-laptop){
             font-size: x-large;
         }
         @media (min-width: $breakpoint-tablet){    
@@ -60,10 +60,10 @@
     &__img{
         display: none;
 
-        @media (min-width: $breakpoint-laptop-xl){
+        @media (min-width: $breakpoint-lg-laptop){
             max-width: 250px;
         }
-        @media (min-width: $breakpoint-laptop-l){
+        @media (min-width: $breakpoint-laptop){
             display: block;
             max-width: 150px;
         }
