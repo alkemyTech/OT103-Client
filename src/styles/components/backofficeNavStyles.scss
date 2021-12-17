@@ -1,5 +1,5 @@
-.backoffice__{
-    &aside{
+.backoffice{
+    &__aside{
         display: flex;
         height: 100vh;
         width: 55%;
@@ -11,7 +11,7 @@
             max-height: 100px;
         }
     }
-    &nav{
+    &__nav{
         align-items: center;
         background-color: $bg-secondary-color;
         border: 1px solid rgba(0, 0, 0, 0.336);
@@ -21,7 +21,7 @@
         height: 100%;
         width: 100%;
     }
-    &item{
+    &__item{
         align-items: center;
         color: black;
         display: flex;
