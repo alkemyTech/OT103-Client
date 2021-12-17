@@ -18,26 +18,14 @@
         min-height: 60vh;
         width: 100%;
     }
-    &__countdown-text{
-        display: none;
-        align-self: center;
 
-        @media (min-width: $breakpoint-tablet){    
-            display: block;
-        }
-    }
     &__countdown{
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 85%;
-        
-        &__container{
-            display: flex;
-            flex-direction: column;
-            width: 70%;
-        }
     }
+
     &__description{
         font-size: medium;
         margin-bottom: 5%;
@@ -71,11 +59,25 @@
     }
 }
 
-.countdown__img-left{
-    transform: rotate(13deg);
-}
+.countdown{
+    &__text{
+        display: none;
+        align-self: center;
 
-.countdown__img-right{
-    transform: rotate(-13deg);
+        @media (min-width: $breakpoint-tablet){    
+            display: block;
+        }
+    }
+    &__container{
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+    }
+    &__img-left{
+        transform: rotate(13deg);
+    }
+    &__img-right{
+        transform: rotate(-13deg);
+    }
 }
 

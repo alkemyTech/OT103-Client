@@ -7,7 +7,7 @@ import { Get } from "../Services/publicApiService";
 import { SlideComponent } from "./SlideComponent";
 
 const settings = {
-    speed: 500,
+  speed: 500,
   infinite: true, slidesToShow: 1,
   slidesToScroll: 1,
 };

@@ -6,14 +6,14 @@ const Content = ({ event = 20000 * 4324 }) => {
     if (completed) {
       return (
         <h3>
-          <strong className="campaign__countdown-text fs-2">
+          <strong className="countdown__text fs-2">
             Finalizado!
           </strong>
         </h3>
       );
     } else {
       return (
-        <strong className="campaign__countdown-text fs-4">
+        <strong className="countdown__text fs-4">
           Te quedan {days}d:{hours}h:{minutes}m: {seconds}s para participar!
         </strong>
       );
@@ -37,7 +37,6 @@ const Content = ({ event = 20000 * 4324 }) => {
               daysInHours={false}
             />
           </div>
-
           <img
             className="campaign__img countdown__img-right "
             src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
