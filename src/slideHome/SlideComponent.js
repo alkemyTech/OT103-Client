@@ -1,11 +1,10 @@
 import React from 'react';
 import './slidehome.scss';
 
-export const SlideComponent = ({ data, height }) => {
+export const SlideComponent = ({ data }) => {
     return (
         <div style={{
             backgroundImage: `url(${data.image})`,
-            height: `${height}vh`,
         }}
         className="slide__home"
         >

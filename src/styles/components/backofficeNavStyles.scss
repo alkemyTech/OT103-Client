@@ -6,7 +6,7 @@
         padding: 1%;
         position: fixed;
         z-index: 20;
-        transition: all .9s;
+        transition: all .6s;
         &-logo{
             max-height: 100px;
         }
@@ -35,4 +35,12 @@
             background-color: $bg-primary-color;
         }
     }
+}
+
+.openNav{
+    left: 0%;
+}
+
+.closeNav{
+    left: -100%;
 }

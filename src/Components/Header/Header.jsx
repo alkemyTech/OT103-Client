@@ -4,13 +4,13 @@ import '../Header/Header.scss'
 import { SideBar } from './SideBar';
 
 const Header = () => {
-    const [open, setOpen] = useState(-100);
+    const [open, setOpen] = useState(false);
 
     const handleOpenNav = () => {
-        if(open === 0){
-            setOpen(-100);
+        if(open){
+            setOpen(false);
         }else{
-            setOpen(0)
+            setOpen(true);
         }
     }
 
@@ -21,7 +21,7 @@ const Header = () => {
                     <img src={Menu} alt="Menu" className="headerLogo__img" />
                 </button>
             </div>
-            <SideBar left={open} />
+            <SideBar isOpen={open} />
         </>
     );
 };
