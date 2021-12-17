@@ -30,7 +30,7 @@ const Content = ({ event = 20000 * 4324 }) => {
             src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
             alt="img-campaign"
           />
-          <div className="campaign__countdown-container m-auto">
+          <div className="countdown__container m-auto">
             <Countdown
               date={Date.now() + event}
               renderer={renderer}
