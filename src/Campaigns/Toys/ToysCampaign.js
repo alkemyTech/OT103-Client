@@ -12,6 +12,7 @@ import { ReactComponent as WavesBlue } from "../../assets/waves-blue.svg";
 import "../../Components/Footer/FooterPublic.scss"
 import { useEffect, useState } from "react";
 import FooterPublic from "../../Components/Footer/FooterPublic";
+import HeaderToys from "./HeaderToys";
 
 
 // -------------timer---------------
@@ -51,6 +52,7 @@ const CountDownTimer = () => {
 const ToysCampaign = () => {
     return (
         <>
+            <HeaderToys />
                 <div className="toys__container">
                     <div className="toys__title">
                         <div>Colecta de juguetes</div>
@@ -62,7 +64,8 @@ const ToysCampaign = () => {
                             <img src={ Toy5 } alt="toy icon 5"/>
                             <img src={ Toy6 } alt="toy icon 6"/>
                         </div>
-                    </div>
+                </div>
+                
                     <WavesBlue className="toys__waves-blue"/>
                     <div className="toys__content">
                         <div>
