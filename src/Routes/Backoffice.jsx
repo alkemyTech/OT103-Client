@@ -33,6 +33,7 @@ function Backoffice() {
                     <Route exact path="/backoffice/news" component={NewsList} />
                     <Route exact path="/backoffice/Slides" component={ScreenSliderList} />
                     <Route path="/backoffice" exact component={HomeDashboard} />
+
                     <Route exact path="/backoffice/organization" component={OrganizationData} />
                 </AnimatedSwitch>
             </BrowserRouter>
