@@ -26,7 +26,7 @@ const Content = ({ event = 20000 * 4324 }) => {
         <hr />
         <div className="campaign__countdown">
           <img
-            className="campaign__img countdown-img-left"
+            className="campaign__img countdown__img-left"
             src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
             alt="img-campaign"
           />
@@ -39,7 +39,7 @@ const Content = ({ event = 20000 * 4324 }) => {
           </div>
 
           <img
-            className="campaign__img countdown-img-right "
+            className="campaign__img countdown__img-right "
             src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
             alt="img-campaign"
           />
@@ -52,7 +52,7 @@ const Content = ({ event = 20000 * 4324 }) => {
             </p>
         <div className="campaign__img-container">
           <img
-            className="campaign__img countdown-img-left"
+            className="campaign__img countdown__img-left"
             src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
             alt="img-campaign"
           />
@@ -62,7 +62,7 @@ const Content = ({ event = 20000 * 4324 }) => {
             alt="img-campaign"
           />
           <img
-            className="campaign__img countdown-img-right"
+            className="campaign__img countdown__img-right"
             src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
             alt="img-campaign"
           />
