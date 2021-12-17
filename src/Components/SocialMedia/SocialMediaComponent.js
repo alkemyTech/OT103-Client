@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import {
-  // LinkedinCompanyProfile,
+  LinkedinCompanyProfile,
   TwitterTweet
 } from 'react-social-plugins';
 
 const mockTweets = ['1450535690199085058', '1440383594615042052', '1389666789865541632'];
 
 export const SocialMediaComponent = ({ tweets = mockTweets }) => {
-    useEffect(() => {
+  useEffect(() => {
     const script = document.createElement('script');
 
     script.src = 'https://platform.linkedin.com/badges/js/profile.js';
@@ -23,21 +23,9 @@ export const SocialMediaComponent = ({ tweets = mockTweets }) => {
   return (
     <div>
       <hr />
-      <h1>Últimos tweets</h1>
-      <div
-        className="badge-base LI-profile-badge"
-        data-locale="es_ES" data-size="medium"
-        ata-theme="dark"
-        data-type="VERTICAL"
-        data-vanity="corporación-somos-más-68737437"
-        data-version="v1">
-        <a
-          className="badge-base__link LI-simple-link"
-          href="https://co.linkedin.com/in/corporaci%C3%B3n-somos-m%C3%A1s-68737437?trk=profile-badge">
-          Corporación Somos Más
-        </a>
-      </div>
-      <div className="about__widget-twitter">
+      <div>
+        <h1 className="fs-1 text-center">Últimos tweets</h1>
+        <hr />
         {tweets.map((tweet, index) => {
           return (
             <TwitterTweet
@@ -47,10 +35,34 @@ export const SocialMediaComponent = ({ tweets = mockTweets }) => {
               tweetId={tweet}
               theme="light"
               width={500}
-            />)
+            />
+          )
         })}
       </div>
-
+      <hr />
+      <div className="w-100 d-flex flex-column">
+        <h1 className="fs-1 text-center">LinkedIn</h1>
+        <div className="w-75 d-flex flex-column align-self-center">
+          <hr />
+          <div
+            className="badge-base LI-profile-badge m-auto"
+            data-locale="es_ES" data-size="medium"
+            data-theme="light" data-type="VERTICAL"
+            data-vanity="corporación-somos-más-68737437"
+            data-version="v1">
+            <a
+              className="badge-base__link LI-simple-link"
+              href="https://co.linkedin.com/in/corporaci%C3%B3n-somos-m%C3%A1s-68737437?trk=profile-badge">
+            </a>
+          </div>
+          <LinkedinCompanyProfile
+            lang="en_US"
+            companyId={68737437}
+            format="inline"
+            text="Company name"
+          />
+        </div>
+      </div>
     </div>
   );
 };
