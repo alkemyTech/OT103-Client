@@ -8,18 +8,6 @@ import logo from '../../assets/images/logo.png'
 const HeaderWeb = (props) => {
 
     
- 
-
-    // const { login, setLogin } = useContext(LoginContext)
-
-    // const logOut = () => {
-    //     setLogin(false)
-    //     props.history.push('/login-form')
-        
-    // }
-    // const next = () => {
-    //     console.log('')
-    // }
     
     const [data, setData] = useState([
         {
@@ -31,7 +19,7 @@ const HeaderWeb = (props) => {
         {
             text: 'Nosotros',
             link: '/about',
-            className: false
+            
                 
         },
         {
