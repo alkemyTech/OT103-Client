@@ -23,11 +23,13 @@ import Members from "../Components/About/Members";
 import Home from "../Home/Home";
 import Contact from "../Components/Contact/Contact";
 import PageNotFound from "../Components/PageNotFound/PageNotFound";
+import HeaderWeb from "../Components/Header/HeaderWeb";
 
 function Public() {
 	return (
 		<>
 			<BrowserRouter>
+				<HeaderWeb />
 				<AnimatedSwitch
 					atEnter={{ opacity: 0 }}
 					atLeave={{ opacity: 0 }}
