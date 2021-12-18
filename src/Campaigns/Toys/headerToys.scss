@@ -7,6 +7,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
+}
+
+.header__toys-logo{
+    width: 200px;
 }
 
 
@@ -30,12 +35,14 @@
     }
     .header__toys-slogan {
         display: flex;
+        flex-direction: column;
         
     }
 }
 @media screen and (min-width: $breakpoint-tv) {
     .header__toys {
-        background-color: aquamarine;
+        background-color: $bg-secondary-color;
         
     }
+
 }
