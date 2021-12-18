@@ -1,19 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export const SideBar = ({ isOpen = false }) => {
-  const [statusNav, setStatusNav] = useState('closeNav')
-
-  useEffect(() => {
-    if(isOpen){
-      setStatusNav('openNav');
-    }else{
-      setStatusNav('closeNav');
-    }
-  }, [isOpen])
-
   return (
-    <aside className={`aside ${statusNav}`} >
+    <aside className={`aside ${isOpen ? 'openNav' : 'closeNav'}`} >
       <nav className="aside__nav">
         <Link className="nav__item" to="/">
           Inicio
