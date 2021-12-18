@@ -1,9 +1,9 @@
 import React from "react";
-import logo from "../../assets/images/logo.png"
+import logo from "../../assets/images/logo.png";
 import logojuguetes from "../../assets/images/toys/logojuguetes.png";
 import "./headerToys.scss";
 
-const HeaderToys = () => {
+const Header = () => {
 	return (
 		<header className='header__toys'>
 			<div className="header__toys-content">
@@ -21,4 +21,4 @@ const HeaderToys = () => {
 	);
 }
  
-export default HeaderToys;
+export default Header;
