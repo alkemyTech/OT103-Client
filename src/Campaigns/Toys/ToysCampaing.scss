@@ -67,7 +67,7 @@
 		align-items: center;
 		width: 100%;
 		font-size: 30px;
-		margin-bottom: 5vw;
+		margin-bottom: 10vw;
 		text-align: center;
 	}
 
@@ -107,5 +107,15 @@
 
 	&__waves-blue {
 		transform: scaleX(-1);
+	}
+}
+@media (min-width: $breakpoint-tv) {
+	.toys {
+		&__waves-red {
+			margin-top: 4rem;
+		}
+		&__content {
+			margin-bottom: 2vw;
+		}
 	}
 }
