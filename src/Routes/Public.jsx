@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { AnimatedSwitch } from "react-router-transition";
+import LayoutPublic from "../Components/Layout/LayoutPublic";
 
 import LoadingSpinner from "../Components/Spinner/LoadingSpinner";
 import { mapStyles } from "../helpers/routerTransitions";

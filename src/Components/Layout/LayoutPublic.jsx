@@ -1,12 +1,12 @@
 import FooterPublic from "../Footer/FooterPublic";
 
+import "./LayoutPublic.scss";
+
 const LayoutPublic = ({ children }) => {
 	return (
-		<div style={{ position: "relative" }}>
-			<div>HEADER</div>
-			<main style={{ minHeight: "calc(100vh - 29vh)", marginBottom: "40px" }}>
-				{children}
-			</main>
+		<div>
+			<div className="layoutPublic__temp-header">TEMP HEADER</div>
+			<main className="layoutPublic__main">{children}</main>
 			<FooterPublic />
 		</div>
 	);
