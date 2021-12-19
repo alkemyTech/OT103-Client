@@ -19,6 +19,10 @@
 			object-position: top;
 			z-index: -1;
 		}
+
+		@media screen and (min-width: 1921px) {
+			background-color: rgba(218, 218, 218, 0.397);
+		}
 	}
 
 	&__title {
@@ -40,12 +44,20 @@
 			& > img {
 				width: 30px;
 			}
+
+			@media screen and (min-width: $breakpoint-tablet) {
+				margin-top: 0;
+			}
 		}
 		& > div {
 			padding: 0;
 			height: 30px;
 			line-height: 35px;
 			white-space: nowrap;
+		}
+
+		@media screen and (min-width: $breakpoint-tablet) {
+			flex-direction: row;
 		}
 	}
 
@@ -62,6 +74,9 @@
 	&__counter {
 		display: none;
 		font-weight: 900;
+		@media screen and (min-width: $breakpoint-tablet) {
+			display: block;
+		}
 	}
 
 	&__images-container {
@@ -80,6 +95,10 @@
 			left: 50%;
 			transform: translate(-50%, -50%);
 		}
+
+		@media screen and (min-width: $breakpoint-tablet) {
+			display: block;
+		}
 	}
 
 	&__waves-red {
@@ -88,42 +107,5 @@
 
 	&__waves-blue {
 		transform: scaleX(-1);
-	}
-}
-
-@media screen and (min-width: $breakpoint-tablet) {
-	.toys {
-		&__counter {
-			display: block;
-		}
-		&__title {
-			&-images {
-				margin-top: 0;
-			}
-		}
-		&__images-container {
-			display: block;
-		}
-
-		&__title {
-			flex-direction: row;
-		}
-	}
-}
-
-@media screen and (min-width: 1921px) {
-	.toys__container {
-		background-color: rgba(218, 218, 218, 0.397);
-	}
-}
-
-@media (min-width: $breakpoint-tv) {
-	.toys {
-		&__waves-red {
-			margin-top: 4rem;
-		}
-		&__content {
-			margin-bottom: 2vw;
-		}
 	}
 }
