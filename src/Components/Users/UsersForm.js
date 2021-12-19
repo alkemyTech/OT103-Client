@@ -4,13 +4,10 @@ import { Field, Form, Formik } from "formik";
 import Popup from "reactjs-popup";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import * as Yup from "yup";
-
-import "reactjs-popup/dist/index.css";
 import "./UserForm.scss";
 import "../../utils.scss";
-import "../../styles/components/formStyles.scss";
-
 import { Get, Post } from "../../Services/publicApiService";
+import "../../styles/components/formStyles.scss";
 import { Put } from "../../Services/privateApiService";
 
 import LoaderComponent from "../Loader/Loader";
@@ -115,7 +112,6 @@ const UserForm = () => {
 				initialValues={{ name, email, role_id, password, profile_image }}
 				onSubmit={(values) => {
 					submitForm(values);
-					console.log(values);
 				}}
 				validationSchema={ErrorSchema}
 				enableReinitialize={true}
