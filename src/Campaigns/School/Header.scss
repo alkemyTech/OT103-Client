@@ -17,11 +17,11 @@
             padding-bottom: 15px;
         }
         &__logoONG{
-            width: 150px;
             display: none;
             @media (min-width:  $breakpoint-mobile){
                 display: block;
                 margin-left: 25px;
+                width: 150px;
             }
         }
         &__logoCampaña {
