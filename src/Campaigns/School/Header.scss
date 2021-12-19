@@ -1,36 +1,38 @@
 @import "../../styles//variables.scss";
 
-
     .headerSchool{
         display: flex;
-        justify-content: space-around;
-        padding: 15px;
-        @media (min-width: $breakpoint-tv) {
+        justify-content: center;
+        @media (min-width:  $breakpoint-tablet){
+            justify-content: space-around;
+        }
+        @media (min-width:  $breakpoint-lg-tv){
             background-color: rgba($secondary-color, $alpha: 0.2);
         }
-            &__logoCampaña {
-                height: 100px;
-                margin-right: 20px;
-                @media (max-width: $breakpoint-mobile) {
-                    margin:0;
-                }
+        &__logos {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            align-items: center;
+            padding-bottom: 15px;
+        }
+        &__logoONG{
+            width: 150px;
+            display: none;
+            @media (min-width:  $breakpoint-mobile){
+                display: block;
+                margin-left: 25px;
             }
-            &__logos {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            &__slogan{
+        }
+        &__logoCampaña {
+            height: 100px;
+        }
+        &__slogan{
+            display: none;
+            @media (min-width:  $breakpoint-tablet){
+                display: block;
                 width: 40vw;
                 padding-top: 25px;
-                @media (max-width: $breakpoint-tablet) {
-                    display: none;
-                }
             }
-            &__logoONG{
-                width: 150px;
-                @media (max-width: $breakpoint-mobile) {
-                    display: none;
-                }
-            }
+        }
     }
