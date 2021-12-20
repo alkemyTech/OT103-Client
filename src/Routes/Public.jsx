@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { AnimatedSwitch } from "react-router-transition";
+import HeaderWeb from "../Components/Header/HeaderWeb";
 
 import LoadingSpinner from "../Components/Spinner/LoadingSpinner";
 import { mapStyles } from "../helpers/routerTransitions";
@@ -32,6 +33,7 @@ function Public() {
 	return (
 		<>
 			<BrowserRouter>
+			<HeaderWeb />
 				<Suspense fallback={<LoadingSpinner />}>
 					<AnimatedSwitch
 						atEnter={{ opacity: 0 }}

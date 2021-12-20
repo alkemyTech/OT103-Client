@@ -1,13 +1,10 @@
 import React, { useContext, useState } from 'react';
 import '../../styles/components/formStyles.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-// import { LoginContext } from '../context/LoginProvider';
-// import { useHistory } from 'react-router'
-//import { alertConfirmation } from '../../Services/alerts/Alerts';
 
 
 const LoginForm = () => {
-    // const history = useHistory()
+    
 
     const [initialValues, setInitialValues] = useState({
         email: '',
@@ -16,7 +13,7 @@ const LoginForm = () => {
 
     const [formEnviado, setFormEnviado] = useState(false)
 
-    // const { login, setLogin } = useContext(LoginContext)
+ 
 
 
     return (
@@ -69,8 +66,7 @@ const LoginForm = () => {
                 })
                 
                 setFormEnviado(true)
-                // setLogin(true)
-                // localStorage.setItem('tempToken', 'token')
+               
                 setTimeout(() => {
                     setFormEnviado(false)
                 }, 10000);
@@ -81,7 +77,7 @@ const LoginForm = () => {
                     `
                 )
                 resetForm()
-                // history.push('/')
+                
             }}
         
         >
@@ -124,15 +120,7 @@ const LoginForm = () => {
                     >
                         Log In
                     </button>
-                    {/* <button
-                        className="form__btn-primary"
-                        type="submit"
-                        onClick={()=>alertConfirmation('','peticion realiada cone zto')}
-                        
-                    >
-                        Probar alerta
-                    </button> */}
-                    
+                   
                     {
                         formEnviado && <p className="form__message-success">Log in successfull</p>
                     }
