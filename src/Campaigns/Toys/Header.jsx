@@ -5,14 +5,14 @@ import "./headerToys.scss";
 
 const Header = () => {
 	return (
-		<header className='header__toys'>
-			<div className="header__toys-content">
-				<img src={logojuguetes} alt="logo" className='header__toys-logo' />
+		<header className='headerToys'>
+			<div className="headerToys__logoCampaña">
+				<img src={logojuguetes} alt="logo campaña" className='headerToys__logoCampaña-logo' />
 			</div>
-			<div className="header__toys-ong">
-				<img src={ logo } alt="logo ONG"  className='header__toys-logo-ong'/>
+			<div className="headerToys__ong">
+				<img src={ logo } alt="logo ONG"  className='headerToys__ong-logo'/>
 			</div>
-			<div className="header__toys-slogan">
+			<div className="headerToys__slogan">
 				<h5 className="slogan">Los chicos te necesitan hoy</h5>
 				<h5 className="slogan">Sumate con tu donación !!</h5>
 			</div>
