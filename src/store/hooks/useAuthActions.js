@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
 import {
-  validateAuth,
-  getUserInfo,
-  logout,
-  registerUser,
+	validateAuth,
+	getUserInfo,
+	logout,
+	registerUser,
 } from "../slices/authSlice";
 
 /**
@@ -16,55 +16,55 @@ import {
  */
 
 const useAuthActions = () => {
-  const dispatch = useDispatch();
-  const isLogged = localStorage.getItem("token");
+	const dispatch = useDispatch();
+	const isLogged = localStorage.getItem("token");
 
-  /**
-   * Function that validates user data.
-   * @author Julian Kominovic
-   * @name useAuthActions
-   * @param {string} email User email
-   * @param {string} password User password
-   * @function
-   * @async
-   *
-   */
-  const validateUserLogin = async (email, password) => {
-    await dispatch(validateAuth({ email: email, password: password }));
-    await dispatch(getUserInfo());
-  };
+	/**
+	 * Function that validates user data.
+	 * @author Julian Kominovic
+	 * @name useAuthActions
+	 * @param {string} email User email
+	 * @param {string} password User password
+	 * @function
+	 * @async
+	 *
+	 */
+	const validateUserLogin = async (email, password) => {
+		await dispatch(validateAuth({ email: email, password: password }));
+		await dispatch(getUserInfo());
+	};
 
-  /**
-   * Function to logout. Clears the auth store.
-   * @author Julian Kominovic
-   * @name useAuthActions
-   * @function
-   *
-   */
-  const logginOut = () => {
-    dispatch(logout());
-  };
+	/**
+	 * Function to logout. Clears the auth store.
+	 * @author Julian Kominovic
+	 * @name useAuthActions
+	 * @function
+	 *
+	 */
+	const logginOut = () => {
+		dispatch(logout());
+	};
 
-  /**
-   * Function to register a new user.
-   * @author Julian Kominovic
-   * @name useAuthActions
-   * @function
-   * @param {Object} registrationData User name, password and email.
-   * @param {string} registrationData.email User email
-   * @param {string} registrationData.name User name
-   * @param {string} registrationData.password User password
-   *
-   */
-  const registerUserData = (registrationData) => {
-    dispatch(registerUser(registrationData));
-  };
+	/**
+	 * Function to register a new user.
+	 * @author Julian Kominovic
+	 * @name useAuthActions
+	 * @function
+	 * @param {Object} registrationData User name, password and email.
+	 * @param {string} registrationData.email User email
+	 * @param {string} registrationData.name User name
+	 * @param {string} registrationData.password User password
+	 *
+	 */
+	const registerUserData = (registrationData) => {
+		dispatch(registerUser(registrationData));
+	};
 
-  return {
-    validateUserLogin,
-    logginOut,
-    registerUserData,
-    isLogged,
-  };
+	return {
+		validateUserLogin,
+		logginOut,
+		registerUserData,
+		isLogged,
+	};
 };
 export default useAuthActions;
