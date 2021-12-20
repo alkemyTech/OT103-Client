@@ -21,8 +21,8 @@ export const UsersList = () => {
           Regresar
         </Link>
       </div>
-      {usersReducer.data.map((usersReducer) => {
-        return <UsersTable users={usersReducer} />;
+      {usersReducer.data.map((usersReducer, i) => {
+        return <UsersTable users={usersReducer} key={i} />;
       })}
     </div>
   );
