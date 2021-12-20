@@ -126,11 +126,7 @@ const MembersEdit = () => {
 									placeholder: "Nueva descripción",
 									cloudServices: {
 										tokenUrl:
-<<<<<<< HEAD
 											"https://85122.cke-cs.com/token/dev/63f1e5122f7b89374a44f0ba134c7a670437bab84212188ac1b17d829d92",
-=======
-                      "https://85122.cke-cs.com/token/dev/63f1e5122f7b89374a44f0ba134c7a670437bab84212188ac1b17d829d92",
->>>>>>> 4d579d8380d6ef11d0f28b791de3e862a0df04ee
 										uploadUrl: "https://85122.cke-cs.com/easyimage/upload/",
 									},
 								}}
@@ -141,30 +137,6 @@ const MembersEdit = () => {
 								{errors.description}
 							</div>
 						) : null}
-<<<<<<< HEAD
-						<label>
-							<input
-								className="form__image-input"
-								type="file"
-								name="image"
-								id="image"
-								accept="image/png,image/jpeg"
-								onChange={(event) => {
-									handleChange(event, setFieldValue);
-								}}
-							/>{" "}
-							<div className="form__image-container form__member-image-container">
-								<img
-									src={values.image}
-									alt="article"
-									onError={(e) => {
-										e.target.src =
-											"https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
-									}}
-								/>
-							</div>
-						</label>
-=======
 						<input
 							type="file"
 							name="image"
@@ -174,7 +146,6 @@ const MembersEdit = () => {
 								handleChange(event, setFieldValue);
 							}}
 						/>
->>>>>>> 4d579d8380d6ef11d0f28b791de3e862a0df04ee
 						{errors.image && touched.image ? (
 							<div className="form__message-validation"> {errors.image}</div>
 						) : null}
@@ -204,19 +175,12 @@ const MembersEdit = () => {
 							</div>
 						) : null}
 						<button className="form__btn-primary" type="submit">
-<<<<<<< HEAD
 							Editar
-=======
-              Editar
->>>>>>> 4d579d8380d6ef11d0f28b791de3e862a0df04ee
 						</button>
 					</Form>
 				)}
 			</Formik>
-<<<<<<< HEAD
-=======
-      )
->>>>>>> 4d579d8380d6ef11d0f28b791de3e862a0df04ee
+			)
 		</>
 	);
 };

@@ -1,10 +1,7 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { AnimatedSwitch } from "react-router-transition";
-<<<<<<< HEAD
-=======
 import LayoutPublic from "../Components/Layout/LayoutPublic";
->>>>>>> 4d579d8380d6ef11d0f28b791de3e862a0df04ee
 
 import LoadingSpinner from "../Components/Spinner/LoadingSpinner";
 import { mapStyles } from "../helpers/routerTransitions";
@@ -22,7 +19,6 @@ import {
 	Members,
 	MembersForm,
 	NewsForm,
-	PageNotFound,
 	ProjectsForm,
 	RegisterForm,
 	SchoolCampaign,
@@ -71,7 +67,6 @@ function Public() {
 							<Route exact path="/contacto" component={Contact} />
 
 							<Route exact path="/" component={Home} />
-							<Route component={PageNotFound} />
 						</AnimatedSwitch>
 					</Suspense>
 				</LayoutPublic>
