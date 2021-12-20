@@ -12,9 +12,7 @@ import { ReactComponent as WavesBlue } from "../../assets/waves-blue.svg";
 import "../../Components/Footer/FooterPublic.scss";
 import { useEffect, useState } from "react";
 import FooterPublic from "../../Components/Footer/FooterPublic";
-import Header from "./Header";
-
-
+import Slider from "./Slider";
 
 // -------------timer---------------
 
@@ -53,20 +51,20 @@ const CountDownTimer = () => {
 const ToysCampaign = () => {
 	return (
 		<>
-			<Header />
+			
 			<div className="toys__container">
 				<div className="toys__title">
 					<div>Colecta de juguetes</div>
 					<div className="toys__title-images">
-						<img src={ Toy1 } alt="toy icon 1"/>
-						<img src={ Toy2 } alt="toy icon 2"/>
-						<img src={ Toy3 } alt="toy icon 3"/>
-						<img src={ Toy4 } alt="toy icon 4"/>
-						<img src={ Toy5 } alt="toy icon 5"/>
-						<img src={ Toy6 } alt="toy icon 6"/>
+						<img src={Toy1} alt="toy icon 1" />
+						<img src={Toy2} alt="toy icon 2" />
+						<img src={Toy3} alt="toy icon 3" />
+						<img src={Toy4} alt="toy icon 4" />
+						<img src={Toy5} alt="toy icon 5" />
+						<img src={Toy6} alt="toy icon 6" />
 					</div>
 				</div>
-				<WavesBlue className="toys__waves-blue"/>
+				<WavesBlue className="toys__waves-blue" />
 				<div className="toys__content">
 					<div>
 						<div>Trae tu donativo</div>
@@ -74,19 +72,20 @@ const ToysCampaign = () => {
 						<div className="toys__hour">17:30 horas</div>
 						<div className="toys__place">Sede SomosMas</div>
 						<div className="toys__counter">
-							<CountDownTimer/>
+							<CountDownTimer />
 						</div>
 					</div>
 
 					<div className="toys__images-container">
-						<img src={ KidsImage } alt="kids"/>
+						<img src={KidsImage} alt="kids" />
 					</div>
 				</div>
+				<Slider />
 
-				<img src={ ToysBackground } alt="background"/>
-				<WavesRed className="toys__waves-red"/>
+				<img src={ToysBackground} alt="background" />
+				<WavesRed className="toys__waves-red" />
 			</div>
-			<FooterPublic/>
+			<FooterPublic />
 		</>
 	);
 };

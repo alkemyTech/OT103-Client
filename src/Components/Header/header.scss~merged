@@ -2,7 +2,11 @@
 .headerLogo{
     &__btn, &__img {
         width: 35px;
+<<<<<<< HEAD
+        position: absolute;
+=======
         position: fixed;
+>>>>>>> 8ba7844e2672f3fb3a7b607254b96daa1da6b01b
         right: 20px;
         top: 20px;
         border: 0;
