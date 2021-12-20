@@ -126,7 +126,11 @@ const MembersEdit = () => {
 									placeholder: "Nueva descripción",
 									cloudServices: {
 										tokenUrl:
+<<<<<<< HEAD
 											"https://85122.cke-cs.com/token/dev/63f1e5122f7b89374a44f0ba134c7a670437bab84212188ac1b17d829d92",
+=======
+                      "https://85122.cke-cs.com/token/dev/63f1e5122f7b89374a44f0ba134c7a670437bab84212188ac1b17d829d92",
+>>>>>>> 4d579d8380d6ef11d0f28b791de3e862a0df04ee
 										uploadUrl: "https://85122.cke-cs.com/easyimage/upload/",
 									},
 								}}
@@ -137,6 +141,7 @@ const MembersEdit = () => {
 								{errors.description}
 							</div>
 						) : null}
+<<<<<<< HEAD
 						<label>
 							<input
 								className="form__image-input"
@@ -159,6 +164,17 @@ const MembersEdit = () => {
 								/>
 							</div>
 						</label>
+=======
+						<input
+							type="file"
+							name="image"
+							id="image"
+							accept="image/png,image/jpeg"
+							onChange={(event) => {
+								handleChange(event, setFieldValue);
+							}}
+						/>
+>>>>>>> 4d579d8380d6ef11d0f28b791de3e862a0df04ee
 						{errors.image && touched.image ? (
 							<div className="form__message-validation"> {errors.image}</div>
 						) : null}
@@ -188,11 +204,19 @@ const MembersEdit = () => {
 							</div>
 						) : null}
 						<button className="form__btn-primary" type="submit">
+<<<<<<< HEAD
 							Editar
+=======
+              Editar
+>>>>>>> 4d579d8380d6ef11d0f28b791de3e862a0df04ee
 						</button>
 					</Form>
 				)}
 			</Formik>
+<<<<<<< HEAD
+=======
+      )
+>>>>>>> 4d579d8380d6ef11d0f28b791de3e862a0df04ee
 		</>
 	);
 };
