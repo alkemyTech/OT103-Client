@@ -34,10 +34,7 @@ export const DonationsGreet = ({
                     </a>
                 </div>
 
-
             </div>
-
-
         </div>
     );
 };
