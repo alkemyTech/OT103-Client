@@ -10,9 +10,9 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import "./MembersEdit.scss";
 const validUrl =
-  /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
+	/((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
 const linkedInUrl =
-  /(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
+	/(https?)?:?(\/\/)?(([w]{3}||\w\w)\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
 const SignupSchema = Yup.object().shape({
 	name: Yup.string()
 
@@ -44,20 +44,16 @@ const MembersEdit = () => {
 	const { id } = useParams();
 
 	const getMember = async () => {
-		try {
-			await Get(process.env.REACT_APP_API_MEMBERS, id).then((res) => {
-				const {
-					data: { name, description, image, facebookUrl, linkedinUrl },
-				} = res;
-				setName(name);
-				setDescription(description);
-				setImage(image);
-				setFacebookUrl(facebookUrl);
-				setLinkedinUrl(linkedinUrl);
-			});
-		} catch (err) {
-			alert(err);
-		}
+		await Get(process.env.REACT_APP_API_MEMBERS, id).then((res) => {
+			const {
+				data: { name, description, image, facebookUrl, linkedinUrl },
+			} = res;
+			setName(name);
+			setDescription(description);
+			setImage(image);
+			setFacebookUrl(facebookUrl);
+			setLinkedinUrl(linkedinUrl);
+		});
 	};
 
 	const editForm = async (values) => {
@@ -70,7 +66,9 @@ const MembersEdit = () => {
 	};
 
 	useEffect(() => {
-		getMember();
+		if (id) {
+			getMember();
+		}
 	}, []);
 
 	const handleChange = (e, setFieldValue) => {
@@ -100,7 +98,7 @@ const MembersEdit = () => {
 				}}
 			>
 				{({ errors, touched, setFieldValue, values }) => (
-					<Form className=" form__members-container">
+					<Form className=" form__container">
 						<h3 className="txt-center">Members Edit Form</h3>
 						<Field
 							className="form__input form__members-input"
@@ -126,7 +124,7 @@ const MembersEdit = () => {
 									placeholder: "Nueva descripción",
 									cloudServices: {
 										tokenUrl:
-                      "https://85122.cke-cs.com/token/dev/63f1e5122f7b89374a44f0ba134c7a670437bab84212188ac1b17d829d92",
+											"https://85122.cke-cs.com/token/dev/63f1e5122f7b89374a44f0ba134c7a670437bab84212188ac1b17d829d92",
 										uploadUrl: "https://85122.cke-cs.com/easyimage/upload/",
 									},
 								}}
@@ -175,12 +173,11 @@ const MembersEdit = () => {
 							</div>
 						) : null}
 						<button className="form__btn-primary" type="submit">
-              Editar
+							Editar
 						</button>
 					</Form>
 				)}
 			</Formik>
-      )
 		</>
 	);
 };
