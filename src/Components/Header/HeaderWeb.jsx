@@ -1,11 +1,14 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { withRouter } from "react-router";
 import "./headerWeb.scss";
 import logo from "../../assets/images/logo.png";
 
-const HeaderWeb = (props) => {
+const HeaderWeb = () => {
 
+
+
+	const admin = localStorage.getItem("rol");
     
     
 	const data = [
@@ -52,7 +55,11 @@ const HeaderWeb = (props) => {
                 
 		}
 	];
+	
 
+	if( admin === "admin"){
+		data.splice(2, 1);
+	}
     
 
 	return (
