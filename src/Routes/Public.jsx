@@ -52,7 +52,6 @@ function Public() {
 					<Route exact path="/toys-campaign" component={ToysCampaign} />
 					<Route exact path="/about" component={AboutMain} />
 					<Route exact path="/contact-form" component={ContactForm} />
-					{/* register form esta rota */}
 					<Route exact path="/register-form" component={RegisterForm} />
 					<Route exact path="/login-form" component={LoginForm} />
 					<Route exact path="/actividades" component={ActivitiesList} />

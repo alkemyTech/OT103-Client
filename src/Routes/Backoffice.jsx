@@ -26,8 +26,12 @@ function Backoffice() {
 				className="switch-wrapper"
 				mapStyles={mapStyles}
 			>
+				{/* roto el id */}
 				<Route exact path="/backoffice/Slides/create" component={SlidesForm} />
+				<Route exact path="/backoffice/Slides" component={ScreenSliderList} />
+				{/* no se sabe que hace */}
 				<Route exact path="/backoffice/home" component={HomeForm} />
+				{/* roto ckeditor */}
 				<Route exact path="/backoffice/members/edit" component={MembersEdit} />
 				<Route
 					exact
@@ -36,19 +40,19 @@ function Backoffice() {
 				/>
 				<Route
 					exact
-					path="/backoffice/activities"
-					component={ManageActivities}
-				/>
-				<Route exact path="/backoffice/users" component={UsersList} />
-				<Route exact path="/backoffice/news" component={NewsList} />
-				<Route exact path="/backoffice/news/edit/:id" component={NewsForm} />
-				<Route exact path="/backoffice/news/create" component={NewsForm} />
-				<Route exact path="/backoffice/Slides" component={ScreenSliderList} />
-				<Route
-					exact
 					path="/backoffice/organization"
 					component={OrganizationData}
 				/>
+				<Route
+					exact
+					path="/backoffice/activities"
+					component={ManageActivities}
+				/>
+				{/* roto loop infinito */}
+				<Route exact path="/backoffice/users" component={UsersList} />
+				<Route exact path="/backoffice/news" component={NewsList} />
+				<Route exact path="/backoffice/news/create" component={NewsForm} />
+				<Route exact path="/backoffice/news/edit/:id" component={NewsForm} />
 				<Route path="/backoffice" exact component={HomeDashboard} />
 				<Route component={PageNotFound} />
 			</AnimatedSwitch>
