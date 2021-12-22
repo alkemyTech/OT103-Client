@@ -54,9 +54,7 @@ function Public() {
 					<Route exact path="/login-form" component={LoginForm} />
 					<Route exact path="/actividades" component={ActivitiesList} />
 					<Route exact path="/actividades/:id" component={ActivityInfo} />
-					{/* donar esta rota */}
 					<Route exact path="/donar" component={DonationsGreet} />
-					{/* gracias esta rota */}
 					<Route exact path="/gracias" component={ThanksGreet} />
 					<Route exact path="/about/members" component={Members} />
 					<Route exact path="/contacto" component={Contact} />
