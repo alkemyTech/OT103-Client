@@ -1,11 +1,12 @@
 import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Get } from "../../Services/privateApiService";
+import SearchBar from "../SearchBar/SearchBar";
 
 const MembersList = () => {
 	const [members, setMembers] = useState([]);
 	const [message, setMessage] = useState("");
-
+	console.log(members);
 	const fetchApiData = async () => {
 		const response = await Get(process.env.REACT_APP_API_MEMBERS);
 		if (response.success) {
@@ -30,6 +31,7 @@ const MembersList = () => {
 			<Link to="/backoffice/members/create" className="new-activity-link">
 				Create New Member
 			</Link>
+			<SearchBar setSerachResult={setMembers} />
 			{members.length ? (
 				<>
 					<table className="table-container">
