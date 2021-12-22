@@ -14,6 +14,7 @@ import HomeDashboard from "../Components/HomeDashboard/HomeDashboard";
 import OrganizationData from "../backoffice/Organization/OrganizationData";
 import LayoutBackoffice from "../backoffice/Layouts/LayoutBackoffice";
 import PageNotFound from "../Components/PageNotFound/PageNotFound";
+import NewsForm from "../Components/News/NewsForm";
 
 function Backoffice() {
 	return (
@@ -40,6 +41,8 @@ function Backoffice() {
 				/>
 				<Route exact path="/backoffice/users" component={UsersList} />
 				<Route exact path="/backoffice/news" component={NewsList} />
+				<Route exact path="/backoffice/news/edit/:id" component={NewsForm} />
+				<Route exact path="/backoffice/news/create" component={NewsForm} />
 				<Route exact path="/backoffice/Slides" component={ScreenSliderList} />
 				<Route
 					exact

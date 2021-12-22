@@ -1,14 +1,8 @@
 import { lazy } from "react";
 
-export const ActivitiesForm = lazy(() =>
-	import("../../Components/Activities/ActivitiesForm")
-);
-
 export const CategoriesForm = lazy(() =>
 	import("../../Components/Categories/CategoriesForm")
 );
-
-export const NewsForm = lazy(() => import("../../Components/News/NewsForm"));
 
 export const TestimonialForm = lazy(() =>
 	import("../../Components/Testimonials/TestimonialsForm")
@@ -24,17 +18,7 @@ export const ToysCampaign = lazy(() =>
 	import("../../Campaigns/Toys/ToysCampaign")
 );
 
-export const MembersForm = lazy(() =>
-	import("../../Components/Members/MembersForm")
-);
-
-export const ProjectsForm = lazy(() =>
-	import("../../Components/Projects/ProjectsForm")
-);
-
-export const AboutMain = lazy(() =>
-	import("../../Components/About/AboutMain")
-);
+export const AboutMain = lazy(() => import("../../Components/About/AboutMain"));
 
 export const ContactForm = lazy(() =>
 	import("../../Components/Contact/ContactForm")

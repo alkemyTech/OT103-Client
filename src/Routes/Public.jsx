@@ -6,7 +6,6 @@ import LoadingSpinner from "../Components/Spinner/LoadingSpinner";
 import { mapStyles } from "../helpers/routerTransitions";
 import {
 	AboutMain,
-	ActivitiesForm,
 	ActivitiesList,
 	ActivityInfo,
 	CategoriesForm,
@@ -17,7 +16,6 @@ import {
 	LoginForm,
 	Members,
 	MembersForm,
-	NewsForm,
 	PageNotFound,
 	ProjectsForm,
 	RegisterForm,
@@ -39,9 +37,8 @@ function Public() {
 					className="switch-wrapper"
 					mapStyles={mapStyles}
 				>
-					<Route exact path="/create-activity" component={ActivitiesForm} />
+					{/* pasar a backoffice? */}
 					<Route exact path="/create-category" component={CategoriesForm} />
-					<Route exact path="/create-news" component={NewsForm} />
 					<Route
 						exact
 						path="/create-testimonials"
@@ -49,17 +46,20 @@ function Public() {
 					/>
 					<Route exact path="/create-user" component={UserForm} />
 					<Route exact path="/edit-user/:id" component={UserForm} />
+
+					{/* publicas  */}
 					<Route exact path="/school-campaign" component={SchoolCampaign} />
 					<Route exact path="/toys-campaign" component={ToysCampaign} />
-					<Route exact path="/create-member" component={MembersForm} />
-					<Route exact path="/create-project" component={ProjectsForm} />
 					<Route exact path="/about" component={AboutMain} />
 					<Route exact path="/contact-form" component={ContactForm} />
+					{/* register form esta rota */}
 					<Route exact path="/register-form" component={RegisterForm} />
 					<Route exact path="/login-form" component={LoginForm} />
 					<Route exact path="/actividades" component={ActivitiesList} />
 					<Route exact path="/actividades/:id" component={ActivityInfo} />
+					{/* donar esta rota */}
 					<Route exact path="/donar" component={DonationsGreet} />
+					{/* gracias esta rota */}
 					<Route exact path="/gracias" component={ThanksGreet} />
 					<Route exact path="/about/members" component={Members} />
 					<Route exact path="/contacto" component={Contact} />
