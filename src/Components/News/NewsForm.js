@@ -166,18 +166,10 @@ const NewsForm = () => {
 							className="form__select"
 							children={[
 								<option value="" disabled key={0}>
-<<<<<<< HEAD
-                  Seleccionar categoría
-<<<<<<< HEAD
-								</option>,
-							].concat(
-								categories.map((category) => (
-=======
-									Seleccionar categoría
+									Seleccionar categoría Seleccionar categoría
 								</option>,
 							].concat(
 								categoriesData.data.map((category) => (
->>>>>>> 97f9daf3616e6cf3a4e9417c27d8d46f37e57778
 									<option value={category.id} key={category.id}>
 										{category.name}
 									</option>
@@ -200,38 +192,7 @@ const NewsForm = () => {
 									alt="article"
 									onError={(e) => {
 										e.target.src =
-<<<<<<< HEAD
-=======
-                </option>,
-              ].concat(
-                categoriesData.data.map((category) => (
-                  <option value={category.id} key={category.id}>
-                    {category.name}
-                  </option>
-                ))
-              )}
-            />
-            <div className="form__message-validation">{errors.category}</div>
-
-            <label>
-              <input
-                className="form__image-input"
-                type="file"
-                accept="image/*"
-                onChange={(e) => handleImageChange(e, setFieldValue)}
-              />
-
-              <div className="form__image-container">
-                <img
-                  src={values.image}
-                  alt="article"
-                  onError={(e) => {
-                    e.target.src =
->>>>>>> 6f0a98d32a5cf08ce4e2744e5f154ede95c1c3b0
-                      "https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
-=======
 											"https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
->>>>>>> 97f9daf3616e6cf3a4e9417c27d8d46f37e57778
 									}}
 								/>
 							</div>
@@ -243,11 +204,7 @@ const NewsForm = () => {
 							type="submit"
 							disabled={isSubmitting}
 						>
-<<<<<<< HEAD
-              Send
-=======
 							Send
->>>>>>> 97f9daf3616e6cf3a4e9417c27d8d46f37e57778
 						</button>
 						<div
 							className={
