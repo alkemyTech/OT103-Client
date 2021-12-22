@@ -40,9 +40,9 @@ const MembersEdit = () => {
 	const [image, setImage] = useState("");
 	const [facebookUrl, setFacebookUrl] = useState("");
 	const [linkedinUrl, setLinkedinUrl] = useState("");
+	const [isLoading, setIsLoading] = useState(true);
 
 	const { id } = useParams();
-
 	const getMember = async () => {
 		await Get(process.env.REACT_APP_API_MEMBERS, id).then((res) => {
 			const {
@@ -54,6 +54,7 @@ const MembersEdit = () => {
 			setFacebookUrl(facebookUrl);
 			setLinkedinUrl(linkedinUrl);
 		});
+		setIsLoading(false);
 	};
 
 	const editForm = async (values) => {
@@ -68,6 +69,8 @@ const MembersEdit = () => {
 	useEffect(() => {
 		if (id) {
 			getMember();
+		} else {
+			setIsLoading(false);
 		}
 	}, []);
 
@@ -81,6 +84,9 @@ const MembersEdit = () => {
 		}
 	};
 
+	if (isLoading) {
+		return <div>Loading...</div>;
+	}
 	return (
 		<>
 			<Formik
@@ -98,7 +104,10 @@ const MembersEdit = () => {
 				}}
 			>
 				{({ errors, touched, setFieldValue, values }) => (
-					<Form className=" form__container">
+					<Form
+						// style={{ display: !ckready && "none" }}
+						className="form__container"
+					>
 						<h3 className="txt-center">Members Edit Form</h3>
 						<Field
 							className="form__input form__members-input"
