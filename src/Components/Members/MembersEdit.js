@@ -66,7 +66,7 @@ const MembersEdit = () => {
 	const editForm = async (values) => {
 		try {
 			const response = await Put(process.env.REACT_APP_API_MEMBERS, id, values);
-			return console.log(response);
+			return alert(JSON.stringify(response));
 		} catch (err) {
 			return alert(err);
 		}

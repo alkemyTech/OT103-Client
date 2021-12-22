@@ -18,6 +18,7 @@ import {
 	Members,
 	MembersForm,
 	NewsForm,
+	PageNotFound,
 	ProjectsForm,
 	RegisterForm,
 	SchoolCampaign,
