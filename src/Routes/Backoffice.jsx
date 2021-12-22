@@ -34,7 +34,7 @@ function Backoffice() {
 						<Route exact path="/backoffice/home" component={HomeForm} />
 						<Route
 							exact
-							path="/backoffice/members/edit"
+							path="/backoffice/members/edit/:id"
 							component={MembersEdit}
 						/>
 						<Route

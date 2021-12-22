@@ -4,7 +4,7 @@ import { Get } from "../../Services/publicApiService";
 import { Put } from "../../Services/privateApiService";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-
+import getBase64FromUrl from "../../helpers/imageToBase64";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
@@ -49,14 +49,16 @@ const MembersEdit = () => {
 				const {
 					data: { name, description, image, facebookUrl, linkedinUrl },
 				} = res;
+				getBase64FromUrl(image).then((imagen64) => {
+					setImage(imagen64);
+				});
 				setName(name);
 				setDescription(description);
-				setImage(image);
 				setFacebookUrl(facebookUrl);
 				setLinkedinUrl(linkedinUrl);
 			});
 		} catch (err) {
-			// alert(err);
+			alert(err);
 		}
 	};
 
@@ -81,6 +83,11 @@ const MembersEdit = () => {
 			};
 			reader.readAsDataURL(e.currentTarget.files[0]);
 		}
+	};
+
+	const handleChangeDescription = (event, editor, setFieldValue) => {
+		const data = editor.getData();
+		setFieldValue("description", data);
 	};
 
 	return (
@@ -119,11 +126,9 @@ const MembersEdit = () => {
 								editor={ClassicEditor}
 								data={description}
 								onChange={(event, editor) => {
-									const data = editor.getData();
-									setDescription(data);
+									handleChangeDescription(event, editor, setFieldValue);
 								}}
 								config={{
-									placeholder: "Nueva descripción",
 									cloudServices: {
 										tokenUrl:
 											"https://85122.cke-cs.com/token/dev/63f1e5122f7b89374a44f0ba134c7a670437bab84212188ac1b17d829d92",
@@ -137,7 +142,7 @@ const MembersEdit = () => {
 								{errors.description}
 							</div>
 						) : null}
-						<input
+						{/* <input
 							type="file"
 							name="image"
 							id="image"
@@ -145,7 +150,31 @@ const MembersEdit = () => {
 							onChange={(event) => {
 								handleChange(event, setFieldValue);
 							}}
-						/>
+						/> */}
+
+						<label>
+							Image:
+							<input
+								className="form__image-input"
+								type="file"
+								name="image"
+								accept="image/png,image/jpeg"
+								onChange={(event) => {
+									handleChange(event, props);
+								}}
+							/>
+							<div className="form__image-container">
+								<img
+									src={values.image}
+									alt="article"
+									onError={(e) => {
+										e.target.src =
+											"https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
+									}}
+								/>
+							</div>
+						</label>
+
 						{errors.image && touched.image ? (
 							<div className="form__message-validation"> {errors.image}</div>
 						) : null}
