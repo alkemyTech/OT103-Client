@@ -1,7 +1,7 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-// import { AnimatedSwitch } from "react-router-transition";
-// import { mapStyles } from "../helpers/routerTransitions";
+import { Route } from "react-router-dom";
+import { AnimatedSwitch } from "react-router-transition";
+import { mapStyles } from "../helpers/routerTransitions";
 import SlidesForm from "../Components/Slides/SlidesForm";
 import HomeForm from "../Components/HomeForm/HomeForm";
 import MembersEdit from "../Components//Members/MembersEdit";
@@ -17,14 +17,13 @@ import LayoutBackoffice from "../backoffice/Layouts/LayoutBackoffice";
 function Backoffice() {
 	return (
 		<LayoutBackoffice>
-			{/* <AnimatedSwitch
+			<AnimatedSwitch
 				atEnter={{ opacity: 0 }}
 				atLeave={{ opacity: 0 }}
 				atActive={{ opacity: 1 }}
 				className="switch-wrapper"
 				mapStyles={mapStyles}
-			> */}
-			<Switch>
+			>
 				<Route exact path="/backoffice/Slides/create" component={SlidesForm} />
 				<Route exact path="/backoffice/home" component={HomeForm} />
 				<Route
@@ -56,8 +55,7 @@ function Backoffice() {
 					component={OrganizationData}
 				/>
 				<Route path="/backoffice" exact component={HomeDashboard} />
-			</Switch>
-			{/* </AnimatedSwitch> */}
+			</AnimatedSwitch>
 		</LayoutBackoffice>
 	);
 }

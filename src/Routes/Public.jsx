@@ -1,10 +1,10 @@
 import React, { Suspense } from "react";
-import { Route, Switch } from "react-router-dom";
-// import { AnimatedSwitch } from "react-router-transition";
+import { Route } from "react-router-dom";
+import { AnimatedSwitch } from "react-router-transition";
 import LayoutPublic from "../Components/Layout/LayoutPublic";
 
 import LoadingSpinner from "../Components/Spinner/LoadingSpinner";
-// import { mapStyles } from "../helpers/routerTransitions";
+import { mapStyles } from "../helpers/routerTransitions";
 import {
 	AboutMain,
 	ActivitiesForm,
@@ -33,14 +33,13 @@ function Public() {
 	return (
 		<LayoutPublic>
 			<Suspense fallback={<LoadingSpinner />}>
-				{/* <AnimatedSwitch
+				<AnimatedSwitch
 					atEnter={{ opacity: 0 }}
 					atLeave={{ opacity: 0 }}
 					atActive={{ opacity: 1 }}
 					className="switch-wrapper"
 					mapStyles={mapStyles}
-				> */}
-				<Switch>
+				>
 					<Route exact path="/create-activity" component={ActivitiesForm} />
 					<Route exact path="/create-category" component={CategoriesForm} />
 					<Route exact path="/create-news" component={NewsForm} />
@@ -68,8 +67,7 @@ function Public() {
 
 					<Route exact path="/" component={Home} />
 					<Route component={PageNotFound} />
-				</Switch>
-				{/* </AnimatedSwitch> */}
+				</AnimatedSwitch>
 			</Suspense>
 		</LayoutPublic>
 	);
