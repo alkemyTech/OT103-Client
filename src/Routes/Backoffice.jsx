@@ -15,6 +15,9 @@ import OrganizationData from "../backoffice/Organization/OrganizationData";
 import LayoutBackoffice from "../backoffice/Layouts/LayoutBackoffice";
 import PageNotFound from "../Components/PageNotFound/PageNotFound";
 import NewsForm from "../Components/News/NewsForm";
+import CategoriesForm from "../Components/Categories/CategoriesForm";
+import TestimonialForm from "../Components/Testimonials/TestimonialsForm";
+import UserForm from "../Components/Users/UsersForm";
 
 function Backoffice() {
 	return (
@@ -53,6 +56,12 @@ function Backoffice() {
 				<Route exact path="/backoffice/news" component={NewsList} />
 				<Route exact path="/backoffice/news/create" component={NewsForm} />
 				<Route exact path="/backoffice/news/edit/:id" component={NewsForm} />
+
+				<Route exact path="/create-category" component={CategoriesForm} />
+				<Route exact path="/create-testimonials" component={TestimonialForm} />
+				<Route exact path="/create-user" component={UserForm} />
+				<Route exact path="/edit-user/:id" component={UserForm} />
+
 				<Route path="/backoffice" exact component={HomeDashboard} />
 				<Route component={PageNotFound} />
 			</AnimatedSwitch>

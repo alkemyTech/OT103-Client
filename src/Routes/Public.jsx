@@ -8,7 +8,6 @@ import {
 	AboutMain,
 	ActivitiesList,
 	ActivityInfo,
-	CategoriesForm,
 	Contact,
 	ContactForm,
 	DonationsGreet,
@@ -17,11 +16,7 @@ import {
 	Members,
 	PageNotFound,
 	RegisterForm,
-	SchoolCampaign,
-	TestimonialForm,
 	ThanksGreet,
-	ToysCampaign,
-	UserForm,
 } from "./Router/publicRoutes";
 
 function Public() {
@@ -35,19 +30,6 @@ function Public() {
 					className="switch-wrapper"
 					mapStyles={mapStyles}
 				>
-					{/* pasar a backoffice? */}
-					<Route exact path="/create-category" component={CategoriesForm} />
-					<Route
-						exact
-						path="/create-testimonials"
-						component={TestimonialForm}
-					/>
-					<Route exact path="/create-user" component={UserForm} />
-					<Route exact path="/edit-user/:id" component={UserForm} />
-
-					{/* publicas  */}
-					<Route exact path="/school-campaign" component={SchoolCampaign} />
-					<Route exact path="/toys-campaign" component={ToysCampaign} />
 					<Route exact path="/about" component={AboutMain} />
 					<Route exact path="/contact-form" component={ContactForm} />
 					<Route exact path="/register-form" component={RegisterForm} />
