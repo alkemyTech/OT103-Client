@@ -1,5 +1,7 @@
 const buildQuery = (endpoint, search = "", limit = 20) => {
-	return `${endpoint}?search=${search}&limit=${limit}`;
+	return search
+		? `${endpoint}?search=${search}&limit=${limit}`
+		: `${endpoint}?limit=${limit}`;
 };
 
 export default buildQuery;
