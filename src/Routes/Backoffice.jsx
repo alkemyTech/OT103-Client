@@ -14,6 +14,7 @@ import HomeDashboard from "../Components/HomeDashboard/HomeDashboard";
 import OrganizationData from "../backoffice/Organization/OrganizationData";
 import LayoutBackoffice from "../backoffice/Layouts/LayoutBackoffice";
 import PageNotFound from "../Components/PageNotFound/PageNotFound";
+import { CategoriesList } from "../Components/Categories/CategoriesList";
 
 function Backoffice() {
 	return (
@@ -45,6 +46,11 @@ function Backoffice() {
 					exact
 					path="/backoffice/organization"
 					component={OrganizationData}
+				/>
+				<Route
+					exact
+					path="/backoffice/categories"
+					component={CategoriesList}
 				/>
 				<Route path="/backoffice" exact component={HomeDashboard} />
 				<Route component={PageNotFound} />
