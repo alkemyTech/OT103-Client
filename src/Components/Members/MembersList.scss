@@ -1,10 +1,20 @@
 @import "../../styles//variables.scss";
+.ma-title {
+	text-decoration: none;
+	color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+	font-family: "Bebas Neue", cursive;
+}
 .ma-container {
 	border: 1px solid black;
-	margin: 10px 0;
+	margin: 20px 0;
 	padding: 5px;
 	transition: all 0.2s;
-	max-width: 600px;
+	// max-width: 900px;
+	display: flex;
 }
 .ma-container:hover {
 	box-shadow: 8px 8px 0px 0px $accent-color;
@@ -14,24 +24,33 @@
 
 .ma-content-container {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
+	align-items: center;
 	white-space: nowrap;
-	overflow: hidden;
+	// overflow: hidden;
 	text-overflow: ellipsis;
-	margin-top: 5px;
+	// margin-top: 5px;
+	margin-left: 10px;
 }
 
 .ma-btn-container {
-	width: 50%;
+	// width: 50%;
 	display: flex;
-	justify-content: flex-end;
+	// flex-direction: column;
+	// justify-content: flex-end;
 	align-items: center;
 }
 .ma-btn-container > :first-child {
 	margin-right: 10px;
 }
 
+.ma-image-container {
+	width: 400px;
+}
+
 .ma-image {
 	width: 100%;
+	max-height: 200px;
 	object-fit: cover;
 }

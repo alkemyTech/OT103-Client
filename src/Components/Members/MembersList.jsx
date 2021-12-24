@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Get, Delete } from "../../Services/privateApiService";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 import SearchBar from "./SearchBar";
+import "./MembersList.scss";
 
 const MembersList = () => {
 	const [members, setMembers] = useState([]);
@@ -33,33 +34,34 @@ const MembersList = () => {
 
 	return (
 		<div className="manage-activities-container">
-			<Link to="/backoffice/members/create" className="new-activity-link">
+			<Link to="/backoffice/members/create" className="ma-title">
 				Create New Member
+				<i className="fas fa-user-plus"></i>
 			</Link>
 			<SearchBar setSerachResult={setMembers} />
 			{isLoading ? (
 				<LoadingSpinner />
 			) : members.length ? (
 				<>
-					{/* <table className="table-container">
-						<tbody>
-							{members.map((member) => (
-								<Fragment key={member.id}>
-									<tr>
-										<td className="activity-table-data">{member.name}</td>
-										<td className="activity-table-data">
-											<img
-												className="activity-image"
-												src={member.image || ""}
-												alt="descripcion"
-												onError={(e) => {
-													e.target.src =
-														"https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
-												}}
-											/>
-										</td>
+					<div>
+						{members.map((member) => (
+							<Fragment key={member.id}>
+								<div className="ma-container">
+									<div className="ma-image-container">
+										<img
+											className="ma-image"
+											src={member.image || ""}
+											alt="descripcion"
+											onError={(e) => {
+												e.target.src =
+													"https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
+											}}
+										/>
+									</div>
+									<div className="ma-content-container">
+										{member.name}
 
-										<td className="activity-table-data">
+										<div className="ma-btn-container">
 											<Link to={`/backoffice/members/edit/${member.id}`}>
 												<button className="form__btn-secondary">Editar</button>
 											</Link>
@@ -69,41 +71,9 @@ const MembersList = () => {
 											>
 												Eliminar
 											</button>
-										</td>
-									</tr>
-								</Fragment>
-							))}
-						</tbody>
-					</table> */}
-					<div>
-						{members.map((member) => (
-							<Fragment key={member.id}>
-								<tr>
-									<td className="activity-table-data">{member.name}</td>
-									<td className="activity-table-data">
-										<img
-											className="activity-image"
-											src={member.image || ""}
-											alt="descripcion"
-											onError={(e) => {
-												e.target.src =
-													"https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
-											}}
-										/>
-									</td>
-
-									<td className="activity-table-data">
-										<Link to={`/backoffice/members/edit/${member.id}`}>
-											<button className="form__btn-secondary">Editar</button>
-										</Link>
-										<button
-											className="form__btn-secondary"
-											onClick={() => handleDeleteActivity(member.id)}
-										>
-											Eliminar
-										</button>
-									</td>
-								</tr>
+										</div>
+									</div>
+								</div>
 							</Fragment>
 						))}
 					</div>
