@@ -1,25 +1,30 @@
 import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Get } from "../../Services/privateApiService";
-import SearchBar from "../SearchBar/SearchBar";
+import { Get, Delete } from "../../Services/privateApiService";
+import LoadingSpinner from "../Spinner/LoadingSpinner";
+import SearchBar from "./SearchBar";
 
 const MembersList = () => {
 	const [members, setMembers] = useState([]);
 	const [message, setMessage] = useState("");
-	console.log(members);
+	const [isLoading, setIsLoading] = useState(true);
 	const fetchApiData = async () => {
 		const response = await Get(process.env.REACT_APP_API_MEMBERS);
 		if (response.success) {
 			setMembers(response.data);
 		}
+		setIsLoading(false);
 	};
 
 	const handleDeleteActivity = async (id) => {
 		setMessage("");
-		setMembers((prevState) =>
-			prevState.filter((activity) => +activity.id !== +id)
-		);
-		setMessage("Eliminado exitosamente");
+		const response = await Delete(process.env.REACT_APP_API_MEMBERS, id);
+		if (response.success) {
+			setMembers((prevState) =>
+				prevState.filter((activity) => +activity.id !== +id)
+			);
+			setMessage("Eliminado exitosamente");
+		}
 	};
 
 	useEffect(() => {
@@ -32,7 +37,9 @@ const MembersList = () => {
 				Create New Member
 			</Link>
 			<SearchBar setSerachResult={setMembers} />
-			{members.length ? (
+			{isLoading ? (
+				<LoadingSpinner />
+			) : members.length ? (
 				<>
 					<table className="table-container">
 						<thead>
@@ -80,7 +87,7 @@ const MembersList = () => {
 					</div>
 				</>
 			) : (
-				<div>Loading...</div>
+				<div>Sin resultados</div>
 			)}
 		</div>
 	);
