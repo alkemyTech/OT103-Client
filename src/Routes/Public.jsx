@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { Route } from "react-router-dom";
 import { AnimatedSwitch } from "react-router-transition";
 import LayoutPublic from "../Components/Layout/LayoutPublic";
-
 import LoadingSpinner from "../Components/Spinner/LoadingSpinner";
 import { mapStyles } from "../helpers/routerTransitions";
 import {
@@ -17,7 +16,6 @@ import {
 	Home,
 	LoginForm,
 	Members,
-	MembersForm,
 	NewsForm,
 	PageNotFound,
 	ProjectsForm,
@@ -52,7 +50,6 @@ function Public() {
 					<Route exact path="/edit-user/:id" component={UserForm} />
 					<Route exact path="/school-campaign" component={SchoolCampaign} />
 					<Route exact path="/toys-campaign" component={ToysCampaign} />
-					<Route exact path="/create-member" component={MembersForm} />
 					<Route exact path="/create-project" component={ProjectsForm} />
 					<Route exact path="/about" component={AboutMain} />
 					<Route exact path="/contact-form" component={ContactForm} />
@@ -64,7 +61,6 @@ function Public() {
 					<Route exact path="/gracias" component={ThanksGreet} />
 					<Route exact path="/about/members" component={Members} />
 					<Route exact path="/contacto" component={Contact} />
-
 					<Route exact path="/" component={Home} />
 					<Route component={PageNotFound} />
 				</AnimatedSwitch>

@@ -13,6 +13,7 @@ import { ScreenSliderList } from "../backoffice/SlidesScreen/ScreenSliderList";
 import HomeDashboard from "../Components/HomeDashboard/HomeDashboard";
 import OrganizationData from "../backoffice/Organization/OrganizationData";
 import LayoutBackoffice from "../backoffice/Layouts/LayoutBackoffice";
+import PageNotFound from "../Components/PageNotFound/PageNotFound";
 
 function Backoffice() {
 	return (
@@ -55,6 +56,7 @@ function Backoffice() {
 					component={OrganizationData}
 				/>
 				<Route path="/backoffice" exact component={HomeDashboard} />
+				<Route component={PageNotFound} />
 			</AnimatedSwitch>
 		</LayoutBackoffice>
 	);

@@ -5,6 +5,7 @@ import {
 	render,
 	waitFor,
 	screen,
+	prettyDOM,
 } from "@testing-library/react";
 import { MemoryRouter, Route } from "react-router-dom";
 import MembersEdit from "../MembersEdit";
@@ -25,7 +26,8 @@ const EditForm = (
 let componentRendered;
 let getNameInput = () =>
 	componentRendered.getByPlaceholderText(/nuevo nombre/i);
-let getImageInput = () => componentRendered.container.querySelector("#image");
+let getImageInput = () =>
+	componentRendered.container.querySelector(".form__image-input");
 let description;
 let getFacebookUrlInput = () =>
 	componentRendered.getByPlaceholderText(/facebook url/i);
@@ -193,6 +195,7 @@ describe("Testing MembersForm", () => {
 
 			expect(
 				componentRendered.container.querySelector(".form__message-validation")
+					.textContent
 			).toBeFalsy();
 
 			expect(axios.post).toHaveBeenCalled();
@@ -208,6 +211,7 @@ describe("Testing MembersForm", () => {
 
 			expect(
 				componentRendered.container.querySelector(".form__message-validation")
+					.textContent
 			).toBeFalsy();
 
 			expect(axios.put).toHaveBeenCalled();

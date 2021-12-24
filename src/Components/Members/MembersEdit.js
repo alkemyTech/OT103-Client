@@ -4,7 +4,7 @@ import { Get } from "../../Services/publicApiService";
 import { Post, Put } from "../../Services/privateApiService";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-
+import getBase64FromUrl from "../../helpers/imageToBase64";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
@@ -59,7 +59,11 @@ const MembersEdit = () => {
 	};
 
 	const submitEdit = async (values) => {
-		const response = await Put(process.env.REACT_APP_API_MEMBERS, id, values);
+		const body = { ...values };
+		if (image == values.image) {
+			delete body.image;
+		}
+		const response = await Put(process.env.REACT_APP_API_MEMBERS, id, body);
 
 		if (!response.success) {
 			alertError("Algo salio mal");
@@ -81,12 +85,14 @@ const MembersEdit = () => {
 		}
 	}, []);
 
-	const handleChange = (e, setFieldValue) => {
+	const handleImageChange = (e, setFieldValue) => {
 		if (e.currentTarget.files && e.currentTarget.files[0]) {
 			const reader = new FileReader();
+
 			reader.onload = function (e) {
 				setFieldValue("image", e.target.result);
 			};
+
 			reader.readAsDataURL(e.currentTarget.files[0]);
 		}
 	};
@@ -107,7 +113,7 @@ const MembersEdit = () => {
 				validationSchema={SignupSchema}
 				onSubmit={id ? submitEdit : SubmitNew}
 			>
-				{({ errors, touched, setFieldValue, values }) => (
+				{({ errors, setFieldValue, values }) => (
 					<Form className="form__container">
 						<h3 className="txt-center">Members Edit Form</h3>
 						<Field
@@ -117,44 +123,46 @@ const MembersEdit = () => {
 							name="name"
 							placeholder="Nuevo nombre"
 						/>
-						{errors.name && touched.name ? (
-							<div className="form__message-validation">{errors.name}</div>
-						) : null}
-						<div className="ck-editor">
-							<CKEditor
-								editor={ClassicEditor}
-								data={values.description}
-								onChange={(event, editor) => {
-									const data = editor.getData();
-									setFieldValue("description", data);
-								}}
-								config={{
-									placeholder: "Nueva descripción",
-									cloudServices: {
-										tokenUrl:
-											"https://85122.cke-cs.com/token/dev/63f1e5122f7b89374a44f0ba134c7a670437bab84212188ac1b17d829d92",
-										uploadUrl: "https://85122.cke-cs.com/easyimage/upload/",
-									},
-								}}
-							/>
-						</div>
-						{errors.description && touched.description ? (
-							<div className="form__message-validation">
-								{errors.description}
-							</div>
-						) : null}
-						<input
-							type="file"
-							name="image"
-							id="image"
-							accept="image/png,image/jpeg"
-							onChange={(event) => {
-								handleChange(event, setFieldValue);
+						<div className="form__message-validation">{errors.name}</div>
+
+						<CKEditor
+							editor={ClassicEditor}
+							data={values.description}
+							onChange={(event, editor) => {
+								const data = editor.getData();
+								setFieldValue("description", data);
+							}}
+							config={{
+								placeholder: "Nueva descripción",
+								cloudServices: {
+									tokenUrl:
+										"https://85122.cke-cs.com/token/dev/63f1e5122f7b89374a44f0ba134c7a670437bab84212188ac1b17d829d92",
+									uploadUrl: "https://85122.cke-cs.com/easyimage/upload/",
+								},
 							}}
 						/>
-						{errors.image && touched.image ? (
-							<div className="form__message-validation"> {errors.image}</div>
-						) : null}
+
+						<div className="form__message-validation">{errors.description}</div>
+						<label>
+							<input
+								className="form__image-input"
+								type="file"
+								accept="image/*"
+								onChange={(e) => handleImageChange(e, setFieldValue)}
+							/>
+
+							<div className="form__image-container">
+								<img
+									src={values.image}
+									alt="article"
+									onError={(e) => {
+										e.target.src =
+											"https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
+									}}
+								/>
+							</div>
+						</label>
+						<div className="form__message-validation">{errors.image}</div>
 						<Field
 							className="form__input form__members-input"
 							id="facebookUrl"
@@ -163,11 +171,8 @@ const MembersEdit = () => {
 							placeholder="Facebook Url"
 						/>
 
-						{errors.facebookUrl && touched.facebookUrl ? (
-							<div className="form__message-validation">
-								{errors.facebookUrl}
-							</div>
-						) : null}
+						<div className="form__message-validation">{errors.facebookUrl}</div>
+
 						<Field
 							className="form__input form__members-input"
 							id="linkedinUrl"
@@ -175,11 +180,9 @@ const MembersEdit = () => {
 							name="linkedinUrl"
 							placeholder="LinkedIn Url"
 						/>
-						{errors.linkedinUrl && touched.linkedinUrl ? (
-							<div className="form__message-validation">
-								{errors.linkedinUrl}
-							</div>
-						) : null}
+
+						<div className="form__message-validation">{errors.linkedinUrl}</div>
+
 						<button className="form__btn-primary" type="submit">
 							Editar
 						</button>
