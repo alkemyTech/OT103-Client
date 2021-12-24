@@ -1,10 +1,16 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
+
+import { AuthLogout } from "./AuthLogout";
 import "./headerWeb.scss";
 import logo from "../../assets/images/logo.png";
+import { AuthLogin } from "./AuthLogin";
 
 const HeaderWeb = (props) => {
+	const { isAuth } = useSelector((state) => state.authReducer);
+
 	const data = [
 		{
 			text: "Inicio",
@@ -25,14 +31,6 @@ const HeaderWeb = (props) => {
 		{
 			text: "Escuela",
 			link: "/school-campaign",
-		},
-		{
-			text: "Login",
-			link: "/login-form",
-		},
-		{
-			text: "Registrarse",
-			link: "/register-form",
 		},
 	];
 
@@ -62,6 +60,7 @@ const HeaderWeb = (props) => {
 								</NavLink>
 							</li>
 						))}
+						{isAuth ? <AuthLogout /> : <AuthLogin />}
 					</ul>
 				</div>
 			</div>
