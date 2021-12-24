@@ -14,7 +14,7 @@ const FooterPublic = () => {
 	const [instagram_url, setInstagram_url] = useState("");
 	const [twitter_url, setTwitter_url] = useState("");
 
-	const admin = localStorage.getItem("rol");
+	const rol = localStorage.getItem("rol");
 
 	const getInfoFooterPublic = () => {
 		Get("organization").then((r) => {
@@ -51,7 +51,7 @@ const FooterPublic = () => {
 						Nosotros
 					</Link>
 
-					{admin !== "admin" ? (
+					{rol !== "admin" ? (
 						<Link to={"/toys-campaign"} className="footer__grid__hide show-tv">
 							{" "}
 							Contacto

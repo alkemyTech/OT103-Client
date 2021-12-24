@@ -8,7 +8,7 @@ const HeaderWeb = () => {
 
 
 
-	const admin = localStorage.getItem("rol");
+	const rol = localStorage.getItem("rol");
     
     
 	const data = [
@@ -57,7 +57,7 @@ const HeaderWeb = () => {
 	];
 	
 
-	if( admin === "admin"){
+	if( rol === "admin"){
 		data.splice(2, 1);
 	}
     

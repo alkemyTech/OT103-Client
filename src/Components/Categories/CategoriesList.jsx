@@ -18,7 +18,7 @@ export const CategoriesList = () => {
 		<div>
 			<div className="activities__list">
 				<h1 className="py-8">Listado Categorias</h1>
-				{categoriesData.data.length > 0 ? (
+				{categoriesData.data.length ? (
 					<CategoriesTable category={categoriesData} />
 				) : null}
 			</div>
