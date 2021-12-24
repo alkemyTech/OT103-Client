@@ -7,9 +7,10 @@ import { AuthLogout } from "./AuthLogout";
 import "./headerWeb.scss";
 import logo from "../../assets/images/logo.png";
 import { AuthLogin } from "./AuthLogin";
+import useAuthActions from "../../store/hooks/useAuthActions";
 
-const HeaderWeb = (props) => {
-	const { isAuth } = useSelector((state) => state.authReducer);
+const HeaderWeb = () => {
+	const { isLogged } = useAuthActions();
 
 	const data = [
 		{
@@ -60,7 +61,7 @@ const HeaderWeb = (props) => {
 								</NavLink>
 							</li>
 						))}
-						{isAuth ? <AuthLogout /> : <AuthLogin />}
+						{isLogged ? <AuthLogout /> : <AuthLogin />}
 					</ul>
 				</div>
 			</div>
