@@ -28,7 +28,6 @@ function Backoffice() {
 			>
 				<Route exact path="/backoffice/Slides/create" component={SlidesForm} />
 				<Route exact path="/backoffice/home" component={HomeForm} />
-				{/* ckeditor roto */}
 				<Route
 					exact
 					path="/backoffice/members/create"
