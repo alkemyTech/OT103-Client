@@ -41,13 +41,7 @@ const MembersList = () => {
 				<LoadingSpinner />
 			) : members.length ? (
 				<>
-					<table className="table-container">
-						<thead>
-							<tr>
-								<th className="activity-table-data">Nombre</th>
-								<th className="activity-table-data">Foto</th>
-							</tr>
-						</thead>
+					{/* <table className="table-container">
 						<tbody>
 							{members.map((member) => (
 								<Fragment key={member.id}>
@@ -67,9 +61,12 @@ const MembersList = () => {
 
 										<td className="activity-table-data">
 											<Link to={`/backoffice/members/edit/${member.id}`}>
-												Editar
+												<button className="form__btn-secondary">Editar</button>
 											</Link>
-											<button onClick={() => handleDeleteActivity(member.id)}>
+											<button
+												className="form__btn-secondary"
+												onClick={() => handleDeleteActivity(member.id)}
+											>
 												Eliminar
 											</button>
 										</td>
@@ -77,7 +74,39 @@ const MembersList = () => {
 								</Fragment>
 							))}
 						</tbody>
-					</table>
+					</table> */}
+					<div>
+						{members.map((member) => (
+							<Fragment key={member.id}>
+								<tr>
+									<td className="activity-table-data">{member.name}</td>
+									<td className="activity-table-data">
+										<img
+											className="activity-image"
+											src={member.image || ""}
+											alt="descripcion"
+											onError={(e) => {
+												e.target.src =
+													"https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
+											}}
+										/>
+									</td>
+
+									<td className="activity-table-data">
+										<Link to={`/backoffice/members/edit/${member.id}`}>
+											<button className="form__btn-secondary">Editar</button>
+										</Link>
+										<button
+											className="form__btn-secondary"
+											onClick={() => handleDeleteActivity(member.id)}
+										>
+											Eliminar
+										</button>
+									</td>
+								</tr>
+							</Fragment>
+						))}
+					</div>
 					<div
 						className={
 							message.includes("mal") ? "error-message" : "success-message"
