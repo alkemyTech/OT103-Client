@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Get } from "../../Services/publicApiService";
-import { Put } from "../../Services/privateApiService";
+import { Post, Put } from "../../Services/privateApiService";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 
@@ -9,6 +9,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import "./MembersEdit.scss";
+import { alertError } from "../../Services/alerts/Alerts";
 const validUrl =
 	/((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
 const linkedInUrl =
@@ -57,12 +58,18 @@ const MembersEdit = () => {
 		setIsLoading(false);
 	};
 
-	const editForm = async (values) => {
-		try {
-			const response = await Put(process.env.REACT_APP_API_MEMBERS, id, values);
-			return console.log(response);
-		} catch (err) {
-			return alert(err);
+	const submitEdit = async (values) => {
+		const response = await Put(process.env.REACT_APP_API_MEMBERS, id, values);
+
+		if (!response.success) {
+			alertError("Algo salio mal");
+		}
+	};
+
+	const SubmitNew = async (values) => {
+		const response = await Post(process.env.REACT_APP_API_MEMBERS, values);
+		if (!response.success) {
+			alertError("Algo salio mal");
 		}
 	};
 
@@ -98,16 +105,10 @@ const MembersEdit = () => {
 					linkedinUrl,
 				}}
 				validationSchema={SignupSchema}
-				enableReinitialize={true}
-				onSubmit={(values) => {
-					editForm(values);
-				}}
+				onSubmit={id ? submitEdit : SubmitNew}
 			>
 				{({ errors, touched, setFieldValue, values }) => (
-					<Form
-						// style={{ display: !ckready && "none" }}
-						className="form__container"
-					>
+					<Form className="form__container">
 						<h3 className="txt-center">Members Edit Form</h3>
 						<Field
 							className="form__input form__members-input"
@@ -121,13 +122,11 @@ const MembersEdit = () => {
 						) : null}
 						<div className="ck-editor">
 							<CKEditor
-								id="description"
-								name="description"
 								editor={ClassicEditor}
-								data={description}
+								data={values.description}
 								onChange={(event, editor) => {
 									const data = editor.getData();
-									setDescription(data);
+									setFieldValue("description", data);
 								}}
 								config={{
 									placeholder: "Nueva descripción",
