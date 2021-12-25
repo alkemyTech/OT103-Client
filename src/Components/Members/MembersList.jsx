@@ -34,9 +34,8 @@ const MembersList = () => {
 
 	return (
 		<div className="manage-activities-container">
-			<Link to="/backoffice/members/create" className="ma-title">
-				Create New Member
-				<i className="fas fa-user-plus"></i>
+			<Link to="/backoffice/members/create" className="MembersList__title">
+				Create New Member +
 			</Link>
 			<SearchBar setSerachResult={setMembers} />
 			{isLoading ? (
@@ -46,22 +45,21 @@ const MembersList = () => {
 					<div>
 						{members.map((member) => (
 							<Fragment key={member.id}>
-								<div className="ma-container">
-									<div className="ma-image-container">
-										<img
-											className="ma-image"
-											src={member.image || ""}
-											alt="descripcion"
-											onError={(e) => {
-												e.target.src =
-													"https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
-											}}
-										/>
-									</div>
-									<div className="ma-content-container">
-										{member.name}
-
-										<div className="ma-btn-container">
+								<div className="MembersList__container">
+									{/* <div> */}
+									<img
+										className="MembersList__image"
+										src={member.image || ""}
+										alt="descripcion"
+										onError={(e) => {
+											e.target.src =
+												"https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
+										}}
+									/>
+									{/* </div> */}
+									<div className="MembersList__content">
+										<div>{member.name}</div>
+										<div className="MembersList__btn-container">
 											<Link to={`/backoffice/members/edit/${member.id}`}>
 												<button className="form__btn-secondary">Editar</button>
 											</Link>

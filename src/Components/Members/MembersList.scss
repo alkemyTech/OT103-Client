@@ -1,56 +1,56 @@
 @import "../../styles//variables.scss";
-.ma-title {
-	text-decoration: none;
-	color: black;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 30px;
-	font-family: "Bebas Neue", cursive;
-}
-.ma-container {
-	border: 1px solid black;
-	margin: 20px 0;
-	padding: 5px;
-	transition: all 0.2s;
-	// max-width: 900px;
-	display: flex;
-}
-.ma-container:hover {
-	box-shadow: 8px 8px 0px 0px $accent-color;
-	-webkit-box-shadow: 8px 8px 0px 0px $accent-color;
-	-moz-box-shadow: 8px 8px 0px 0px $accent-color;
-}
 
-.ma-content-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	white-space: nowrap;
-	// overflow: hidden;
-	text-overflow: ellipsis;
-	// margin-top: 5px;
-	margin-left: 10px;
-}
+.MembersList {
+	&__container {
+		border: 1px solid black;
+		margin: 20px 0;
+		padding: 5px;
+		transition: all 0.2s;
+		max-width: 600px;
+		display: flex;
+		&:hover {
+			box-shadow: 8px 8px 0px 0px $accent-color;
+			-webkit-box-shadow: 8px 8px 0px 0px $accent-color;
+			-moz-box-shadow: 8px 8px 0px 0px $accent-color;
+		}
+	}
 
-.ma-btn-container {
-	// width: 50%;
-	display: flex;
-	// flex-direction: column;
-	// justify-content: flex-end;
-	align-items: center;
-}
-.ma-btn-container > :first-child {
-	margin-right: 10px;
-}
+	&__title {
+		text-decoration: none;
+		color: black;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 30px;
+		font-family: "Bebas Neue", cursive;
+	}
 
-.ma-image-container {
-	width: 400px;
-}
+	&__image {
+		width: 370px;
+		height: 200px;
+		object-fit: cover;
+	}
 
-.ma-image {
-	width: 100%;
-	max-height: 200px;
-	object-fit: cover;
+	&__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		margin-left: 10px;
+		overflow: hidden;
+		& div {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+
+	&__btn-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		& :first-child {
+			margin-right: 5px;
+		}
+	}
 }

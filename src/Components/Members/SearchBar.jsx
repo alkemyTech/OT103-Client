@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { CgSpinner } from "react-icons/cg";
 import { Get } from "../../Services/privateApiService";
+import "./SearchBar.scss";
 
 const SearchBar = ({ setSerachResult }) => {
 	const [searchQuery, setSearchQuery] = useState("");
@@ -27,7 +28,7 @@ const SearchBar = ({ setSerachResult }) => {
 		submitSearch();
 	}, [searchQuery]);
 	return (
-		<div>
+		<div className="search__container">
 			<input
 				value={searchQuery}
 				onChange={(e) => {
@@ -35,7 +36,11 @@ const SearchBar = ({ setSerachResult }) => {
 				}}
 				placeholder="Buscar..."
 			/>
-			{isLoading && <CgSpinner className="spinner__circle" />}
+			{isLoading ? (
+				<CgSpinner className="spinner__circle" />
+			) : (
+				<i className="fas fa-search"></i>
+			)}
 		</div>
 	);
 };
