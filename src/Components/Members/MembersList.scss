@@ -2,6 +2,12 @@
 
 .MembersList {
 	&__container {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+	}
+	&__card {
 		border: 1px solid black;
 		margin: 20px 0;
 		padding: 5px;

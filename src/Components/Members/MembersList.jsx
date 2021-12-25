@@ -33,7 +33,7 @@ const MembersList = () => {
 	}, []);
 
 	return (
-		<div className="manage-activities-container">
+		<div className="MembersList__container">
 			<Link to="/backoffice/members/create" className="MembersList__title">
 				Create New Member +
 			</Link>
@@ -45,7 +45,7 @@ const MembersList = () => {
 					<div>
 						{members.map((member) => (
 							<Fragment key={member.id}>
-								<div className="MembersList__container">
+								<div className="MembersList__card">
 									{/* <div> */}
 									<img
 										className="MembersList__image"
