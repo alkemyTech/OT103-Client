@@ -7,11 +7,13 @@ import Hand from "../assets/images/hand-heart.png";
 
 import "./Home.scss";
 import ContactForm from "../Components/Contact/ContactForm.js";
+import TestimonialsCards from "./TestimonialsCards/TestimonialsCards.jsx";
+import NewsCards from "./NewsCards/NewsCards.jsx";
 
 const Home = () => {
 	return (
 		<>
-			<section className="Home__section">
+			<section className="Home__section-main">
 				<div className="Home__presentationContainer">
 					<h1 className="Home__title">Bienvenidos!</h1>
 					<p className="Home__presentationText">
@@ -28,17 +30,25 @@ const Home = () => {
 							className="Home__handImage"
 						/>
 						<Link to="/donar">
-							<button className="form__btn-primary">DONAR_AHORA</button>
+							<button className="form__btn-primary">DONAR AHORA</button>
 						</Link>
 					</div>
 				</div>
 				<div className="Home__carousel">
-					{/* <SliderCarouselComponent /> */}
+					<SliderCarouselComponent />
 				</div>
 			</section>
-			<section>ULTIMAS NOVEDADES</section>
-			<section>TESTIMONIOS</section>
-			<section>
+			<section className="Home__section-news">
+				<h1 className="Home__subtitle">ULTIMAS NOVEDADES</h1>
+				<NewsCards />
+				<button className="form__btn-primary">Ver Todas</button>
+			</section>
+			<section className="Home__section-testimonials">
+				<h1 className="Home__subtitle">TESTIMONIOS</h1>
+				<TestimonialsCards />
+				<button className="form__btn-primary">Ver Todos</button>
+			</section>
+			<section className="Home__section-contact">
 				<ContactForm />
 			</section>
 		</>

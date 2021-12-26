@@ -52,7 +52,6 @@ function ContactForm() {
 
 	return (
 		<div>
-			<h1> Formulario de contacto </h1>
 			<form onSubmit={formik.handleSubmit} className="form__container">
 				<input
 					type="text"
@@ -97,7 +96,7 @@ function ContactForm() {
 					{formik.errors.phone}
 				</div>
 				<textarea
-					placeholder="Mensaje"
+					placeholder="Escribe tu consulta..."
 					type="text"
 					id="message"
 					className="form__textarea"
@@ -111,7 +110,7 @@ function ContactForm() {
 					{formik.errors.message}
 				</div>
 				<button type="submit" className="form__btn-primary">
-					Submit
+					Enviar
 				</button>
 			</form>
 		</div>
