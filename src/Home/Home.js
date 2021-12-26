@@ -13,42 +13,42 @@ import NewsCards from "./NewsCards/NewsCards.jsx";
 const Home = () => {
 	return (
 		<>
-			<section className="Home__section-main">
-				<div className="Home__presentationContainer">
-					<h1 className="Home__title">Bienvenidos!</h1>
-					<p className="Home__presentationText">
+			<section className="home__section-main">
+				<div className="home__presentationContainer">
+					<h1 className="home__title">Bienvenidos!</h1>
+					<p className="home__presentationText">
 						Simply dummy text of the printing and typesetting industry. Lorem
 						Ipsum has been the industry's standard dummy text ever since the
 						1500s, when an unknown printer
 					</p>
 
-					<div className="Home__donateContainer">
-						<img src={Arrow1} alt="curved arrow" className="Home__arrowImage" />
+					<div className="home__donateContainer">
+						<img src={Arrow1} alt="curved arrow" className="home__arrowImage" />
 						<img
 							src={Hand}
 							alt="hand with a heart"
-							className="Home__handImage"
+							className="home__handImage"
 						/>
 						<Link to="/donar">
 							<button className="form__btn-primary">DONAR AHORA</button>
 						</Link>
 					</div>
 				</div>
-				<div className="Home__carousel">
+				<div className="home__carousel">
 					<SliderCarouselComponent />
 				</div>
 			</section>
-			<section className="Home__section-news">
-				<h1 className="Home__subtitle">ULTIMAS NOVEDADES</h1>
+			<section className="home__section-news">
+				<h1 className="home__subtitle">ULTIMAS NOVEDADES</h1>
 				<NewsCards />
 				<button className="form__btn-primary">Ver Todas</button>
 			</section>
-			<section className="Home__section-testimonials">
-				<h1 className="Home__subtitle">TESTIMONIOS</h1>
+			<section className="home__section-testimonials">
+				<h1 className="home__subtitle">TESTIMONIOS</h1>
 				<TestimonialsCards />
 				<button className="form__btn-primary">Ver Todos</button>
 			</section>
-			<section className="Home__section-contact">
+			<section className="home__section-contact">
 				<ContactForm />
 			</section>
 		</>
