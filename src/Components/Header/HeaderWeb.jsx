@@ -1,11 +1,19 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
+
+import { AuthLogout } from "./AuthLogout";
 import "./headerWeb.scss";
 import logo from "../../assets/images/logo.png";
 import Donate from "./Donate/Donate";
 
-const HeaderWeb = (props) => {
+import { AuthLogin } from "./AuthLogin";
+import useAuthActions from "../../store/hooks/useAuthActions";
+
+const HeaderWeb = () => {
+	const { isLogged } = useAuthActions();
+
 	const data = [
 		{
 			text: "Inicio",
@@ -26,14 +34,6 @@ const HeaderWeb = (props) => {
 		{
 			text: "Escuela",
 			link: "/school-campaign",
-		},
-		{
-			text: "Login",
-			link: "/login-form",
-		},
-		{
-			text: "Registrarse",
-			link: "/register-form",
 		},
 	];
 
@@ -63,10 +63,11 @@ const HeaderWeb = (props) => {
 								</NavLink>
 							</li>
 						))}
+						{isLogged ? <AuthLogout /> : <AuthLogin />}
 					</ul>
 				</div>
 			</div>
-			<Donate />
+			{isAuth && <Donate />}
 		</nav>
 	);
 };
