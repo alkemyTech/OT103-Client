@@ -1,15 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/components/formStyles.scss";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import useAuthActions from "../../store/hooks/useAuthActions";
+import { useHistory } from "react-router-dom";
 
 const LoginForm = () => {
 	const [initialValues, setInitialValues] = useState({
 		email: "",
 		password: "",
 	});
+	const history = useHistory();
 	const [formEnviado, setFormEnviado] = useState(false);
-	const { getRoleId, validateUserLogin, isLogged } = useAuthActions();
+	const { validateUserLogin, isLogged } = useAuthActions();
+
+	useEffect(() => {
+		const timeout =
+			(() => {
+				setFormEnviado(false);
+			},
+			3000);
+		return () => {
+			timeout;
+		};
+	}, [formEnviado]);
 
 	return (
 		<>
@@ -60,13 +73,14 @@ const LoginForm = () => {
 								});
 							}
 							setFormEnviado(true);
+							history.push({ pathname: "/" });
 						})
-						.catch((err) => {
+						.catch(() => {
 							setFormEnviado(true);
 						});
 				}}
 			>
-				{({ errors, touched }) => (
+				{({ errors }) => (
 					<Form className="form__container">
 						<Field
 							className="form__input"
