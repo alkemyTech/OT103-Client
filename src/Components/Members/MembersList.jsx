@@ -4,6 +4,7 @@ import { Get, Delete } from "../../Services/privateApiService";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 import SearchBar from "./SearchBar";
 import "./MembersList.scss";
+import { alertError } from "../../Services/alerts/Alerts";
 
 const MembersList = () => {
 	const [members, setMembers] = useState([]);
@@ -25,6 +26,8 @@ const MembersList = () => {
 				prevState.filter((activity) => +activity.id !== +id)
 			);
 			setMessage("Eliminado exitosamente");
+		} else {
+			alertError("Algo salió mal, intente nuevamente");
 		}
 	};
 
@@ -33,8 +36,8 @@ const MembersList = () => {
 	}, []);
 
 	return (
-		<div className="MembersList__container">
-			<Link to="/backoffice/members/create" className="MembersList__title">
+		<div className="membersList__container">
+			<Link to="/backoffice/members/create" className="membersList__title">
 				Create New Member +
 			</Link>
 			<SearchBar setSerachResult={setMembers} />
@@ -45,10 +48,9 @@ const MembersList = () => {
 					<div>
 						{members.map((member) => (
 							<Fragment key={member.id}>
-								<div className="MembersList__card">
-									{/* <div> */}
+								<div className="membersList__card">
 									<img
-										className="MembersList__image"
+										className="membersList__image"
 										src={member.image || ""}
 										alt="descripcion"
 										onError={(e) => {
@@ -56,10 +58,10 @@ const MembersList = () => {
 												"https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
 										}}
 									/>
-									{/* </div> */}
-									<div className="MembersList__content">
+
+									<div className="membersList__content">
 										<div>{member.name}</div>
-										<div className="MembersList__btn-container">
+										<div className="membersList__btn-container">
 											<Link to={`/backoffice/members/edit/${member.id}`}>
 												<button className="form__btn-secondary">Editar</button>
 											</Link>
@@ -75,13 +77,7 @@ const MembersList = () => {
 							</Fragment>
 						))}
 					</div>
-					<div
-						className={
-							message.includes("mal") ? "error-message" : "success-message"
-						}
-					>
-						{message}
-					</div>
+					<div className={"form__message-success"}>{message}</div>
 				</>
 			) : (
 				<div>Sin resultados</div>
