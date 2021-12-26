@@ -16,6 +16,7 @@ const DonationsGreet = ({
 						rel="noreferrer"
 					>
 						$100
+						<img src={mercadoPago} />
 					</a>
 				</div>
 				<div>
@@ -26,6 +27,7 @@ const DonationsGreet = ({
 						rel="noreferrer"
 					>
 						$500
+						<img src={mercadoPago} />
 					</a>
 				</div>
 				<div>
@@ -36,6 +38,7 @@ const DonationsGreet = ({
 						rel="noreferrer"
 					>
 						$1000
+						<img src={mercadoPago} />
 					</a>
 				</div>
 				<div>
@@ -46,6 +49,7 @@ const DonationsGreet = ({
 						rel="noreferrer"
 					>
 						$2000
+						<img src={mercadoPago} />
 					</a>
 				</div>
 
@@ -57,6 +61,7 @@ const DonationsGreet = ({
 						rel="noreferrer"
 					>
 						$5000
+						<img src={mercadoPago} />
 					</a>
 				</div>
 			</div>
