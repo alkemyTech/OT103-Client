@@ -14,11 +14,10 @@ const LoginForm = () => {
 	const { validateUserLogin, isLogged } = useAuthActions();
 
 	useEffect(() => {
-		const timeout =
-			(() => {
-				setFormEnviado(false);
-			},
-			3000);
+		if (isLogged) history.push({ pathname: "/" });
+		const timeout = setTimeout(() => {
+			setFormEnviado(false);
+		}, 2000);
 		return () => {
 			timeout;
 		};
@@ -73,7 +72,6 @@ const LoginForm = () => {
 								});
 							}
 							setFormEnviado(true);
-							history.push({ pathname: "/" });
 						})
 						.catch(() => {
 							setFormEnviado(true);
