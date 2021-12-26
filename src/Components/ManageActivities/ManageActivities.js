@@ -27,7 +27,7 @@ const ManageActivities = () => {
 
   const handleCancelEdit = () => {
     setMessage("");
-    setEditingActivity(NaN);
+    setEditingActivity(0);
   };
 
   const fetchApiData = async () => {
