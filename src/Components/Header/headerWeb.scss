@@ -7,6 +7,17 @@
 		align-items: center;
 		justify-content: space-between;
 		position: relative;
+		@media screen and (min-width: 1400px) {
+			&::after {
+				content: "";
+				position: absolute;
+				width: 600px;
+				height: 100%;
+				top: 0;
+				right: 0;
+				background-color: #eee;
+			}
+		}
 	}
 
 	&__logo {
@@ -109,8 +120,8 @@
 	}
 
 	&__menuPanel {
-		z-index: 1;
 		background-color: white;
+		z-index: 1;
 		position: absolute;
 		border: 1px solid black;
 		top: 100%;
@@ -136,6 +147,9 @@
 			border: none;
 			justify-content: space-between;
 			align-items: center;
+		}
+		@media screen and (min-width: 1400px) {
+			background-color: transparent;
 		}
 	}
 }

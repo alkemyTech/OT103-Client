@@ -5,13 +5,17 @@ import { withRouter } from "react-router";
 import { AuthLogout } from "./AuthLogout";
 import "./headerWeb.scss";
 import logo from "../../assets/images/logo.png";
+
 import { AuthLogin } from "./AuthLogin";
 import useAuthActions from "../../store/hooks/useAuthActions";
 
 const HeaderWeb = () => {
 	const { isLogged } = useAuthActions();
 
+	const [menuIsOpen, setMenuIsOpen] = useState(false);
+
 	const showMenu = () => {
+		setMenuIsOpen((prev) => !prev);
 		document.querySelector(".header__menuPanel").classList.toggle("active");
 	};
 
@@ -50,7 +54,7 @@ const HeaderWeb = () => {
 			>
 				MENU
 			</button>
-			<div className="header__menuPanel">
+			<div className={`header__menuPanel ${menuIsOpen && "active"}`}>
 				<ul className="header__navbar">
 					{data.map((item, index) => (
 						<li key={index}>
