@@ -66,8 +66,7 @@ const HeaderWeb = () => {
 						))}
 						{isLogged ? <AuthLogout /> : <AuthLogin />}
 					</ul>
-					{/* {isAuth && <Donate />} */}
-					<Donate />
+					{isAuth && <Donate />}
 				</div>
 			</div>
 		</nav>

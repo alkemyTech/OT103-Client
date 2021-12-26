@@ -1,6 +1,7 @@
 import "./styles/donations.scss";
+import mercadoPago from "../../assets/mercado-pago.svg";
 
-export const DonationsGreet = ({
+const DonationsGreet = ({
 	title = "Se parte del cambio para las familias de La Cava",
 }) => {
 	return (
@@ -62,3 +63,5 @@ export const DonationsGreet = ({
 		</div>
 	);
 };
+
+export default DonationsGreet;
