@@ -12,6 +12,7 @@ import { AuthLogin } from "./AuthLogin";
 import useAuthActions from "../../store/hooks/useAuthActions";
 
 const HeaderWeb = () => {
+	const { isAuth } = useSelector((state) => state.authReducer);
 	const { isLogged } = useAuthActions();
 
 	const data = [
@@ -65,9 +66,10 @@ const HeaderWeb = () => {
 						))}
 						{isLogged ? <AuthLogout /> : <AuthLogin />}
 					</ul>
+					{/* {isAuth && <Donate />} */}
+					<Donate />
 				</div>
 			</div>
-			{isAuth && <Donate />}
 		</nav>
 	);
 };

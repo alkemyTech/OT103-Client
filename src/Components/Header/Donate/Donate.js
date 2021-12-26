@@ -1,15 +1,15 @@
 import React from "react";
 import "./Donate.scss";
-import { GiReceiveMoney } from "react-icons/fa";
+import { BiDonateHeart } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 function Donate() {
 	return (
 		<div>
-			<Link to="/donate">
+			<Link to="/donar">
 				<button className="donate__button">
 					Donar
-					<i className="fas fa-donate"></i>
+					<BiDonateHeart />
 				</button>
 			</Link>
 		</div>
