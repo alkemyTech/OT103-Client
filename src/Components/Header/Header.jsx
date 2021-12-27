@@ -5,9 +5,10 @@ import logo from "../../assets/images/logo.png";
 import { AuthLogout } from "./AuthLogout";
 
 const Header = () => {
-	const [open, setOpen] = useState(false);
+	const [menuIsOpen, setMenuIsOpen] = useState(false);
+
 	const showMenu = () => {
-		document.querySelector(".header__menuPanel").classList.toggle("active");
+		setMenuIsOpen((prev) => !prev);
 	};
 
 	const data = [

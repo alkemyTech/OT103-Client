@@ -15,6 +15,8 @@ import OrganizationData from "../backoffice/Organization/OrganizationData";
 import LayoutBackoffice from "../backoffice/Layouts/LayoutBackoffice";
 import MembersList from "./../Components/Members/MembersList";
 import PageNotFound from "../Components/PageNotFound/PageNotFound";
+import NewsForm from "../Components/News/NewsForm";
+import { CategoriesList } from "../Components/Categories/CategoriesList";
 
 function Backoffice() {
 	return (
@@ -26,6 +28,11 @@ function Backoffice() {
 				className="switch-wrapper"
 				mapStyles={mapStyles}
 			>
+				<Route
+					exact
+					path="/backoffice/Slides/edit/:id"
+					component={SlidesForm}
+				/>
 				<Route exact path="/backoffice/Slides/create" component={SlidesForm} />
 				<Route exact path="/backoffice/home" component={HomeForm} />
 				<Route
@@ -56,6 +63,8 @@ function Backoffice() {
 					component={ManageActivities}
 				/>
 				<Route exact path="/backoffice/users" component={UsersList} />
+				<Route exact path="/backoffice/news/edit/:id" component={NewsForm} />
+				<Route exact path="/backoffice/news/create" component={NewsForm} />
 				<Route exact path="/backoffice/news" component={NewsList} />
 				<Route exact path="/backoffice/Slides" component={ScreenSliderList} />
 				<Route
@@ -63,6 +72,7 @@ function Backoffice() {
 					path="/backoffice/organization"
 					component={OrganizationData}
 				/>
+				<Route exact path="/backoffice/categories" component={CategoriesList} />
 				<Route path="/backoffice" exact component={HomeDashboard} />
 				<Route component={PageNotFound} />
 			</AnimatedSwitch>
