@@ -24,17 +24,11 @@ export const ToysCampaign = lazy(() =>
 	import("../../Campaigns/Toys/ToysCampaign")
 );
 
-export const MembersForm = lazy(() =>
-	import("../../Components/Members/MembersForm")
-);
-
 export const ProjectsForm = lazy(() =>
 	import("../../Components/Projects/ProjectsForm")
 );
 
-export const AboutMain = lazy(() =>
-	import("../../Components/About/AboutMain")
-);
+export const AboutMain = lazy(() => import("../../Components/About/AboutMain"));
 
 export const ContactForm = lazy(() =>
 	import("../../Components/Contact/ContactForm")
@@ -54,11 +48,11 @@ export const ActivityInfo = lazy(() =>
 	import("../../Components/Activities/Detail/ActivityInfo")
 );
 
-export const { DonationsGreet } = lazy(() =>
+export const DonationsGreet = lazy(() =>
 	import("../../Components/Donations/DonationsGreet")
 );
 
-export const { ThanksGreet } = lazy(() =>
+export const ThanksGreet = lazy(() =>
 	import("../../Components/Donations/ThanksGreet")
 );
 

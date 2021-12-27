@@ -10,7 +10,7 @@ import "./Contact.scss";
 
 const Contact = () => {
 	const { isLogged } = useAuthActions();
-	const admin = localStorage.getItem("rol");
+	const rol = localStorage.getItem("rol");
 
 	const [contactData, setContactData] = useState({
 		cellphone: "",
@@ -35,7 +35,7 @@ const Contact = () => {
 
 	return (
 		<>
-			{isLogged && admin === "admin" ? (
+			{isLogged && rol === "admin" ? (
 				<Redirect to="/backoffice" />
 			) : (
 				<div className="contact__container">
