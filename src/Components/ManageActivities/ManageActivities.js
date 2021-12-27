@@ -10,7 +10,7 @@ const ManageActivities = () => {
   const [activities, setActivities] = useState([]);
   const [status, setStatus] = useState("Buscando actividades...");
   const [message, setMessage] = useState("");
-  const [editingActivity, setEditingActivity] = useState(NaN); // will change to the id of the activity to edit
+  const [editingActivity, setEditingActivity] = useState(0); // will change to the id of the activity to edit
 
   const handleEditActivity = (id) => {
     setMessage("");
