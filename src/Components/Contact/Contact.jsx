@@ -34,8 +34,8 @@ const Contact = () => {
 
 	return (
 		<>
-			{getRoleId && 1 ? (
-				<Redirect to="/backoffice" />
+			{getRoleId() ===  1 ? (
+				<Redirect to="/" />
 			) : (
 				<div className="contact__container">
 					<Title title="Contacto" />
