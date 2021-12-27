@@ -16,6 +16,7 @@ import LayoutBackoffice from "../backoffice/Layouts/LayoutBackoffice";
 import MembersList from "./../Components/Members/MembersList";
 import PageNotFound from "../Components/PageNotFound/PageNotFound";
 import NewsForm from "../Components/News/NewsForm";
+import { CategoriesList } from "../Components/Categories/CategoriesList";
 
 function Backoffice() {
 	return (
@@ -71,6 +72,7 @@ function Backoffice() {
 					path="/backoffice/organization"
 					component={OrganizationData}
 				/>
+				<Route exact path="/backoffice/categories" component={CategoriesList} />
 				<Route path="/backoffice" exact component={HomeDashboard} />
 				<Route component={PageNotFound} />
 			</AnimatedSwitch>
