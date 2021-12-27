@@ -6,12 +6,14 @@ import { withRouter } from "react-router";
 import { AuthLogout } from "./AuthLogout";
 import "./headerWeb.scss";
 import logo from "../../assets/images/logo.png";
+import Donate from "./Donate/Donate";
+
 import { AuthLogin } from "./AuthLogin";
+import useAuthActions from "../../store/hooks/useAuthActions";
 
 const HeaderWeb = () => {
-	const rol = localStorage.getItem("rol");
-
 	const { isAuth } = useSelector((state) => state.authReducer);
+	const { isLogged } = useAuthActions();
 
 	const data = [
 		{
@@ -34,19 +36,7 @@ const HeaderWeb = () => {
 			text: "Escuela",
 			link: "/school-campaign",
 		},
-		{
-			text: "Login",
-			link: "/login-form",
-		},
-		{
-			text: "Registrarse",
-			link: "/register-form",
-		},
 	];
-
-	if (rol === "admin") {
-		data.splice(2, 1);
-	}
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light">
@@ -74,8 +64,9 @@ const HeaderWeb = () => {
 								</NavLink>
 							</li>
 						))}
-						{isAuth ? <AuthLogout /> : <AuthLogin />}
+						{isLogged ? <AuthLogout /> : <AuthLogin />}
 					</ul>
+					{isAuth && <Donate />}
 				</div>
 			</div>
 		</nav>
