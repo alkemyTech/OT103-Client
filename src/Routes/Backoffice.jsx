@@ -27,6 +27,11 @@ function Backoffice() {
 				className="switch-wrapper"
 				mapStyles={mapStyles}
 			>
+				<Route
+					exact
+					path="/backoffice/Slides/edit/:id"
+					component={SlidesForm}
+				/>
 				<Route exact path="/backoffice/Slides/create" component={SlidesForm} />
 				<Route exact path="/backoffice/home" component={HomeForm} />
 				<Route
