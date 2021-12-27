@@ -6,6 +6,7 @@ import twitterIcon from "../../assets/images/twitter.ico";
 import instagramIcon from "../../assets/images/instagram.ico";
 import facebookIcon from "../../assets/images/facebook.ico";
 import "./FooterPublic.scss";
+import useAuthActions from "../../store/hooks/useAuthActions";
 
 const FooterPublic = () => {
 	const [logo, setLogo] = useState("");
@@ -14,7 +15,8 @@ const FooterPublic = () => {
 	const [instagram_url, setInstagram_url] = useState("");
 	const [twitter_url, setTwitter_url] = useState("");
 
-	const admin = localStorage.getItem("rol");
+
+	const { getRoleId } = useAuthActions();
 
 	const getInfoFooterPublic = () => {
 		Get("organization").then((r) => {
@@ -51,7 +53,7 @@ const FooterPublic = () => {
 						Nosotros
 					</Link>
 
-					{admin !== "admin" ? (
+					{getRoleId === 1 ? (
 						<Link to={"/toys-campaign"} className="footer__grid__hide show-tv">
 							{" "}
 							Contacto

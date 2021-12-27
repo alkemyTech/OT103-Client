@@ -13,7 +13,7 @@ import useAuthActions from "../../store/hooks/useAuthActions";
 
 const HeaderWeb = () => {
 	const { isAuth } = useSelector((state) => state.authReducer);
-	const { isLogged } = useAuthActions();
+	const { isLogged, getRoleId } = useAuthActions();
 
 	const data = [
 		{
@@ -37,7 +37,10 @@ const HeaderWeb = () => {
 			link: "/school-campaign",
 		},
 	];
-	
+
+	if (getRoleId() === 1) {
+		data.splice(2, 1);
+	}
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light">
