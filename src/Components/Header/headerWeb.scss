@@ -43,6 +43,10 @@
 		&.active {
 			position: relative;
 			margin-right: 10px;
+			@media screen and (min-width: 1020px) {
+				margin-right: 0;
+			}
+
 			&::after {
 				position: absolute;
 				content: "";
@@ -63,6 +67,10 @@
 			color: black;
 			position: relative;
 			margin-right: 10px;
+			@media screen and (min-width: 1020px) {
+				margin-right: 0;
+			}
+
 			&::after {
 				position: absolute;
 				content: "";

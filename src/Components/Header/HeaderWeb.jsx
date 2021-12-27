@@ -16,7 +16,6 @@ const HeaderWeb = () => {
 
 	const showMenu = () => {
 		setMenuIsOpen((prev) => !prev);
-		document.querySelector(".header__menuPanel").classList.toggle("active");
 	};
 
 	const data = [
