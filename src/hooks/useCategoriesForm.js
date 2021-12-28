@@ -1,16 +1,14 @@
 import { useState, useEffect, useRef } from "react";
-import getBase64FromUrl from "../helpers/imageToBase64";
 
 const useCategoriesForm = (categoryParam) => {
 	//FOR IMAGE PREVIEW
 	//AND SENDING TO API
 	//See FILE API from html5
 	const fileReader = new FileReader();
-	// fileReader.onload = (e) => {
-	// 	setImagePreview(e.target.result);
-	// };
+	fileReader.onload = (e) => {
+		setImagePreview(e.target.result);
+	};
 
-	console.log(categoryParam.image);
 	const imageInputRef = useRef();
 	//   FOR SENDING THE IMAGE IN BASE64 and also previewing it on the frontend
 	const [imagePreview, setImagePreview] = useState(categoryParam.image);
@@ -21,12 +19,6 @@ const useCategoriesForm = (categoryParam) => {
 	useEffect(() => {
 		setImagePreview(categoryParam.image);
 	}, [categoryParam.image]);
-	// useEffect(() => {
-	// 	if (categoryParam !== undefined)
-	// 		getBase64FromUrl(categoryParam.image)
-	// 			.then((res) => setImagePreview(res))
-	// 			.catch((err) => console.log(err));
-	// }, [categoryParam]);
 
 	//HIDE THE MESSAGE IN 4 SECONDS
 	// CLEANUP TO PREVENT ERROR DISMOUNTING COMPONENT
