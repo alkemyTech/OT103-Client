@@ -38,6 +38,7 @@ OUTPUTS => Form component and api call
 const CategoriesForm = () => {
 	const [category, setCategory] = useState({});
 	const [isLoading, setIsLoading] = useState(true);
+
 	const { imageInputRef, imagePreview, status, setStatus, fileReader } =
 		useCategoriesForm(category);
 
@@ -52,7 +53,7 @@ const CategoriesForm = () => {
 	};
 
 	const handleSubmit = (values) => {
-		category === undefined
+		!id
 			? uploadCategory({ ...values, image: imagePreview })
 					.then((res) => {
 						setStatus(res);
@@ -63,7 +64,7 @@ const CategoriesForm = () => {
 			: modifyCategory({
 					...values,
 					image: imagePreview,
-					id: category.id,
+					id: id,
 			  })
 					.then((res) => {
 						setStatus(res);
@@ -79,14 +80,13 @@ const CategoriesForm = () => {
 		image: "",
 	};
 
-	const chooseInitialData =
-		category !== undefined
-			? {
-					name: category.name,
-					description: category.description,
-					image: category.image,
-			  }
-			: emptyCategoryData;
+	const chooseInitialData = id
+		? {
+				name: category.name,
+				description: category.description,
+				image: category.image,
+		  }
+		: emptyCategoryData;
 
 	useEffect(() => {
 		if (id) {
@@ -152,8 +152,7 @@ const CategoriesForm = () => {
 							imageInputRef={imageInputRef}
 							errors={errors}
 							touched={touched}
-							// imagePreview={imagePreview}
-							imagePreview={category.image}
+							imagePreview={imagePreview}
 							required={true}
 						/>
 

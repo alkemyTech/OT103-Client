@@ -6,23 +6,27 @@ const useCategoriesForm = (categoryParam) => {
 	//AND SENDING TO API
 	//See FILE API from html5
 	const fileReader = new FileReader();
-	fileReader.onload = (e) => {
-		setImagePreview(e.target.result);
-	};
+	// fileReader.onload = (e) => {
+	// 	setImagePreview(e.target.result);
+	// };
 
+	console.log(categoryParam.image);
 	const imageInputRef = useRef();
 	//   FOR SENDING THE IMAGE IN BASE64 and also previewing it on the frontend
-	const [imagePreview, setImagePreview] = useState("");
+	const [imagePreview, setImagePreview] = useState(categoryParam.image);
 	// API INTERACTION STATUS
 	const [status, setStatus] = useState("");
 
 	//TRY TO SAVE THE IMAGE OF THE CATEGORY OBJECT WHICH COMES FROM COMPONENT PARAMS
 	useEffect(() => {
-		if (categoryParam !== undefined)
-			getBase64FromUrl(categoryParam.image)
-				.then((res) => setImagePreview(res))
-				.catch((err) => console.log(err));
-	}, [categoryParam]);
+		setImagePreview(categoryParam.image);
+	}, [categoryParam.image]);
+	// useEffect(() => {
+	// 	if (categoryParam !== undefined)
+	// 		getBase64FromUrl(categoryParam.image)
+	// 			.then((res) => setImagePreview(res))
+	// 			.catch((err) => console.log(err));
+	// }, [categoryParam]);
 
 	//HIDE THE MESSAGE IN 4 SECONDS
 	// CLEANUP TO PREVENT ERROR DISMOUNTING COMPONENT

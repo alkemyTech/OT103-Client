@@ -21,6 +21,7 @@ const InputImageFile = ({
 					id={name}
 					ref={imageInputRef}
 					onChange={(e) => {
+						console.log(e);
 						handleChange(e);
 						fileReader.readAsDataURL(e.target.files[0]);
 					}}
