@@ -38,10 +38,12 @@ const MembersList = () => {
 	return (
 		<div className="membersList__container">
 			<h2 className="text__title-secondary">Lista de miembros</h2>
-			<Link to="/backoffice/members/create">
-				<h3 className="text__title-tertiary">Crear nuevo +</h3>
-			</Link>
-			<SearchBar setSerachResult={setMembers} />
+			<div className="membersList__searchContainer">
+				<SearchBar setSerachResult={setMembers} />
+				<Link to="/backoffice/members/create">
+					<button className="form__btn-secondary">Crear nuevo +</button>
+				</Link>
+			</div>
 			{isLoading ? (
 				<LoadingSpinner />
 			) : members.length ? (
@@ -55,7 +57,7 @@ const MembersList = () => {
 					))}
 				</div>
 			) : (
-				<div>Sin resultados</div>
+				<div className="membersList__emptyCard">No hay resultados...</div>
 			)}
 			<div className={"form__message-success"}>{message}</div>
 		</div>
