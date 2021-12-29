@@ -1,0 +1,11 @@
+.layoutBackoffice {
+	&__container {
+		background-color: #eee;
+	}
+	&__main {
+		min-height: calc(100vh - 120px); //visible height - header
+		max-width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
