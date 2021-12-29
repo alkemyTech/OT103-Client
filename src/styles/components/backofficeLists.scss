@@ -1,6 +1,4 @@
-@import "../../styles//variables.scss";
-
-.membersList {
+.backofficeLists {
 	&__container {
 		display: flex;
 		flex-direction: column;
@@ -16,8 +14,7 @@
 			width: 100%;
 		}
 	}
-
-	&__card {
+	&__cardContainer {
 		position: relative;
 		background-color: white;
 		border: 1px solid black;
@@ -36,7 +33,6 @@
 			flex-direction: row;
 		}
 	}
-
 	&__emptyCard {
 		border: 1px solid black;
 		background-color: white;
@@ -52,17 +48,7 @@
 		}
 	}
 
-	&__title {
-		text-decoration: none;
-		color: black;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 30px;
-		font-family: "Bebas Neue", cursive;
-	}
-
-	&__image {
+	&__cardImage {
 		width: 300px;
 		height: 200px;
 		object-fit: cover;
@@ -72,8 +58,7 @@
 			margin-bottom: 0;
 		}
 	}
-
-	&__content {
+	&__cardContent {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -89,7 +74,7 @@
 		}
 	}
 
-	&__btn-container {
+	&__cardBtnsContainer {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -103,8 +88,7 @@
 			margin-top: 0;
 		}
 	}
-
-	&__spinner {
+	&__cardSpinner {
 		position: absolute;
 		right: 10px;
 		top: 10px;

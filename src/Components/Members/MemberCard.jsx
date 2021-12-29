@@ -6,12 +6,12 @@ const MemberCard = ({ member, deleteMember }) => {
 	const [isDeleting, setIsDeleting] = useState(false);
 
 	return (
-		<div className="membersList__card">
+		<div className="backofficeLists__cardContainer">
 			{isDeleting && (
-				<CgSpinner className="spinner__circle membersList__spinner" />
+				<CgSpinner className="spinner__circle backofficeLists__cardSpinner" />
 			)}
 			<img
-				className="membersList__image"
+				className="backofficeLists__cardImage"
 				src={member.image || ""}
 				alt="descripcion"
 				onError={(e) => {
@@ -20,9 +20,9 @@ const MemberCard = ({ member, deleteMember }) => {
 				}}
 			/>
 
-			<div className="membersList__content">
+			<div className="backofficeLists__cardContent">
 				<div>{member.name}</div>
-				<div className="membersList__btn-container">
+				<div className="backofficeLists__cardBtnsContainer">
 					<Link to={`/backoffice/members/edit/${member.id}`}>
 						<button className="form__btn-secondary">Editar</button>
 					</Link>

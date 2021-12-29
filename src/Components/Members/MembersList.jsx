@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Get, Delete } from "../../Services/privateApiService";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 import SearchBar from "./SearchBar";
-import "./MembersList.scss";
 import { alertError } from "../../Services/alerts/Alerts";
 import MemberCard from "./MemberCard";
 
@@ -36,9 +35,9 @@ const MembersList = () => {
 	}, []);
 
 	return (
-		<div className="membersList__container">
+		<div className="backofficeLists__container">
 			<h2 className="text__title-secondary">Lista de miembros</h2>
-			<div className="membersList__searchContainer">
+			<div className="backofficeLists__searchContainer">
 				<SearchBar setSerachResult={setMembers} />
 				<Link to="/backoffice/members/create">
 					<button className="form__btn-secondary">Crear nuevo +</button>
@@ -57,7 +56,7 @@ const MembersList = () => {
 					))}
 				</div>
 			) : (
-				<div className="membersList__emptyCard">No hay resultados...</div>
+				<div className="backofficeLists__emptyCard">No hay resultados...</div>
 			)}
 			<div className={"form__message-success"}>{message}</div>
 		</div>
