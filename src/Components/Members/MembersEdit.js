@@ -101,6 +101,9 @@ const MembersEdit = () => {
 	}
 	return (
 		<>
+			<h2 className="text__title-secondary">
+				{id ? "Editar miembro" : "Nuevo miembro"}
+			</h2>
 			<Formik
 				initialValues={{
 					name,
@@ -114,9 +117,6 @@ const MembersEdit = () => {
 			>
 				{({ errors, setFieldValue, values }) => (
 					<Form className="form__container">
-						<h3 className="text__title-tertiary">
-							{id ? "Editar miembro" : "Nuevo miembro"}
-						</h3>
 						<Field
 							className="form__input form__members-input"
 							type="text"
