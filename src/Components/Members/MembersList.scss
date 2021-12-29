@@ -8,6 +8,8 @@
 		align-items: center;
 	}
 	&__card {
+		position: relative;
+		background-color: white;
 		border: 1px solid black;
 		margin: 20px 0;
 		padding: 5px;
@@ -75,5 +77,13 @@
 		@media screen and (min-width: 769px) {
 			margin-top: 0;
 		}
+	}
+
+	&__spinner {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		width: 30px;
+		height: 30px;
 	}
 }
