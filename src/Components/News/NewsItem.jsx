@@ -20,7 +20,7 @@ const NewsItem = ({ id, name, image, created_at, setNews }) => {
 
 	return (
 		<li className="list__item">
-			<img className="item__image" src={image} alt={name} />
+			<img className="item__image" src={image} alt={name} loading="lazy" />
 			<div className="item__group">
 				<h3 className="item__title">{name}</h3>
 				<p className="item__datetime">
