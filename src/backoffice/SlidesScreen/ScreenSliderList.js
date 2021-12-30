@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ItemList } from "./ItemList";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSlides } from "../../store/slices/slidesSlice";
+import LoadingSpinner from "../../Components/Spinner/LoadingSpinner";
 
 export const ScreenSliderList = () => {
 	const { slidesData } = useSelector((state) => state);
@@ -13,18 +14,25 @@ export const ScreenSliderList = () => {
 	}, []);
 
 	return (
-		<div className="table__main">
-			<div className="table__head-container">
-				<div className="table__head-title">Listado de Slides</div>
-				<Link to="/backoffice/Slides/create" className="table__create-button">
-					Create
+		<div className="backofficeLists__container">
+			<h2 className="text__title-secondary">Lista de slides</h2>
+
+			<div className="backofficeLists__searchContainer">
+				<Link to="/backoffice/Slides/create">
+					<button className="form__btn-secondary">Crear nuevo +</button>
 				</Link>
 			</div>
-			<div>
-				{slidesData.data.map((data, i) => {
+			{slidesData.loading ? (
+				<LoadingSpinner />
+			) : slidesData.data.length ? (
+				slidesData.data.map((data, i) => {
 					return <ItemList key={i} data={data} />;
-				})}
-			</div>
+				})
+			) : (
+				<div className="backofficeLists__emptyCard">No hay resultados...</div>
+			)}
+
+			<div></div>
 		</div>
 	);
 };
