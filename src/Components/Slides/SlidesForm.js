@@ -12,7 +12,7 @@ import "./slidesForm.scss";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 
-const SlidesForm = () => {
+const SlidesForm = ({ type="slides" }) => {
 	const [slide, setSlide] = useState({});
 	const [message, setMessage] = useState("");
 	const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +32,7 @@ const SlidesForm = () => {
 	};
 	useEffect(() => {
 		if (id) {
-			Get(`slides/${id}`).then((r) => {
+			Get(`${type}/${id}`).then((r) => {
 				if (r.success) {
 					setSlide(r.data);
 				}
@@ -57,7 +57,7 @@ const SlidesForm = () => {
 			}}
 			onSubmit={async (values, { resetForm }) => {
 				if (!id) {
-					const response = await Post("slides", values);
+					const response = await Post(type, values);
 					if (response.success) {
 						setMessage("Creado exitosamente");
 					}
@@ -68,7 +68,7 @@ const SlidesForm = () => {
 					if (values.image === slide.image) {
 						delete body.image;
 					}
-					const response = await Put("slides", id, body);
+					const response = await Put(type, id, body);
 					if (response.success) {
 						setMessage("Editado exitosamente");
 					}
@@ -87,7 +87,7 @@ const SlidesForm = () => {
 				return (
 					<>
 						<h2 className="text__title-secondary">
-							{id ? "Editar slides" : "Crear slides"}
+							{id ? `Editar ${type}` : `Crear ${type}`}
 						</h2>
 						<form className="form__container" onSubmit={handleSubmit}>
 							<input
@@ -142,7 +142,7 @@ const SlidesForm = () => {
 								<div className="form__image-container">
 									<img
 										src={values.image}
-										alt="slide"
+										alt={type}
 										onError={(e) => {
 											e.target.src =
 												"https://www.sedistudio.com.au/wp-content/themes/sedi/assets/images/placeholder/placeholder.png";
