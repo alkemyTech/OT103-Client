@@ -1,30 +1,18 @@
 import React, { useState } from "react";
 import { CgSpinner } from "react-icons/cg";
 import { Link } from "react-router-dom";
-
 import apiDateToText from "../../helpers/apiDateToText";
-import { alertError } from "../../Services/alerts/Alerts";
-import { Delete } from "../../Services/privateApiService";
 
-export const ItemList = ({ data }) => {
+export const ItemList = ({ data, deleteSlide }) => {
 	const [isDeleting, setIsDeleting] = useState(false);
 	const date = apiDateToText(data.updated_at).date;
 	const order = data.order ? `Order: ${data.order}` : date;
 
 	const handleDelete = async () => {
-		try {
-			const deleteData = await Delete("slides", data.id);
-			if (!deleteData.success) {
-				alertError(deleteData.error);
-			} else {
-				return deleteData.data;
-			}
-		} catch (error) {
-			console.log(error);
-			alertError("Esta publicación no existe");
-		}
+		setIsDeleting(true);
+		await deleteSlide(data.id);
+		setIsDeleting(false);
 	};
-
 	return (
 		<div className="backofficeLists__cardContainer">
 			{isDeleting && (

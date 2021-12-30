@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 const MemberCard = ({ member, deleteMember }) => {
 	const [isDeleting, setIsDeleting] = useState(false);
 
+	const handleDelete = async () => {
+		setIsDeleting(true);
+		await deleteMember(member.id);
+		setIsDeleting(false);
+	};
 	return (
 		<div className="backofficeLists__cardContainer">
 			{isDeleting && (
@@ -28,11 +33,7 @@ const MemberCard = ({ member, deleteMember }) => {
 					</Link>
 					<button
 						className="form__btn-secondary"
-						onClick={async () => {
-							setIsDeleting(true);
-							await deleteMember(member.id);
-							setIsDeleting(false);
-						}}
+						onClick={handleDelete}
 						disabled={isDeleting}
 					>
 						Eliminar
