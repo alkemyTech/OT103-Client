@@ -7,10 +7,15 @@ export const SearchActivities = ({ setActivities }) => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const GetSearch = async (value) => {
-		setIsLoading(true);
-		const dataSearch = await Get(`activities?search=${value}`);
-		setIsLoading(false);
-		return dataSearch;
+		if (value.length > 1) {
+			setIsLoading(true);
+			const dataSearch = await Get(`activities?search=${value}`);
+			setIsLoading(false);
+			return dataSearch;
+		} else {
+			const dataSearch = await Get("activities");
+			return dataSearch;
+		}
 	};
 
 	const handleInputChange = (e, handleChange, values) => {
