@@ -24,6 +24,10 @@ const HeaderWeb = () => {
 			link: "/",
 		},
 		{
+			text: "Actividades",
+			link: "/actividades",
+		},
+		{
 			text: "Nosotros",
 			link: "/about",
 		},
