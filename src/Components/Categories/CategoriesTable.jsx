@@ -1,26 +1,33 @@
 import { useState } from "react";
 import { CgSpinner } from "react-icons/cg";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import apiDateToText from "../../helpers/apiDateToText";
 import { alertError, alertInformation } from "../../Services/alerts/Alerts";
 import { Delete } from "../../Services/privateApiService";
+import { fetchCategories } from "../../store/slices/categoriesSlice";
 import "./CategoriesTable.scss";
 
 export const CategoriesTable = ({ category }) => {
 	const [isDeleting, setIsDeleting] = useState(false);
+	const dispatch = useDispatch();
 
-	const handleDelete = async (id, category) => {
+	const handleDelete = async () => {
+		setIsDeleting(true);
 		const categoryDelete = await Delete("categories", category.id);
 
-		if (categoryDelete.message) {
+		if (categoryDelete.success) {
+			dispatch(fetchCategories());
 			alertInformation(categoryDelete.message);
 		} else {
 			alertError("La categoria no existe");
 		}
+
+		setIsDeleting(false);
 	};
 
 	return (
-		<div className="categories backofficeLists__cardContainer">
+		<div className="categoriesList backofficeLists__cardContainer">
 			{isDeleting && (
 				<CgSpinner className="spinner__circle backofficeLists__cardSpinner" />
 			)}
@@ -35,8 +42,10 @@ export const CategoriesTable = ({ category }) => {
 			/> */}
 			<div className="backofficeLists__cardContent">
 				<div>
-					<div>{category.name}</div>
-					<div>{apiDateToText(category.created_at).date}</div>
+					<div>
+						<strong>{category.name}</strong>
+					</div>
+					<small>{apiDateToText(category.created_at).date}</small>
 				</div>
 				<div className="backofficeLists__cardBtnsContainer">
 					<Link to={`/backoffice/categories/edit/${category.id}`}>

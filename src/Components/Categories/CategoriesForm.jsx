@@ -63,7 +63,7 @@ const CategoriesForm = () => {
 					})
 			: modifyCategory({
 					...values,
-					image: imagePreview,
+					// image: imagePreview,
 					id: id,
 			  })
 					.then((res) => {
@@ -77,7 +77,9 @@ const CategoriesForm = () => {
 	const emptyCategoryData = {
 		name: "",
 		description: "",
-		image: "",
+		image: `data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+    AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+        9TXL0Y4OHwAAAABJRU5ErkJggg==`,
 	};
 
 	const chooseInitialData = id
