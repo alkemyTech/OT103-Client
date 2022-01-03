@@ -71,6 +71,11 @@ const Header = () => {
 
 				<div className="header__btnContainer">
 					<AuthLogout />
+					<Link to="/">
+						<button className="form__btn-secondary">
+							<i className="fas fa-home"></i>
+						</button>
+					</Link>
 				</div>
 			</div>
 			<i className="fas fa-pen pencilIcon"></i>
