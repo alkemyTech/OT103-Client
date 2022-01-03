@@ -22,7 +22,7 @@ const NewsForm = () => {
 	const { id } = useParams();
 
 	// post new article
-	const submitNew = async (values, { setSubmitting }) => {
+	const submitNew = async (values, { setSubmitting, resetForm }) => {
 		setMessage("");
 		const body = {
 			name: values.title,
@@ -33,6 +33,7 @@ const NewsForm = () => {
 		};
 		const response = await Post(process.env.REACT_APP_API_NEWS, body);
 		if (response.success) {
+			resetForm();
 			setMessage("Creado exitosamente");
 		} else {
 			alertError("Algo salió mal, intente nuevamente");
@@ -170,7 +171,7 @@ const NewsForm = () => {
 									className="form__select"
 									children={[
 										<option value="" disabled key={0}>
-											Seleccionar categoría Seleccionar categoría
+											Seleccionar categoría
 										</option>,
 									].concat(
 										categoriesData.data.map((category) => (

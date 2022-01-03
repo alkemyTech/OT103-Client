@@ -12,10 +12,13 @@ import NewsSearchBar from "./NewsSearchBar.jsx";
 const NewsList = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const { newsData } = useSelector((state) => state);
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(fetchNews()).then((_) => setIsLoading(false));
+		dispatch(fetchNews()).then((_) => {
+			setIsLoading(false);
+		});
 	}, []);
 
 	useEffect(() => {
@@ -36,7 +39,11 @@ const NewsList = () => {
 			{isLoading ? (
 				<LoadingSpinner />
 			) : newsData.data.length ? (
-				newsData.data.map((item) => <NewsItem {...item} key={item.id} />)
+				[...newsData.data]
+					.sort((a, b) => {
+						return new Date(b.updated_at) - new Date(a.updated_at);
+					})
+					.map((item) => <NewsItem {...item} key={item.id} />)
 			) : (
 				<div className="backofficeLists__emptyCard">No hay resultados...</div>
 			)}

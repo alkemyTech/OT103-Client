@@ -9,7 +9,7 @@ import useCategoriesForm from "../../hooks/useCategoriesForm";
 import InputImageFile from "./InputImageFile";
 import InputText from "./InputText";
 import InputCkEditor from "./InputCkEditor";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Get } from "../../Services/privateApiService";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 
@@ -101,8 +101,21 @@ const CategoriesForm = () => {
 	}
 
 	return (
-		<div className="form px-8">
+		<>
+			<div className="newsForm__titleContainer">
+				<h2 className="text__title-secondary">
+					{id ? "Editar categoría" : "Crear categoría"}
+				</h2>
+				<Link to="/backoffice/categories">
+					<button className="form__btn-secondary">
+						<i className="fas fa-arrow-left"></i>
+					</button>
+				</Link>
+			</div>
+
 			<Formik
+				validateOnChange={false}
+				validateOnBlur={false}
 				initialValues={chooseInitialData}
 				initialErrors={emptyCategoryData}
 				validate={(values) => {
@@ -120,9 +133,6 @@ const CategoriesForm = () => {
 					setTouched,
 				}) => (
 					<Form className="form__container">
-						<h3 className="text__title-tertiary">
-							{id ? "Editar categoría" : "Crear categoría"}
-						</h3>
 						<InputText
 							name="name"
 							required={true}
@@ -143,7 +153,7 @@ const CategoriesForm = () => {
 							touched={touched}
 							errors={errors}
 						/>
-						<InputImageFile
+						{/* <InputImageFile
 							name="image"
 							values={values}
 							handleBlur={handleBlur}
@@ -154,7 +164,7 @@ const CategoriesForm = () => {
 							touched={touched}
 							imagePreview={imagePreview}
 							required={true}
-						/>
+						/> */}
 
 						<button className="form__btn-primary" type="submit">
 							Enviar
@@ -173,7 +183,7 @@ const CategoriesForm = () => {
 					</Form>
 				)}
 			</Formik>
-		</div>
+		</>
 	);
 };
 
