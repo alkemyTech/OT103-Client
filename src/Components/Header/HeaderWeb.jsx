@@ -68,12 +68,18 @@ const HeaderWeb = () => {
 					))}
 				</ul>
 				<div className="header__btnContainer">
-					{isLogged ? <AuthLogout /> : <AuthLogin />}
-					<Link to="/backoffice">
-						<button className="form__btn-secondary">
-							<i className="fas fa-columns"></i>
-						</button>
-					</Link>
+					{isLogged ? (
+						<>
+							<AuthLogout />
+							<Link to="/backoffice">
+								<button className="form__btn-secondary">
+									<i className="fas fa-columns"></i>
+								</button>
+							</Link>
+						</>
+					) : (
+						<AuthLogin />
+					)}
 				</div>
 			</div>
 		</nav>
