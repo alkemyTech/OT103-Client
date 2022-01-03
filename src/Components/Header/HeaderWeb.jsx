@@ -31,14 +31,6 @@ const HeaderWeb = () => {
 			text: "Contacto",
 			link: "/contacto",
 		},
-		{
-			text: "Juguetes",
-			link: "/toys-campaign",
-		},
-		{
-			text: "Escuela",
-			link: "/school-campaign",
-		},
 	];
 
 	if (getRoleId() === 1) {
@@ -66,6 +58,26 @@ const HeaderWeb = () => {
 							</NavLink>
 						</li>
 					))}
+					<li>
+						<NavLink
+							to="/toys-campaign"
+							exact
+							className="header__link"
+							target="_blank"
+						>
+							Juguetes
+						</NavLink>
+					</li>
+					<li>
+						<NavLink
+							to="/school-campaign"
+							exact
+							className="header__link"
+							target="_blank"
+						>
+							Escuela
+						</NavLink>
+					</li>
 				</ul>
 				<div className="header__btnContainer">
 					{isLogged ? (
