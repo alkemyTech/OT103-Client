@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import "../Header/header.scss";
+import "../Header/Header.scss";
 import logo from "../../assets/images/logo.png";
 import { AuthLogout } from "./AuthLogout";
 
@@ -71,14 +71,11 @@ const Header = () => {
 
 				<div className="header__btnContainer">
 					<AuthLogout />
-<<<<<<< HEAD
-=======
 					<Link to="/">
 						<button className="form__btn-secondary">
 							<i className="fas fa-home"></i>
 						</button>
 					</Link>
->>>>>>> 9c82166422f153cdb8827dc454fe9243b3727c6a
 				</div>
 			</div>
 			<i className="fas fa-pen pencilIcon"></i>
