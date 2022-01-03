@@ -115,7 +115,7 @@ const UserForm = () => {
 					</button>
 				</Link>
 			</div>
-			{isLogged ? (
+			{!isLogged ? (
 				<Redirect to="/login-form" />
 			) : (
 				<Formik
