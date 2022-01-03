@@ -30,19 +30,23 @@ const OrganizationData = (props) => {
 
 	return (
 		<>
-			<h2 className="text__title-secondary">Lista de miembros</h2>
+			<h2 className="text__title-secondary">DATOS DE LA Organización</h2>
 			{loading ? (
 				<LoadingSpinner />
 			) : (
-				<div className="container">
-					<div className="card">
-						<figure>
-							<img src={data.logo} alt="logo" />
-						</figure>
+				<div className="organizationData">
+					<div className="organizationData__card">
+						{/* <figure> */}
+						<img
+							src={data.logo}
+							alt="logo"
+							className="organizationData__logo"
+						/>
+						{/* </figure> */}
 						<div className="content">
 							<h1 className="content-title">{data.name}</h1>
 							<p className="content-description">{data.short_description}</p>
-							<button className="content-button" onClick={redirection}>
+							<button className="form__btn-secondary" onClick={redirection}>
 								Formulario de edición
 							</button>
 						</div>

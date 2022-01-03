@@ -4,6 +4,7 @@ import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
 
 const OrganizationForm = () => {
 	const [name, setName] = useState("");
@@ -85,8 +86,17 @@ const OrganizationForm = () => {
 	};
 
 	return (
-		<div>
-			<h2 className="text__title-secondary">Lista de miembros</h2>
+		<>
+			<div className="newsForm__titleContainer">
+				<h2 className="text__title-secondary">
+					Editar datos de la organizacion
+				</h2>
+				<Link to="/backoffice/organization">
+					<button className="form__btn-secondary">
+						<i className="fas fa-arrow-left"></i>
+					</button>
+				</Link>
+			</div>
 			<Formik
 				initialValues={{
 					name,
@@ -106,97 +116,93 @@ const OrganizationForm = () => {
 			>
 				{(props) => {
 					return (
-						<Form className="form__user">
-							<div className="form__container">
-								<h3 className="txt-center">Organization Form</h3>
-								<label className="my-1r">Name: </label>
-								<Field name={"name"} type={"text"} className="form__input " />
-								<small className="form__message-validation">
-									{props.errors.name}
-								</small>
-								<label className="my-1r">Image: </label>
-								<input
-									type="file"
-									name="logo"
-									accept="image/png,image/jpeg"
-									onChange={(event) => {
-										handleChange(event, props);
-									}}
-								/>
-								<small className="form__message-validation">
-									{props.errors.logo}
-								</small>
-								<label>Short Description: </label>
-								<CKEditor
-									name={"short_description"}
-									editor={ClassicEditor}
-									data={short_description}
-									onChange={(event, editor) => {
-										const data = editor.getData();
-										setShort_description(data);
-									}}
-								/>
-								<small className="form__message-validation">
-									{props.errors.short_description}
-								</small>
-								<label className="my-1r">Long Description: </label>
-								<Field
-									name={"long_description"}
-									as={"textarea"}
-									type={"text"}
-									className="form__textarea"
-								/>
-								<small>{props.errors.long_description}</small>
-								<label className="my-1r">Facebook: </label>
-								<Field
-									name={"facebook_url"}
-									type={"text"}
-									className="form__input"
-								/>
-								<small className="form__message-validation">
-									{props.errors.facebook_url}
-								</small>
-								<label className="my-1r">Linkedin: </label>
-								<Field
-									name={"linkedin_url"}
-									type={"text"}
-									className="form__input"
-								/>
-								<small className="form__message-validation">
-									{props.errors.linkedin_url}
-								</small>
-								<label className="my-1r">Instagram: </label>
-								<Field
-									name={"instagram_url"}
-									type={"text"}
-									className="form__input"
-								/>
-								<small className="form__message-validation">
-									{props.errors.instagram_url}
-								</small>
-								<label className="my-1r">Twitter: </label>
-								<Field
-									name={"twitter_url"}
-									type={"text"}
-									className="form__input"
-								/>
-								<small className="form__message-validation">
-									{props.errors.twitter_url}
-								</small>
-								<button
-									type={"submit"}
-									disabled={!props.isValid}
-									className="form__btn-primary mx-auto mt-4"
-								>
-									{" "}
-									Send
-								</button>
-							</div>
+						<Form className="form__container">
+							<label>Nombre: </label>
+							<Field name={"name"} type={"text"} className="form__input" />
+							<small className="form__message-validation">
+								{props.errors.name}
+							</small>
+							<label>Logo: </label>
+							<input
+								type="file"
+								name="logo"
+								accept="image/png,image/jpeg"
+								onChange={(event) => {
+									handleChange(event, props);
+								}}
+							/>
+							<small className="form__message-validation">
+								{props.errors.logo}
+							</small>
+							<label>Descripción corta: </label>
+							<CKEditor
+								name={"short_description"}
+								editor={ClassicEditor}
+								data={short_description}
+								onChange={(event, editor) => {
+									const data = editor.getData();
+									setShort_description(data);
+								}}
+							/>
+							<small className="form__message-validation">
+								{props.errors.short_description}
+							</small>
+							<label>Descripción larga: </label>
+							<Field
+								name={"long_description"}
+								as={"textarea"}
+								type={"text"}
+								className="form__textarea"
+							/>
+							<small>{props.errors.long_description}</small>
+							<label>Facebook: </label>
+							<Field
+								name={"facebook_url"}
+								type={"text"}
+								className="form__input"
+							/>
+							<small className="form__message-validation">
+								{props.errors.facebook_url}
+							</small>
+							<label>Linkedin: </label>
+							<Field
+								name={"linkedin_url"}
+								type={"text"}
+								className="form__input"
+							/>
+							<small className="form__message-validation">
+								{props.errors.linkedin_url}
+							</small>
+							<label>Instagram: </label>
+							<Field
+								name={"instagram_url"}
+								type={"text"}
+								className="form__input"
+							/>
+							<small className="form__message-validation">
+								{props.errors.instagram_url}
+							</small>
+							<label>Twitter: </label>
+							<Field
+								name={"twitter_url"}
+								type={"text"}
+								className="form__input"
+							/>
+							<small className="form__message-validation">
+								{props.errors.twitter_url}
+							</small>
+							<button
+								type={"submit"}
+								disabled={!props.isValid}
+								className="form__btn-primary"
+							>
+								Enviar
+							</button>
 						</Form>
 					);
 				}}
 			</Formik>
-		</div>
+		</>
 	);
 };
 
