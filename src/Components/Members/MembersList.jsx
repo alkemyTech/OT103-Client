@@ -34,6 +34,8 @@ const MembersList = () => {
 		fetchApiData();
 	}, []);
 
+	useEffect(() => {}, [members]);
+
 	return (
 		<div className="backofficeLists__container">
 			<h2 className="text__title-secondary">Lista de miembros</h2>
