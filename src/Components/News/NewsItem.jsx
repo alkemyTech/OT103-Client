@@ -20,19 +20,19 @@ const NewsItem = ({ id, name, image, created_at, setNews }) => {
 
 	return (
 		<li className="list__item">
-			<img className="item__image" src={image} alt={name} loading="lazy" />
+			<img className="item__image" src={image} alt={name} />
 			<div className="item__group">
 				<h3 className="item__title">{name}</h3>
 				<p className="item__datetime">
 					{date} {time}
 				</p>
-				<div className="flex align-center">
-					<Link to={`news/edit/${id}`} className="item__edit-link">
-						Editar
+				<div className="flex align-center gap-20px">
+					<Link to={`news/edit/${id}`}>
+						<button className="form__btn-secondary">Editar</button>
 					</Link>
 
 					{!deleting ? (
-						<button onClick={handleDelete} className="item__remove-btn">
+						<button onClick={handleDelete} className="form__btn-secondary">
 							Remover
 						</button>
 					) : (
