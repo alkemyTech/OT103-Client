@@ -50,10 +50,10 @@ const CountDownTimer = () => {
 
 const ToysCampaign = () => {
 	return (
-		<>
+		<div className="toys__container">
 			<WavesBlue className="toys__waves-blue" />
 			<Header />
-			<div className="toys__container">
+			<div className="toys__content">
 				<div className="toys__title">
 					<div>Colecta de juguetes</div>
 					<div className="toys__title-images">
@@ -65,7 +65,7 @@ const ToysCampaign = () => {
 						<img src={Toy6} alt="toy icon 6" />
 					</div>
 				</div>
-				<div className="toys__content">
+				<div className="toys__message">
 					<div>
 						<div>Trae tu donativo</div>
 						<div className="toys__date">30 de Diciembre</div>
@@ -80,13 +80,14 @@ const ToysCampaign = () => {
 						<img src={KidsImage} alt="kids" />
 					</div>
 				</div>
-				<Slider />
-				<img src={ToysBackground} alt="background" />
+				<div className="toys__slider">
+					<Slider />
+				</div>
 			</div>
 			<Footer />
-
+			{/* <img src={ToysBackground} alt="background" /> */}
 			<WavesRed className="toys__waves-red" />
-		</>
+		</div>
 	);
 };
 

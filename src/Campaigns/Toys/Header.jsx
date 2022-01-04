@@ -14,6 +14,10 @@ const Header = () => {
 					loading="lazy"
 				/>
 			</div>
+			<div className="headerToys__slogan">
+				<h5 className="text__title-secondary">Los chicos te necesitan hoy</h5>
+				<h5 className="text__title-secondary">Sumate con tu donación !!</h5>
+			</div>
 			<div className="headerToys__ong">
 				<img
 					src={logo}
@@ -21,10 +25,6 @@ const Header = () => {
 					className="headerToys__ong-logo"
 					loading="lazy"
 				/>
-			</div>
-			<div className="headerToys__slogan">
-				<h5 className="slogan">Los chicos te necesitan hoy</h5>
-				<h5 className="slogan">Sumate con tu donación !!</h5>
 			</div>
 		</header>
 	);

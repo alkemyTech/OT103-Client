@@ -3,26 +3,40 @@
 .headerToys {
 	background-color: transparent;
 	width: 100%;
-	height: 200px;
+	height: 160px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 30px;
+	// margin-top: -160px;
+	// padding-top: 20px;
+	background: rgba(255, 255, 255, 0.438);
 	@media screen and (min-width: $breakpoint-tablet) {
-		justify-content: space-evenly;
+		justify-content: space-around;
 	}
 	@media screen and (min-width: $breakpoint-laptop) {
-		justify-content: space-evenly;
+		justify-content: space-around;
 	}
 
 	&__logoCampaña-logo {
-		width: 200px;
+		width: 100px;
+		height: 100px;
+		// background: rgba(255, 255, 255, 0.411);
+		border-radius: 9999px;
+		object-fit: scale-down;
 	}
 
 	&__ong {
 		display: none;
 		@media screen and (min-width: $breakpoint-tablet) {
 			display: flex;
+			// background: rgba(255, 255, 255, 0.411);
+			border-radius: 9999px;
+			& img {
+				height: 100px;
+				width: 100px;
+				object-fit: cover;
+			}
 		}
 	}
 
@@ -31,6 +45,9 @@
 		@media screen and (min-width: $breakpoint-laptop) {
 			display: flex;
 			flex-direction: column;
+			& h5 {
+				margin-bottom: 0;
+			}
 		}
 	}
 }

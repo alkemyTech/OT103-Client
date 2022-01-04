@@ -69,7 +69,7 @@ const HeaderWeb = () => {
 							className="header__link"
 							target="_blank"
 						>
-							Juguetes
+							Juguetes <i className="fas fa-external-link-square-alt"></i>
 						</NavLink>
 					</li>
 					<li>
@@ -79,7 +79,7 @@ const HeaderWeb = () => {
 							className="header__link"
 							target="_blank"
 						>
-							Escuela
+							Escuela <i className="fas fa-external-link-square-alt"></i>
 						</NavLink>
 					</li>
 				</ul>

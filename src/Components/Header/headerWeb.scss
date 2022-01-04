@@ -28,7 +28,7 @@
 
 		@media screen and (min-width: 1020px) {
 			flex-direction: row;
-			width: 50%;
+			width: 70%;
 		}
 	}
 
@@ -41,6 +41,10 @@
 		position: relative;
 		transition: all 0.2s;
 
+		& i {
+			color: rgb(94, 94, 94);
+			font-size: 14px;
+		}
 		&:active {
 			color: black;
 		}

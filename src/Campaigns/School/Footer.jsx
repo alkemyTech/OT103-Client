@@ -24,13 +24,14 @@ const Footer = () => {
 
 	return (
 		<footer className="school__footer">
-			<div className="footer__logo">
+			<div className="schoolFooter__logo">
 				<img src={somosMasLogo} alt="Somas mas logo" loading="lazy" />
 				<div className="logo__onglink">
 					<Link to="/">Visita somos mas</Link>
 				</div>
 			</div>
-			<div className="footer__social">
+
+			<div className="schoolFooter__social">
 				<a
 					href={wwwToHttpsLink(social.instagram_url)}
 					target="_blank"
@@ -59,13 +60,16 @@ const Footer = () => {
 					<p className="item__name">{social.twitter_url}</p>
 				</a>
 			</div>
-			<div className="footer__campaigns">
-				<h3>Campañas</h3>
+
+			<div className="schoolFooter__campaigns">
+				<h3 className="text__title-tertiary">Campañas Activas</h3>
 				<ul>
-					<li>
+					<li className="text__title-tertiarya">
+						<i className="fas fa-dice"></i>
 						<Link to="/toys-campaign">Campaña de jueguetes</Link>
 					</li>
-					<li>
+					<li className="text__title-tertiarya">
+						<i className="fas fa-graduation-cap"></i>
 						<Link to="/school-campaign">Campaña de escuela</Link>
 					</li>
 				</ul>
