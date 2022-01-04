@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-import { alertError } from "../../Services/alerts/Alerts";
+import { alertError, alertInformation } from "../../Services/alerts/Alerts";
 const validUrl =
 	/((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
 const linkedInUrl =
@@ -61,17 +61,29 @@ const MembersEdit = () => {
 		if (image == values.image) {
 			delete body.image;
 		}
-		const response = await Put(process.env.REACT_APP_API_MEMBERS_EXAMPLE, id, body);
+		const response = await Put(
+			process.env.REACT_APP_API_MEMBERS_EXAMPLE,
+			id,
+			body
+		);
 
-		if (!response.success) {
-			alertError("Algo salio mal");
+		if (response.success) {
+			alertInformation("Editado exitosamente");
+		} else {
+			alertError("Algo salió mal, intente nuevamente");
 		}
 	};
 
-	const SubmitNew = async (values) => {
-		const response = await Post(process.env.REACT_APP_API_MEMBERS_EXAMPLE, values);
-		if (!response.success) {
-			alertError("Algo salio mal");
+	const SubmitNew = async (values, { resetForm }) => {
+		const response = await Post(
+			process.env.REACT_APP_API_MEMBERS_EXAMPLE,
+			values
+		);
+		if (response.success) {
+			resetForm();
+			alertInformation("Creado exitosamente");
+		} else {
+			alertError("Algo salió mal, intente nuevamente");
 		}
 	};
 
