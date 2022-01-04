@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import "../Header/Header.scss";
+import "../Header/header.scss";
 import logo from "../../assets/images/logo.png";
 import { AuthLogout } from "./AuthLogout";
 
