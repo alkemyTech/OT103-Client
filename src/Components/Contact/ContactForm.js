@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import "../../styles/components/formStyles.scss";
 import { Post } from "../../Services/publicApiService";
@@ -9,12 +9,6 @@ const initialValues = {
 	email: "",
 	phone: "",
 	message: "",
-};
-
-const handleSubmit = async (values) => {
-	const response = await Post(process.env.REACT_APP_CONTACTS_ENDPOINT);
-
-	if (!response.success) alertError(response.message);
 };
 
 // VALIDACIONES
@@ -44,12 +38,22 @@ const validate = (values) => {
 };
 
 function ContactForm() {
+	const [messsage, setMessage] = useState("");
+
+	const handleSubmit = async (values) => {
+		const response = await Post(process.env.REACT_APP_CONTACTS_ENDPOINT);
+
+		if (!response.success) {
+			alertError(response.message);
+		} else {
+			setMessage("Mensaje enviado correctamente");
+		}
+	};
 	const formik = useFormik({
 		initialValues,
 		onSubmit: handleSubmit,
 		validate,
 	});
-
 	return (
 		<div>
 			<form onSubmit={formik.handleSubmit} className="form__container">
@@ -112,6 +116,7 @@ function ContactForm() {
 				<button type="submit" className="form__btn-primary">
 					Enviar
 				</button>
+				<div className="form__message-success">{messsage}</div>
 			</form>
 		</div>
 	);
