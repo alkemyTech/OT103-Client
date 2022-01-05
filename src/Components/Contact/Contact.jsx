@@ -69,7 +69,6 @@ const Contact = () => {
 				</div>
 				<LeafletMap />
 			</div>
-			)}
 		</>
 	);
 };
