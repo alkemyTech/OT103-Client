@@ -15,7 +15,10 @@ const HeaderWeb = () => {
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
 
 	const showMenu = () => {
-		setMenuIsOpen((prev) => !prev);
+		setMenuIsOpen(true);
+	};
+	const hideMenu = () => {
+		setMenuIsOpen(false);
 	};
 
 	const data = [
@@ -50,6 +53,7 @@ const HeaderWeb = () => {
 			<button
 				className="header__menuBtn form__btn-secondary"
 				onClick={showMenu}
+				onBlur={hideMenu}
 			>
 				MENU
 			</button>
