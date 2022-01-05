@@ -37,9 +37,9 @@ const HeaderWeb = () => {
 		},
 	];
 
-	if (getRoleId() === 1) {
-		data.splice(2, 1);
-	}
+	// if (getRoleId() === 1) {
+	// 	data.splice(2, 1);
+	// }
 
 	return (
 		<nav className="header__container">
